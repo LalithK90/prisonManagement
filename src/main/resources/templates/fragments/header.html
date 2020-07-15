@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerFragment">
-    <title th:if="${headerTitle==null}" th:text="${'W3Academy'}">Spring boot - Thymeleaf</title>
+    <title th:if="${headerTitle==null}" th:text="${'Deprtment Of Prisons'}">Spring boot - Thymeleaf</title>
     <title th:if="${headerTitle!=null}" th:text="${headerTitle}">Spring boot - Thymeleaf</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -31,6 +31,8 @@
     <link th:href="@{/css/image-uploader.min.css}" media="all" rel="stylesheet" type="text/css"/>
     <!--Floating Label-->
     <link th:href="@{/css/floating-labels.css}" media="all" rel="stylesheet" type="text/css"/>
+    <!--Login Background-->
+    <link th:href="@{/css/style.css}" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
