@@ -1,13 +1,13 @@
 package lk.prisonManagement.asset.employee.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prisonManagement.asset.commonAsset.model.Enum.BloodGroup;
 import lk.prisonManagement.asset.commonAsset.model.Enum.CivilStatus;
 import lk.prisonManagement.asset.commonAsset.model.Enum.Gender;
 import lk.prisonManagement.asset.commonAsset.model.Enum.Title;
 import lk.prisonManagement.asset.commonAsset.model.FileInfo;
+import lk.prisonManagement.asset.employee.entity.Enum.Designation;
 import lk.prisonManagement.asset.employee.entity.Enum.EmployeeStatus;
 import lk.prisonManagement.asset.message.entity.EmailMessage;
 import lk.prisonManagement.util.audit.AuditEntity;
@@ -15,7 +15,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.dom4j.Branch;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,7 +31,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonFilter("Employee")
-public class Employee<Designation> extends AuditEntity {
+public class Employee extends AuditEntity {
 
     @Column(unique = true)
     private String payRoleNumber;
