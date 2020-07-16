@@ -128,7 +128,7 @@ public class UserController {
         }
         //user is super senior office need to provide all working palace to check
         Employee employee = employeeService.findById(user.getEmployee().getId());
-        Designation designation = employee.getDesignation();
+        Designation designation = (Designation) employee.getDesignation();
 
         // userService.persist(user);
         if ( employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {

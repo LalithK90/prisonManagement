@@ -1,11 +1,13 @@
 package lk.prisonManagement.asset.employee.dao;
 
+
+
 import lk.prisonManagement.asset.employee.entity.Employee;
 import lk.prisonManagement.asset.employee.entity.EmployeeFiles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.*;
 
-import java.util.List;
 
 @Repository
 public interface EmployeeFilesDao extends JpaRepository<EmployeeFiles, Integer > {
