@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>institute</title>
@@ -40,16 +40,22 @@
                 <thead>
                     <tr>
                         <th> Index</th>
-                        <th> Main Institute</th>
                         <th> Name</th>
+                        <th> Land</th>
+                        <th> Email</th>
+                        <th> Prison Type</th>
+                        <th> Address</th>
                         <th> Modify</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr data-th-each="institute, rowCount : ${institutes}">
                         <th data-th-text="${rowCount.count}"></th>
-                        <th data-th-text="${institute.mainInstitute.mainInstitute}"></th>
                         <th data-th-text="${institute.name}"></th>
+                        <th data-th-text="${institute.land}"></th>
+                        <th data-th-text="${institute.email}"></th>
+                        <th data-th-text="${institute.prisonType.prisonType}"></th>
+                        <th data-th-text="${institute.address}"></th>
                         <th>
                             <a id="instituteView" data-th-href="${'/institute/' + institute.id}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
                             <a id="instituteEdit" data-th-href="${'/institute/edit/' + institute.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
