@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head data-th-replace="~{fragments/header :: headerFragment}">
+    <meta charset="UTF-8">
+    <title>punishment-detail</title>
+</head>
+<body>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+
+<!--heading Area-->
+<div class="container-fluid bg-dark form-Border">
+    <div class="row text-center formManagement border-info">
+        <!--View List Button-->
+        <div class="col">
+            <a class="btn btn-primary" href="/punishment">
+                <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
+            </a>
+        </div>
+        <!--Category Name-->
+        <div class="col">
+            <h2 class="text-light text-center">
+                <strong>
+                    <p data-th-text="${offenceDetail.name}"></p>
+                </strong>
+            </h2>
+        </div>
+        <!--Home Button-->
+        <div class="col">
+            <a class="btn btn-primary" href="/home">
+                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp;&nbsp;Home
+            </a>
+        </div>
+    </div>
+</div>
+<!--details-->
+<div class="container-fluid bg-info formBorder" data-th-fragment="offenceDetailsFragment">
+    <div class="col-sm-12 flex-column ">
+        <div class="row">
+            <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
+                <!--id-->
+                <div class="form-row text-right">
+                    <div class="col-md-4">
+                        <label class="control-label" for="id">ID :</label>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="display_detail" id="id" data-th-text="${offenceDetail.id}"></p>
+                    </div>
+                </div>
+                <!--Prison Type-->
+                <div class="form-row text-right">
+                    <div class="col-md-4">
+                        <label class="control-label" for="mainCategory">Offence Type :</label>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="display_detail" id="mainCategory"
+                           data-th-text="${offenceDetail.getOffenceType.offenceType}"></p>
+                    </div>
+                </div>
+                <!--Name-->
+                <div class="form-row text-right">
+                    <div class="col-md-4">
+                        <label class="control-label">Description :</label>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="display_detail"
+                           data-th-utext="${offenceDetail.name}"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Back Button-->
+    <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
+        <a href="/punishment">
+            <button class="btn btn-dark" tabindex="10" type="button">
+                <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp; &nbsp;Back
+            </button>
+        </a>
+    </div>
+    <br/>
+</div>
+
+<!--footer include-->
+<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+<!--script include-->
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+
+</body>
+</html>

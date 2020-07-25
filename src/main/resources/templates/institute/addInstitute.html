@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head data-th-replace="~{fragments/header :: headerFragment}">
+    <meta charset="UTF-8">
+    <title>addInstitute</title>
+</head>
+<body>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+
+<!--Heading Area-->
+<div class="container-fluid bg-dark form-Border">
+    <div class="row text-center formManagement border-info">
+        <!--View list Button-->
+        <div class="col">
+            <a class="btn btn-primary" href="/punishment">
+                <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
+            </a>
+        </div>
+        <!--Form Name-->
+        <div class="col">
+            <h2 class="text-light text-center">
+                <strong>
+                    <span data-th-text="${addStatus==true?'Add New Institute':'Update Institute Details'}"></span>
+                </strong>
+            </h2>
+        </div>
+        <!--Home Button-->
+        <div class="col">
+            <a class="btn btn-primary" href="/home">
+                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp;&nbsp;Home
+            </a>
+        </div>
+    </div>
+</div>
+<!--Form Content-->
+<div class="container-fluid bg-info formBorder">
+    <div class="col-sm-12 flex-column ">
+        <form class="form-horizontal" data-th-action="${addStatus==true?'/punishment/save':'/punishment/update'}" data-th-object="${punishment}"
+              enctype="multipart/form-data"               method="POST">
+            <div class="row">
+                <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
+                    <!--Id-->
+                    <div class="form-row text-right" data-th-if="${addStatus==false}" id="idStatus">
+                        <div class="col-md-4">
+                            <label class="control-label" for="id">ID :</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" data-th-field="*{id}" id="id" readonly type="text"/>
+                        </div>
+                    </div>
+                    <!--Main Institute -->
+                    <div class="form-row text-right">
+                        <div class="col-md-4">
+                            <label class="control-label" for="mainInstitute">Prison Type :</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" data-th-field="*{punishmentType}" id="mainInstitute" required
+                                    style="font-size: large" tabindex="4">
+                                <option value="">Please select</option>
+                                <option data-th-each="punishmentType : ${prisonTypes}"
+                                        data-th-text="${prisonType.prisonType}"
+                                        data-th-value="${prisonType}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--Name-->
+                    <div class="form-row text-right">
+                        <div class="col-md-4">
+                            <label class="control-label" data-th-for="${'name'}">Name :</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" data-th-field="*{name}" required tabindex="4" type="text"/>
+                            <span class="error"
+                                  data-th-errors="*{name}" data-th-if="${#fields.hasErrors('name')}">Error Name</span>
+                        </div>
+                    </div>
+                    <!--Land-->
+                    <div class="form-row text-right">
+                        <div class="col-md-4">
+                            <label class="control-label" data-th-for="${'name'}">Land :</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" data-th-field="*{land}" required tabindex="4" type="text"/>
+                            <span class="error"
+                                  data-th-errors="*{land}" data-th-if="${#fields.hasErrors('land')}">Error Name</span>
+                        </div>
+                    </div>
+                    <!--Email-->
+                    <div class="form-row text-right">
+                        <div class="col-md-4">
+                            <label class="control-label" data-th-for="${'email'}">Email :</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" data-th-field="*{email}" required tabindex="4" type="email"/>
+                            <span class="error"
+                                  data-th-errors="*{email}" data-th-if="${#fields.hasErrors('email')}">Error Name</span>
+                        </div>
+                    </div>
+                    <!--address-->
+                    <div class="form-row text-right">
+                        <div class="col-md-4">
+                            <label class="control-label" data-th-for="${'address'}">Address :</label>
+                        </div>
+                        <div class="col-md-4">
+                            <textarea class="form-control" data-th-field="*{address}"></textarea>
+                            <span class="error"
+                                  data-th-errors="*{address}"
+                                  data-th-if="${#fields.hasErrors('address')}">Error Name</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Button-->
+                <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp;&nbsp;Back
+                    </button>
+                    <button class="btn btn-success ml-5" tabindex="21" type="submit">
+                        <i class="fa fa-save " style="font-size: 20px"></i>&nbsp;&nbsp;<span data-th-text="${addStatus==true?'Save': 'Update'}"
+                                                                                             id="submit"></span>
+                    </button>
+                    <button class="btn btn-warning ml-5" tabindex="21" type="reset">
+                        <i class="far fa-times-circle" style="font-size: 20px"></i>&nbsp;&nbsp;Cancel
+                    </button>
+                </div>
+                <!--Error-->
+                <div class="form-row">
+                    <label data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '"
+                           id="errorLabel">Errors: </label>
+                    <ul>
+                        <li class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"
+                            id="error"></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--footer include-->
+<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+<!--script include-->
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+
+</body>
+</html>
