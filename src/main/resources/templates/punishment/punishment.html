@@ -35,31 +35,24 @@
 <div class="container-fluid bg-info formBorder text-center">
     <!--Table view-->
     <div class="col">
-        <div class="col" id="instituteListPresent" data-th-if="${not #lists.isEmpty(institutes)}">
+        <div class="col" id="instituteListPresent" data-th-if="${not #lists.isEmpty(offences)}">
             <table class="table table-hover table-striped" id="myTable">
                 <thead>
                     <tr>
                         <th> Index</th>
-                        <th> Name</th>
-                        <th> Land</th>
-                        <th> Email</th>
-                        <th> Prison Type</th>
-                        <th> Address</th>
+                        <th> Type</th>
+                        <th> Description</th>
                         <th> Modify</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-th-each="punishment, rowCount : ${institutes}">
+                    <tr data-th-each="punishment, rowCount : ${offences}">
                         <th data-th-text="${rowCount.count}"></th>
+                        <th data-th-text="${punishment.offenceType.offenceType}"></th>
                         <th data-th-text="${punishment.name}"></th>
-                        <th data-th-text="${punishment.land}"></th>
-                        <th data-th-text="${punishment.email}"></th>
-                        <th data-th-text="${punishment.prisonType.prisonType}"></th>
-                        <th data-th-text="${punishment.address}"></th>
                         <th>
-                            <a id="instituteView" data-th-href="${'/punishment/' + punishment.id}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
-                            <a id="instituteEdit" data-th-href="${'/punishment/edit/' + punishment.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
-                            <a id="instituteRemove" data-th-href="${'/punishment/remove/' + punishment.id}" class="btn btn-danger btn-sm">
+                            <a  data-th-href="${'/punishment/edit/' + punishment.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
+                            <a  data-th-href="${'/punishment/remove/' + punishment.id}" class="btn btn-danger btn-sm">
                              <!-- data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
                         </th>
                     </tr>
@@ -68,7 +61,7 @@
         </div>
     </div>
     <!--Error-->
-    <div class="row" data-th-if="${ #lists.isEmpty(institutes)}">
+    <div class="row" data-th-if="${ #lists.isEmpty(offences)}">
         <div class="col-sm-12">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

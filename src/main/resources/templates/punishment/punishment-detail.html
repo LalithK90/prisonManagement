@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
-    <title>category-detail</title>
+    <title>punishment-detail</title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
 <div class="container-fluid bg-dark form-Border">
     <div class="row text-center formManagement border-info">
         <!--View List Button-->
         <div class="col">
-            <a href="/category" class="btn btn-primary">
+            <a class="btn btn-primary" href="/punishment">
                 <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
             </a>
         </div>
@@ -20,7 +20,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <p th:text="${instituteDetail.name}"></p>
+                    <span data-th-text="${punishmentDetail.punishmentType.punishmentType}"></span>
                 </strong>
             </h2>
         </div>
@@ -33,7 +33,7 @@
     </div>
 </div>
 <!--details-->
-<div th:fragment="instituteDetailsFragment" class="container-fluid bg-info formBorder">
+<div class="container-fluid bg-info formBorder" data-th-fragment="punishmentDetailsFragment">
     <div class="col-sm-12 flex-column ">
         <div class="row">
             <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
@@ -43,7 +43,7 @@
                         <label class="control-label" for="id">ID :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="id" th:text="${instituteDetail.id}" class="display_detail"></p>
+                        <p class="display_detail" id="id" data-th-text="${punishmentDetail.id}"></p>
                     </div>
                 </div>
                 <!--Prison Type-->
@@ -52,47 +52,28 @@
                         <label class="control-label" for="mainCategory">Main Category :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="mainCategory" th:text="${instituteDetail.getOffenceType.prisonType}"
-                           class="display_detail"></p>
+                        <p class="display_detail" id="mainCategory"
+                           data-th-text="${punishmentDetail.getOffenceType.prisonType}"></p>
                     </div>
                 </div>
                 <!--Name-->
                 <div class="form-row text-right">
                     <div class="col-md-4">
-                        <label class="control-label" >Name :</label>
+                        <label class="control-label">Name :</label>
                     </div>
                     <div class="col-md-4">
-                        <p th:text="${instituteDetail.name}"
-                           class="display_detail"></p>
+                        <p class="display_detail"
+                           data-th-utext="${punishmentDetail.name}"></p>
                     </div>
                 </div>
-                <!--Land-->
-                <div class="form-row text-right">
-                    <div class="col-md-4">
-                        <label class="control-label" >Land :</label>
-                    </div>
-                    <div class="col-md-4">
-                        <p th:text="${instituteDetail.land}"
-                           class="display_detail"></p>
-                    </div>
-                </div>
-                <!--Email-->
-                <div class="form-row text-right">
-                    <div class="col-md-4">
-                        <label class="control-label" >Email :</label>
-                    </div>
-                    <div class="col-md-4">
-                        <p th:text="${instituteDetail.email}"
-                           class="display_detail"></p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
     <!--Back Button-->
     <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
         <a href="/punishment">
-            <button class="btn btn-dark" type="button" tabindex="10">
+            <button class="btn btn-dark" tabindex="10" type="button">
                 <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp; &nbsp;Back
             </button>
         </a>
@@ -101,9 +82,9 @@
 </div>
 
 <!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
 
 </body>
 </html>
