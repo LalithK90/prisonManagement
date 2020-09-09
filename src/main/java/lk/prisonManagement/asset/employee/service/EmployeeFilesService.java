@@ -1,7 +1,6 @@
 package lk.prisonManagement.asset.employee.service;
 
 
-
 import lk.prisonManagement.asset.commonAsset.model.FileInfo;
 import lk.prisonManagement.asset.employee.controller.EmployeeController;
 import lk.prisonManagement.asset.employee.dao.EmployeeFilesDao;
@@ -55,7 +54,7 @@ public class EmployeeFilesService {
     }
 
     @Cacheable
-    public List<FileInfo> employeeFileDownloadLinks(Employee employee) {
+    public List< FileInfo > employeeFileDownloadLinks(Employee employee) {
         return employeeFilesDao.findByEmployeeOrderByIdDesc(employee)
                 .stream()
                 .map(employeeFiles -> {

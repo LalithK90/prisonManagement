@@ -9,12 +9,12 @@ import lk.prisonManagement.asset.commonAsset.model.Enum.Title;
 import lk.prisonManagement.asset.commonAsset.model.FileInfo;
 import lk.prisonManagement.asset.employee.entity.Enum.Designation;
 import lk.prisonManagement.asset.employee.entity.Enum.EmployeeStatus;
-import lk.prisonManagement.asset.message.entity.EmailMessage;
 import lk.prisonManagement.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.dom4j.Branch;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -90,10 +90,6 @@ public class Employee extends AuditEntity {
     private LocalDate dateOfAssignment;
 
 
-
-    @ManyToMany(mappedBy = "employees")
-    private List<EmailMessage> emailMessages;
-
     @Transient
     private List<MultipartFile> files = new ArrayList<>();
 
@@ -101,6 +97,6 @@ public class Employee extends AuditEntity {
     private List<String> removeImages = new ArrayList<>();
 
     @Transient
-    private List<FileInfo> fileInfos = new ArrayList<>();
+    private List< FileInfo > fileInfos = new ArrayList<>();
 
 }

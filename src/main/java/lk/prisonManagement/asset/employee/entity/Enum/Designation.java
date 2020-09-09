@@ -7,16 +7,25 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Designation {
-    ASPR("	Assistant Superintendent of Prison(Rehabilitation)	"),
-    CRO("	Chief  Rehabilitation Officer	"),
-    CR("	Commissioner - Rehabilitation	"),
-    ACSLAS("	Assistant Commissioner (S.L.A.S)	"),
-    SSPR("	Senior  Superintendent of Prison(Rehabilitation)	"),
-    SPR("	Superintendent of Prison(Rehabilitation)	"),
-    CIRO("	Class  I Rehabilitation Officer	"),
-    CIIRO("	Class  II Rehabilitation Officer	"),
-    CIIIRO("	Class  III Rehabilitation Officer	");
-
+    //All station can check
+    CGE("Commissioner General Of Excise"),
+    ACGE("Additional Commissioner General Of Excise"),
+    CE("Commissioner Of Excise"),
+    DCL("Deputy Commissioner Of Excise( Legal )"),
+    DCLE("Deputy Commissioner Excise(Law Enforcement)"),
+    //Normal every thing belong to his - able to check more than one work station
+    ACE("Assistant Commissioner Of Excise"),
+    //Below guy has check station belong to him
+    SE("Superintendent Of Excise"),
+    //Station staff all below this comment
+    OIC("Chief Inspector Of Excise"),
+    IE("Inspector Of Excise"),
+    ESM("Excise Sergeant Major"),
+    ES("Excise Sergeant"),
+    //There is no authority to logo in to the system
+    EC("Excise Corporal"),
+    EG("Excise Guard"),
+    ED("Excise Driver"), Owner("");
 
     private final String designation;
 }
