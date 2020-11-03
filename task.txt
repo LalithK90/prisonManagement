@@ -4,16 +4,15 @@
 2. user -> ok
 3. role -> ok
 4. institute -> ok
-5. offence -> ok
+5. commendation -> ok
 6. punishment -> ok
+7. qualification ->
 
 
 todo
 ========================
-1. commendations and censures
-2. service history
-3. education history
-4. leaves
+1. service history
+2. leaves
 
 
 need to provide solution => Performance review

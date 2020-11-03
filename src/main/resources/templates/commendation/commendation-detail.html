@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
-    <title/offence-detail</title>
+    <title>commendation-detail</title>
 </head>
 <body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
@@ -12,7 +12,7 @@
     <div class="row text-center formManagement border-info">
         <!--View List Button-->
         <div class="col">
-            <a class="btn btn-primary" href="/offence">
+            <a class="btn btn-primary" href="/commendation">
                 <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
             </a>
         </div>
@@ -20,7 +20,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <p data-th-text="${offenceDetail.name}"></p>
+                    <p data-th-text="${commendationDetail.name}"></p>
                 </strong>
             </h2>
         </div>
@@ -43,7 +43,7 @@
                         <label class="control-label" for="id">ID :</label>
                     </div>
                     <div class="col-md-4">
-                        <p class="display_detail" id="id" data-th-text="${offenceDetail.id}"></p>
+                        <p class="display_detail" id="id" data-th-text="${commendationDetail.id}"></p>
                     </div>
                 </div>
                 <!--Prison Type-->
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-4">
                         <p class="display_detail" id="mainCategory"
-                           data-th-text="${offenceDetail.getOffenceType.offenceType}"></p>
+                           data-th-text="${commendationDetail.getOffenceType.offenceType}"></p>
                     </div>
                 </div>
                 <!--Name-->
@@ -62,9 +62,8 @@
                         <label class="control-label">Description :</label>
                     </div>
                     <div class="col-md-4">
-
                         <p class="display_detail"
-                           data-th-utext="${offenceDetail.name}"></p>
+                           data-th-utext="${commendationDetail.name}"></p>
                     </div>
                 </div>
 
@@ -73,7 +72,7 @@
     </div>
     <!--Back Button-->
     <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
-        <a href="/offence">
+        <a href="/commendation">
             <button class="btn btn-dark" tabindex="10" type="button">
                 <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp; &nbsp;Back
             </button>
