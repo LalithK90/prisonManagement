@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
-    <title>punishment-detail</title>
+    <title/offence-detail</title>
 </head>
 <body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
@@ -12,7 +12,7 @@
     <div class="row text-center formManagement border-info">
         <!--View List Button-->
         <div class="col">
-            <a class="btn btn-primary" href="/punishment">
+            <a class="btn btn-primary" href="/offence">
                 <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
             </a>
         </div>
@@ -62,6 +62,7 @@
                         <label class="control-label">Description :</label>
                     </div>
                     <div class="col-md-4">
+
                         <p class="display_detail"
                            data-th-utext="${offenceDetail.name}"></p>
                     </div>
@@ -72,7 +73,7 @@
     </div>
     <!--Back Button-->
     <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
-        <a href="/punishment">
+        <a href="/offence">
             <button class="btn btn-dark" tabindex="10" type="button">
                 <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp; &nbsp;Back
             </button>
