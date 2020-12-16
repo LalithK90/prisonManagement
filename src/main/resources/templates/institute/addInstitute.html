@@ -12,7 +12,7 @@
     <div class="row text-center formManagement border-info">
         <!--View list Button-->
         <div class="col">
-            <a class="btn btn-primary" href="/punishment">
+            <a class="btn btn-primary" href="/institute">
                 <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
             </a>
         </div>
@@ -35,7 +35,7 @@
 <!--Form Content-->
 <div class="container-fluid bg-info formBorder">
     <div class="col-sm-12 flex-column ">
-        <form class="form-horizontal" data-th-action="${addStatus==true?'/punishment/save':'/punishment/update'}" data-th-object="${punishment}"
+        <form class="form-horizontal" data-th-action="${addStatus==true?'/institute/save':'/institute/update'}" data-th-object="${institute}"
               enctype="multipart/form-data"               method="POST">
             <div class="row">
                 <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
@@ -54,7 +54,7 @@
                             <label class="control-label" for="mainInstitute">Prison Type :</label>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" data-th-field="*{punishmentType}" id="mainInstitute" required
+                            <select class="form-control" data-th-field="*{prisonType}" id="mainInstitute" required
                                     style="font-size: large" tabindex="4">
                                 <option value="">Please select</option>
                                 <option data-th-each="punishmentType : ${prisonTypes}"

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
-    <title>category-detail</title>
+    <title>institute-detail</title>
 </head>
 <body>
 <nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
@@ -12,7 +12,7 @@
     <div class="row text-center formManagement border-info">
         <!--View List Button-->
         <div class="col">
-            <a href="/category" class="btn btn-primary">
+            <a href="/institute" class="btn btn-primary">
                 <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
             </a>
         </div>
@@ -49,10 +49,10 @@
                 <!--Prison Type-->
                 <div class="form-row text-right">
                     <div class="col-md-4">
-                        <label class="control-label" for="mainCategory">Main Category :</label>
+                        <label class="control-label" for="prisonType">Prison Type :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="mainCategory" th:text="${instituteDetail.getOffenceType.prisonType}"
+                        <p id="prisonType" th:text="${instituteDetail.prisonType.prisonType}"
                            class="display_detail"></p>
                     </div>
                 </div>
