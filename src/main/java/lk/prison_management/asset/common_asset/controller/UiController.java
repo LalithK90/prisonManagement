@@ -1,6 +1,6 @@
 package lk.prison_management.asset.common_asset.controller;
 
-import lk.prison_management.asset.user_management.service.UserService;
+import lk.prison_management.asset.user.service.UserService;
 import lk.prison_management.util.service.DateTimeAgeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
