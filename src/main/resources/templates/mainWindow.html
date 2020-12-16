@@ -1,208 +1,653 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
-    <meta charset="UTF-8">
-    <title>Thymeleaf Springboot </title>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Department of Prison</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" data-th-href="@{/main/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" data-th-href="@{/main/css/bootstrap.min.css}">
+    <link rel="stylesheet" data-th-href="@{/main/css/tooplate-style.css}">
+
+    <script>
+        var renderPage = true;
+
+        if (navigator.userAgent.indexOf('MSIE') !== -1
+            || navigator.appVersion.indexOf('Trident/') > 0) {
+            /* Microsoft Internet Explorer detected in. */
+            alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+            renderPage = false;
+        }
+    </script>
 </head>
+
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
-
-
-<img class="wave" src="../img/mainwindow_bg_01.jpg">
-<div class="container-fluid">
-    <div class="main-section">
-        <p class="welcome-Notes">Welcome To Rehabilitation Officer Administration of Department of
-                               Prisons  </p>
-        <div class="col-12">
-            <div class="row">
-                <div class="col-7">
-                    <div class="form-row">
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tile wide invoice">
-                                        <div class="header">
-                                            <div class="count">
-                                                <i class="fa fa-street-view" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="title">Employees</div>
-                                        </div>
-                                        <a href="/employee">
-                                            <div class="body">
-                                                <div class="title">Manage Employees</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tile wide resource">
-                                        <div class="header">
-                                            <div class="">
-                                                <div class="count"><i class="fa fa-shopping-cart"
-                                                                      aria-hidden="true"></i>
-                                                </div>
-                                                <div class="title">Compensation and censures Managment</div>
-                                            </div>
-                                        </div>
-                                        <a href="/petition">
-                                            <div class="body">
-                                                <div class="title"> Compensation and censures Managmen</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tile wide quote">
-                                        <div class="header">
-                                            <div class="">
-                                                <div class="count"><i class="fa fa-newspaper" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="title">skills and training Mangment</div>
-                                            </div>
-
-                                        </div>
-                                        <a href="/crime">
-                                            <div class="body">
-                                                <div class="title">skills and training Mangment</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tile wide resource">
-                                        <div class="header">
-                                            <div class="">
-                                                <div class="count"><i class="fa fa-universal-access"
-                                                                      aria-hidden="true"></i>
-                                                </div>
-                                                <div class="title">Performance apprecial</div>
-                                            </div>
-
-                                        </div>
-                                        <a class href="/offender">
-                                            <div class="body">
-                                                <div class="title">View Offenders</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tile wide quote">
-                                        <div class="header">
-                                            <div class="">
-                                                <div class="count"><i class="fa fa-home" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="title">Working Place</div>
-                                            </div>
-
-                                        </div>
-                                        <a href="/workingPlace">
-                                            <div class="body">
-                                                <div class="title">Manage Working Places</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="tile wide invoice">
-                                        <div class="header">
-                                            <div class="">
-                                                <div class="count"><i class="fa fa-bug" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="title">Contravene</div>
-                                            </div>
-
-                                        </div>
-                                        <a href="/workingPlace">
-                                            <div class="body">
-                                                <div class="title">Edit Contravene</div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--To day petition list-->
-                <div class="col-5 bg-dark formBorder">
-                    <p class="welcome-Notes">To Day Petitions</p>
-                    <!--Petition Lists -->
-                    <div class="container-fluid text-center" id="petitionListPresent">
-                        <table class="table table-hover table-striped" id="myTable">
-                            <thead>
-                            <tr>
-                                <th> Petition Number</th>
-                                <th> Petition Priority</th>
-                                <th> Working Place</th>
-                                <th> State</th>
-                                <th> Modify</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr id="petitionList">
-                                <th id="petitionNumber"></th>
-                                <th id="petitionPriority"></th>
-                                <th id="workingPlace"></th>
-                                <th id="petitionState"></th>
-                                <th>
-                                    <a id="petitionView" class="btn btn-success btn-sm"><i
-                                            class="fa fa-folder-open"></i>&nbsp;View</a>
-                                </th>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row" id="petitionListNotPresent">
-                        <div class="col-sm-12">
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h3 class="text-center text-danger">
-                                    <strong>There is no petition upto know please add petition to the system
-                                            using add user button.
-                                    </strong>
-                                </h3>
-                            </div>
-                        </div>
-                        <script>
-                            $(".alert").alert();
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
 </div>
 
-<!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
-<!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<!-- Page Content -->
+<div class="container-fluid tm-main">
+    <div class="row tm-main-row">
 
+        <!-- Sidebar -->
+        <div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar">
+
+            <button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
+
+            <div class="inner">
+                <nav id="tmMainNav" class="tm-main-nav">
+                    <ul>
+                        <li>
+                            <a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-1">
+                                <i class="fas fa-home tm-nav-fa-icon"></i>
+                                <span>The prison</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-2" data-page-type="carousel">
+                                <i class="fas fa-map tm-nav-fa-icon"></i>
+                                <span>Employee Mangament</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#company" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-3">
+                                <i class="fas fa-users tm-nav-fa-icon"></i>
+                                <span>Dicipline Managment</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#company" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-4">
+                                <i class="fas fa-users tm-nav-fa-icon"></i>
+                                <span>Leave Managment</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#company" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-5">
+                                <i class="fas fa-users tm-nav-fa-icon"></i>
+                                <span>Skills and training Development</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#company" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-6">
+                                <i class="fas fa-users tm-nav-fa-icon"></i>
+                                <span>Performance Review </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#company" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-7">
+                                <i class="fas fa-users tm-nav-fa-icon"></i>
+                                <span>Analtics and Reporting</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="scrolly" data-bg-img="constructive_bg_01.jpg"
+                               data-page="#tm-section-4">
+                                <i class="fas fa-comments tm-nav-fa-icon"></i>
+                                <span>Contact Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+            <!-- The prisons-->
+            <section id="tm-section-1" class="tm-section" style="margin-bottom:0px;margin-left:80px">
+                <div class="ml-auto">
+                    <header class="mb-4"><h1 class="tm-text-shadow">Department of Prison </h1></header>
+                    <p class="mb-5 tm-font-big">Department of Prison plays a huge role the in the law and reformation
+                        sector in Sri Lanka under Ministry of Justice and Law Reforms.
+
+                        Under the motto of Custody, Care and Correction, Correction plays a major role in this
+                        institute. Correction is the finest procedure to mitigate crimes in a country. Therefore,
+                        officers related to correction or rehabilitation carries one of the massive responsibilities in
+                        the law and reformation sector. The officers working in this section are also well trained,
+                        educated officers. But when it comes to the administration of these officers the commissioner of
+                        rehabilitation and admin officers had lots of issues.
+
+                    </p>
+                    <a href="#" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2"> Continue...s</a>
+                    <!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
+                </div>
+            </section>
+
+            <!-- Employee Managment-->
+
+
+            <section id="tm-section-2" class="tm-section">
+                <div class="row mb-4">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Employee Managment</h2></header>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <span><img src="img/useradd.png"></span>
+                            <div class="media-body">
+                                <h3>Employee</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary">Add Employee</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <span><img src="img/userview.png"></span>
+                            <div class="media-body">
+                                <h3>Employee View</h3>
+                                <p class="card-text">With supporting text below as a natural </p>
+                                <a href="#" class="btn btn-primary"> View Employee</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!--
+                    <div class="row mb-4">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Compensation  Managment</h2></header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                                        <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Compensation</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Add Compensation </a>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                                        <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Compensation</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary"> View Compensation</a>
+                            </div>
+                        </div>
+                        </div>
+
+
+                </div> -->
+
+
+            </section>
+
+            <!-- section 3 -->
+
+
+            <section id="tm-section-3" class="tm-section">
+                <div class="row mb-4">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Censures Managment</h2></header>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Censures</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary">Add Censures</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Censures</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> View Censures</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row mb-4">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Compensation Managment</h2></header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Compensation</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary">Add Compensation </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Compensation</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> View Compensation</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- Leave Managment-->
+
+
+            <section id="tm-section-4" class="tm-section tm-section-carousel">
+
+                <div class="row mb-4">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Leave Managment</h2></header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Add Leave</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> Add Leave </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>View Leave</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> View Leave </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Leave Managment-->
+
+
+            <section id="tm-section-5" class="tm-section tm-section-carousel">
+
+                <div class="row">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow"> Skills and Training Managment</h2></header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Add qulification</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> Add qulification </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>View qulification</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> View qulification </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Performance Review-->
+
+
+            <section id="tm-section-6" class="tm-section tm-section-carousel">
+
+                <div class="row">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Performance Review</h2></header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Add Performance Review</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> Add Performance Review </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>View Performance Review</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> View Performance Review </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Analtics and Reporting -->
+
+
+            <section id="tm-section-7" class="tm-section tm-section-carousel">
+
+                <div class="row">
+                    <header class="col-xl-12"><h2 class="tm-text-shadow">Analtics and Reporting</h2></header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>Add Analtics and Reporting</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> Add Analtics and Reporting</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                        <div class="media tm-bg-transparent-black tm-border-white">
+                            <i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+                            <div class="media-body">
+                                <h3>View Analtics and Reporting</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional
+                                    content.</p>
+                                <a href="#" class="btn btn-primary"> View Analtics and Reporting </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- section 4 -->
+            <section id="tm-section-4" class="tm-section">
+                <div class="tm-bg-transparent-black tm-contact-box-pad">
+                    <div class="row mb-4">
+                        <div class="col-sm-12">
+                            <header><h2 class="tm-text-shadow">Contact Us</h2></header>
+                        </div>
+                    </div>
+                    <div class="row tm-page-4-content">
+                        <div class="col-md-6 col-sm-12 tm-contact-col">
+                            <div class="contact_message">
+                                <form action="#contact" method="post" class="contact-form">
+                                    <div class="form-group">
+                                        <input type="text" id="contact_name" name="contact_name" class="form-control"
+                                               placeholder="Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" id="contact_email" name="contact_email" class="form-control"
+                                               placeholder="Email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="contact_message" name="contact_message" class="form-control"
+                                                  rows="9" placeholder="Message" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 tm-contact-col">
+                            <div class="tm-address-box">
+                                <p>Aliquam interdum, nisl sedd faucibus tempor, massa velit laoreet ipsum, et faucibus
+                                    sapien magna at enim. Suspendisse a dictum tortor.</p>
+                                <p>Curabitur venenatis leo in augue convallis, vulputate sollicitudin ex maximus.</p>
+                                <address>
+                                    120-240 Aliquam nec neque augue<br>
+                                    Suspendisse tincidunt nunc,<br>
+                                    vitae sagis justo 11000
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- .tm-content -->
+        <footer class="footer-link">
+            <p class="tm-copyright-text">Copyright &copy; Department of Prisons.
+
+            </p>
+
+        </footer>
+    </div>    <!-- row -->
+</div>
+<div id="preload-01"></div>
+<div id="preload-02"></div>
+<div id="preload-03"></div>
+<div id="preload-04"></div>
+
+<script type="text/javascript" data-th-src="@{/main/js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" data-th-src="@{/main/js/jquery.magnific-popup.min.js}"></script>
+<script type="text/javascript" data-th-src="@{/main/js/jquery.backstretch.min.js}"></script>
+<script type="text/javascript" data-th-src="@{/main/slick/slick.min.js}"></script> <!-- Slick Carousel -->
+
+<script>
+
+    var sidebarVisible = false;
+    var currentPageID = "#tm-section-1";
+
+    // Setup Carousel
+    function setupCarousel() {
+
+        // If current page isn't Carousel page, don't do anything.
+        if ($('#tm-section-2').css('display') == "none") {
+        } else {	// If current page is Carousel page, set up the Carousel.
+
+            var slider = $('.tm-img-slider');
+            var windowWidth = $(window).width();
+
+            if (slider.hasClass('slick-initialized')) {
+                slider.slick('destroy');
+            }
+
+            if (windowWidth < 640) {
+                slider.slick({
+                    dots: true,
+                    infinite: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                });
+            } else if (windowWidth < 992) {
+                slider.slick({
+                    dots: true,
+                    infinite: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                });
+            } else {
+                // Slick carousel
+                slider.slick({
+                    dots: true,
+                    infinite: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 2
+                });
+            }
+
+            // Init Magnific Popup
+            $('.tm-img-slider').magnificPopup({
+                delegate: 'a', // child items selector, by clicking on it popup will open
+                type: 'image',
+                gallery: {enabled: true}
+                // other options
+            });
+        }
+    }
+
+    // Setup Nav
+    function setupNav() {
+        // Add Event Listener to each Nav item
+        $(".tm-main-nav a").click(function (e) {
+            e.preventDefault();
+
+            var currentNavItem = $(this);
+            changePage(currentNavItem);
+
+            setupCarousel();
+            setupFooter();
+
+            // Hide the nav on mobile
+            $("#tmSideBar").removeClass("show");
+        });
+    }
+
+    function changePage(currentNavItem) {
+        // Update Nav items
+        $(".tm-main-nav a").removeClass("active");
+        currentNavItem.addClass("active");
+
+        $(currentPageID).hide();
+
+        // Show current page
+        currentPageID = currentNavItem.data("page");
+        $(currentPageID).fadeIn(1000);
+
+        // Change background image
+        var bgImg = currentNavItem.data("bgImg");
+        $.backstretch("img/" + bgImg);
+    }
+
+    // Setup Nav Toggle Button
+    function setupNavToggle() {
+
+        $("#tmMainNavToggle").on("click", function () {
+            $(".sidebar").toggleClass("show");
+        });
+    }
+
+    // If there is enough room, stick the footer at the bottom of page content.
+    // If not, place it after the page content
+    function setupFooter() {
+
+        var padding = 100;
+        var footerPadding = 40;
+        var mainContent = $("section" + currentPageID);
+        var mainContentHeight = mainContent.outerHeight(true);
+        var footer = $(".footer-link");
+        var footerHeight = footer.outerHeight(true);
+        var totalPageHeight = mainContentHeight + footerHeight + footerPadding + padding;
+        var windowHeight = $(window).height();
+
+        if (totalPageHeight > windowHeight) {
+            $(".tm-content").css("margin-bottom", footerHeight + footerPadding + "px");
+            footer.css("bottom", footerHeight + "px");
+        } else {
+            $(".tm-content").css("margin-bottom", "0");
+            footer.css("bottom", "20px");
+        }
+    }
+
+    // Everything is loaded including images.
+    $(window).on("load", function () {
+
+        // Render the page on modern browser only.
+        if (renderPage) {
+            // Remove loader
+            $('body').addClass('loaded');
+
+            // Page transition
+            var allPages = $(".tm-section");
+
+            // Handle click of "Continue", which changes to next page
+            // The link contains data-nav-link attribute, which holds the nav item ID
+            // Nav item ID is then used to access and trigger click on the corresponding nav item
+            var linkToAnotherPage = $("a.tm-btn[data-nav-link]");
+
+            if (linkToAnotherPage != null) {
+
+                linkToAnotherPage.on("click", function () {
+                    var navItemToHighlight = linkToAnotherPage.data("navLink");
+                    $("a" + navItemToHighlight).click();
+                });
+            }
+
+            // Hide all pages
+            allPages.hide();
+
+            $("#tm-section-1").fadeIn();
+
+            // Set up background first page
+            var bgImg = $("#tmNavLink1").data("bgImg");
+
+            $.backstretch("img/" + bgImg, {fade: 500});
+
+            // Setup Carousel, Nav, and Nav Toggle
+            setupCarousel();
+            setupNav();
+            setupNavToggle();
+            setupFooter();
+
+            // Resize Carousel upon window resize
+            $(window).resize(function () {
+                setupCarousel();
+                setupFooter();
+            });
+        }
+    });
+
+</script>
 </body>
 </html>
-
