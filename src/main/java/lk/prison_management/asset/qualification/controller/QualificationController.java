@@ -41,9 +41,8 @@ public class QualificationController {
 
   @GetMapping( "/add/{id}" )
   public String form(@PathVariable Integer id, Model model) {
-    Qualification newQualification = new Qualification();
-    newQualification.setEmployee(employeeService.findById(id));
-    return commonThing(model, false, newQualification);
+
+    return commonThing(model, false, new Qualification());
   }
 
   @GetMapping( "/{id}" )
@@ -64,8 +63,7 @@ public class QualificationController {
       return commonThing(model, false, qualification);
     }
     qualificationService.persist(qualification);
-    redirectAttributes.addFlashAttribute("employees", employeeService.findAll());
-    return "redirect:/employee";
+    return "redirect:/qualification";
   }
 
   @GetMapping( "/delete/{id}" )
