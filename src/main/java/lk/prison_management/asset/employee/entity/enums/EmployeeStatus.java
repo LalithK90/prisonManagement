@@ -1,7 +1,5 @@
 package lk.prison_management.asset.employee.entity.enums;
 
-
-
 public enum EmployeeStatus {
     WORKING("Working"),
     LEAVE("Leave"),

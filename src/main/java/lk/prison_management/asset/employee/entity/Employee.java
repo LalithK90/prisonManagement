@@ -1,98 +1,97 @@
 package lk.prison_management.asset.employee.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.prison_management.asset.common_asset.model.enums.BloodGroup;
+import lk.prison_management.asset.common_asset.model.FileInfo;
 import lk.prison_management.asset.common_asset.model.enums.CivilStatus;
 import lk.prison_management.asset.common_asset.model.enums.Gender;
+import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.common_asset.model.enums.Title;
-import lk.prison_management.asset.common_asset.model.FileInfo;
 import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
-import lk.prison_management.asset.qualification.entity.Qualification;
+import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.dom4j.Branch;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("Employee")
+@JsonFilter( "Employee" )
 public class Employee extends AuditEntity {
 
     @Column(unique = true)
-    private String payRoleNumber;
+    private String code;
 
-    @Size(min = 5, message = "Your name cannot be accepted")
+    @Column(unique = true)
+    private String wopNumber;
+
+    @Size( min = 5, message = "Your name cannot be accepted" )
     private String name;
 
-    @Size(min = 5, message = "At least 5 characters should be included calling name")
+    @Size( min = 5, message = "At least 5 characters should be included calling name" )
     private String callingName;
 
-    @Size(max = 12, min = 10, message = "NIC number is contained numbers between 9 and X/V or 12 ")
-    @Column(unique = true)
+    @Size( max = 12, min = 10, message = "NIC number is contained numbers between 9 and X/V or 12 " )
+    @Column( unique = true )
     private String nic;
 
-    @Column(unique = true)
-    private String departmentIdNumber;
-
-    @Size(max = 10, message = "Mobile number length should be contained 10 and 9")
+    @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
     private String mobileOne;
 
+    @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
     private String mobileTwo;
 
+    @Size( max = 10, message = "Phone number length should be contained 10 and 9" )
     private String land;
 
-    @Column(unique = true)
-    private String email;
-
-    @Column(unique = true)
+    @Column( unique = true )
     private String officeEmail;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255)
+    @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
     private String address;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated( EnumType.STRING )
     private Title title;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated( EnumType.STRING )
     private Gender gender;
 
-    @Enumerated(EnumType.STRING)
-    private BloodGroup bloodGroup;
-
-    @Enumerated(EnumType.STRING)
+    @Enumerated( EnumType.STRING )
     private Designation designation;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated( EnumType.STRING )
     private CivilStatus civilStatus;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated( EnumType.STRING )
     private EmployeeStatus employeeStatus;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Enumerated(EnumType.STRING)
+    private LiveOrDead liveOrDead;
+
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfBirth;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfAssignment;
 
-    @OneToMany(mappedBy = "employee")
-    private List< Qualification > qualifications;
+    @ManyToOne
+    private Institute institute;
 
     @Transient
     private MultipartFile file;
+
+    @Transient
+    private FileInfo fileInfo;
 
 }

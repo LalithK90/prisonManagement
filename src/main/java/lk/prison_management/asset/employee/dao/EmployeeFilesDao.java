@@ -1,5 +1,7 @@
 package lk.prison_management.asset.employee.dao;
 
+
+
 import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.entity.EmployeeFiles;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,11 +11,13 @@ import java.util.List;
 
 @Repository
 public interface EmployeeFilesDao extends JpaRepository< EmployeeFiles, Integer > {
-    EmployeeFiles  findByEmployee(Employee employee);
+    List< EmployeeFiles > findByEmployeeOrderByIdDesc(Employee employee);
 
     EmployeeFiles findByName(String filename);
 
     EmployeeFiles findByNewName(String filename);
 
     EmployeeFiles findByNewId(String filename);
+
+    EmployeeFiles findByEmployee(Employee employee);
 }
