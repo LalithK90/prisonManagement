@@ -29,7 +29,7 @@ public class Qualification extends AuditEntity {
     @Size(min = 2, max = 60, message = "Your name length should be 13")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "qualification")
     private List< EmployeeQualification > employeeQualifications;
 
 }
