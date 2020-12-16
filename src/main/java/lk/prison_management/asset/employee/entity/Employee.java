@@ -5,19 +5,19 @@ import lk.prison_management.asset.common_asset.model.FileInfo;
 import lk.prison_management.asset.common_asset.model.enums.*;
 import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
-import lk.prison_management.asset.institute.entity.Institute;
+import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.dom4j.Branch;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -88,8 +88,8 @@ public class Employee extends AuditEntity {
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfAssignment;
 
-    @ManyToOne
-    private Institute institute;
+    @OneToMany(mappedBy = "employee")
+    private List< EmployeeInstitute > employeeInstitutes;
 
     @Transient
     private MultipartFile file;
