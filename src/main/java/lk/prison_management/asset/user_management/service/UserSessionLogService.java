@@ -1,8 +1,8 @@
 package lk.prison_management.asset.user_management.service;
 
 import lk.prison_management.asset.user_management.dao.UserSessionLogDao;
-import lk.prison_management.asset.user_management.entity.Enum.UserSessionLogStatus;
-import lk.prison_management.asset.user_management.entity.User;
+import lk.prison_management.asset.user_management.entity.enums.UserSessionLogStatus;
+import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.asset.user_management.entity.UserSessionLog;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;

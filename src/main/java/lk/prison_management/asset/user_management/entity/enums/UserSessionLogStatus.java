@@ -1,4 +1,4 @@
-package lk.prison_management.asset.user_management.entity.Enum;
+package lk.prison_management.asset.user_management.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

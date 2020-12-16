@@ -1,6 +1,7 @@
 package lk.prison_management.asset.user_management.entity;
 
-import lk.prison_management.asset.user_management.entity.Enum.UserSessionLogStatus;
+import lk.prison_management.asset.user.entity.User;
+import lk.prison_management.asset.user_management.entity.enums.UserSessionLogStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
