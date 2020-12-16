@@ -1,6 +1,7 @@
 package lk.prison_management.asset.offence.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,4 +27,8 @@ public class Offence extends AuditEntity {
 
     @Enumerated(EnumType.STRING)
     private OffenceType offenceType;
+
+
+    @OneToMany(mappedBy = "offence")
+    private List< Commendation > commendations;
 }
