@@ -32,16 +32,6 @@ public class CommonService {
                 .build()
                 .toString());
     }
-
-    public void commonEmployeeAndOffender(Model model) {
-        model.addAttribute("title", Title.values());
-        model.addAttribute("gender", Gender.values());
-        model.addAttribute("civilStatus", CivilStatus.values());
-        model.addAttribute("employeeStatus", EmployeeStatus.values());
-        model.addAttribute("designation", Designation.values());
-        model.addAttribute("bloodGroup", BloodGroup.values());
-    }
-
     //common things to employee and offender - end
     //common mobile number length employee,offender,guardian, petitioner - start
     // private final mobile length validator
