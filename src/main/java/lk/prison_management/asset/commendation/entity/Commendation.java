@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.commendation.entity.enums.OffenceType;
 import lk.prison_management.asset.offence.entity.Offence;
 import lk.prison_management.asset.punishment.entity.Punishment;
+import lk.prison_management.asset.punishment.entity.employee_commendation.entity.EmployeeCommendation;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,4 +33,7 @@ public class Commendation extends AuditEntity {
 
   @ManyToOne
   private Punishment punishment;
+
+  @OneToMany(mappedBy = "commendation")
+  private List< EmployeeCommendation > employeeCommendations;
 }

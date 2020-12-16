@@ -8,6 +8,7 @@ import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.employee_leave.entity.EmployeeLeave;
 import lk.prison_management.asset.employee_qualification.entity.EmployeeQualification;
+import lk.prison_management.asset.punishment.entity.employee_commendation.entity.EmployeeCommendation;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -98,6 +99,9 @@ public class Employee extends AuditEntity {
 
   @OneToMany( mappedBy = "employee" )
   private List< EmployeeQualification > employeeQualifications;
+
+  @OneToMany( mappedBy = "employee" )
+  private List< EmployeeCommendation > employeeCommendations;
 
   @Transient
   private MultipartFile file;
