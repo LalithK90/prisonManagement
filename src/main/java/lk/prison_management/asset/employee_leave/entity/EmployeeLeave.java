@@ -1,9 +1,8 @@
-package lk.prison_management.asset.leave.entity;
+package lk.prison_management.asset.employee_leave.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.institute.entity.Institute;
-import lk.prison_management.asset.leave.entity.enums.LeaveType;
+import lk.prison_management.asset.employee_leave.entity.enums.LeaveType;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +17,14 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter( "Leave" )
-public class Leave extends AuditEntity {
+@JsonFilter( "EmployeeLeave" )
+public class EmployeeLeave extends AuditEntity {
 
   @Column( nullable = false )
-  private LocalDateTime startAt, endAt;
+  private LocalDateTime startAt;
+
+  @Column( nullable = false )
+  private LocalDateTime  endAt;
 
   private String dayCount, hourCount;
 
@@ -32,6 +34,4 @@ public class Leave extends AuditEntity {
   @ManyToOne
   private Employee employee;
 
-  @ManyToOne
-  private Institute institute;
 }

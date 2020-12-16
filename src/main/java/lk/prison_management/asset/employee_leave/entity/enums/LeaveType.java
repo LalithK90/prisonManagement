@@ -1,4 +1,4 @@
-package lk.prison_management.asset.leave.entity.enums;
+package lk.prison_management.asset.employee_leave.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
