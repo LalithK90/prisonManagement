@@ -2,10 +2,10 @@ package lk.prison_management.asset.employee.entity.enums;
 
 public enum EmployeeStatus {
     WORKING("Working"),
-    LEAVE("Leave"),
+    LEAVE("EmployeeLeave"),
     SUSPENDED("Suspended"),
     NOPAY("No pay"),
-    MEDICAL("Medical Leave"),
+    MEDICAL("Medical EmployeeLeave"),
     BLOCK("Block"),
     RESIGNED("Resigned"),
     RETIRED("Retired");
