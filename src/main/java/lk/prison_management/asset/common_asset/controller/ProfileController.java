@@ -1,8 +1,8 @@
 package lk.prison_management.asset.common_asset.controller;
 
 import lk.prison_management.asset.user_management.entity.PasswordChange;
-import lk.prison_management.asset.user_management.entity.User;
-import lk.prison_management.asset.user_management.service.UserService;
+import lk.prison_management.asset.user.entity.User;
+import lk.prison_management.asset.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
