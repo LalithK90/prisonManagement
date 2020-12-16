@@ -1,7 +1,7 @@
-package lk.prison_management.asset.user_management.controller;
+package lk.prison_management.asset.role.controller;
 
-import lk.prison_management.asset.user_management.entity.Role;
-import lk.prison_management.asset.user_management.service.RoleService;
+import lk.prison_management.asset.role.role.Role;
+import lk.prison_management.asset.role.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

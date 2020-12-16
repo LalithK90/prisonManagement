@@ -1,6 +1,6 @@
-package lk.prison_management.asset.user_management.dao;
+package lk.prison_management.asset.role.dao;
 
-import lk.prison_management.asset.user_management.entity.Role;
+import lk.prison_management.asset.role.role.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

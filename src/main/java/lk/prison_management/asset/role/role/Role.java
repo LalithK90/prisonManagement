@@ -1,5 +1,6 @@
-package lk.prison_management.asset.user_management.entity;
+package lk.prison_management.asset.role.role;
 
+import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
