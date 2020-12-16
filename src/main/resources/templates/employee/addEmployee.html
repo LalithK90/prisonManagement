@@ -77,7 +77,18 @@
               </select >
             </div >
           </div >
-          <!--Name-->
+          <!--wopNumber-->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="name" >WOP Number :</label >
+            </div >
+            <div class="col-md-8" >
+              <input id="wopNumber" data-th-field="*{wopNumber}" class="form-control" tabindex="4" type="text" required />
+              <span data-th-errors="*{name}"
+                    data-th-if="${#fields.hasErrors('wopNumber')}" class="error" >Error WOP Number</span >
+            </div >
+          </div >
+          <!--WOP Number-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
               <label class="control-label" for="name" >Name :</label >
@@ -147,7 +158,7 @@
             </div >
           </div >
           <!--Blood group-->
-          <!--<div class="form-row text-right">
+          <div class="form-row text-right">
               <div class="col-md-4">
                   <label class="control-label" for="bloodGroup">Blood Group :</label>
               </div>
@@ -160,7 +171,7 @@
                               data-th-selected="${bloodGroups==employee.bloodGroup?'selected':'unselected'}">Please select</option>
                   </select>
               </div>
-          </div>-->
+          </div>
           <!--Designation-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
@@ -251,7 +262,7 @@
             </div >
           </div >
           <!--Email-->
-          <!--<div class="form-row text-right">
+          <div class="form-row text-right">
               <div class="col-md-4">
                   <label class="control-label" for="email">Email :</label>
               </div>
@@ -260,7 +271,7 @@
                   <span class="error" data-th-errors="*{email}"
                         data-th-if="${#fields.hasErrors('email')}" id="emailError">Error Email</span>
               </div>
-          </div>-->
+          </div>
           <!--Office email-->
           <div class="form-row text-right" >
             <div class="col-md-4" >

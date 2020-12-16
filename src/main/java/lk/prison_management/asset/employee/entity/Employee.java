@@ -2,10 +2,7 @@ package lk.prison_management.asset.employee.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.common_asset.model.FileInfo;
-import lk.prison_management.asset.common_asset.model.enums.CivilStatus;
-import lk.prison_management.asset.common_asset.model.enums.Gender;
-import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
-import lk.prison_management.asset.common_asset.model.enums.Title;
+import lk.prison_management.asset.common_asset.model.enums.*;
 import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.institute.entity.Institute;
@@ -56,6 +53,9 @@ public class Employee extends AuditEntity {
     private String land;
 
     @Column( unique = true )
+    private String email;
+
+    @Column( unique = true )
     private String officeEmail;
 
     @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
@@ -75,6 +75,9 @@ public class Employee extends AuditEntity {
 
     @Enumerated( EnumType.STRING )
     private EmployeeStatus employeeStatus;
+
+    @Enumerated( EnumType.STRING )
+    private BloodGroup bloodGroup;
 
     @Enumerated(EnumType.STRING)
     private LiveOrDead liveOrDead;

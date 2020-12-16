@@ -46,7 +46,7 @@ public class ApplicationCreateRestController {
 
 //Employee
         Employee employee = new Employee();
-        employee.setPayRoleNumber("11111111");
+        employee.setWopNumber("11111111");
         employee.setName("Admin User");
         employee.setCallingName("Admin");
         employee.setName("908670000V");
@@ -54,7 +54,7 @@ public class ApplicationCreateRestController {
         employee.setTitle(Title.DR);
         employee.setGender(Gender.MALE);
         employee.setBloodGroup(BloodGroup.AP);
-        employee.setDesignation(Designation.ACE);
+        employee.setDesignation(Designation.CIR);
         employee.setCivilStatus(CivilStatus.UNMARRIED);
         employee.setEmployeeStatus(EmployeeStatus.WORKING);
         employee.setDateOfBirth(LocalDate.now().minusYears(18));
