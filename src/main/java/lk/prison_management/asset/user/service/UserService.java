@@ -1,8 +1,8 @@
-package lk.prison_management.asset.user_management.service;
+package lk.prison_management.asset.user.service;
 
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.user_management.dao.UserDao;
-import lk.prison_management.asset.user_management.entity.User;
+import lk.prison_management.asset.user.dao.UserDao;
+import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;

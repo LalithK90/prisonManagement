@@ -1,7 +1,9 @@
-package lk.prison_management.asset.user_management.entity;
+package lk.prison_management.asset.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.prison_management.asset.employee.entity.Employee;
+import lk.prison_management.asset.role.role.Role;
+import lk.prison_management.asset.user_management.entity.UserSessionLog;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,14 +41,14 @@ public class User extends AuditEntity {
     private boolean enabled;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private List<UserSessionLog> userSessionLogs;
+    private List< UserSessionLog > userSessionLogs;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @Fetch( FetchMode.SUBSELECT)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+    private List< Role > roles;
 
     /*@ManyToMany(fetch = FetchType.EAGER)
     //@Fetch( FetchMode.SUBSELECT)

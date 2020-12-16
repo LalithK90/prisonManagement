@@ -1,7 +1,7 @@
-package lk.prison_management.asset.user_management.dao;
+package lk.prison_management.asset.user.dao;
 
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.user_management.entity.User;
+import lk.prison_management.asset.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
