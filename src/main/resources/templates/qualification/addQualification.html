@@ -23,86 +23,59 @@
                   <div class="card" >
                     <div class="card-body" >
                       <h4 ><span id="formHeader"
-                                 th:text="${addStatus==false?'New Qualification':'Update Qualification'}" ></span ></h4 >
+                                 th:text="${addStatus==false?'New Qualification':'Update Qualification'}" ></span >
+                      </h4 >
                       <form th:action="${addStatus==false?'/qualification/save' :'/qualification/update'}" method="post"
                             th:object="${qualification}"
                             class="mt-3" >
-                        <table class="table table-hover table-borderless">
-                          <tbody>
+                        <table class="table table-hover table-borderless" >
+                          <tbody >
                           <!--/* id this comment not visualize */-->
                           <!--Id-->
                           <tr class="form-group" th:if="${addStatus==true}" >
-                            <th> <label for="id" class="form-label " > Id </label ></th>
-<td><input type="text" class="form-control" th:field="*{id}" id="id" readonly >
-                            </td>
-                          </tr>
-                          <tr>
-                            <th></th><td>
-                          <!--Employee-->
-                          <input type="hidden" th:field="*{employee}" >
-                          <!--Qualification name-->
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>
-                              <label th:for="${'name'}" class="form-label " > Name </label ></th>
+                            <th ><label for="id" class="form-label " > Id </label ></th >
+                            <td ><input type="text" class="form-control" th:field="*{id}" id="id" readonly >
+                            </td >
+                          </tr >
+                          <tr >
+                            <th ></th >
+                          </tr >
+                          <tr >
+                            <th >
+                              <label th:for="${'name'}" class="form-label " > Name </label ></th >
 
-                              <td><input type="text" class="form-control" th:field="*{name}" required >
+                            <td ><input type="text" class="form-control" th:field="*{name}" required >
                               <p class="text-danger" th:if="${#fields.hasErrors('name')}"
                                  th:errors="*{name}" >Error Name</p >
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>
-                              <label th:for="${'institute'}" class="form-label " > Institute Name </label ></th>
-<td>
-                              <input type="text" class="form-control" th:field="*{institute}" required >
-                              <p class="text-danger" th:if="${#fields.hasErrors('institute')}"
-                                 th:errors="*{institute}" >Error institute</p >
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>
-                              <label th:for="${'grade'}" class="form-label " > Grade </label ></th>
-<td>
-                              <input type="text" class="form-control" th:field="*{grade}" >
-                              <p class="text-danger" th:if="${#fields.hasErrors('grade')}"
-                                 th:errors="*{grade}" >Error Grade</p >
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>
-
-                              <label th:for="${'completeDate'}" class="form-label " > Complete Date </label ></th>
-
-                              <td><input type="date" class="form-control" th:field="*{completeDate}" required >
-                              <p class="text-danger" th:if="${#fields.hasErrors('completeDate')}"
-                                 th:errors="*{completeDate}" >Error Grade</p >
-                            </td>
-                          </tr>
-                          <tr>
-                            <th></th><td>
-                          <button type="submit" class="btn btn-primary" >
+                            </td >
+                          </tr >
+                            <th ></th >
+                            <td >
+                              <button type="submit" class="btn btn-primary" >
                                 <i th:class="${addStatus==false?'fa fa-save mr-1':'fa fa-thumbs-up mr-1'}" ></i > <span
                                     th:text="${addStatus==false?'Save' : 'Update'}" ></span >
                               </button >
-                          </td></tr></tbody></table></form>
-
-                        </div >
+                            </td >
+                          </tr >
+                          </tbody >
+                        </table >
+                      </form >
 
                     </div >
+
                   </div >
-
-
                 </div >
+
+
               </div >
             </div >
           </div >
         </div >
       </div >
     </div >
-  </div ><!-- content-wrapper end -->
-  <footer th:replace="~{fragments/footerSection :: footerSectionFragment}" ></footer ><!-- footer Section -->
+  </div >
+</div ><!-- content-wrapper end -->
+<footer th:replace="~{fragments/footerSection :: footerSectionFragment}" ></footer ><!-- footer Section -->
 </div ><!-- wrapper end -->
 <script th:replace="~{fragments/scriptSection :: scriptSectionFragment}" ></script ><!-- script Fragment -->
 </body >

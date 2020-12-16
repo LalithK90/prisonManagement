@@ -30,9 +30,6 @@
                                                 <tr>
                                                     <th>Index</th>
                                                     <th>Qualification/Course</th>
-                                                    <th>Institute</th>
-                                                    <th>grade</th>
-                                                    <th>Complete Date</th>
                                                     <th>Modify</th>
                                                 </tr>
                                                 </thead>
@@ -40,12 +37,8 @@
                                                 <tr th:each="qualification, rowCount : ${qualifications}" scope="row">
                                                     <th th:text="${rowCount.count}"></th>
                                                     <th th:text="${qualification.name}"></th>
-                                                    <th th:text="${qualification.institute}"></th>
-                                                    <th th:text="${qualification.grade}"></th>
-                                                    <th th:text="${qualification.completeDate}"></th>
 
-                                                    <th><a class="btn btn-success btn-sm" th:href="${'/qualification/' + qualification.id}" id="qualificationView"><i
-                                                            class="fa fa-folder-open"></i>&nbsp;View</a>
+                                                    <th>
                                                         <a class="btn btn-primary btn-sm" id="qualificationEdit"
                                                            th:href="${'/qualification/edit/' + qualification.id}"><i
                                                                 class="fa fa-edit"></i>&nbsp;Edit</a>
