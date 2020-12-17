@@ -1,19 +1,18 @@
 package lk.prison_management.asset.commendation.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.prison_management.asset.commendation.entity.enums.OffenceType;
-import lk.prison_management.asset.offence.entity.Offence;
-import lk.prison_management.asset.punishment.entity.Punishment;
-import lk.prison_management.asset.punishment.entity.employee_commendation.entity.EmployeeCommendation;
+import lk.prison_management.asset.common_asset.model.FileInfo;
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 @Getter
@@ -23,17 +22,18 @@ import java.util.List;
 @JsonFilter( "Commendation" )
 public class Commendation extends AuditEntity {
 
-  private String name, remarks;
+  private String description;
 
-  @Column(nullable = false)
-  private LocalDate incidentDate;
-
-  @ManyToOne
-  private Offence offence;
+  private String refNumber;
 
   @ManyToOne
-  private Punishment punishment;
+  private Employee employee;
 
-  @OneToMany(mappedBy = "commendation")
-  private List< EmployeeCommendation > employeeCommendations;
+  @Transient
+  private MultipartFile file;
+
+  @Transient
+  private FileInfo fileInfo;
+
+
 }
