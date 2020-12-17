@@ -1,7 +1,8 @@
-package lk.prison_management.asset.employee.entity;
+package lk.prison_management.asset.employee_file.entity;
 
 
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

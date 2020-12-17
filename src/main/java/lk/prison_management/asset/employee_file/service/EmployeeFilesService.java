@@ -1,12 +1,12 @@
-package lk.prison_management.asset.employee.service;
+package lk.prison_management.asset.employee_file.service;
 
 
 
 import lk.prison_management.asset.common_asset.model.FileInfo;
 import lk.prison_management.asset.employee.controller.EmployeeController;
-import lk.prison_management.asset.employee.dao.EmployeeFilesDao;
+import lk.prison_management.asset.employee_file.dao.EmployeeFilesDao;
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.employee.entity.EmployeeFiles;
+import lk.prison_management.asset.employee_file.entity.EmployeeFiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
