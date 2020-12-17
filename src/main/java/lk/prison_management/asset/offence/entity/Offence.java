@@ -1,6 +1,7 @@
 package lk.prison_management.asset.offence.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.util.audit.AuditEntity;
@@ -30,5 +31,5 @@ public class Offence extends AuditEntity {
 
 
     @OneToMany(mappedBy = "offence")
-    private List< Commendation > commendations;
+    private List< Censure > censures;
 }
