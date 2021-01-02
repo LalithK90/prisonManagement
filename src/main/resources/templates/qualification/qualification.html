@@ -33,36 +33,35 @@
 </div >
 <div class="container-fluid formBorder text-center" >
 
-  <table class="table table-hover table-striped" id="myTable" >
-    <div class="row" id="qualificationListTable" th:if="${not #lists.isEmpty(qualifications)}" >
-      <thead class="thead-inverse" >
-      <tr >
-        <th >Index</th >
-        <th >Qualification/Course</th >
-        <th >Modify</th >
-      </tr >
-      </thead >
-      <tbody >
-      <tr th:each="qualification, rowCount : ${qualifications}" scope="row" >
-        <th th:text="${rowCount.count}" ></th >
-        <th th:text="${qualification.name}" ></th >
+  <table class="table table-hover table-striped" id="myTable" th:if="${not #lists.isEmpty(qualifications)}" >
+    <thead class="thead-inverse" >
+    <tr >
+      <th >Index</th >
+      <th >Employee Name</th >
+      <th >Qualification/Course</th >
+      <th >Modify</th >
+    </tr >
+    </thead >
+    <tbody >
+    <tr th:each="qualification, rowCount : ${qualifications}" scope="row" >
+      <th th:text="${rowCount.count}" ></th >
+      <th th:text="${qualification.employee.name}" ></th >
+      <th th:text="${qualification.name}" ></th >
+      <th >
+        <a class="btn btn-primary btn-sm" id="qualificationEdit"
+           th:href="${'/qualification/edit/' + qualification.id}" ><i
+              class="fa fa-edit" ></i >&nbsp;Edit</a >
+        <a class="btn btn-danger btn-sm" id="qualificationRemove"
+           th:href="${'/qualification/remove/' + qualification.id}"
+           th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+           th:onclick="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
+        ><i
+              aria-hidden="true" class="fa fa-trash" ></i >
+          Delete</a >
 
-        <th >
-          <a class="btn btn-primary btn-sm" id="qualificationEdit"
-             th:href="${'/qualification/edit/' + qualification.id}" ><i
-                class="fa fa-edit" ></i >&nbsp;Edit</a >
-          <a class="btn btn-danger btn-sm" id="qualificationRemove"
-             th:href="${'/qualification/remove/' + qualification.id}"
-             th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
-             th:onclick="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
-          ><i
-                aria-hidden="true" class="fa fa-trash" ></i >
-            Delete</a >
-
-        </th >
-      </tr >
-      </tbody >
-    </div >
+      </th >
+    </tr >
+    </tbody >
   </table >
 
   <!--if empty list-->
@@ -93,9 +92,9 @@
   </div >
 </div >
 <!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<footer th:replace="~{fragments/footer :: footerFragment}" ></footer >
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script th:replace="~{fragments/script :: scriptFragment}" ></script >
 <script >
     /*active boostrap alert - start*/
     $(".alert").alert();

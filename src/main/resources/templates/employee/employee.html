@@ -65,9 +65,11 @@
                     <th th:text="${employee.designation.designation}"></th>
                     <th th:text="${employee.employeeStatus.employeeStatus}"></th>
                     <th>
-                        <a id="employeeView" th:href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
-                        <a id="employeeEdit" th:href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-                        <a id="employeeRemove" th:href="${'/employee/remove/' + employee.id}"
+                        <a th:href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
+                        <a th:href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                        <a th:href="${'/qualification/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Qualification</a>
+                        <a th:href="${'/employeeLeave/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Leave</a>
+                        <a th:href="${'/employee/remove/' + employee.id}"
                            th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
                             Delete</a>
                     </th>

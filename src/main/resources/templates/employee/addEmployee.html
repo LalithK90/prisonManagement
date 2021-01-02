@@ -157,8 +157,7 @@
                 <option value="" >Please select</option >
                 <option data-th-each="designations : ${designation}"
                         data-th-text="${designations.designation}"
-                        data-th-value="${designations}"
-                        data-th-selected="${designations==employee.designation?'selected':'unselected'}" ></option >
+                        data-th-value="${designations}"></option >
               </select >
             </div >
           </div >
@@ -176,8 +175,7 @@
                 <option value="" >Please select</option >
                 <option data-th-each="civilStatu : ${civilStatus}"
                         data-th-text="${civilStatu.CivilStatus}"
-                        data-th-value="${civilStatu}"
-                        data-th-selected="${civilStatu==employee.civilStatus?'selected':'unselected'}" ></option >
+                        data-th-value="${civilStatu}" ></option >
               </select >
             </div >
           </div >
