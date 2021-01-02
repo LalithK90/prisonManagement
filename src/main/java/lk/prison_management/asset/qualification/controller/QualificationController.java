@@ -41,26 +41,29 @@ public class QualificationController {
 
   @GetMapping( "/add/{id}" )
   public String form(@PathVariable Integer id, Model model) {
-
-    return commonThing(model, false, new Qualification());
+model.addAttribute("employeeDetail", employeeService.findById(id));
+    return commonThing(model, true, new Qualification());
   }
 
   @GetMapping( "/{id}" )
   public String findById(@PathVariable Integer id, Model model) {
-    model.addAttribute("qualificationDetail", qualificationService.findById(id));
+    Qualification qualification = qualificationService.findById(id);
+    model.addAttribute("qualificationDetail", qualification);
+    model.addAttribute("employeeDetail", qualification.getEmployee());
     return "qualification/qualification-detail";
   }
 
   @GetMapping( "/edit/{id}" )
   public String edit(@PathVariable Integer id, Model model) {
-    return commonThing(model, true, qualificationService.findById(id));
+    return commonThing(model, false, qualificationService.findById(id));
   }
 
   @PostMapping( value = {"/save", "/update"} )
   public String persist(@Valid @ModelAttribute Qualification qualification, BindingResult bindingResult,
-                        RedirectAttributes redirectAttributes, Model model) {
+                        Model model) {
     if ( bindingResult.hasErrors() ) {
-      return commonThing(model, false, qualification);
+      model.addAttribute("employeeDetail", employeeService.findById( qualification.getEmployee().getId()));
+      return commonThing(model, true, qualification);
     }
     qualificationService.persist(qualification);
     return "redirect:/qualification";

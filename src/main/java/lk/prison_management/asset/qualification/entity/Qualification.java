@@ -3,7 +3,6 @@ package lk.prison_management.asset.qualification.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.employee_qualification.entity.EmployeeQualification;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,13 +22,13 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("Qualification")
+@JsonFilter( "Qualification" )
 public class Qualification extends AuditEntity {
 
-    @Size(min = 2, max = 60, message = "Your name length should be 13")
-    private String name;
+  @Size( min = 2, max = 60, message = "Your name length should be 13" )
+  private String name;
 
-    @OneToMany(mappedBy = "qualification")
-    private List< EmployeeQualification > employeeQualifications;
+  @ManyToOne
+  private Employee employee;
 
 }
