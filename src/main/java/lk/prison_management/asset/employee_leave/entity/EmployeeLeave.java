@@ -26,7 +26,7 @@ public class EmployeeLeave extends AuditEntity {
   @Column( nullable = false )
   private LocalDateTime  endAt;
 
-  private String dayCount, hourCount;
+  private String dayCount, hourCount, remarks;
 
   @Enumerated( EnumType.STRING)
   private LeaveType leaveType;
