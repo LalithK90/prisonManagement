@@ -9,7 +9,7 @@ import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.employee_leave.entity.EmployeeLeave;
-import lk.prison_management.asset.employee_qualification.entity.EmployeeQualification;
+import lk.prison_management.asset.qualification.entity.Qualification;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -99,7 +99,7 @@ public class Employee extends AuditEntity {
   private List< EmployeeLeave > employeeLeaves;
 
   @OneToMany( mappedBy = "employee" )
-  private List< EmployeeQualification > employeeQualifications;
+  private List< Qualification > qualifications;
 
   @OneToMany(mappedBy = "employee")
   private List< Commendation > commendations;
