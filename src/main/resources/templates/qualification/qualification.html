@@ -1,103 +1,105 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/headerSection :: headerSectionFragment}"></head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper"><!-- wrapper start -->
-    <nav th:replace="~{fragments/navbarSection :: navbarSectionFragment}"></nav><!-- navbar Section -->
-    <aside th:replace="~{fragments/sidebarSection :: sidebarSectionFragment}"></aside><!-- navbar Section -->
-    <div class="content-wrapper"><!-- content-wrapper Start -->
-        <section th:replace="~{fragments/contentHeader :: contentHeaderSectionFragment}"></section>
-        <!-- Form Header  Path -->
-        <section th:replace="~{fragments/smallBoxSection :: smallBoxSectionFragment}"></section><!-- Small Box Set -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav th:replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid  form-Border" >
+  <div class="row text-center formManagement border-info" >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
 
+    <div class="col" >
+      <a class="btn btn-info" href="/employee/add" ><i class="fa fa-plus" ></i >
+        &nbsp;Add New</a >
+    </div >
 
+  </div >
+  <div class="row text-center" >
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Employee Management
+        </strong >
+      </h4 >
+    </div >
+  </div >
+</div >
+<div class="container-fluid formBorder text-center" >
 
+  <table class="table table-hover table-striped" id="myTable" >
+    <div class="row" id="qualificationListTable" th:if="${not #lists.isEmpty(qualifications)}" >
+      <thead class="thead-inverse" >
+      <tr >
+        <th >Index</th >
+        <th >Qualification/Course</th >
+        <th >Modify</th >
+      </tr >
+      </thead >
+      <tbody >
+      <tr th:each="qualification, rowCount : ${qualifications}" scope="row" >
+        <th th:text="${rowCount.count}" ></th >
+        <th th:text="${qualification.name}" ></th >
 
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4>Qualification </h4>
-                                        <!--if not empty list-->
+        <th >
+          <a class="btn btn-primary btn-sm" id="qualificationEdit"
+             th:href="${'/qualification/edit/' + qualification.id}" ><i
+                class="fa fa-edit" ></i >&nbsp;Edit</a >
+          <a class="btn btn-danger btn-sm" id="qualificationRemove"
+             th:href="${'/qualification/remove/' + qualification.id}"
+             th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+             th:onclick="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
+          ><i
+                aria-hidden="true" class="fa fa-trash" ></i >
+            Delete</a >
 
-                                            <table class="table table-hover table-striped" id="myTable">
-                                                <div class="row" id="qualificationListTable" th:if="${not #lists.isEmpty(qualifications)}">
-                                                <thead class="thead-inverse">
-                                                <tr>
-                                                    <th>Index</th>
-                                                    <th>Qualification/Course</th>
-                                                    <th>Modify</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr th:each="qualification, rowCount : ${qualifications}" scope="row">
-                                                    <th th:text="${rowCount.count}"></th>
-                                                    <th th:text="${qualification.name}"></th>
+        </th >
+      </tr >
+      </tbody >
+    </div >
+  </table >
 
-                                                    <th>
-                                                        <a class="btn btn-primary btn-sm" id="qualificationEdit"
-                                                           th:href="${'/qualification/edit/' + qualification.id}"><i
-                                                                class="fa fa-edit"></i>&nbsp;Edit</a>
-                                                        <a class="btn btn-danger btn-sm" id="qualificationRemove"
-                                                           th:href="${'/qualification/remove/' + qualification.id}"
-                                                           th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
-                                                           th:onclick="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
-                                                        ><i
-                                                                aria-hidden="true" class="fa fa-trash"></i>
-                                                            Delete</a>
-
-                                                    </th>
-                                                </tr>
-                                                </tbody></div>
-                                            </table>
-
-                                        <!--if empty list-->
-                                        <div class="row" id="qualificationNotList" th:if="${ #lists.isEmpty(qualifications)}">
-                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h3 class="text-center text-danger">
-                                                    <strong>There is no qualification upto know please add qualification to the system
-                                                        using add qualification button.
-                                                    </strong>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <!--Show saved qualification-->
-                                        <div class="row" th:if="${qualificationDetail!=null}">
-                                            <div class="col-sm-12">
-                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                    <div class="container">
-                                                        <div th:replace="~{qualification/qualification-detail :: qualificationDetail}"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <script>
-                                                /*active boostrap alert - start*/
-                                                $(".alert").alert();
-                                                /*active boostrap alert - end*/
-                                            </script>
-                                        </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div></div>
-        </div><!-- content-wrapper end -->
-        <div th:replace="~{fragments/footerSection :: footerSectionFragment}"></div><!-- footer Section -->
-        </div><!-- wrapper end -->
-        <div th:replace="~{fragments/scriptSection :: scriptSectionFragment}"></div><!-- script Fragment -->
-        </body>
-        </html>
+  <!--if empty list-->
+  <div class="row" id="qualificationNotList" th:if="${ #lists.isEmpty(qualifications)}" >
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+        <span aria-hidden="true" >&times;</span >
+      </button >
+      <h3 class="text-center text-danger" >
+        <strong >There is no qualification upto know please add qualification to the system
+                 using add qualification button.
+        </strong >
+      </h3 >
+    </div >
+  </div >
+  <!--Show saved qualification-->
+  <div class="row" th:if="${qualificationDetail!=null}" >
+    <div class="col-sm-12" >
+      <div class="alert alert-success alert-dismissible fade show" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+          <span aria-hidden="true" >&times;</span >
+        </button >
+        <div class="container" >
+          <div th:replace="~{qualification/qualification-detail :: qualificationDetail}" ></div >
+        </div >
+      </div >
+    </div >
+  </div >
+</div >
+<!--footer include-->
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<!--script include-->
+<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script >
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script >
+</body >
+</html >

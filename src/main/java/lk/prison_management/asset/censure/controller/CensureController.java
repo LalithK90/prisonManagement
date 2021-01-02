@@ -31,7 +31,7 @@ public class CensureController implements AbstractController< Censure, Integer> 
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("offences", censureService.findAll());
+        model.addAttribute("censures", censureService.findAll());
         return "censure/censure";
     }
 
