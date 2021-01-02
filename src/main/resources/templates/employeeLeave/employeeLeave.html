@@ -25,7 +25,7 @@
     <div class="col" >
       <h4 class="text-info text-center" >
         <strong >
-          Qualification Management
+          Employee Leave Management
         </strong >
       </h4 >
     </div >
@@ -38,7 +38,9 @@
     <tr >
       <th >Index</th >
       <th >Employee Name</th >
-      <th >Qualification/Course</th >
+      <th >Employee Leave Start At</th >
+      <th >Employee Leave End At</th >
+      <th > Leave Duration</th >
       <th >Modify</th >
     </tr >
     </thead >
@@ -47,13 +49,19 @@
       <th th:text="${rowCount.count}" ></th >
       <th th:text="${qualification.employee.name}" ></th >
       <th th:text="${qualification.name}" ></th >
+      <th th:text="${{qualification.startAt}}" ></th >
+      <th th:text="${{qualification.endAt}}" ></th >
+      <th > <span th:text="${qualification.dayCount +' '+ qualification.hourCount}" ></span></th >
       <th >
         <a class="btn btn-primary btn-sm" id="qualificationEdit"
            th:href="${'/qualification/edit/' + qualification.id}" ><i
               class="fa fa-edit" ></i >&nbsp;Edit</a >
-        <a class="btn btn-danger btn-sm"            th:href="${'/qualification/remove/' + qualification.id}"
+        <a class="btn btn-danger btn-sm" id="qualificationRemove"
+           th:href="${'/qualification/remove/' + qualification.id}"
            th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
-           th:onclick="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"        ><i              aria-hidden="true" class="fa fa-trash" ></i >
+           th:onclick="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
+        ><i
+              aria-hidden="true" class="fa fa-trash" ></i >
           Delete</a >
 
       </th >
