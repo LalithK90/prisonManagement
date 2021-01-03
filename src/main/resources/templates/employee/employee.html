@@ -40,10 +40,7 @@
                 <tr>
                     <th> Index</th>
                     <th> Image</th>
-                    <th> Employee Id</th>
                     <th> Calling Name</th>
-                    <th> Mobile</th>
-                    <th> Designation</th>
                     <th> Status</th>
                     <th> Modify</th>
                 </tr>
@@ -59,17 +56,14 @@
                                  data-th-src="${employee.fileInfo.url}" />
                         </div >
                     </th>
-                    <th data-th-text="${employee.code}"></th>
                     <th data-th-text="${employee.callingName}"></th>
-                    <th data-th-text="${employee.mobileOne}"></th>
-                    <th data-th-text="${employee.designation.designation}"></th>
                     <th data-th-text="${employee.employeeStatus.employeeStatus}"></th>
                     <th>
                         <a data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
                         <a data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
                         <a data-th-href="${'/qualification/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Qualification</a>
                         <a data-th-href="${'/employeeLeave/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Leave</a>
-                        <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Transfer</a>
+                        <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Transfer</a>
                         <a data-th-href="${'/censure/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Censure</a>
                         <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Commendation</a>
                         <a data-th-href="${'/employee/remove/' + employee.id}"
