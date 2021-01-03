@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid formBorder text-center">
+<div class="container-fluid  text-center">
     <div class="col">
         <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}">
             <table class="table table-hover table-striped" id="myTable">
@@ -103,7 +103,7 @@
 </div>
 <div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

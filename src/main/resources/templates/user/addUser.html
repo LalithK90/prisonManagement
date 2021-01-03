@@ -30,7 +30,7 @@
     </div>
 </div>
 <!--Employee find-->
-<div class="container-fluid bg-dark formBorder" id="employeeFindForm" data-th-if="${employeeDetailShow==false}">
+<div class="container-fluid bg-dark " id="employeeFindForm" data-th-if="${employeeDetailShow==false}">
     <div class="col-sm-12 flex-column ">
         <form id="form" method="POST" data-th-action="${'/user/workingPlace'}" data-th-object="${employee}"
               enctype="multipart/form-data">
@@ -93,7 +93,7 @@
 </div>
 
 <!--User add from-->
-<div class="container-fluid bg-dark formBorder" data-th-if="${employeeDetailShow==true}" id="userFormShow">
+<div class="container-fluid bg-dark " data-th-if="${employeeDetailShow==true}" id="userFormShow">
     <form id="formUser" data-th-action="${addStatus==true?'/user/add':'/user/update'}" data-th-object="${user}"
           class="form-horizontal" method="POST" autocomplete="false">
         <div class="row">
@@ -194,9 +194,9 @@
 </div>
 
 <!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 
 </body>

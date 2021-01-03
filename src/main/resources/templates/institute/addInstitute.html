@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--Heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid  ">
     <div class="row text-center formManagement border-info">
         <!--View list Button-->
         <div class="col">
@@ -33,7 +33,7 @@
     </div>
 </div>
 <!--Form Content-->
-<div class="container-fluid bg-info formBorder">
+<div class="container-fluid bg-info ">
     <div class="col-sm-12 flex-column ">
         <form class="form-horizontal" data-th-action="${addStatus==true?'/institute/save':'/institute/update'}" data-th-object="${institute}"
               enctype="multipart/form-data"               method="POST">
@@ -136,9 +136,9 @@
     </div>
 </div>
 <!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

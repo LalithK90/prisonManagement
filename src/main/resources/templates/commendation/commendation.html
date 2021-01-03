@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--Heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid  ">
     <div class="row text-center formManagement border-info">
         <!-- New Institute Button-->
         <div class="col">
@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid bg-info formBorder text-center">
+<div class="container-fluid bg-info  text-center">
     <!--Table view-->
     <div class="col">
         <div class="col" id="instituteListPresent" data-th-if="${not #lists.isEmpty(commendations)}">
@@ -80,9 +80,9 @@
     </div>
 </div>
 <!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

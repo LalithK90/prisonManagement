@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--Heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid  ">
     <div class="row text-center formManagement border-info">
         <!--View list Button-->
         <div class="col">
@@ -33,11 +33,31 @@
     </div>
 </div>
 <!--Form Content-->
-<div class="container-fluid bg-info formBorder">
+<div class="container-fluid bg-info ">
+    <div id="accordianId" role="tablist" aria-multiselectable="true" >
+        <div class="card" >
+            <div class="card-header" role="tab" id="section1HeaderId" >
+                <h5 class="mb-0" >
+                    <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true"
+                       aria-controls="section1ContentId" >
+                        Employee Details
+                    </a >
+                </h5 >
+            </div >
+            <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
+                <div class="card-body" >
+                    <div data-th-replace="~{employee/employee-detail :: employeeDetailsFragment}" ></div >
+                </div >
+            </div >
+        </div >
+    </div >
+
     <div class="col-sm-12 flex-column ">
         <form class="form-horizontal" data-th-action="${addStatus==true?'/commendation/save':'/commendation/update'}"
               data-th-object="${commendation}"
               method="POST">
+            <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
+                                    readonly />
             <div class="row">
                 <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
                     <!--Id-->
@@ -97,9 +117,9 @@
     </div>
 </div>
 <!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

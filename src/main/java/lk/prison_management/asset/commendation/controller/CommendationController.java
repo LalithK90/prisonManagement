@@ -5,6 +5,7 @@ import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.commondation_file.entity.CommendationFiles;
 import lk.prison_management.asset.commondation_file.service.CommendationFilesService;
+import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.util.interfaces.AbstractController;
 import org.springframework.http.HttpHeaders;
@@ -22,11 +23,13 @@ import javax.validation.Valid;
 public class CommendationController implements AbstractController< Commendation, Integer> {
     private final CommendationService commendationService;
     private final CommendationFilesService commendationFilesService;
+    private final EmployeeService employeeService;
 
     public CommendationController(CommendationService commendationService,
-                                  CommendationFilesService commendationFilesService) {
+                                  CommendationFilesService commendationFilesService, EmployeeService employeeService) {
         this.commendationService = commendationService;
         this.commendationFilesService = commendationFilesService;
+        this.employeeService = employeeService;
     }
 
 
@@ -52,8 +55,9 @@ public class CommendationController implements AbstractController< Commendation,
         return "commendation/commendation-detail";
     }
 
-    @GetMapping("/add")
-    public String form(Model model) {
+    @GetMapping("/add/{id}")
+    public String form(@PathVariable("id")Integer id , Model model) {
+        model.addAttribute("employeeDetail", employeeService.findById(id));
         model.addAttribute("addStatus", true);
         model.addAttribute("prisonTypes", OffenceType.values());
         model.addAttribute("commendation", new Commendation());
@@ -62,9 +66,11 @@ public class CommendationController implements AbstractController< Commendation,
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
+        Commendation commendation = commendationService.findById(id);
         model.addAttribute("addStatus", false);
         model.addAttribute("prisonTypes", OffenceType.values());
-        model.addAttribute("commendation", commendationService.findById(id));
+        model.addAttribute("commendation", commendation);
+        model.addAttribute("employeeDetail", commendation.getEmployee());
         return "commendation/addCommendation";
     }
 
@@ -74,6 +80,7 @@ public class CommendationController implements AbstractController< Commendation,
             model.addAttribute("addStatus", true);
             model.addAttribute("prisonTypes", OffenceType.values());
             model.addAttribute("commendation", commendation);
+            model.addAttribute("employeeDetail", employeeService.findById(commendation.getEmployee().getId()));
             return "commendation/addCommendation";
         }
         redirectAttributes.addFlashAttribute("commendationDetail", commendationService.persist(commendation));
