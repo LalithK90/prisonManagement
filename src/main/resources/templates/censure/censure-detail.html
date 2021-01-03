@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<div class="container-fluid" >
+
+  <div data-th-replace="~{censure/employeeDetail :: employeeDetailsFragment}" ></div >
+  <div class="row" >
+    <div class="col-md-12" >
+      <div class="container-fluid" data-th-fragment="censuresDetail" >
+        <!--Id-->
+        <div id="idStatus" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="id" >ID :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="id" data-th-text="${id}" ></p >
+          </div >
+        </div >
+        <!--refNumber-->
+        <div id="" data-th-if="${addStatus==false}" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="abc" >Ref Number :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="abc" data-th-text="${refNumber}" ></p >
+          </div >
+        </div >
+        <!--Punishment -->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="punishment" >Punishment :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="punishment" data-th-text="${punishment.name}" ></p >
+          </div >
+        </div >
+        <!--Punishment -->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="offence" >Offence :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="offence" data-th-text="${offence.name}" ></p >
+          </div >
+        </div >
+        <!--Incident Date-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="incidentDate" >Incident Date :</label >
+          </div >
+          <div class="col-md-8" >
+            <p data-th-text="${incidentDate}" id="incidentDate" ></p >
+          </div >
+        </div >
+        <!--description-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="description" >Description :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="description" data-th-text="${description}" ></p >
+          </div >
+        </div >
+      </div >
+    </div >
+  </div >
+</div >
+<!--images-->
+<div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+  <div class="col" id="photoDetails" >
+    <div >
+      <label class="control-label " >Photo Details : </label >
+    </div >
+    <div class="row" >
+      <div class="col" id="filesList" data-th-each="file, rowStat: ${files}" >
+        <div class="col" >
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+            <div class="card text-center" >
+              <div class="card-body" >
+                <img id="img" class="rounded"
+                     style="height: 150px; widdata-th- 150px; border-radius: 10px"
+                     alt="Employee images" data-th-src="${file.url}" />
+              </div >
+              <div class="card-footer bg-secondary text-light text-center" >
+                <p id="imgName" data-th-text="${file.filename}" ></p >
+                <span > Uploaded Date :
+                                            <p id="imgCreateAt" data-th-text="${{file.createAt}}" ></p >
+                                            </span >
+              </div >
+            </div >
+          </div >
+        </div >
+      </div >
+    </div >
+  </div >
+</div >
+<!--button-->
+<div class="form-group col-md-12 col-sm-12 text-center flex-column ">
+  <a href="/censure">
+    <button class="btn btn-outline-secondary" type="button" tabindex="10">
+      <i class="fa fa-arrow-circle-left " style="font-size: 20px"></i>&nbsp; &nbsp;Back
+    </button>
+  </a>
+</div>
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+</body >
+</html >
