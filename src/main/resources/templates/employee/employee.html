@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
@@ -9,7 +9,7 @@
 
 <!--heading Area-->
 <div class="container-fluid  form-Border">
-    <div class="row text-center ">
+    <div class="row text-center formManagement border-info">
         <div class="col">
             <a href="/home" id="btnHome" class="btn btn-outline-info">
                 &nbsp;Back To Home&nbsp;
@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid  text-center">
+<div class="container-fluid formBorder text-center">
     <div class="col">
         <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}">
             <table class="table table-hover table-striped" id="myTable">
@@ -40,7 +40,10 @@
                 <tr>
                     <th> Index</th>
                     <th> Image</th>
+                    <th> Employee Id</th>
                     <th> Calling Name</th>
+                    <th> Mobile</th>
+                    <th> Designation</th>
                     <th> Status</th>
                     <th> Modify</th>
                 </tr>
@@ -56,17 +59,15 @@
                                  data-th-src="${employee.fileInfo.url}" />
                         </div >
                     </th>
+                    <th data-th-text="${employee.code}"></th>
                     <th data-th-text="${employee.callingName}"></th>
+                    <th data-th-text="${employee.mobileOne}"></th>
+                    <th data-th-text="${employee.designation.designation}"></th>
                     <th data-th-text="${employee.employeeStatus.employeeStatus}"></th>
                     <th>
-                        <a data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
-                        <a data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-                        <a data-th-href="${'/qualification/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Qualification</a>
-                        <a data-th-href="${'/employeeLeave/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Leave</a>
-                        <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Transfer</a>
-                        <a data-th-href="${'/censure/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Censure</a>
-                        <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Commendation</a>
-                        <a data-th-href="${'/employee/remove/' + employee.id}"
+                        <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
+                        <a id="employeeEdit" data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                        <a id="employeeRemove" data-th-href="${'/employee/remove/' + employee.id}"
                            data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
                             Delete</a>
                     </th>
@@ -88,16 +89,16 @@
                 </h3>
             </div>
         </div>
-        <script>
-            /*active boostrap alert - start*/
-            $(".alert").alert();
-            /*active boostrap alert - end*/
-        </script>
     </div>
 </div>
 <div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
+<script>
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script>
 </body>
 </html>

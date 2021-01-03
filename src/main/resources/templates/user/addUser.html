@@ -117,7 +117,7 @@
                                 id="employee" required>
                             <option id="employeeList"
                                     data-th-text="${e.title.title} + ${' '} + ${e.name} +${' - '} + ${e.nic}"
-                                    th:value="${e.id}"
+                                    data-th-value="${e.id}"
                                     data-th-field="*{employee}" value="">Please select
                             </option>
                         </select>
@@ -167,7 +167,7 @@
                     <select id="roles" data-th-field="*{roles}" class="form-control" size="16" multiple required>
                         <option id="roleList" data-th-each="role, rowCount : ${roleList}"
                                 data-th-text="${rowCount.count} +${'. '}+${role.roleName}"
-                                th:value="${role.id}"
+                                data-th-value="${role.id}"
                                 data-th-field="*{roles}" value=""></option>
                     </select>
                 </div>
