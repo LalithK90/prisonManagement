@@ -7,6 +7,8 @@
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 <div class="container-fluid" >
+
+  <div data-th-replace="~{employee/employeeDetail :: employeeDetailsFragment}" ></div >
   <div class="row" >
     <div class="col-md-12" >
       <div class="row" >
@@ -15,7 +17,7 @@
           <div class="card" >
             <div class="card-body" >
               <h4 >Qualification </h4 >
-              <div class="container-fluid" th:fragment="qualificationDetail" >
+              <div class="container-fluid" data-th-fragment="qualificationDetail" >
                 <table class="table table-hover table-borderless" >
                   <tbody >
                   <tr >
