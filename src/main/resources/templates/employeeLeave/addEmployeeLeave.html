@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Thymeleaf Springboot </title >
@@ -67,25 +67,25 @@
         </div >
       </div >
       <!--Leave Type -->
-      <div class="form-row text-right">
-        <div class="col-md-4">
-          <label class="control-label" for="">Leave Type :</label>
-        </div>
-        <div class="col-md-4">
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="" >Leave Type :</label >
+        </div >
+        <div class="col-md-4" >
           <div class="custom-control custom-checkbox custom-control-inline "
-               data-th-each="leaveType,index : ${leaveTypes}">
+               data-th-each="leaveType,index : ${leaveTypes}" >
             <input class="custom-control-input" required
                    data-th-name="${'leaveType'}"
                    data-th-value="${leaveType}"
                    data-th-id="${index.index}+${leaveType}" type="radio"
-                   data-th-checked="${leaveType==leaveTypes}"/>
+                   data-th-checked="${leaveType==leaveTypes}" />
             <label class="custom-control-label"
                    data-th-for="${index.index}+${leaveType}"
-                   data-th-text="${leaveType.leaveType}"> radio
-            </label>
-          </div>
-        </div>
-      </div>
+                   data-th-text="${leaveType.leaveType}" > radio
+            </label >
+          </div >
+        </div >
+      </div >
 
       <!--start At-->
       <div class="form-row text-right" >
@@ -94,7 +94,7 @@
         </div >
         <div class="col-md-8" >
           <input type="datetime-local" class="form-control " onchange="dateMatch()"
-                 data-th-field="*{startAt}" id="startAt" required>
+                 data-th-field="*{startAt}" id="startAt" required >
 
           <span data-th-errors="*{startAt}"
                 data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
@@ -108,7 +108,7 @@
         </div >
         <div class="col-md-8" >
           <input type="datetime-local" class="form-control " onchange="dateMatch()"
-                 data-th-field="*{endAt}" id="endAt" required>
+                 data-th-field="*{endAt}" id="endAt" required >
 
           <span data-th-errors="*{endAt}"
                 data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
@@ -119,18 +119,18 @@
       <div class="form-row text-right" >
         <div class="col-md-4" >
           <label class="control-label" >Day Count :
-          <input type="text" class="form-control " id="dayCount"
-                 data-th-field="*{dayCount}"  required readonly>
+            <input type="text" class="form-control " id="dayCount"
+                   data-th-field="*{dayCount}" required readonly >
 
-          <span data-th-errors="*{dayCount}"
-                data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
+            <span data-th-errors="*{dayCount}"
+                  data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
                             </span >
           </label >
         </div >
         <div class="col-md-4" >
           <label class="control-label" >Hour Count :
             <input type="text" class="form-control " id="hourCount"
-                   data-th-field="*{hourCount}"  required readonly>
+                   data-th-field="*{hourCount}" required readonly >
 
             <span data-th-errors="*{hourCount}"
                   data-th-if="${#fields.hasErrors('hourCount')}" class="error" >Error Employee code
@@ -144,13 +144,29 @@
           <label class="control-label" for="name" >Remark :</label >
         </div >
         <div class="col-md-8" >
-          <input id="name" data-th-field="*{remarks}" class="form-control" tabindex="4"
-                 type="text" required />
+          <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea>
           <span id="codeE" data-th-errors="*{remarks}"
                 data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
                             </span >
         </div >
       </div >
+      <!--Sinhala modal button and modal tamil button-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <!--Sinhala modal button -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+          </button >
+
+        </div >
+        <div class="col-md-4" >
+          <!-- modal tamil button -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+          </button >
+        </div >
+      </div >
+
       <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
         <!--Button-->
         <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
@@ -194,8 +210,9 @@
             }
         }
     }
-
-
 </script >
+
+<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 </body >
 </html >

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Thymeleaf Springboot </title >
@@ -11,109 +11,76 @@
   <div data-th-replace="~{employee/employeeDetail :: employeeDetailsFragment}" ></div >
   <div class="row" >
     <div class="col-md-12" >
-      <div class="row" >
+      <div class="container-fluid" data-th-fragment="qualificationDetail" >
+        <div class="row" >
+          <!--Id-->
+          <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="id" >ID :</label >
+            </div >
+            <div class="col-md-8" >
+              <p id="id" data-th-text="${employeeLeaveDetail.id}" ></p >
+            </div >
+          </div >
+          <!--Leave Type -->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="" >Change Reason :</label >
+            </div >
+            <div class="col-md-4" >
 
-        <div class="col-md-12" >
-          <div class="card" >
-            <div class="card-body" >
-              <h4 >Qualification </h4 >
-              <div class="container-fluid" data-th-fragment="qualificationDetail" >
-                <table class="table table-hover table-borderless" >
-                  <tbody >
-                  <tr >
-                    <th >
-                      <label class="form-label " > Id </label ></th >
-                    <td >
-                      <p class="display_detail" data-th-text="${qualificationDetail.id}" ></p >
-                    </td >
-                  </tr >
-
-                  <tr >
-                    <th >
-                      <label class="form-label " > Remark </label ></th >
-
-                    <td ><p class="display_detail" data-th-text="${qualificationDetail.remark}" ></p >
-                    </td >
-                  </tr >
-                  </tbody >
-                </table >
-              </div >
-
+              <p data-th-text="${employeeLeaveDetail.instituteChangeReason}" ></p >
 
             </div >
           </div >
         </div >
-      </div >
-    </div >
-    <div class="container-fluid  text-center" >
-      <div class="col" >
-        <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}" >
-          <table class="table table-hover table-striped" id="myTable" >
-            <thead >
-            <tr >
-              <th > Index</th >
-              <th > Image</th >
-              <th > Employee Id</th >
-              <th > Name</th >
-              <th > Mobile</th >
-              <th > Designation</th >
-              <th > Status</th >
-              <th > Modify</th >
-            </tr >
-            </thead >
-            <tbody >
-            <tr data-th-each="employee, rowCount : ${employees}" >
-              <th data-th-text="${rowCount.count}" ></th >
-              <th >
-                <div class="image" data-th-if="${employee.fileInfo !=null}" >
-                  <img id="img" class="rounded"
-                       style="height:50px; width:50px;border-radius: 1px"
-                       alt="Employee images"
-                       data-th-src="${employee.fileInfo.url}" />
-                </div >
-              </th >
-              <th data-th-text="${employee.code}" ></th >
-              <th data-th-text="${employee.callingName}" ></th >
-              <th data-th-text="${employee.mobileOne}" ></th >
-              <th data-th-text="${employee.designation.designation}" ></th >
-              <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
-              <th >
-                <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >&nbsp;View</a >
-                <a id="employeeEdit" data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm" ><i
-                      class="fa fa-edit" ></i >&nbsp;Edit</a >
-                <a id="employeeRemove" data-th-href="${'/employee/remove/' + employee.id}"
-                   data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm" ><i
-                      class="fa fa-trash" ></i >
-                  Delete</a >
-              </th >
-            </tr >
-            </tbody >
-          </table >
-        </div >
-      </div >
-      <div class="row" data-th-if="${ #lists.isEmpty(employees)}" >
-        <div class="col-sm-12" >
-          <div class="alert alert-warning alert-dismissible fade show" role="alert" >
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
-              <span aria-hidden="true" >&times;</span >
-            </button >
-            <h3 class="text-center text-danger" >
-              <strong >There is no employee upto now please add employee to the system
-                       using add user button.
-              </strong >
-            </h3 >
+
+        <!--start At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="startAt" >Start At :</label >
+          </div >
+          <div class="col-md-8" >
+            <p data-th-text="${employeeLeaveDetail.startAt}" id="startAt" ></p >
           </div >
         </div >
-        <script >
-            /*active boostrap alert - start*/
-            $(".alert").alert();
-            /*active boostrap alert - end*/
-        </script >
+        <!--end At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="endAt" >End At :</label >
+          </div >
+          <div class="col-md-8" >
+            <p data-th-text="${employeeLeaveDetail.endAt}" id="endAt" ></p >
+          </div >
+        </div >
+        <!--Day count and hour count-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" >Day Count :
+              <p id="dayCount"
+                 data-th-text="${employeeLeaveDetail.dayCount}" ></p >
+            </label >
+          </div >
+          <div class="col-md-4" >
+            <label class="control-label" >Hour Count :
+              <p id="hourCount"
+                 data-th-text="${employeeLeaveDetail.hourCount}" ></p >
+            </label >
+          </div >
+        </div >
+        <!--Remark s-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="name" >Remark :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="name" data-th-utext="${employeeLeaveDetail.remarks}" ></p >
+          </div >
+        </div >
       </div >
     </div >
   </div >
 </div >
-<!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
