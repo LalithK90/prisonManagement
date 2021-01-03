@@ -23,6 +23,8 @@ import java.time.LocalDateTime;
 @JsonFilter( "EmployeeInstitute" )
 public class EmployeeInstitute extends AuditEntity {
 
+  private String remarks;
+
 
   @Column( nullable = false )
   private LocalDate startAt;
