@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>institute-detail</title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
 <div class="container-fluid bg-dark form-Border">
@@ -20,7 +20,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <p th:text="${instituteDetail.name}"></p>
+                    <p data-th-text="${instituteDetail.name}"></p>
                 </strong>
             </h2>
         </div>
@@ -43,7 +43,7 @@
                         <label class="control-label" for="id">ID :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="id" th:text="${instituteDetail.id}" class="display_detail"></p>
+                        <p id="id" data-th-text="${instituteDetail.id}" class="display_detail"></p>
                     </div>
                 </div>
                 <!--Prison Type-->
@@ -52,7 +52,7 @@
                         <label class="control-label" for="prisonType">Prison Type :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="prisonType" th:text="${instituteDetail.prisonType.prisonType}"
+                        <p id="prisonType" data-th-text="${instituteDetail.prisonType.prisonType}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <label class="control-label" >Name :</label>
                     </div>
                     <div class="col-md-4">
-                        <p th:text="${instituteDetail.name}"
+                        <p data-th-text="${instituteDetail.name}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                         <label class="control-label" >Land :</label>
                     </div>
                     <div class="col-md-4">
-                        <p th:text="${instituteDetail.land}"
+                        <p data-th-text="${instituteDetail.land}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <label class="control-label" >Email :</label>
                     </div>
                     <div class="col-md-4">
-                        <p th:text="${instituteDetail.email}"
+                        <p data-th-text="${instituteDetail.email}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -101,9 +101,9 @@
 </div>
 
 <!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
 
 </body>
 </html>

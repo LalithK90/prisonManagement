@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
 <div class="container-fluid  form-Border">
@@ -34,7 +34,7 @@
 </div>
 <div class="container-fluid formBorder text-center">
     <div class="col">
-        <div class="col" id="employeeListPresent" th:if="${not #lists.isEmpty(employees)}">
+        <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}">
             <table class="table table-hover table-striped" id="myTable">
                 <thead>
                 <tr>
@@ -49,8 +49,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee, rowCount : ${employees}">
-                    <th th:text="${rowCount.count}"></th>
+                <tr data-th-each="employee, rowCount : ${employees}">
+                    <th data-th-text="${rowCount.count}"></th>
                     <th>
                         <div class="image" data-th-if="${employee.fileInfo !=null}" >
                             <img id="img" class="rounded"
@@ -59,18 +59,21 @@
                                  data-th-src="${employee.fileInfo.url}" />
                         </div >
                     </th>
-                    <th th:text="${employee.code}"></th>
-                    <th th:text="${employee.callingName}"></th>
-                    <th th:text="${employee.mobileOne}"></th>
-                    <th th:text="${employee.designation.designation}"></th>
-                    <th th:text="${employee.employeeStatus.employeeStatus}"></th>
+                    <th data-th-text="${employee.code}"></th>
+                    <th data-th-text="${employee.callingName}"></th>
+                    <th data-th-text="${employee.mobileOne}"></th>
+                    <th data-th-text="${employee.designation.designation}"></th>
+                    <th data-th-text="${employee.employeeStatus.employeeStatus}"></th>
                     <th>
-                        <a th:href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
-                        <a th:href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-                        <a th:href="${'/qualification/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Qualification</a>
-                        <a th:href="${'/employeeLeave/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Leave</a>
-                        <a th:href="${'/employee/remove/' + employee.id}"
-                           th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                        <a data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
+                        <a data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                        <a data-th-href="${'/qualification/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Qualification</a>
+                        <a data-th-href="${'/employeeLeave/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Leave</a>
+                        <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Transfer</a>
+                        <a data-th-href="${'/censure/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Censure</a>
+                        <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Commendation</a>
+                        <a data-th-href="${'/employee/remove/' + employee.id}"
+                           data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
                             Delete</a>
                     </th>
                 </tr>
@@ -78,7 +81,7 @@
             </table>
         </div>
     </div>
-    <div class="row" th:if="${ #lists.isEmpty(employees)}">
+    <div class="row" data-th-if="${ #lists.isEmpty(employees)}">
         <div class="col-sm-12">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -98,9 +101,9 @@
         </script>
     </div>
 </div>
-<div  th:replace="~{fragments/footer :: footerFragment}"></div>
+<div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
 
 </body>
 </html>
