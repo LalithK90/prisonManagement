@@ -69,7 +69,7 @@
       <!--Leave Type -->
       <div class="form-row text-right" >
         <div class="col-md-4" >
-          <label class="control-label" for="" >Leave Type :</label >
+          <label class="control-label" for="id" >Leave Type :</label >
         </div >
         <div class="col-md-4" >
           <div class="custom-control custom-checkbox custom-control-inline "
@@ -120,7 +120,7 @@
         <div class="col-md-4" >
           <label class="control-label" >Day Count :
             <input type="text" class="form-control " id="dayCount"
-                   data-th-field="*{dayCount}" required readonly >
+                   data-th-field="*{dayCount}" required  >
 
             <span data-th-errors="*{dayCount}"
                   data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
@@ -130,7 +130,7 @@
         <div class="col-md-4" >
           <label class="control-label" >Hour Count :
             <input type="text" class="form-control " id="hourCount"
-                   data-th-field="*{hourCount}" required readonly >
+                   data-th-field="*{hourCount}" required  >
 
             <span data-th-errors="*{hourCount}"
                   data-th-if="${#fields.hasErrors('hourCount')}" class="error" >Error Employee code
@@ -194,6 +194,11 @@
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+
+
 <script >
     function dateMatch() {
         let startDateTime = $(`#startAt`).val();
@@ -211,8 +216,5 @@
         }
     }
 </script >
-
-<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
-<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 </body >
 </html >

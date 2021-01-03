@@ -212,7 +212,8 @@ public class EmployeeController {
   }
 
   @GetMapping( value = "/findAll" )
-  public String findAllForm() {
+  public String findAllForm(Model model) {
+    model.addAttribute("employee", new Employee());
     return "employee/findEmployee";
   }
 
@@ -229,6 +230,7 @@ public class EmployeeController {
       model.addAttribute("employees", employees);
     }
 
+    model.addAttribute("employee", new Employee());
     return "employee/findEmployee";
   }
 
