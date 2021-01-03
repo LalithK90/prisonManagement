@@ -211,5 +211,25 @@ public class EmployeeController {
     return "employee/employee-detail";
   }
 
+  @GetMapping( value = "/findAll" )
+  public String findAllForm() {
+    return "employee/findEmployee";
+  }
+
+  @PostMapping( value = "/findAll" )
+  public String findAll(@ModelAttribute( "employee" ) Employee employee, Model model) {
+
+    List< Employee > employees = employeeService.search(employee);
+
+    if(employees ==null) {
+      model.addAttribute("employeeNotFound", "There is not employee in the system according to the provided details" +
+          " or that employee already be a user in the system" +
+          " \n Could you please search again !!");
+    }else {
+      model.addAttribute("employees", employees);
+    }
+
+    return "employee/findEmployee";
+  }
 
 }
