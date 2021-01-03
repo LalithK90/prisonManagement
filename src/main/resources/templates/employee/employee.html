@@ -9,7 +9,7 @@
 
 <!--heading Area-->
 <div class="container-fluid  form-Border">
-    <div class="row text-center formManagement border-info">
+    <div class="row text-center ">
         <div class="col">
             <a href="/home" id="btnHome" class="btn btn-outline-info">
                 &nbsp;Back To Home&nbsp;
@@ -71,7 +71,7 @@
                         <a data-th-href="${'/employeeLeave/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Add Leave</a>
                         <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Transfer</a>
                         <a data-th-href="${'/censure/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Censure</a>
-                        <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Commendation</a>
+                        <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;Commendation</a>
                         <a data-th-href="${'/employee/remove/' + employee.id}"
                            data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
                             Delete</a>

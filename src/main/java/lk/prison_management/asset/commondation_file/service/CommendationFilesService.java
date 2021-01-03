@@ -65,7 +65,7 @@ public class CommendationFilesService {
         return null;
     }
 
-    public CommendationFiles findByEmployee(Commendation commendation) {
+    public CommendationFiles findByCommendation(Commendation commendation) {
         return commendationFilesDao.findByCommendation(commendation);
     }
 }

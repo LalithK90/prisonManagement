@@ -1,125 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
-<head data-th-replace="~{fragments/header :: headerFragment}">
-    <meta charset="UTF-8">
-    <title>addOffence</title>
-</head>
-<body>
-<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >addOffence</title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--Heading Area-->
-<div class="container-fluid  ">
-    <div class="row text-center formManagement border-info">
-        <!--View list Button-->
-        <div class="col">
-            <a class="btn btn-primary" href="/commendation">
-                <i class="fa fa-list" style="font-size: 20px"></i>&nbsp;&nbsp;View List
-            </a>
-        </div>
-        <!--Form Name-->
-        <div class="col">
-            <h2 class="text-light text-center">
-                <strong>
-                    <span data-th-text="${addStatus==true?'Add New Commendation':'Update Commendation Details'}"></span>
-                </strong>
-            </h2>
-        </div>
-        <!--Home Button-->
-        <div class="col">
-            <a class="btn btn-primary" href="/home">
-                <i class="fa fa-home" style="font-size: 20px"></i> &nbsp;&nbsp;Home
-            </a>
-        </div>
-    </div>
-</div>
-<!--Form Content-->
-<div class="container-fluid bg-info ">
-    <div id="accordianId" role="tablist" aria-multiselectable="true" >
-        <div class="card" >
-            <div class="card-header" role="tab" id="section1HeaderId" >
-                <h5 class="mb-0" >
-                    <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true"
-                       aria-controls="section1ContentId" >
-                        Employee Details
-                    </a >
-                </h5 >
-            </div >
-            <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
-                <div class="card-body" >
-                    <div data-th-replace="~{employee/employee-detail :: employeeDetailsFragment}" ></div >
-                </div >
-            </div >
-        </div >
+<div class="container-fluid  " >
+  <div class="row text-center " >
+    <!--View list Button-->
+    <div class="col" >
+      <a class="btn btn-primary" href="/commendation" >
+        <i class="fa fa-list" style="font-size: 20px" ></i >&nbsp;&nbsp;View List
+      </a >
     </div >
+    <!--Form Name-->
+    <div class="col" >
+      <h2 class="text-light text-center" >
+        <strong >
+          <span data-th-text="${addStatus==true?'Add New Commendation':'Update Commendation Details'}" ></span >
+        </strong >
+      </h2 >
+    </div >
+    <!--Home Button-->
+    <div class="col" >
+      <a class="btn btn-primary" href="/home" >
+        <i class="fa fa-home" style="font-size: 20px" ></i > &nbsp;&nbsp;Home
+      </a >
+    </div >
+  </div >
+</div >
+<!--Form Content-->
+<div class="container-fluid bg-info " >
+  <div id="accordianId" role="tablist" aria-multiselectable="true" >
+    <div class="card" >
+      <div class="card-header" role="tab" id="section1HeaderId" >
+        <h5 class="mb-0" >
+          <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true"
+             aria-controls="section1ContentId" >
+            Employee Details
+          </a >
+        </h5 >
+      </div >
+      <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
+        <div class="card-body" >
+          <div data-th-replace="~{employee/employee-detail :: employeeDetailsFragment}" ></div >
+        </div >
+      </div >
+    </div >
+  </div >
 
-    <div class="col-sm-12 flex-column ">
-        <form class="form-horizontal" data-th-action="${addStatus==true?'/commendation/save':'/commendation/update'}"
-              data-th-object="${commendation}"
-              method="POST">
-            <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
-                                    readonly />
-            <div class="row">
-                <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
-                    <!--Id-->
-                    <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text"/>
-                    <!--Main Commendation -->
-                    <div class="form-row text-right">
-                        <div class="col-md-4">
-                            <label class="control-label" for="mainOffence">Commendation Type :</label>
-                        </div>
-                        <div class="col-md-4">
-                            <select class="form-control" data-th-field="*{offenceType}" id="mainOffence" required
-                                    style="font-size: large" tabindex="4">
-                                <option value="">Please select</option>
-                                <option data-th-each="offenceType : ${offenceTypes}"
-                                        data-th-text="${offenceType.offenceType}"
-                                        data-th-value="${offenceType}"></option>
-                            </select>
-                        </div>
-                    </div>
-                    <!--Name-->
-                    <div class="form-row text-right">
-                        <div class="col-md-4">
-                            <label class="control-label" data-th-for="${'name'}">Name :</label>
-                        </div>
-                        <div class="col-md-4">
-                            <input class="form-control" data-th-field="*{name}" required tabindex="4" type="text"/>
-                            <span class="error"
-                                  data-th-errors="*{name}" data-th-if="${#fields.hasErrors('name')}">Error Name</span>
-                        </div>
-                    </div>
-                    <!--Button-->
-                    <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp;&nbsp;Back
-                        </button>
-                        <button class="btn btn-success ml-5" tabindex="21" type="submit">
-                            <i class="fa fa-save " style="font-size: 20px"></i>&nbsp;&nbsp;<span
-                                data-th-text="${addStatus==true?'Save': 'Update'}"
-                                id="submit"></span>
-                        </button>
-                        <button class="btn btn-warning ml-5" tabindex="21" type="reset">
-                            <i class="far fa-times-circle" style="font-size: 20px"></i>&nbsp;&nbsp;Cancel
-                        </button>
-                    </div>
-                    <!--Error-->
-                    <div class="form-row">
-                        <label data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '"
-                               id="errorLabel">Errors: </label>
-                        <ul>
-                            <li class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"
-                                id="error"></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+  <div class="col-sm-12 flex-column " >
+    <form class="form-horizontal" data-th-action="${addStatus==true?'/commendation/save':'/commendation/update'}"
+          data-th-object="${commendation}"
+          method="POST" >
+      <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
+             readonly />
+      <div class="row" >
+        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+          <!--Id-->
+          <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text" />
+          <!--Main Commendation -->
+          <!--        <div class="form-row text-right">
+                      <div class="col-md-4">
+                          <label class="control-label" for="mainOffence">Commendation Type :</label>
+                      </div>
+                      <div class="col-md-4">
+                          <select class="form-control" data-th-field="*{offenceType}" id="mainOffence" required
+                                  style="font-size: large" tabindex="4">
+                              <option value="">Please select</option>
+                              <option data-th-each="offenceType : ${offenceTypes}"
+                                      data-th-text="${offenceType.offenceType}"
+                                      data-th-value="${offenceType}"></option>
+                          </select>
+                      </div>
+                  </div>-->
+          <!--Name-->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" data-th-for="${'description'}" >Description :</label >
+            </div >
+            <div class="col-md-4" >
+              <textarea class="form-control" data-th-field="*{description}" required rows="4" ></textarea >
+              <span class="error"
+                    data-th-errors="*{name}" data-th-if="${#fields.hasErrors('description')}" >Error Name</span >
+            </div >
+          </div >
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <!--Sinhala modal button -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+              </button >
+
+            </div >
+            <div class="col-md-4" >
+              <!-- modal tamil button -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+              </button >
+            </div >
+          </div >
+          <!--Image-->
+          <div class="form-row text-right" >
+            <div class="form-row " >
+              <div class="col-md-3 mr-5" >
+                <label class="control-label" >Image</label >
+                <input type="file" name="file" id="imgUpload"
+                       accept="image/png, image/jpeg" />
+              </div >
+              <div class="col-md-3" ></div >
+              <div class="col-md-3 ml-5" >
+                <!--photo details-->
+                <img class="img-fluid ml-5" data-th-if="${addStatus==false && file!=null}" data-th-src="${file.url}"
+                     id="image" alt=""
+                     style="height: 100px; width: 100%;" >
+                <img class="img-fluid ml-5" data-th-if="${addStatus==true}" src="" id="image" alt=""
+                     style="height: 100px; width: 100%" >
+              </div >
+            </div >
+          </div >
+
+          <!--Button-->
+          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+            <button class="btn btn-primary" type="button" >
+              <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
+            </button >
+            <button class="btn btn-success ml-5" tabindex="21" type="submit" >
+              <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
+                  data-th-text="${addStatus==true?'Save': 'Update'}"
+                  id="submit" ></span >
+            </button >
+            <button class="btn btn-warning ml-5" tabindex="21" type="reset" >
+              <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Cancel
+            </button >
+          </div >
+          <!--Error-->
+          <div class="form-row" >
+            <label data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '"
+                   id="errorLabel" >Errors: </label >
+            <ul >
+              <li class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"
+                  id="error" ></li >
+            </ul >
+          </div >
+        </div >
+      </div >
+    </form >
+  </div >
+</div >
 <!--footer include-->
- <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
-<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+    $(document).ready(function () {
+        imageSrcAttributeCheck();
+    });
 
-</body>
-</html>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    //display selected image
+    $("#imgUpload").change(function () {
+        $("#image").toggle('show');
+        readURL(this);
+
+    });
+
+    //image is not -> showing area hide
+    function imageSrcAttributeCheck() {
+        let attribute = $("#image").attr("src");
+        if (attribute === '') {
+            $("#image").toggle('hide');
+        }
+    }
+</script >
+
+<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+
+</body >
+</html >

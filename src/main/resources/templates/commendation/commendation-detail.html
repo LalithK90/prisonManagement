@@ -9,7 +9,7 @@
 
 <!--heading Area-->
 <div class="container-fluid  ">
-    <div class="row text-center formManagement border-info">
+    <div class="row text-center ">
         <!--View List Button-->
         <div class="col">
             <a class="btn btn-primary" href="/commendation">
@@ -50,11 +50,11 @@
                 <!--Prison Type-->
                 <div class="form-row text-right">
                     <div class="col-md-4">
-                        <label class="control-label" for="mainCategory">Offence Type :</label>
+                        <label class="control-label" for="mainCategory">Ref Number :</label>
                     </div>
                     <div class="col-md-4">
                         <p class="display_detail" id="mainCategory"
-                           data-th-text="${commendationDetail.getOffenceType.offenceType}"></p>
+                           data-th-text="${commendationDetail.refNumber}"></p>
                     </div>
                 </div>
                 <!--Name-->
@@ -64,10 +64,40 @@
                     </div>
                     <div class="col-md-4">
                         <p class="display_detail"
-                           data-th-utext="${commendationDetail.name}"></p>
+                           data-th-utext="${commendationDetail.description}"></p>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <!--images-->
+    <div class="form-group col-md-12 col-sm-12 text-left flex-column ">
+        <div class="col" id="photoDetails">
+            <div>
+                <label class="control-label ">Photo Details : </label>
+            </div>
+            <div class="row">
+                <div class="col" id="filesList" data-th-each="file, rowStat: ${files}">
+                    <div class="col">
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <img id="img" class="rounded"
+                                         style="height: 150px; widdata-th- 150px; border-radius: 10px"
+                                         alt="Employee images" data-th-src="${file.url}"/>
+                                </div>
+                                <div class="card-footer bg-secondary text-light text-center">
+                                    <p id="imgName" data-th-text="${file.filename}"></p>
+                                    <span> Uploaded Date :
+                                            <p id="imgCreateAt" data-th-text="${{file.createAt}}"></p>
+                                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
