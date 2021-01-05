@@ -218,7 +218,7 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <img id="img" class="rounded"
-                                         style="height: 150px; widdata-th- 150px; border-radius: 10px"
+                                         style="height: 150px; width:150px; border-radius: 10px"
                                          alt="Employee images" data-th-src="${file.url}"/>
                                 </div>
                                 <div class="card-footer bg-secondary text-light text-center">
@@ -234,6 +234,28 @@
             </div>
         </div>
     </div>
+    <!--Employee Institute Details-->
+    <div class="container-fluid" data-th-if="${not #lists.isEmpty(employeeDetail.employeeInstitutes)}" data-th-each="employeeInstituteDetail : ${employeeDetail.employeeInstitutes}">
+        <div data-th-replace="~{employeeInstitute/employeeInstitute-detail :: employeeInstituteDetailsFragment}"></div>
+    </div>
+    <!--Employee Leave-->
+    <div class="container-fluid" data-th-if="${not #lists.isEmpty(employeeDetail.employeeLeaves)}" data-th-each="employeeLeaveDetail : ${employeeDetail.employeeLeaves}">
+        <div data-th-replace="~{employeeLeave/employeeLeave-detail :: employeeLeaveDetailsFragment}"></div>
+    </div>
+    <!--Qualification-->
+    <div class="container-fluid" data-th-if="${not #lists.isEmpty(employeeDetail.qualifications)}" data-th-each="qualificationDetail : ${employeeDetail.qualifications}">
+        <div data-th-replace="~{qualification/qualification-detail :: qualificationDetailsFragment}"></div>
+    </div>
+    <!--Commendations-->
+    <div class="container-fluid" data-th-if="${not #lists.isEmpty(employeeDetail.commendations)}" data-th-each="commendationDetail : ${employeeDetail.commendations}">
+        <div data-th-replace="~{commendation/commendation-detail :: commendationDetailsFragment}"></div>
+    </div>
+    <!--Censure-->
+    <div class="container-fluid" data-th-if="${not #lists.isEmpty(employeeDetail.censures)}" data-th-each="censureDetail : ${employeeDetail.censures}">
+        <div data-th-replace="~{censure/censure-detail :: censureDetailsFragment}"></div>
+    </div>
+
+    <!--Button-->
     <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
         <a href="/employee">
             <button class="btn btn-outline-secondary" type="button" tabindex="10">
@@ -241,7 +263,6 @@
             </button>
         </a>
     </div>
-    <br/>
 </div>
 
 <div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
