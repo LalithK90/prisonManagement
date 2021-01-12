@@ -8,10 +8,10 @@ import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee.service.EmployeeService;
-import lk.prison_management.asset.user_management.entity.Role;
-import lk.prison_management.asset.user_management.entity.User;
-import lk.prison_management.asset.user_management.service.RoleService;
-import lk.prison_management.asset.user_management.service.UserService;
+import lk.prison_management.asset.role.role.Role;
+import lk.prison_management.asset.user.entity.User;
+import lk.prison_management.asset.role.service.RoleService;
+import lk.prison_management.asset.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +46,7 @@ public class ApplicationCreateRestController {
 
 //Employee
         Employee employee = new Employee();
-        employee.setPayRoleNumber("11111111");
+        employee.setWopNumber("11111111");
         employee.setName("Admin User");
         employee.setCallingName("Admin");
         employee.setName("908670000V");
@@ -54,7 +54,7 @@ public class ApplicationCreateRestController {
         employee.setTitle(Title.DR);
         employee.setGender(Gender.MALE);
         employee.setBloodGroup(BloodGroup.AP);
-        employee.setDesignation(Designation.ACE);
+        employee.setDesignation(Designation.CIR);
         employee.setCivilStatus(CivilStatus.UNMARRIED);
         employee.setEmployeeStatus(EmployeeStatus.WORKING);
         employee.setDateOfBirth(LocalDate.now().minusYears(18));

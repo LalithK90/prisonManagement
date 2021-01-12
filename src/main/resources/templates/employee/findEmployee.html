@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+
+<!--heading Area-->
+<div class="container-fluid " >
+  <div class="row text-center" >
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Search Employee
+        </strong >
+      </h4 >
+    </div >
+  </div >
+</div >
+
+<!--Employee find-->
+<div class="container-fluid bg-dark " id="employeeFindForm" >
+  <div class="col-sm-12 flex-column " >
+    <form id="form" method="POST" data-th-action="${'/employee/findAll'}" data-th-object="${employee}"
+          enctype="multipart/form-data" >
+      <div class="form-row" >
+        <div class="col-5 flex-column" >
+          <div class="form-group" >
+            <div class="col-4" >
+              <label class="control-label" for="selectParameter" >Parameter :</label >
+            </div >
+            <div class="col-8" >
+              <select id="selectParameter" class="form-control" tabindex="1" required >
+                <option value="" >Please select</option >
+                <option value="name" >Name</option >
+                <option value="nic" >NIC Number</option >
+                <option value="payRoleNumber" >Pay Role Number</option >
+                <option value="departmentIdNumber" >WOP Number</option >
+              </select >
+            </div >
+          </div >
+        </div >
+        <div class="col-4 flex-column" >
+          <div class="form-group" >
+            <div class="col-5" >
+              <label class="control-label" for="valueEmployee" >Value :</label >
+            </div >
+            <div class="col-7" >
+              <input id="valueEmployee" tabindex="2" class="form-control" type="text" minlength="3"
+                     required
+                     autofocus />
+            </div >
+          </div >
+        </div >
+        <div class="col-3 flex-column" >
+          <div class="form-group" >
+            <div class="" >
+              <div class="col-2" >
+                <label class="control-label" ></label >
+              </div >
+              <div class="col-10 text-left" id="btnSearchEmployee" >
+                <button class="btn btn-success" tabindex="3" type="submit" >
+                  <i class="fa fa-search " style="font-size: 20px" ></i >&nbsp; &nbsp;Search
+                </button >
+              </div >
+            </div >
+          </div >
+        </div >
+      </div >
+    </form >
+  </div >
+</div >
+<div class="container-fluid  text-center" >
+  <div class="col" >
+    <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}" >
+      <table class="table table-hover table-striped" id="myTable" >
+        <thead >
+        <tr >
+          <th > Index</th >
+          <th > Image</th >
+          <th > Calling Name</th >
+          <th > Status</th >
+          <th > Modify</th >
+        </tr >
+        </thead >
+        <tbody >
+        <tr data-th-each="employee, rowCount : ${employees}" >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th >
+            <div class="image" data-th-if="${employee.fileInfo !=null}" >
+              <img id="img" class="rounded"
+                   style="height:50px; width:50px; border-radius: 1px"
+                   alt="Employee images"
+                   data-th-src="${employee.fileInfo.url}" />
+            </div >
+          </th >
+          <th data-th-text="${employee.callingName}" ></th >
+          <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
+          <th >
+            <a data-th-href="${'/employee/' + employee.id}" class="btn btn-success btn-sm" >&nbsp;View</a >
+            <br/>
+            <a data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-success btn-sm" ><i
+                  class="fa fa-edit" ></i >&nbsp;Edit</a >
+            <br/>
+            <a data-th-href="${'/qualification/add/' + employee.id}" class="btn btn-success btn-sm" ><i
+                  class="fa fa-edit" ></i >&nbsp;Add Qualification</a >
+            <br/>
+            <a data-th-href="${'/employeeLeave/add/' + employee.id}" class="btn btn-success btn-sm" ><i
+                  class="fa fa-edit" ></i >&nbsp;Add Leave</a >
+            <br/>
+            <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-success btn-sm" ><i
+                  class="fa fa-edit" ></i >&nbsp;Transfer</a >
+            <br/>
+            <a data-th-href="${'/censure/add/' + employee.id}" class="btn btn-success btn-sm" ><i
+                  class="fa fa-edit" ></i >&nbsp;Censure</a >
+            <br/>
+            <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-success btn-sm" ><i
+                  class="fa fa-edit" ></i >&nbsp;Commendation</a >
+            <br/>
+            <a data-th-href="${'/employee/remove/' + employee.id}"
+               data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm" ><i
+                  class="fa fa-trash" ></i >
+              Delete</a >
+          </th >
+        </tr >
+        </tbody >
+      </table >
+    </div >
+  </div >
+</div >
+
+<!--Employee not fount message-->
+<div data-th-if="${#lists.isEmpty(employees)}"
+     class="alert alert-warning alert-dismissible fade show text-center" role="alert" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+    <span aria-hidden="true" >&times;</span >
+  </button >
+  <strong ><span id="employeeNotFound" data-th-text="${employeeNotFound}" ></span ></strong >
+</div >
+
+
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+<script >
+    $(".alert").alert();
+</script >
+</body >
+</html >

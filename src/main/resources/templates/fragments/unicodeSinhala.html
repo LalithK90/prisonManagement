@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
-<div class="container-fluid" onload="javascript:txtBox.box.focus();" th:fragment="unicodeSinhalaFragment">
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
+<div class="container-fluid" onload="javascript:txtBox.box.focus();" data-th-fragment="unicodeSinhalaFragment">
 <!--
     &lt;!&ndash;Sinhala modal button &ndash;&gt;
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl"><i
@@ -31,11 +31,11 @@
                 <div class="modal-body">
                     <!--Translator content-->
                     <div class="container-fluid form-row">
-                        <div class="col-6 bg-dark formBorder form-group">
+                        <div class="col-6   form-group">
                             <form name="txtBox" id="txtBox" class="form">
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <label for="singlish" class=" float-left control-label">Transliterated (SinGlish
+                                        <label for="singlish" class="h2 float-left control-label">Transliterated (SinGlish
                                                                                                 Scheme)</label>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <div class="form-row">
                                         <div class="container-fluid">
-                                            <label for="uni" class="col-6 float-left control-label">Unicode
+                                            <label for="uni" class="col-6 h2 float-left control-label">Unicode
                                                                                                     (යුනිකෝඩ්)</label>
                                         </div>
                                         <div class="container-fluid">
@@ -69,7 +69,7 @@
                             </form>
                         </div>
                         <!--Sinhala unicode table - schema -->
-                        <div id="scheme" class="bg-dark formBorder form-group col-6">
+                        <div id="scheme" class="bg-dark  form-group col-6">
                             <table>
                                 <tr>
                                     <td rowspan="5" style="width:10px;"></td>
@@ -1701,9 +1701,9 @@
 </div>
 
 <!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 
 </body>
 </html>

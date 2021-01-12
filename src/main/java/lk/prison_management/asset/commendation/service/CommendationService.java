@@ -42,4 +42,8 @@ public class CommendationService implements AbstractService< Commendation, Integ
         Example< Commendation > instituteExample = Example.of(commendation, matcher);
         return commendationDao.findAll(instituteExample);
     }
+
+  public Commendation lastCommendation() {
+  return commendationDao.findFirstByOrderByIdDesc();
+    }
 }

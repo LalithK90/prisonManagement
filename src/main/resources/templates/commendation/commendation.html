@@ -8,12 +8,11 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--Heading Area-->
-<div class="container-fluid bg-dark form-Border">
-    <div class="row text-center formManagement border-info">
+<div class="container-fluid  ">
+    <div class="row text-center ">
         <!-- New Institute Button-->
-        <div class="col">
-            <a class="btn btn-success" href="/commendation/add"><i class="fa fa-user-plus" style="font-size: 20px"></i>&nbsp;&nbsp;New</a>&nbsp;
-        </div>
+        <a class="btn btn-info" href="/employee/findAll" ><i class="fa fa-plus" ></i >
+            &nbsp;Add New</a >
         <!-- List Name-->
         <div class="col">
             <h2 class="text-light text-center">
@@ -32,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid bg-info formBorder text-center">
+<div class="container-fluid bg-info  text-center">
     <!--Table view-->
     <div class="col">
         <div class="col" id="instituteListPresent" data-th-if="${not #lists.isEmpty(commendations)}">
@@ -40,7 +39,8 @@
                 <thead>
                     <tr>
                         <th> Index</th>
-                        <th> Type</th>
+                        <th> Employee Name</th>
+                        <th> Ref Number</th>
                         <th> Description</th>
                         <th> Modify</th>
                     </tr>
@@ -48,10 +48,11 @@
                 <tbody>
                     <tr data-th-each="commendation, rowCount : ${commendations}">
                         <th data-th-text="${rowCount.count}"></th>
-                        <th data-th-text="${commendation.offenceType.offenceType}"></th>
-                        <th data-th-text="${commendation.name}"></th>
+                        <th data-th-text="${commendation.employee.name}"></th>
+                        <th data-th-text="${commendation.refNumber}"></th>
+                        <th data-th-utext="${commendation.description}"></th>
                         <th>
-                            <a  data-th-href="${'/commendation/edit/' + commendation.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
+                            <a  data-th-href="${'/commendation/view/' + commendation.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
                             <a  data-th-href="${'/commendation/remove/' + commendation.id}" class="btn btn-danger btn-sm">
                              <!-- data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
                         </th>
@@ -72,17 +73,17 @@
                 </h3>
             </div>
         </div>
-        <script>
-            /*active boostrap alert - start*/
-            $(".alert").alert();
-            /*active boostrap alert - end*/
-        </script>
     </div>
 </div>
 <!--footer include-->
-<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
+<script>
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script>
 
 </body>
 </html>

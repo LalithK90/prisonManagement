@@ -1,14 +1,14 @@
 package lk.prison_management.asset.employee.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.prison_management.asset.common_asset.model.enums.BloodGroup;
-import lk.prison_management.asset.common_asset.model.enums.CivilStatus;
-import lk.prison_management.asset.common_asset.model.enums.Gender;
-import lk.prison_management.asset.common_asset.model.enums.Title;
+import lk.prison_management.asset.censure.entitiy.Censure;
+import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.common_asset.model.FileInfo;
+import lk.prison_management.asset.common_asset.model.enums.*;
 import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
+import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
+import lk.prison_management.asset.employee_leave.entity.EmployeeLeave;
 import lk.prison_management.asset.qualification.entity.Qualification;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -21,78 +21,96 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("Employee")
+@JsonFilter( "Employee" )
 public class Employee extends AuditEntity {
 
-    @Column(unique = true)
-    private String payRoleNumber;
+  @Column( unique = true )
+  private String code;
 
-    @Size(min = 5, message = "Your name cannot be accepted")
-    private String name;
+  @Column( unique = true )
+  private String wopNumber;
 
-    @Size(min = 5, message = "At least 5 characters should be included calling name")
-    private String callingName;
+  @Size( min = 5, message = "Your name cannot be accepted" )
+  private String name;
 
-    @Size(max = 12, min = 10, message = "NIC number is contained numbers between 9 and X/V or 12 ")
-    @Column(unique = true)
-    private String nic;
+  @Size( min = 5, message = "At least 5 characters should be included calling name" )
+  private String callingName;
 
-    @Column(unique = true)
-    private String departmentIdNumber;
+  @Size( max = 12, min = 10, message = "NIC number is contained numbers between 9 and X/V or 12 " )
+  @Column( unique = true )
+  private String nic;
 
-    @Size(max = 10, message = "Mobile number length should be contained 10 and 9")
-    private String mobileOne;
+  @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
+  private String mobileOne;
 
-    private String mobileTwo;
+  @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
+  private String mobileTwo;
 
-    private String land;
+  @Size( max = 10, message = "Phone number length should be contained 10 and 9" )
+  private String land;
 
-    @Column(unique = true)
-    private String email;
+  @Column( unique = true )
+  private String email;
 
-    @Column(unique = true)
-    private String officeEmail;
+  @Column( unique = true )
+  private String officeEmail;
 
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255)
-    private String address;
+  @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
+  private String address;
 
-    @Enumerated(EnumType.STRING)
-    private Title title;
+  @Enumerated( EnumType.STRING )
+  private Title title;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+  @Enumerated( EnumType.STRING )
+  private Gender gender;
 
-    @Enumerated(EnumType.STRING)
-    private BloodGroup bloodGroup;
+  @Enumerated( EnumType.STRING )
+  private Designation designation;
 
-    @Enumerated(EnumType.STRING)
-    private Designation designation;
+  @Enumerated( EnumType.STRING )
+  private CivilStatus civilStatus;
 
-    @Enumerated(EnumType.STRING)
-    private CivilStatus civilStatus;
+  @Enumerated( EnumType.STRING )
+  private EmployeeStatus employeeStatus;
 
-    @Enumerated(EnumType.STRING)
-    private EmployeeStatus employeeStatus;
+  @Enumerated( EnumType.STRING )
+  private BloodGroup bloodGroup;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfBirth;
+  @Enumerated( EnumType.STRING )
+  private LiveOrDead liveOrDead;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfAssignment;
+  @DateTimeFormat( pattern = "yyyy-MM-dd" )
+  private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "employee")
-    private List< Qualification > qualifications;
+  @DateTimeFormat( pattern = "yyyy-MM-dd" )
+  private LocalDate dateOfAssignment;
 
-    @Transient
-    private MultipartFile file;
+  @OneToMany( mappedBy = "employee" )
+  private List< EmployeeInstitute > employeeInstitutes;
+
+  @OneToMany( mappedBy = "employee" )
+  private List< EmployeeLeave > employeeLeaves;
+
+  @OneToMany( mappedBy = "employee" )
+  private List< Qualification > qualifications;
+
+  @OneToMany(mappedBy = "employee")
+  private List< Commendation > commendations;
+
+  @OneToMany(mappedBy = "employee")
+  private List< Censure > censures;
+
+  @Transient
+  private MultipartFile file;
+
+  @Transient
+  private FileInfo fileInfo;
 
 }

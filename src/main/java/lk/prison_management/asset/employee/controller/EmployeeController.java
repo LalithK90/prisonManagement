@@ -1,19 +1,19 @@
 package lk.prison_management.asset.employee.controller;
 
-import lk.prison_management.asset.common_asset.model.enums.BloodGroup;
-import lk.prison_management.asset.common_asset.model.enums.CivilStatus;
-import lk.prison_management.asset.common_asset.model.enums.Gender;
-import lk.prison_management.asset.common_asset.model.enums.Title;
+
+
+import lk.prison_management.asset.common_asset.model.enums.*;
 import lk.prison_management.asset.common_asset.service.CommonService;
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.employee.entity.EmployeeFiles;
+import lk.prison_management.asset.employee_file.entity.EmployeeFiles;
 import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
-import lk.prison_management.asset.employee.service.EmployeeFilesService;
+import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.employee.service.EmployeeService;
-import lk.prison_management.asset.user_management.entity.User;
-import lk.prison_management.asset.user_management.service.UserService;
+import lk.prison_management.asset.user.entity.User;
+import lk.prison_management.asset.user.service.UserService;
 import lk.prison_management.util.service.DateTimeAgeService;
+import lk.prison_management.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +25,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
-@RequestMapping( "/employee" )
 @Controller
+@RequestMapping( "/employee" )
 public class EmployeeController {
   private final EmployeeService employeeService;
   private final EmployeeFilesService employeeFilesService;
@@ -36,16 +39,19 @@ public class EmployeeController {
   private final CommonService commonService;
   private final UserService userService;
 
+  private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
+
   @Autowired
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
-                            DateTimeAgeService dateTimeAgeService, CommonService commonService,
-                            UserService userService) {
+                            DateTimeAgeService dateTimeAgeService,
+                            CommonService commonService, UserService userService,
+                             MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
-
     this.dateTimeAgeService = dateTimeAgeService;
     this.commonService = commonService;
     this.userService = userService;
+    this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
 //----> Employee details management - start <----//
 
@@ -53,11 +59,10 @@ public class EmployeeController {
   private String commonThings(Model model) {
     model.addAttribute("title", Title.values());
     model.addAttribute("gender", Gender.values());
-    model.addAttribute("designation", Designation.values());
-    model.addAttribute("bloodGroup", BloodGroup.values());
     model.addAttribute("civilStatus", CivilStatus.values());
     model.addAttribute("employeeStatus", EmployeeStatus.values());
-
+    model.addAttribute("designation", Designation.values());
+    model.addAttribute("bloodGroup", BloodGroup.values());
     return "employee/addEmployee";
   }
 
@@ -73,7 +78,19 @@ public class EmployeeController {
   //Send all employee data
   @RequestMapping
   public String employeePage(Model model) {
-    model.addAttribute("employees", employeeService.findAll());
+    List< Employee > employees = new ArrayList<>();
+    for ( Employee employee : employeeService.findAll()
+        .stream()
+        .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+        .collect(Collectors.toList())
+    ) {
+      employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
+      employees.add(employee);
+    }
+    /*  Employee employee = employeeService.findById(id);*/
+    model.addAttribute("employees", employees);
+    model.addAttribute("contendHeader", "Employee");
+//        /* model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));*/
     return "employee/employee";
   }
 
@@ -83,6 +100,7 @@ public class EmployeeController {
     Employee employee = employeeService.findById(id);
     model.addAttribute("employeeDetail", employee);
     model.addAttribute("addStatus", false);
+    model.addAttribute("contendHeader", "Employee View Details");
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
     return "employee/employee-detail";
   }
@@ -92,9 +110,9 @@ public class EmployeeController {
   public String editEmployeeForm(@PathVariable( "id" ) Integer id, Model model) {
     Employee employee = employeeService.findById(id);
     model.addAttribute("employee", employee);
-    model.addAttribute("newEmployee", employee.getPayRoleNumber());
     model.addAttribute("addStatus", false);
-    model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
+    model.addAttribute("contendHeader", "Employee Edit Details");
+    model.addAttribute("file", employeeFilesService.employeeFileDownloadLinks(employee));
     return commonThings(model);
   }
 
@@ -103,25 +121,36 @@ public class EmployeeController {
   public String employeeAddForm(Model model) {
     model.addAttribute("addStatus", true);
     model.addAttribute("employee", new Employee());
+    model.addAttribute("contendHeader", "Employee Add Members");
     return commonThings(model);
   }
 
   //Employee add and update
-  @PostMapping( value = {"/add", "/update"} )
+  @PostMapping( value = {"/save", "/update"} )
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
-
     if ( result.hasErrors() ) {
       model.addAttribute("addStatus", true);
       model.addAttribute("employee", employee);
       return commonThings(model);
     }
+
     employee.setMobileOne(commonService.commonMobileNumberLengthValidator(employee.getMobileOne()));
     employee.setMobileTwo(commonService.commonMobileNumberLengthValidator(employee.getMobileTwo()));
     employee.setLand(commonService.commonMobileNumberLengthValidator(employee.getLand()));
-    //after save employee files and save employee
-    Employee employeeDB = employeeService.persist(employee);
 
+    if ( employee.getId() == null ) {
+      Employee lastEmployee = employeeService.lastEmployee();
+      if ( lastEmployee.getCode() == null ) {
+        employee.setCode("SLPE" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
+      } else {
+        employee.setCode("SLPE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
+      }
+    }
+
+
+    //after save employee files and save employee
+    Employee employeeSaved = employeeService.persist(employee);
     //if employee state is not working he or she cannot access to the system
     if ( !employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {
       User user = userService.findUserByEmployee(employeeService.findByNic(employee.getNic()));
@@ -131,12 +160,11 @@ public class EmployeeController {
         userService.persist(user);
       }
     }
+
     try {
-
-      //save employee img file
-
-      if ( employee.getFile() != null ) {
-        EmployeeFiles employeeFiles = employeeFilesService.findByEmployee(employeeDB);
+      //save employee images file
+      if ( employee.getFile().getOriginalFilename() != null ) {
+        EmployeeFiles employeeFiles = employeeFilesService.findByEmployee(employeeSaved);
         if ( employeeFiles != null ) {
           // update new contents
           employeeFiles.setPic(employee.getFile().getBytes());
@@ -151,20 +179,25 @@ public class EmployeeController {
         }
         employeeFilesService.persist(employeeFiles);
       }
-
+      employee = employeeSaved;
       return "redirect:/employee";
 
     } catch ( Exception e ) {
       ObjectError error = new ObjectError("employee",
                                           "There is already in the system. <br>System message -->" + e.toString());
       result.addError(error);
-      model.addAttribute("addStatus", true);
+      if ( employee.getId() != null ) {
+        model.addAttribute("addStatus", true);
+        System.out.println("id is null");
+      } else {
+        model.addAttribute("addStatus", false);
+      }
       model.addAttribute("employee", employee);
       return commonThings(model);
     }
   }
 
-  //If need to employee {but not applicable for this }
+
   @GetMapping( value = "/remove/{id}" )
   public String removeEmployee(@PathVariable Integer id) {
     employeeService.delete(id);
@@ -178,172 +211,27 @@ public class EmployeeController {
     return "employee/employee-detail";
   }
 
-//----> Employee details management - end <----//
-  //````````````````````````````````````````````````````````````````````````````//
-//----> EmployeeWorkingPlace - details management - start <----//
-
-  //Send form to add working place before find employee
-  @GetMapping( value = "/workingPlace" )
-  public String addEmployeeWorkingPlaceForm(Model model) {
+  @GetMapping( value = "/findAll" )
+  public String findAllForm(Model model) {
     model.addAttribute("employee", new Employee());
-    model.addAttribute("employeeDetailShow", false);
-    return "employeeWorkingPlace/addEmployeeWorkingPlace";
+    return "employee/findEmployee";
   }
 
-  //Send a searched employee to add working place
-/*
-    @PostMapping( value = "/workingPlace" )
-    public String addWorkingPlaceEmployeeDetails(@ModelAttribute( "employee" ) Employee employee, Model model) {
+  @PostMapping( value = "/findAll" )
+  public String findAll(@ModelAttribute( "employee" ) Employee employee, Model model) {
 
-        List< Employee > employees = employeeService.search(employee);
-        if ( employees.size() == 1 ) {
-            model.addAttribute("employeeDetailShow", true);
-            model.addAttribute("employeeNotFoundShow", false);
-            model.addAttribute("employeeDetail", employees.get(0));
-            model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee).get(0));
-            model.addAttribute("employeeWorkingPlaceHistoryObject", new EmployeeWorkingPlaceHistory());
-            model.addAttribute("workingPlaceChangeReason", WorkingPlaceChangeReason.values());
-            model.addAttribute("province", Province.values());
-            model.addAttribute("districtUrl", MvcUriComponentsBuilder
-                    .fromMethodName(WorkingPlaceRestController.class, "getDistrict", "")
-                    .build()
-                    .toString());
-            model.addAttribute("stationUrl", MvcUriComponentsBuilder
-                    .fromMethodName(WorkingPlaceRestController.class, "getStation", "")
-                    .build()
-                    .toString());
-            return "employeeWorkingPlace/addEmployeeWorkingPlace";
-        }
-        model.addAttribute("employee", new Employee());
-        model.addAttribute("employeeDetailShow", false);
-        model.addAttribute("employeeNotFoundShow", true);
-        model.addAttribute("employeeNotFound", "There is not employee in the system according to the provided details" +
-                " \n Could you please search again !!");
+    List< Employee > employees = employeeService.search(employee);
 
-        return "employeeWorkingPlace/addEmployeeWorkingPlace";
+    if(employees ==null) {
+      model.addAttribute("employeeNotFound", "There is not employee in the system according to the provided details" +
+          " or that employee already be a user in the system" +
+          " \n Could you please search again !!");
+    }else {
+      model.addAttribute("employees", employees);
     }
 
-    @PostMapping( value = "/workingPlace/add" )
-    public String addWorkingPlaceEmployee(@ModelAttribute( "employeeWorkingPlaceHistory" )
-    EmployeeWorkingPlaceHistory employeeWorkingPlaceHistory, Model model) {
-        System.out.println(employeeWorkingPlaceHistory.toString());
-        // -> need to write validation before the save working place
-        //before saving set employee current working palace
-        WorkingPlace workingPlace = employeeWorkingPlaceHistory.getWorkingPlace();
-
-        employeeWorkingPlaceHistory.setWorkingPlace(employeeWorkingPlaceHistory.getEmployee().getWorkingPlace());
-        employeeWorkingPlaceHistory.getEmployee().setWorkingPlace(workingPlace);
-
-        employeeWorkingPlaceHistory.setWorkingDuration(dateTimeAgeService.dateDifference(employeeWorkingPlaceHistory
-        .getFrom_place(), employeeWorkingPlaceHistory.getTo_place()));
-        employeeWorkingPlaceHistoryService.persist(employeeWorkingPlaceHistory);
-        return "redirect:/employee";
-    }
-*/
-
-//----> EmployeeWorkingPlace - details management - end <----//
+    model.addAttribute("employee", new Employee());
+    return "employee/findEmployee";
+  }
 
 }
-/*
- try {
-            List< FileModel > storedFile = new ArrayList< FileModel >();
-
-            for ( MultipartFile file : files ) {
-                FileModel fileModel = fileRepository.findByName(file.getOriginalFilename());
-                if ( fileModel != null ) {
-                    // update new contents
-                    fileModel.setPic(file.getBytes());
-                } else {
-                    fileModel = new FileModel(file.getOriginalFilename(), file.getContentType(), file.getBytes());
-                }
-
-                fileNames.add(file.getOriginalFilename());
-                storedFile.add(fileModel);
-            }
-
-            // Save all Files to database
-            fileRepository.saveAll(storedFile);
-
-            model.addAttribute("message", "Files uploaded successfully!");
-            model.addAttribute("files", fileNames);
-        } catch ( Exception e ) {
-            model.addAttribute("message", "Fail!");
-            model.addAttribute("files", fileNames);
-        }
-
-* */
-
-/*
- public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model,
- RedirectAttributes redirectAttributes) {
-
-        * String newEmployeeNumber = "";
-        String input;
-        if (employeeService.lastEmployee() != null) {
-            input = employeeService.lastEmployee().getNumber();
-            int employeeNumber = Integer.valueOf(input.replaceAll("[^0-9]+", "")).intValue() + 1;
-
-            if ((employeeNumber < 10) && (employeeNumber > 0)) {
-                newEmployeeNumber = "KL000" + employeeNumber;
-            }
-            if ((employeeNumber < 100) && (employeeNumber > 10)) {
-                newEmployeeNumber = "KL00" + employeeNumber;
-            }
-            if ((employeeNumber < 1000) && (employeeNumber > 100)) {
-                newEmployeeNumber = "KL0" + employeeNumber;
-            }
-            if (employeeNumber > 10000) {
-                newEmployeeNumber = "KL" + employeeNumber;
-            }
-        } else {
-            newEmployeeNumber = "KL0001";
-            input = "KL0000";
-        }
-
-
-        if (dateTimeAgeService.getAge(employee.getDateOfBirth()) < 18) {
-            ObjectError error = new ObjectError("dateOfBirth", "Employee must be 18 old ");
-            result.addError(error);
-        }
-        if (result.hasErrors()) {
-                System.out.println("i m here");
-                model.addAttribute("addStatus", true);
-            if (employeeService.lastEmployee() != null) {
-                model.addAttribute("lastEmployee", employeeService.lastEmployee().getPayRoleNumber());
-            }
-
-
-                model.addAttribute("addStatus", true);
-                CommonThings(model);
-                redirectAttributes.addFlashAttribute("employee", employee);
-                redirectAttributes.addFlashAttribute("files", employee.getFiles());
-                return "employee/addEmployee";
-                }
-
-      if (employeeService.isEmployeePresent(employee)) {
-            System.out.println("already on ");
-            User user = userService.findById(userService.findByEmployeeId(employee.getId()));
-            if (employee.getEmployeeStatus() != EmployeeStatus.WORKING) {
-                user.setEnabled(false);
-                employeeService.persist(employee);
-            }
-            System.out.println("update working");
-            user.setEnabled(true);
-            employeeService.persist(employee);
-            return "redirect:/employee";
-        }
-        if (employee.getId() != null) {
-            redirectAttributes.addFlashAttribute("message", "Successfully Add but Email was not sent.");
-            redirectAttributes.addFlashAttribute("alertStatus", false);
-
-            employeeService.persist(employee);
-        }
-
-
-        System.out.println("save no id");
-                System.out.println("Employee come "+employee.toString());
-                //employeeService.persist(employee);
-                return "redirect:/employee";
-                }
-
- */

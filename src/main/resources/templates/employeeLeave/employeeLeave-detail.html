@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<div class="container-fluid" >
+
+  <div data-th-replace="~{employee/employeeDetail :: employeeDetailsFragment}" ></div >
+  <div class="row" >
+    <div class="col-md-12" >
+      <div class="container-fluid" data-th-fragment="qualificationDetail" >
+        <div class="row" >
+          <!--Id-->
+          <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="id" >ID :</label >
+            </div >
+            <div class="col-md-8" >
+              <p id="id" data-th-text="${employeeLeaveDetail.id}" ></p >
+            </div >
+          </div >
+          <!--Leave Type -->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="" >Change Reason :</label >
+            </div >
+            <div class="col-md-4" >
+
+              <p data-th-text="${employeeLeaveDetail.instituteChangeReason}" ></p >
+
+            </div >
+          </div >
+        </div >
+
+        <!--start At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="startAt" >Start At :</label >
+          </div >
+          <div class="col-md-8" >
+            <p data-th-text="${employeeLeaveDetail.startAt}" id="startAt" ></p >
+          </div >
+        </div >
+        <!--end At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="endAt" >End At :</label >
+          </div >
+          <div class="col-md-8" >
+            <p data-th-text="${employeeLeaveDetail.endAt}" id="endAt" ></p >
+          </div >
+        </div >
+        <!--Day count and hour count-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" >Day Count :
+              <p id="dayCount"
+                 data-th-text="${employeeLeaveDetail.dayCount}" ></p >
+            </label >
+          </div >
+          <div class="col-md-4" >
+            <label class="control-label" >Hour Count :
+              <p id="hourCount"
+                 data-th-text="${employeeLeaveDetail.hourCount}" ></p >
+            </label >
+          </div >
+        </div >
+        <!--Remark s-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="name" >Remark :</label >
+          </div >
+          <div class="col-md-8" >
+            <p id="name" data-th-utext="${employeeLeaveDetail.remarks}" ></p >
+          </div >
+        </div >
+      </div >
+    </div >
+  </div >
+</div >
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+</body >
+</html >

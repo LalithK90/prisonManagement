@@ -1,6 +1,8 @@
 package lk.prison_management.asset.punishment.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.prison_management.asset.censure.entitiy.Censure;
+import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.punishment.entity.enums.PunishmentType;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -8,9 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,4 +25,7 @@ public class Punishment extends AuditEntity {
 
     @Enumerated(EnumType.STRING)
     private PunishmentType punishmentType;
+
+    @OneToMany(mappedBy = "punishment")
+    private List< Censure > censures;
 }

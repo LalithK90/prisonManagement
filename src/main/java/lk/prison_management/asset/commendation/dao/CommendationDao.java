@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CommendationDao extends JpaRepository< Commendation, Integer> {
+  Commendation findFirstByOrderByIdDesc();
 }

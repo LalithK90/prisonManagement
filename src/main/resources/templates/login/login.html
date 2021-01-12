@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 </head>
 <!--<body id="loginBack">
 <div class="col full-height " id="loginPage">
     <div class="col-8 col-sm-4 form-box bg-transparent ui-widget-content" id="draggable">
-        <form th:action="${'/login'}" method="post">
+        <form data-th-action="${'/login'}" method="post">
             <br/>
             <fieldset>
                 &lt;!&ndash;   <legend class="text-lg-center bg-white"><h3><strong> Excise Department - Sri Lanka</strong></h3>
@@ -27,19 +27,19 @@
                     <button class="btn btn-primary " type="submit">LOGIN</button>
                 </div>
             </fieldset>
-            <div class="container-fluid " th:if="${param.error}">
+            <div class="container-fluid " data-th-if="${param.error}">
                 <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
             </div>
 &lt;!&ndash;            <div class="container-fluid ">&ndash;&gt;
-&lt;!&ndash;                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>&ndash;&gt;
+&lt;!&ndash;                <p id="errorMessage" data-th-text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>&ndash;&gt;
 &lt;!&ndash;            </div>&ndash;&gt;
         </form>
     </div>
 </div>
 &lt;!&ndash;footer include&ndash;&gt;
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 &lt;!&ndash;script include&ndash;&gt;
-<script th:replace="~{fragments/script :: scriptFragment}"></script>-->
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>-->
 
 
 <body>
@@ -49,7 +49,7 @@
 
     </div>
     <div class="login-content">
-        <form th:action="${'/login'}" method="post">
+        <form data-th-action="${'/login'}" method="post">
             <div class="img-area">
                 <img id="logo" th:src="@{/img/avatar.png}"></div><br><br><br><br>
 
@@ -76,19 +76,19 @@
             <a href="#">Forgot Password?</a>
             <input type="submit" class="btn" value="Login">
 
-            <div class="container-fluid " th:if="${param.error}">
+            <div class="container-fluid " data-th-if="${param.error}">
                 <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
             </div>
             <div class="container-fluid ">
-                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
+                <p id="errorMessage" data-th-text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
             </div>
         </form>
     </div>
 </div>
 <!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+ <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
 <script type="text/javascript" src="js/main.js"></script>
 
 

@@ -1,6 +1,6 @@
 package lk.prison_management.asset.user_management;
 
-import lk.prison_management.asset.user_management.entity.User;
+import lk.prison_management.asset.user.entity.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

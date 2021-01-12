@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid  form-Border" >
+  <div class="row text-center " >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+      <a class="btn btn-info" href="/employee/findAll" ><i class="fa fa-plus" ></i >
+        &nbsp;Add New</a >
+    </div >
+
+  </div >
+  <div class="row text-center" >
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Employee Censure Management
+        </strong >
+      </h4 >
+    </div >
+  </div >
+</div >
+<div class="container-fluid  text-center" >
+
+  <table class="table table-hover table-striped" id="myTable" data-th-if="${not #lists.isEmpty(censures)}" >
+    <thead class="thead-inverse" >
+    <tr >
+      <th >Index</th >
+      <th >Ref Number</th >
+      <th >Employee Name</th >
+      <th >Incident Date</th >
+      <th >Offence</th >
+      <th >Modify</th >
+    </tr >
+    </thead >
+    <tbody >
+    <tr data-th-each="censure, rowCount : ${censures}" scope="row" >
+      <th data-th-text="${rowCount.count}" ></th >
+      <th data-th-text="${censure.refNumber}" ></th >
+      <th data-th-text="${{censure.incidentDate}}" ></th >
+      <th data-th-text="${censure.offence.name}" ></th >
+      <th >
+        <a class="btn btn-primary btn-sm" data-th-href="${'/censure/edit/' + censure.id}" ><i
+              class="fa fa-edit" ></i >&nbsp;Edit</a >
+        <a class="btn btn-danger btn-sm" data-th-href="${'/censure/remove/' + censure.id}"
+           data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+           data-th-click="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
+        ><i aria-hidden="true" class="fa fa-trash" ></i > Delete</a >
+
+      </th >
+    </tr >
+    </tbody >
+  </table >
+
+  <!--if empty list-->
+  <div class="row" id="qualificationNotList" data-th-if="${ #lists.isEmpty(censures)}" >
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+        <span aria-hidden="true" >&times;</span >
+      </button >
+      <h3 class="text-center text-danger" >
+        <strong >There is no censure upto know please add censure to the system
+                 using add button.
+        </strong >
+      </h3 >
+    </div >
+  </div >
+</div >
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script >
+</body >
+</html >

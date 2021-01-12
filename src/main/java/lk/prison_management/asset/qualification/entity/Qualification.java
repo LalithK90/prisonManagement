@@ -12,28 +12,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("Qualification")
+@JsonFilter( "Qualification" )
 public class Qualification extends AuditEntity {
 
-    @Size(min = 2, max = 60, message = "Your name length should be 13")
-    private String name;
+  @Size( min = 2, max = 60, message = "Your name length should be 13" )
+  private String name;
 
-    private String institute;
-
-    private String grade;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate completeDate;
-
-    @ManyToOne
-    private Employee employee;
+  @ManyToOne
+  private Employee employee;
 
 }

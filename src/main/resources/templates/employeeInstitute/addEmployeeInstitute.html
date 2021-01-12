@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+
+<div class="container " >
+  <div class="row text-center " >
+    <div class="col" >
+      <a class="btn btn-outline-info" href="/home" >
+        Back To Home
+      </a >
+    </div >
+
+    <div class="col" >
+      <a href="/employee" class="btn btn-info" >
+        View Employees
+      </a >
+    </div >
+  </div >
+  <div class="row text-center" >
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          <h4 data-th-text="${addStatus==true?'New Qualification':'Update Qualification'}" ></h4 >
+        </strong >
+      </h4 >
+    </div >
+  </div >
+</div >
+<!--Form Content - start -->
+<div class="container-fluid " >
+  <div id="accordianId" role="tablist" aria-multiselectable="true" >
+    <div class="card" >
+      <div class="card-header" role="tab" id="section1HeaderId" >
+        <h5 class="mb-0" >
+          <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true"
+             aria-controls="section1ContentId" >
+            Employee Details
+          </a >
+        </h5 >
+      </div >
+      <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
+        <div class="card-body" >
+          <div data-th-replace="~{employee/employee-detail :: employeeDetailsFragment}" ></div >
+        </div >
+      </div >
+    </div >
+  </div >
+  <div class="col-sm-12 flex-column " >
+    <form data-th-action="${addStatus==true?'/employeeInstitute/save' :'/employeeInstitute/update'}" method="post"
+          data-th-object="${employeeInstitute}"
+          class="mt-3" >
+
+      <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
+             readonly />
+      <!--Id-->
+      <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="id" >ID :</label >
+        </div >
+        <div class="col-md-8" >
+          <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+        </div >
+      </div >
+      <!--Institute -->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="institute" >Institute :</label >
+        </div >
+        <div class="col-md-8" >
+          <select id="institute" data-th-field="*{institute}" class="form-control" tabindex="19"
+                  required >
+            <option value="" >Please select</option >
+            <option data-th-each="institute : ${institutes}"
+                    data-th-text="${institute.name}"
+                    data-th-value="${institute.id}" ></option >
+          </select >
+        </div >
+      </div >
+
+      <!--start At-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="startAt" >Start At :</label >
+        </div >
+        <div class="col-md-8" >
+          <input type="date" class="form-control " onchange="dateMatch()"
+                 data-th-field="*{startAt}" id="startAt" required >
+
+          <span data-th-errors="*{startAt}"
+                data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
+                            </span >
+        </div >
+      </div >
+      <!--end At-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="endAt" >End At :</label >
+        </div >
+        <div class="col-md-8" >
+          <input type="date" class="form-control " onchange="dateMatch()"
+                 data-th-field="*{endAt}" id="endAt" required >
+
+          <span data-th-errors="*{endAt}"
+                data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
+                            </span >
+        </div >
+      </div >
+      <!--Change reason-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="employeeStatus" >Change Reason :</label >
+        </div >
+        <div class="col-md-8" >
+          <select id="employeeStatus" data-th-field="*{instituteChangeReason}" class="form-control" tabindex="19"
+                  required >
+            <option value="" >Please select</option >
+            <option data-th-each="instituteChangeReason : ${instituteChangeReasons}"
+                    data-th-text="${instituteChangeReason.instituteChangeReason}"
+                    data-th-value="${instituteChangeReason}" ></option >
+          </select >
+        </div >
+      </div >
+      <!--remarks-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="remarks" >Remarks :</label >
+        </div >
+        <div class="col-md-8" >
+          <input id="remarks" data-th-field="*{remarks}" class="form-control" tabindex="4"
+                 type="text" required />
+          <span id="codeE" data-th-errors="*{remarks}"
+                data-th-if="${#fields.hasErrors('name')}" class="error" >Error Employee code
+                            </span >
+        </div >
+      </div >
+      <!--Sinhala modal button and modal tamil button-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <!--Sinhala modal button -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+          </button >
+
+        </div >
+        <div class="col-md-4" >
+          <!-- modal tamil button -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+          </button >
+        </div >
+      </div >
+      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+        <!--Button-->
+        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+          <button class="btn btn-success" type="submit" tabindex="21" >
+            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+          </button >
+          <button class="btn btn-danger" type="reset" >
+            <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+          </button >
+        </div >
+      </div >
+      <div class="form-row" >
+        <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
+        <ul >
+          <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+        </ul >
+      </div >
+    </form >
+
+  </div >
+
+</div >
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+    function dateMatch() {
+        let startDateTime = $(`#startAt`).val();
+        let endDateTime = $(`#endAt`).val();
+        if (startDateTime !== "" && endDateTime !== "") {
+            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
+                swal({
+                    title: "Could you accept those days.. !",
+                    icon: "warning",
+                    text: "Please check your date time \n End Date Time can not be less than Start Date Time",
+                })
+                $(`#endAt`).val(startDateTime);
+            }
+        }
+    }
+</script >
+<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+</body >
+</html >
