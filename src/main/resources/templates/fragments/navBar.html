@@ -1,44 +1,101 @@
 <!DOCTYPE html>
 <html lang="en" >
+<head>
+   <title></title>
+</head>
+
 <body>
 
 
-<nav class="navbar navbar-expand-sm navbar-dark " style="background-color: #2f7efd;" data-th-fragment="navBarFragment">
-   <!-- <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation"></button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Action 1</a>
-                    <a class="dropdown-item" href="#">Action 2</a>
-                </div>
-            </li>
-        </ul>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-            </li>
-            <li class="nav-item active">
-            <a data-th-href="@{'/employee'}" class="nav-link"> Employee</a>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
+<nav class="navbar navbar-expand-sm navbar-dark " style="background-color:rgba(27,5,75,0.91);"
+     data-th-fragment="navBarFragment">
+   <a class="navbar-brand" href="#"><i class="fa fa-home" style="font-size: 18px"></i></a>
 
--->
+
+   <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+           aria-controls="collapsibleNavId"
+           aria-expanded="false" aria-label="Toggle navigation"></button>
+   <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+         <li class="nav-itemBatch dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false"> <i class="fa fa-user"></i> General</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+               <a data-th-href="@{'/employee'}" class="nav-link text-dark"> Employee Managment </a>
+               <a data-th-href="@{'/user'}" class="nav-link text-dark"> User Management </a>
+               <a data-th-href="@{'/role'}" class="nav-link text-dark"> Role Management </a>
+               <!--<a data-th-href="@{'/category'}" class="nav-link text-dark"> Category Management </a>-->
+               <!--<a data-th-href="@{'/item'}" class="nav-link text-dark"> Item Management </a>-->
+               <!--<a data-th-href="@{'/supplier'}" class="nav-link text-dark"> Supplier Management </a>-->
+               <!--<a data-th-href="@{'/purchaseOrder'}" class="nav-link text-dark"> Purchase Order Management </a>-->
+               <!--<a data-th-href="@{'/goodReceivedNote'}" class="nav-link text-dark"> GRN Management </a>-->
+               <!--<a data-th-href="@{'/payment'}" class="nav-link text-dark"> Payment Management </a>-->
+               <!--<a data-th-href="@{'/invoice'}" class="nav-link text-dark"> Invoice Management </a>-->
+               <!--<a data-th-href="@{'/discout'}" class="nav-link text-dark"> Discount Management </a>-->
+               <!--<a data-th-href="@{'/customer'}" class="nav-link text-dark"> Customer Management </a>-->
+
+            </div>
+         </li>
+
+         <li class="nav-itemBatch dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false"> <i class="fa fa-bell"></i> Transaction</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+               <a data-th-href="@{'/employee/add'}" class="nav-link text-dark"> New Employee </a>
+               <a data-th-href="@{'/user/add'}" class="nav-link text-dark"> New User </a>
+               <a data-th-href="@{'/role/add'}" class="nav-link text-dark"> New Role </a>
+               <!--<a data-th-href="@{'/category/add'}" class="nav-link text-dark"> New Category </a>-->
+               <!--<a data-th-href="@{'/item/add'}" class="nav-link text-dark"> New Item </a>-->
+               <!--<a data-th-href="@{'/supplier/add'}" class="nav-link text-dark"> New Supplier </a>-->
+               <!--<a data-th-href="@{'/invoice/add'}" class="nav-link text-dark"> New Invoice </a>-->
+               <!--<a data-th-href="@{'/discout/add'}" class="nav-link text-dark"> New Discount </a>-->
+               <!--<a data-th-href="@{'/customer/add'}" class="nav-link text-dark"> New Customer </a>-->
+
+
+            </div>
+         </li>
+
+         <li class="nav-itemBatch dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false"> <i class="fa fa-book-open"></i> Report</a>
+            <div class="dropdown-menu text-dark" aria-labelledby="dropdownId">
+               <a data-th-href="@{'/'}" class="nav-link text-dark"> Report</a>
+               <a data-th-href="@{'/'}" class="nav-link text-dark"> All </a>
+            </div>
+         </li>
+      </ul>
+   </div>
+   <!--login /logout /profile /password-change link according to sec confi-->
+   <div>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-end">
+         <li class="nav-item dropdown" data-sec-authorize="isAuthenticated()">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+               <i class="fas fa-user-tie fa-lg"></i>&nbsp;&nbsp;
+               <span data-th-text="${#authentication.name}"></span>
+               <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown1">
+               <a class="dropdown-item dropdown-item btn btn-group-sm" href="/profile">
+                  <i class="fas fa-user-cog"></i> &nbsp;Profile
+               </a>
+               <a class="dropdown-item dropdown-item btn btn-group-sm" href="/passwordChange">
+                  <i class="fas fa-key "></i>&nbsp;Change Password</a>
+            </div>
+         </li>
+         <li class="nav-item dropdown " data-sec-authorize="isAuthenticated()">
+            <a href="/logout" class="nav-link"> <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Log
+                                                                                   out</a>
+         </li>
+         <li class="nav-item dropdown " data-sec-authorize="!isAuthenticated()">
+            <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login</a>
+         </li>
+      </ul>
+   </div>
+
 </nav>
+
 
 </body>
 </html>

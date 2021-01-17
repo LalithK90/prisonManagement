@@ -37,6 +37,10 @@ public class Employee extends AuditEntity {
   @Column( unique = true )
   private String wopNumber;
 
+  private String birthCertificateNumber;
+
+  private String birthPlace;
+
   @Size( min = 5, message = "Your name cannot be accepted" )
   private String name;
 
@@ -101,10 +105,10 @@ public class Employee extends AuditEntity {
   @OneToMany( mappedBy = "employee" )
   private List< Qualification > qualifications;
 
-  @OneToMany(mappedBy = "employee")
+  @OneToMany( mappedBy = "employee" )
   private List< Commendation > commendations;
 
-  @OneToMany(mappedBy = "employee")
+  @OneToMany( mappedBy = "employee" )
   private List< Censure > censures;
 
   @Transient
