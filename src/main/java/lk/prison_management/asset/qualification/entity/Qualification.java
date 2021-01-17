@@ -30,6 +30,8 @@ public class Qualification extends AuditEntity {
 
   private String certificateNumber;
 
+  private String remarks;
+
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate startDate;
 
