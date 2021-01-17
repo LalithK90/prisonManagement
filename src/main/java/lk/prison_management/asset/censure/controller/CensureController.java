@@ -61,12 +61,13 @@ public class CensureController implements AbstractController< Censure, Integer> 
         return "censure/censure-detail";
     }
 
-    @GetMapping("/add")
-    public String form(Model model) {
+    @GetMapping("/add/{id}")
+    public String form(@PathVariable("id")Integer id , Model model) {
+        model.addAttribute("employeeDetail", employeeService.findById(id));
         model.addAttribute("addStatus", true);
         model.addAttribute("prisonTypes", OffenceType.values());
         model.addAttribute("censure", new Censure());
-        return "censure/addCommendation";
+        return "censure/addCensure";
     }
 
     @GetMapping("/edit/{id}")
@@ -74,7 +75,7 @@ public class CensureController implements AbstractController< Censure, Integer> 
         model.addAttribute("addStatus", false);
         model.addAttribute("prisonTypes", OffenceType.values());
         model.addAttribute("censure", censureService.findById(id));
-        return "censure/addCommendation";
+        return "censure/addCensure";
     }
 
     @PostMapping(value = {"/save", "/update"})
@@ -83,7 +84,7 @@ public class CensureController implements AbstractController< Censure, Integer> 
             model.addAttribute("addStatus", true);
             model.addAttribute("prisonTypes", OffenceType.values());
             model.addAttribute("censure", censure);
-            return "censure/addCommendation";
+            return "censure/addCensure";
         }
         redirectAttributes.addFlashAttribute("commendationDetail", censureService.persist(censure));
         return "redirect:/censure";
