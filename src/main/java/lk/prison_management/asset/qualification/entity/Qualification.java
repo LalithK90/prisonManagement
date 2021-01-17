@@ -28,6 +28,14 @@ public class Qualification extends AuditEntity {
   @Size( min = 2, max = 60, message = "Your name length should be 13" )
   private String name;
 
+  private String certificateNumber;
+
+  @DateTimeFormat( pattern = "yyyy-MM-dd" )
+  private LocalDate startDate;
+
+  @DateTimeFormat( pattern = "yyyy-MM-dd" )
+  private LocalDate endDate;
+
   @ManyToOne
   private Employee employee;
 
