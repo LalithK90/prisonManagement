@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("Offence")
+@JsonFilter("Punishment")
 public class Punishment extends AuditEntity {
 
     private String name;
