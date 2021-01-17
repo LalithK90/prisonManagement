@@ -65,7 +65,8 @@ public class CensureController implements AbstractController< Censure, Integer> 
     public String form(@PathVariable("id")Integer id , Model model) {
         model.addAttribute("employeeDetail", employeeService.findById(id));
         model.addAttribute("addStatus", true);
-        model.addAttribute("prisonTypes", OffenceType.values());
+        model.addAttribute("offences", offenceService.findAll());
+        model.addAttribute("punishments", punishmentService.findAll());
         model.addAttribute("censure", new Censure());
         return "censure/addCensure";
     }
@@ -73,7 +74,8 @@ public class CensureController implements AbstractController< Censure, Integer> 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("addStatus", false);
-        model.addAttribute("prisonTypes", OffenceType.values());
+        model.addAttribute("offences", offenceService.findAll());
+        model.addAttribute("punishments", punishmentService.findAll());
         model.addAttribute("censure", censureService.findById(id));
         return "censure/addCensure";
     }
@@ -82,7 +84,8 @@ public class CensureController implements AbstractController< Censure, Integer> 
     public String persist(@Valid @ModelAttribute Censure censure, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("addStatus", true);
-            model.addAttribute("prisonTypes", OffenceType.values());
+            model.addAttribute("offences", offenceService.findAll());
+            model.addAttribute("punishments", punishmentService.findAll());
             model.addAttribute("censure", censure);
             return "censure/addCensure";
         }

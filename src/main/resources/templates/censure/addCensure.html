@@ -74,6 +74,21 @@
           <input id="abc" data-th-field="*{refNumber}" class="form-control" type="text" readonly />
         </div >
       </div >
+      <!--Offence -->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="offence" >Offence :</label >
+        </div >
+        <div class="col-md-8" >
+          <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
+                  required >
+            <option value="" >Please select</option >
+            <option data-th-each="offence : ${offences}"
+                    data-th-text="${offence.name}"
+                    data-th-value="${offence.id}" ></option >
+          </select >
+        </div >
+      </div >
       <!--Punishment -->
       <div class="form-row text-right" >
         <div class="col-md-4" >
@@ -86,21 +101,6 @@
             <option data-th-each="punishment : ${punishments}"
                     data-th-text="${punishment.name}"
                     data-th-value="${punishment.id}" ></option >
-          </select >
-        </div >
-      </div >
-      <!--Punishment -->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="offence" >Offence :</label >
-        </div >
-        <div class="col-md-8" >
-          <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
-                  required >
-            <option value="" >Please select</option >
-            <option data-th-each="offence : ${offences}"
-                    data-th-text="${offence.name}"
-                    data-th-value="${offence.id}" ></option >
           </select >
         </div >
       </div >
