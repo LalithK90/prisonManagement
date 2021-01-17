@@ -37,7 +37,7 @@ public class OffenceController implements AbstractController<Offence, Integer> {
     @GetMapping("/add")
     public String form(Model model) {
         model.addAttribute("addStatus", true);
-        model.addAttribute("prisonTypes", OffenceType.values());
+        model.addAttribute("offenceTypes", OffenceType.values());
         model.addAttribute("offence", new Offence());
         return "offence/addOffence";
     }
@@ -45,7 +45,7 @@ public class OffenceController implements AbstractController<Offence, Integer> {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("addStatus", false);
-        model.addAttribute("prisonTypes", OffenceType.values());
+        model.addAttribute("offenceTypes", OffenceType.values());
         model.addAttribute("offence", offenceService.findById(id));
         return "offence/addOffence";
     }
@@ -54,7 +54,7 @@ public class OffenceController implements AbstractController<Offence, Integer> {
     public String persist(@Valid @ModelAttribute Offence offence, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("addStatus", true);
-            model.addAttribute("prisonTypes", OffenceType.values());
+            model.addAttribute("offenceTypes", OffenceType.values());
             model.addAttribute("offence", offence);
             return "offence/addOffence";
         }
