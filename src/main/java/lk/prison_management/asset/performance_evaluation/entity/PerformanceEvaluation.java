@@ -1,18 +1,17 @@
-package lk.prison_management.asset.process_management.proformance_evaluation.entity;
+package lk.prison_management.asset.performance_evaluation.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.process_management.proformance_evaluation.entity.enums.PerformanceEvaluationStatus;
+import lk.prison_management.asset.performance_evaluation.entity.enums.PerformanceEvaluationStatus;
+import lk.prison_management.asset.performance_evaluation_result.entity.PerformanceEvaluationResult;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,4 +27,7 @@ public class PerformanceEvaluation extends AuditEntity {
 
   @ManyToOne
   private Employee employee;
+
+  @OneToMany(mappedBy = "performanceEvaluationResult")
+  private List< PerformanceEvaluationResult > performanceEvaluationResults;
 }
