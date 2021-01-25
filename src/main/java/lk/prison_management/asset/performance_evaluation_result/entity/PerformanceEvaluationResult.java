@@ -21,13 +21,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @JsonFilter( "PerformanceEvaluationResult" )
 public class PerformanceEvaluationResult extends AuditEntity {
-  @Column( nullable = false )
-  @DateTimeFormat( pattern = "yyyy-MM-dd" )
-  private LocalDate form;
-
-  @Column( nullable = false )
-  @DateTimeFormat( pattern = "yyyy-MM-dd" )
-  private LocalDate to;
 
   //2. Areas of Responsibility
 //2.1Whether you have received a task list : yes /No
@@ -133,7 +126,15 @@ public class PerformanceEvaluationResult extends AuditEntity {
   @Enumerated( EnumType.STRING )
   private Apprecial overallApprecial;
 
-  @ManyToOne
+  @Column( nullable = false )
+  @DateTimeFormat( pattern = "yyyy-MM-dd" )
+  private LocalDate formDate;
+
+  @Column( nullable = false )
+  @DateTimeFormat( pattern = "yyyy-MM-dd" )
+  private LocalDate toDate;
+
+  @ManyToOne(cascade = CascadeType.MERGE)
   private PerformanceEvaluation performanceEvaluation;
 
 }

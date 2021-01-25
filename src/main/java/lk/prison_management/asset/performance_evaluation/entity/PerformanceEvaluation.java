@@ -28,6 +28,6 @@ public class PerformanceEvaluation extends AuditEntity {
   @ManyToOne
   private Employee employee;
 
-  @OneToMany(mappedBy = "performanceEvaluationResult")
+  @OneToMany(mappedBy = "performanceEvaluation")
   private List< PerformanceEvaluationResult > performanceEvaluationResults;
 }

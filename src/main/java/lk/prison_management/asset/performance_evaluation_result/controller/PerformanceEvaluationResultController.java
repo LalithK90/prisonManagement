@@ -4,6 +4,8 @@ import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.performance_evaluation.entity.PerformanceEvaluation;
+import lk.prison_management.asset.performance_evaluation_result.entity.PerformanceEvaluationResult;
+import lk.prison_management.asset.performance_evaluation_result.entity.enums.Apprecial;
 import lk.prison_management.asset.user.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/performanceEvaluation")
+@RequestMapping("/performanceEvaluationResult")
 public class PerformanceEvaluationResultController {
 
   private final EmployeeService employeeService;
@@ -38,7 +40,8 @@ public class PerformanceEvaluationResultController {
     model.addAttribute("employeeDetail", employee);
     model.addAttribute("addStatus", false);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
-    model.addAttribute("performanceEvaluation", new PerformanceEvaluation());
+    model.addAttribute("performanceEvaluationResult", new PerformanceEvaluationResult());
+    model.addAttribute("Apprecials", Apprecial.values());
     return "performanceEvaluationResult/addPerformanceEvaluationResult";
   }
 //todo-> continued
