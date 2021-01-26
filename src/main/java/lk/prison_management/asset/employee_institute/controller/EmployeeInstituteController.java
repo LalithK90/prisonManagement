@@ -4,6 +4,7 @@ import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.employee_institute.service.EmployeeInstituteService;
+import lk.prison_management.asset.institute.entity.enums.InstituteChangeReason;
 import lk.prison_management.asset.institute.service.InstituteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,7 @@ public class EmployeeInstituteController {
     model.addAttribute("employeeInstitute", employeeInstitute);
     model.addAttribute("addStatus", addStatus);
     model.addAttribute("institutes", instituteService.findAll());
+    model.addAttribute("instituteChangeReasons", InstituteChangeReason.values());
     return "employeeInstitute/addEmployeeInstitute";
   }
   @GetMapping

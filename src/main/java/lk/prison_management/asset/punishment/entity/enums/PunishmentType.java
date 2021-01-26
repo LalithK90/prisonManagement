@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PunishmentType {
-    FSO("First Schedule of Offences"),
+    SDP("Summary Disciplinary Procedure"),
     MIP("Minor Punishments"),
     MAP("Major  Punishments");
 

@@ -262,7 +262,13 @@
        data-th-each="censureDetail : ${employeeDetail.censures}" >
     <div data-th-replace="~{censure/censure-detail :: censureDetailsFragment}" ></div >
   </div >
+  <!--performance evaluations-->
+  <div class="container-fluid" data-th-if="${not #lists.isEmpty(employeeDetail.performanceEvaluations)}"
+       data-th-each="censureDetail : ${employeeDetail.censures}" >
+    <div data-th-replace="~{performanceEvaluations/performanceEvaluations-detail :: performanceEvaluationsFragment}" ></div >
+  </div >
 </div >
+
 <!--Button-->
 <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
   <a href="/employee" >
@@ -271,7 +277,6 @@
     </button >
   </a >
 </div >
-
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >

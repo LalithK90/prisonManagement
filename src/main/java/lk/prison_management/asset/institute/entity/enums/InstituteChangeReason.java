@@ -10,7 +10,7 @@ public enum InstituteChangeReason {
   DISIPILINARYACTION("Disciplinary Action"),
   ANNURALTRANSFER("Annual Transfer");
 
-  private final String workingPlaceChangeReason;
+  private final String instituteChangeReason;
 
 }
 

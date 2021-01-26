@@ -77,10 +77,10 @@
               </select >
             </div >
           </div >
-          <!--Name-->
+          <!--First Name -->
           <div class="form-row text-right" >
             <div class="col-md-4" >
-              <label class="control-label" for="name" >Name :</label >
+              <label class="control-label" for="name" > Name :</label >
             </div >
             <div class="col-md-8" >
               <input id="name" data-th-field="*{name}" class="form-control" tabindex="4" type="text" required />
@@ -91,7 +91,7 @@
           <!--Calling Name-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
-              <label class="control-label" for="callingName" >Calling Name :</label >
+              <label class="control-label" for="callingName" > Calling Name:</label >
             </div >
             <div class="col-md-8" >
               <input id="callingName" data-th-field="*{callingName}" class="form-control" tabindex="5"
@@ -100,14 +100,14 @@
                     data-th-if="${#fields.hasErrors('callingName')}" id="callingNameError" >Error Calling Name</span >
             </div >
           </div >
-          <!--WOP Number-->
+          <!--W&OP Number-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
-              <label class="control-label" for="wopNumber" >WOP Number :</label >
+              <label class="control-label" for="wopNumber" >W&OP Number :</label >
             </div >
             <div class="col-md-8" >
               <input id="wopNumber" data-th-field="*{wopNumber}" class="form-control" tabindex="5"
-                     type="text" minlength="5" />
+                     type="text" minlength="5" required />
               <span class="error" data-th-errors="*{wopNumber}"
                     data-th-if="${#fields.hasErrors('wopNumber')}" >Error Calling Name</span >
             </div >
@@ -148,7 +148,7 @@
           <!--Date of birth-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
-              <label class="control-label" for="dateOfBirth" >Birth date :</label >
+              <label class="control-label" for="dateOfBirth" >Date of birth :</label >
             </div >
             <div class="col-md-8" >
               <input id="dateOfBirth" data-th-field="*{dateOfBirth}" class="form-control" tabindex="8"
@@ -233,7 +233,7 @@
           <!--Mobile Number One-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
-              <label class="control-label" for="mobileOne" >Mobile One No :</label >
+              <label class="control-label" for="mobileOne" >Contact no 1 :</label >
             </div >
             <div class="col-md-8" >
               <input id="mobileOne" data-th-field="*{mobileOne}" class="form-control mobile" tabindex="13"
@@ -248,7 +248,7 @@
           <!--Mobile Number Two-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
-              <label class="control-label" for="mobileTwo" >Mobile Two No :</label >
+              <label class="control-label" for="mobileTwo" >Contact no 2:</label >
             </div >
             <div class="col-md-8" >
               <input id="mobileTwo" data-th-field="*{mobileTwo}" class="form-control mobile" tabindex="14"
