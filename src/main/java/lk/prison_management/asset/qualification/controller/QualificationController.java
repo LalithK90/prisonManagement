@@ -55,7 +55,9 @@ model.addAttribute("employeeDetail", employeeService.findById(id));
 
   @GetMapping( "/edit/{id}" )
   public String edit(@PathVariable Integer id, Model model) {
-    return commonThing(model, false, qualificationService.findById(id));
+    Qualification qualification = qualificationService.findById(id);
+    model.addAttribute("employeeDetail", qualification.getEmployee());
+    return commonThing(model, false, qualification);
   }
 
   @PostMapping( value = {"/save", "/update"} )
