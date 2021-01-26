@@ -79,7 +79,7 @@
         <thead >
         <tr >
           <th > Index</th >
-          <th > Image</th >
+          <th > WOP Number</th >
           <th > Calling Name</th >
           <th > Status</th >
           <th > Modify</th >
@@ -88,37 +88,30 @@
         <tbody >
         <tr data-th-each="employee, rowCount : ${employees}" >
           <th data-th-text="${rowCount.count}" ></th >
-          <th >
-            <div class="image" data-th-if="${employee.fileInfo !=null}" >
-              <img id="img" class="rounded"
-                   style="height:50px; width:50px; border-radius: 1px"
-                   alt="Employee images"
-                   data-th-src="${employee.fileInfo.url}" />
-            </div >
-          </th >
+          <th data-th-text="${employee.wopNumber}">          </th >
           <th data-th-text="${employee.callingName}" ></th >
           <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
           <th >
             <a data-th-href="${'/employee/' + employee.id}" class="btn btn-success btn-sm" >&nbsp;View</a >
-            <br/>
+
             <a data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-success btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Edit</a >
-            <br/>
+
             <a data-th-href="${'/qualification/add/' + employee.id}" class="btn btn-success btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Add Qualification</a >
-            <br/>
+
             <a data-th-href="${'/employeeLeave/add/' + employee.id}" class="btn btn-success btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Add Leave</a >
-            <br/>
+
             <a data-th-href="${'/employeeInstitute/add/' + employee.id}" class="btn btn-success btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Transfer</a >
-            <br/>
+
             <a data-th-href="${'/censure/add/' + employee.id}" class="btn btn-success btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Censure</a >
-            <br/>
+
             <a data-th-href="${'/commendation/add/' + employee.id}" class="btn btn-success btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Commendation</a >
-            <br/>
+
             <a data-th-href="${'/employee/remove/' + employee.id}"
                data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm" ><i
                   class="fa fa-trash" ></i >

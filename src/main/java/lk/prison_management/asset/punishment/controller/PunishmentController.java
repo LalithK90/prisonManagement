@@ -37,7 +37,7 @@ public class PunishmentController implements AbstractController<Punishment, Inte
     @GetMapping("/add")
     public String form(Model model) {
         model.addAttribute("addStatus", true);
-        model.addAttribute("prisonTypes", PunishmentType.values());
+        model.addAttribute("punishmentTypes", PunishmentType.values());
         model.addAttribute("punishment", new Punishment());
         return "punishment/addPunishment";
     }
@@ -45,7 +45,7 @@ public class PunishmentController implements AbstractController<Punishment, Inte
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("addStatus", false);
-        model.addAttribute("prisonTypes", PunishmentType.values());
+        model.addAttribute("punishmentTypes", PunishmentType.values());
         model.addAttribute("punishment", punishmentService.findById(id));
         return "punishment/addPunishment";
     }
@@ -54,7 +54,7 @@ public class PunishmentController implements AbstractController<Punishment, Inte
     public String persist(@Valid @ModelAttribute Punishment punishment, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("addStatus", true);
-            model.addAttribute("prisonTypes", PunishmentType.values());
+            model.addAttribute("punishmentTypes", PunishmentType.values());
             model.addAttribute("punishment", punishment);
             return "punishment/addPunishment";
         }

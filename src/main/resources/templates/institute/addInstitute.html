@@ -18,7 +18,7 @@
         </div>
         <!--Form Name-->
         <div class="col">
-            <h2 class="text-light text-center">
+            <h2  class="text-center">
                 <strong>
                     <span data-th-text="${addStatus==true?'Add New Institute':'Update Institute Details'}"></span>
                 </strong>
@@ -57,7 +57,7 @@
                             <select class="form-control" data-th-field="*{prisonType}" id="mainInstitute" required
                                     style="font-size: large" tabindex="4">
                                 <option value="">Please select</option>
-                                <option data-th-each="punishmentType : ${prisonTypes}"
+                                <option data-th-each="prisonType : ${prisonTypes}"
                                         data-th-text="${prisonType.prisonType}"
                                         data-th-value="${prisonType}"></option>
                             </select>

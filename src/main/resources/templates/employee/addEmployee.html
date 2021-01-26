@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
 </head >
@@ -46,11 +46,11 @@
             </div >
             <div class="col-md-8" >
               <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
-              <input type="text" data-th-field="*{liveDead}" hidden>
+              <input type="text" data-th-field="*{liveOrDead}" hidden >
             </div >
           </div >
-          <!--Payrole number-->
-          <div class="form-row text-right" data-th-if="${addStatus==false}">
+          <!--System Register code number-->
+          <div class="form-row text-right" data-th-if="${addStatus==false}" >
             <div class="col-md-4" >
               <label class="control-label" for="name" >Employee code :</label >
             </div >
@@ -100,6 +100,18 @@
                     data-th-if="${#fields.hasErrors('callingName')}" id="callingNameError" >Error Calling Name</span >
             </div >
           </div >
+          <!--WOP Number-->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="wopNumber" >WOP Number :</label >
+            </div >
+            <div class="col-md-8" >
+              <input id="wopNumber" data-th-field="*{wopNumber}" class="form-control" tabindex="5"
+                     type="text" minlength="5" />
+              <span class="error" data-th-errors="*{wopNumber}"
+                    data-th-if="${#fields.hasErrors('wopNumber')}" >Error Calling Name</span >
+            </div >
+          </div >
           <!--Nic-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
@@ -120,17 +132,17 @@
             </div >
             <div class="col-md-8" >
               <div class="custom-control custom-checkbox custom-control-inline "
-                   data-th-each="genders,index : ${gender}">
+                   data-th-each="genders,index : ${gender}" >
                 <input class="custom-control-input gender" required
                        data-th-name="${'gender'}"
                        data-th-value="${genders}"
                        data-th-id="${index.index}+${genders}" type="radio"
-                       data-th-checked="${genders==gender}"/>
+                       data-th-checked="${genders==gender}" />
                 <label class="custom-control-label"
                        data-th-for="${index.index}+${genders}"
-                       data-th-text="${genders.gender}"> radio
-                </label>
-              </div>
+                       data-th-text="${genders.gender}" > radio
+                </label >
+              </div >
             </div >
           </div >
           <!--Date of birth-->
@@ -146,6 +158,33 @@
                     data-th-if="${#fields.hasErrors('dateOfBirth')}" class="error" >Error Birthday</span >
             </div >
           </div >
+          <!--Birth place-->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="birthPlace" >Birth Place :</label >
+            </div >
+            <div class="col-md-8" >
+              <input id="birthPlace" data-th-field="*{birthPlace}" class="form-control" tabindex="8"
+                     placeholder="Wariyapola"
+                     required type="text" />
+              <span data-th-errors="*{dateOfBirth}"
+                    data-th-if="${#fields.hasErrors('dateOfBirth')}" class="error" >Error Birthday</span >
+            </div >
+          </div >
+          <!--Birth Certificate Number-->
+          <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <label class="control-label" for="birthCertificateNumber" >Birth Certificate Number :</label >
+            </div >
+            <div class="col-md-8" >
+              <input id="birthCertificateNumber" data-th-field="*{birthCertificateNumber}" class="form-control"
+                     tabindex="8"
+                     placeholder="Enter number"
+                     required type="text" />
+              <span data-th-errors="*{birthCertificateNumber}"
+                    data-th-if="${#fields.hasErrors('birthCertificateNumber')}" class="error" >Error Birthday</span >
+            </div >
+          </div >
           <!--Designation-->
           <div class="form-row text-right" >
             <div class="col-md-4" >
@@ -157,7 +196,7 @@
                 <option value="" >Please select</option >
                 <option data-th-each="designations : ${designation}"
                         data-th-text="${designations.designation}"
-                        data-th-value="${designations}"></option >
+                        data-th-value="${designations}" ></option >
               </select >
             </div >
           </div >
@@ -270,7 +309,7 @@
                 <option value="" >Please select</option >
                 <option data-th-each="employeeStatuss : ${employeeStatus}"
                         data-th-text="${employeeStatuss.employeeStatus}"
-                        data-th-value="${employeeStatuss}"></option >
+                        data-th-value="${employeeStatuss}" ></option >
               </select >
             </div >
           </div >

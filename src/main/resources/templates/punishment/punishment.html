@@ -16,15 +16,15 @@
         </div>
         <!-- List Name-->
         <div class="col">
-            <h2 class="text-light text-center">
+            <h2  class="text-center">
                 <strong>
-                    Institute Management
+                    Punishment Management
                 </strong>
             </h2>
         </div>
         <!-- Home Button-->
         <div class="col">
-            <a href="/punishment/workingPlace" id="searchShow" class="btn btn-primary">
+            <a href="/home" id="searchShow" class="btn btn-primary">
             <!--<i class="fa fa-user " style="font-size: 20px"></i>-->
                 <i class="fas fa-home" style="font-size: 20px"></i>&nbsp;&nbsp;Home
                 &nbsp;
@@ -35,7 +35,7 @@
 <div class="container-fluid bg-info  text-center">
     <!--Table view-->
     <div class="col">
-        <div class="col" id="instituteListPresent" data-th-if="${not #lists.isEmpty(offences)}">
+        <div class="col" id="instituteListPresent" data-th-if="${not #lists.isEmpty(punishments)}">
             <table class="table table-hover table-striped" id="myTable">
                 <thead>
                     <tr>
@@ -46,9 +46,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-th-each="punishment, rowCount : ${offences}">
+                    <tr data-th-each="punishment, rowCount : ${punishments}">
                         <th data-th-text="${rowCount.count}"></th>
-                        <th data-th-text="${punishment.offenceType.offenceType}"></th>
+                        <th data-th-text="${punishment.punishmentType.punishmentType}"></th>
                         <th data-th-text="${punishment.name}"></th>
                         <th>
                             <a  data-th-href="${'/punishment/edit/' + punishment.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <!--Error-->
-    <div class="row" data-th-if="${ #lists.isEmpty(offences)}">
+    <div class="row" data-th-if="${ #lists.isEmpty(punishments)}">
         <div class="col-sm-12">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
