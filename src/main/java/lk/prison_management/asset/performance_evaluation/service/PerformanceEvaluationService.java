@@ -1,6 +1,5 @@
 package lk.prison_management.asset.performance_evaluation.service;
 
-
 import lk.prison_management.asset.performance_evaluation.dao.PerformanceEvaluationDao;
 import lk.prison_management.asset.performance_evaluation.entity.PerformanceEvaluation;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -18,7 +17,7 @@ public class PerformanceEvaluationService implements AbstractService< Performanc
         this.performanceEvaluationDao = performanceEvaluationDao;
     }
 
-    public List<PerformanceEvaluation> findAll() {
+    public List< PerformanceEvaluation > findAll() {
         return performanceEvaluationDao.findAll();
     }
 
@@ -26,8 +25,8 @@ public class PerformanceEvaluationService implements AbstractService< Performanc
         return performanceEvaluationDao.getOne(id);
     }
 
-    public PerformanceEvaluation persist(PerformanceEvaluation performanceEvaluationResult) {
-        return performanceEvaluationDao.save(performanceEvaluationResult);
+    public PerformanceEvaluation persist(PerformanceEvaluation performanceEvaluation) {
+        return performanceEvaluationDao.save(performanceEvaluation);
     }
 
     public boolean delete(Integer id) {
@@ -35,12 +34,12 @@ public class PerformanceEvaluationService implements AbstractService< Performanc
         return true;
     }
 
-    public List<PerformanceEvaluation> search(PerformanceEvaluation performanceEvaluationResult) {
+    public List< PerformanceEvaluation > search(PerformanceEvaluation performanceEvaluation) {
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example<PerformanceEvaluation> instituteExample = Example.of(performanceEvaluationResult, matcher);
+        Example< PerformanceEvaluation > instituteExample = Example.of(performanceEvaluation, matcher);
         return performanceEvaluationDao.findAll(instituteExample);
     }
 }

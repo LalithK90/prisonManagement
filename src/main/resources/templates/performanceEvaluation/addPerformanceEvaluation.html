@@ -52,15 +52,15 @@
   </div >
   <div class="col-sm-12 flex-column " >
     <form class="form-horizontal"
-          data-th-action="${addStatus==true?'/performanceEvaluationResult/save':'/performanceEvaluationResult/update'}"
-          data-th-object="${performanceEvaluationResult}" method="POST" >
+          data-th-action="${addStatus==true?'/performanceEvaluation/save':'/performanceEvaluation/update'}"
+          data-th-object="${performanceEvaluation}" method="POST" >
       <div class="row" >
         <!--First part-->
         <div class="container-fluid" >
           <!--Id-->
           <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text" />
           <!--employee id-->
-          <input data-th-name="${'performanceEvaluation.employee.id'}" data-th-if="${addStatus==false}"
+          <input data-th-name="${'employee'}" data-th-if="${addStatus==true}"
                  data-th-value="${employeeDetail.id}"
                  hidden type="text" />
           <div class="form-row text-right" >
@@ -206,11 +206,11 @@
             <div class="col-md-4 text-center" >
               <div class="form-check" >
                 <label class="form-check-label col-md-2" >
-                  <input type="radio" class="form-check-input" data-th-field="*{publicInstitutesOfficers}" value="Y" >
+                  <input type="radio" class="form-check-input" data-th-field="*{publicInstitutesOfficers}" value="Y" required>
                   Yes
                 </label >
                 <label class="form-check-label col-md-2" >
-                  <input type="radio" class="form-check-input" data-th-field="*{publicInstitutesOfficers}" value="N" >
+                  <input type="radio" class="form-check-input" data-th-field="*{publicInstitutesOfficers}" value="N" required>
                   No
                 </label >
               </div >
@@ -229,11 +229,11 @@
             <div class="col-md-8 text-center" >
               <div class="form-check" >
                 <label class="form-check-label col-md-2" >
-                  <input type="radio" class="form-check-input" data-th-field="*{satisfiedGeneralPublic}" value="Y" >
+                  <input type="radio" class="form-check-input" data-th-field="*{satisfiedGeneralPublic}" value="Y" required>
                   Yes
                 </label >
                 <label class="form-check-label col-md-2" >
-                  <input type="radio" class="form-check-input" data-th-field="*{satisfiedGeneralPublic}" value="N" >
+                  <input type="radio" class="form-check-input" data-th-field="*{satisfiedGeneralPublic}" value="N" required>
                   No
                 </label >
               </div >
@@ -298,36 +298,6 @@
             </div >
           </div >
           <!--Public Relations end-->
-
-          <!--Remarks -->
-          <div class="form-row text-right" >
-            <div class="col-md-4" >
-              <label class="control-label" data-th-for="${'remark'}" >Remarks :</label >
-            </div >
-            <div class="col-md-4" >
-              <textarea class="form-control" data-th-field="*{performanceEvaluation.remark}" required
-                        tabindex="4" ></textarea >
-              <span class="error"
-                    data-th-errors="*{performanceEvaluation.remark}"
-                    data-th-if="${#fields.hasErrors('performanceEvaluation.remark')}" >Error Name</span >
-            </div >
-          </div >
-          <!--Sinhala and Tamil language translation -->
-          <div class="form-row text-right" >
-            <div class="col-md-4" >
-              <!--Sinhala modal button -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-              </button >
-
-            </div >
-            <div class="col-md-4" >
-              <!-- modal tamil button -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-              </button >
-            </div >
-          </div >
         </div >
         <!--second part-->
         <div class="container-fluid">
