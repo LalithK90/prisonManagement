@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
 </head >
@@ -46,11 +46,11 @@
             </div >
             <div class="col-md-8" >
               <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
-              <input type="text" data-th-field="*{liveOrDead}" hidden>
+              <input type="text" data-th-field="*{liveOrDead}" hidden >
             </div >
           </div >
           <!--System Register code number-->
-          <div class="form-row text-right" data-th-if="${addStatus==false}">
+          <div class="form-row text-right" data-th-if="${addStatus==false}" >
             <div class="col-md-4" >
               <label class="control-label" for="name" >Employee code :</label >
             </div >
@@ -132,17 +132,17 @@
             </div >
             <div class="col-md-8" >
               <div class="custom-control custom-checkbox custom-control-inline "
-                   data-th-each="genders,index : ${gender}">
+                   data-th-each="genders,index : ${gender}" >
                 <input class="custom-control-input gender" required
                        data-th-name="${'gender'}"
                        data-th-value="${genders}"
                        data-th-id="${index.index}+${genders}" type="radio"
-                       data-th-checked="${genders==gender}"/>
+                       data-th-checked="${genders==gender}" />
                 <label class="custom-control-label"
                        data-th-for="${index.index}+${genders}"
-                       data-th-text="${genders.gender}"> radio
-                </label>
-              </div>
+                       data-th-text="${genders.gender}" > radio
+                </label >
+              </div >
             </div >
           </div >
           <!--Date of birth-->
@@ -177,7 +177,8 @@
               <label class="control-label" for="birthCertificateNumber" >Birth Certificate Number :</label >
             </div >
             <div class="col-md-8" >
-              <input id="birthCertificateNumber" data-th-field="*{birthCertificateNumber}" class="form-control" tabindex="8"
+              <input id="birthCertificateNumber" data-th-field="*{birthCertificateNumber}" class="form-control"
+                     tabindex="8"
                      placeholder="Enter number"
                      required type="text" />
               <span data-th-errors="*{birthCertificateNumber}"
@@ -195,7 +196,7 @@
                 <option value="" >Please select</option >
                 <option data-th-each="designations : ${designation}"
                         data-th-text="${designations.designation}"
-                        data-th-value="${designations}"></option >
+                        data-th-value="${designations}" ></option >
               </select >
             </div >
           </div >
@@ -308,7 +309,7 @@
                 <option value="" >Please select</option >
                 <option data-th-each="employeeStatuss : ${employeeStatus}"
                         data-th-text="${employeeStatuss.employeeStatus}"
-                        data-th-value="${employeeStatuss}"></option >
+                        data-th-value="${employeeStatuss}" ></option >
               </select >
             </div >
           </div >

@@ -42,7 +42,8 @@ public class PerformanceEvaluationResult extends AuditEntity {
 //4.1Whether your directly work with general public or other institutes or officers of other sections : yes/no
   private YesNoType publicInstitutesOfficers; //(using 'Y' and 'N')
   //4.2Are you satisfied about your work with the general public?
-//      4.3 Are there any general public or other officers were unhappy ?
+private YesNoType satisfiedGeneralPublic;
+  //      4.3 Are there any general public or other officers were unhappy ?
   private YesNoType unhappy; //(using 'Y' and 'N')
   //      4.4 if the answer for 4.3 is yes what are the reasons for it?
   private String reasons;

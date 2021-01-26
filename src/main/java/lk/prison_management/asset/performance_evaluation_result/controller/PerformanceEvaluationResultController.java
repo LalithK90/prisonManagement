@@ -38,10 +38,10 @@ public class PerformanceEvaluationResultController {
 
     Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
     model.addAttribute("employeeDetail", employee);
-    model.addAttribute("addStatus", false);
+    model.addAttribute("addStatus", true);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
     model.addAttribute("performanceEvaluationResult", new PerformanceEvaluationResult());
-    model.addAttribute("Apprecials", Apprecial.values());
+    model.addAttribute("apprecials", Apprecial.values());
     return "performanceEvaluationResult/addPerformanceEvaluationResult";
   }
 //todo-> continued
