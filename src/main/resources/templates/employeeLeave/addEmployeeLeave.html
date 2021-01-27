@@ -120,7 +120,7 @@
         <div class="col-md-4" >
           <label class="control-label" >Day Count :
             <input type="text" class="form-control " id="dayCount"
-                   data-th-field="*{dayCount}" required  >
+                   data-th-field="*{dayCount}" required readonly>
 
             <span data-th-errors="*{dayCount}"
                   data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
@@ -130,7 +130,7 @@
         <div class="col-md-4" >
           <label class="control-label" >Hour Count :
             <input type="text" class="form-control " id="hourCount"
-                   data-th-field="*{hourCount}" required  >
+                   data-th-field="*{hourCount}" required readonly>
 
             <span data-th-errors="*{hourCount}"
                   data-th-if="${#fields.hasErrors('hourCount')}" class="error" >Error Employee code
@@ -144,7 +144,7 @@
           <label class="control-label" for="name" >Remark :</label >
         </div >
         <div class="col-md-8" >
-          <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea>
+          <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
           <span id="codeE" data-th-errors="*{remarks}"
                 data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
                             </span >
@@ -200,10 +200,10 @@
 
 
 <script >
+
     function dateMatch() {
         let startDateTime = $(`#startAt`).val();
         let endDateTime = $(`#endAt`).val();
-//todo-> date and hour count
         if (startDateTime !== "" && endDateTime !== "") {
             if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
                 swal({
@@ -211,7 +211,17 @@
                     icon: "warning",
                     text: "Please check your date time \n End Date Time can not be less than Start Date Time",
                 })
-                $(`#endAt`).val(startDateTime);
+                 $(`#endAt`).val(startDateTime);
+                $("#dayCount").val(0);
+                $("#hourCount").val(0);
+            } else {
+                let msec = endDateTime - startDateTime; //millisecond
+                let mins = Math.floor(msec / 60000); //minutes
+                let hrs = Math.floor(mins / 60); //hrs
+                let days = Math.floor(hrs / 24); //days
+                let yrs = Math.floor(days / 365); //yrs
+                $("#dayCount").val(days);
+                $("#hourCount").val(hrs);
             }
         }
     }
