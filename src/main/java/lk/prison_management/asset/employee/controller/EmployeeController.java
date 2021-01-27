@@ -1,7 +1,6 @@
 package lk.prison_management.asset.employee.controller;
 
 
-
 import lk.prison_management.asset.common_asset.model.enums.*;
 import lk.prison_management.asset.common_asset.service.CommonService;
 import lk.prison_management.asset.employee.entity.Employee;
@@ -45,7 +44,7 @@ public class EmployeeController {
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
                             DateTimeAgeService dateTimeAgeService,
                             CommonService commonService, UserService userService,
-                             MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
+                            MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.dateTimeAgeService = dateTimeAgeService;
@@ -81,16 +80,14 @@ public class EmployeeController {
     List< Employee > employees = new ArrayList<>();
     for ( Employee employee : employeeService.findAll()
         .stream()
-        .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+        .filter(x -> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
         .collect(Collectors.toList())
     ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
       employees.add(employee);
     }
-    /*  Employee employee = employeeService.findById(id);*/
     model.addAttribute("employees", employees);
     model.addAttribute("contendHeader", "Employee");
-//        /* model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));*/
     return "employee/employee";
   }
 
@@ -222,11 +219,11 @@ public class EmployeeController {
 
     List< Employee > employees = employeeService.search(employee);
 
-    if(employees ==null) {
+    if ( employees == null ) {
       model.addAttribute("employeeNotFound", "There is not employee in the system according to the provided details" +
           " or that employee already be a user in the system" +
           " \n Could you please search again !!");
-    }else {
+    } else {
       model.addAttribute("employees", employees);
     }
 
