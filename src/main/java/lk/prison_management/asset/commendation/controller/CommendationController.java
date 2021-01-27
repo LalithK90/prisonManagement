@@ -96,7 +96,7 @@ public class CommendationController implements AbstractController< Commendation,
         }
         if ( commendation.getId() == null ) {
             Commendation lastCommendation = commendationService.lastCommendation();
-            if ( lastCommendation.getRefNumber() == null ) {
+            if ( lastCommendation == null ) {
                 commendation.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
                 commendation.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(lastCommendation.getRefNumber().substring(4)).toString());

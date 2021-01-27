@@ -55,7 +55,7 @@
   <div class="col-sm-12 flex-column " >
     <form class="form-horizontal" data-th-action="${addStatus==true?'/commendation/save':'/commendation/update'}"
           data-th-object="${commendation}"
-          method="POST" >
+          method="POST" enctype="multipart/form-data" >
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <div class="row" >
@@ -155,6 +155,11 @@
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+
+<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+
 <script >
     $(document).ready(function () {
         imageSrcAttributeCheck();
@@ -187,9 +192,5 @@
         }
     }
 </script >
-
-<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
-<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
-
 </body >
 </html >
