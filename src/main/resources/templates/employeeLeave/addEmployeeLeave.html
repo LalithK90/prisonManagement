@@ -120,7 +120,7 @@
         <div class="col-md-4" >
           <label class="control-label" >Day Count :
             <input type="text" class="form-control " id="dayCount"
-                   data-th-field="*{dayCount}" required readonly>
+                   data-th-field="*{dayCount}" required readonly >
 
             <span data-th-errors="*{dayCount}"
                   data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
@@ -130,7 +130,7 @@
         <div class="col-md-4" >
           <label class="control-label" >Hour Count :
             <input type="text" class="form-control " id="hourCount"
-                   data-th-field="*{hourCount}" required readonly>
+                   data-th-field="*{hourCount}" required readonly >
 
             <span data-th-errors="*{hourCount}"
                   data-th-if="${#fields.hasErrors('hourCount')}" class="error" >Error Employee code
@@ -205,23 +205,27 @@
         let startDateTime = $(`#startAt`).val();
         let endDateTime = $(`#endAt`).val();
         if (startDateTime !== "" && endDateTime !== "") {
-            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
+            let sDT = Date.parse(startDateTime);
+            let eDT = Date.parse(endDateTime);
+            if (sDT > eDT) {
                 swal({
                     title: "Could you accept those days.. !",
                     icon: "warning",
                     text: "Please check your date time \n End Date Time can not be less than Start Date Time",
                 })
-                 $(`#endAt`).val(startDateTime);
+                $(`#endAt`).val(startDateTime);
                 $("#dayCount").val(0);
                 $("#hourCount").val(0);
             } else {
-                let msec = endDateTime - startDateTime; //millisecond
+                let msec = eDT - sDT; //millisecond
                 let mins = Math.floor(msec / 60000); //minutes
                 let hrs = Math.floor(mins / 60); //hrs
                 let days = Math.floor(hrs / 24); //days
                 let yrs = Math.floor(days / 365); //yrs
+
+                let x = msec - (days * 24 * 60 * 60000);
                 $("#dayCount").val(days);
-                $("#hourCount").val(hrs);
+                $("#hourCount").val((x / (60*60000)));
             }
         }
     }
