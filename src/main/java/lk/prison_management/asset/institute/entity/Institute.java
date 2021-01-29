@@ -1,6 +1,7 @@
 package lk.prison_management.asset.institute.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.institute.entity.enums.PrisonType;
 import lk.prison_management.util.audit.AuditEntity;
@@ -32,6 +33,9 @@ public class Institute extends AuditEntity {
 
   @Enumerated( EnumType.STRING )
   private PrisonType prisonType;
+
+  @Enumerated( EnumType.STRING )
+  private LiveOrDead liveOrDead;
 
   @OneToMany(mappedBy = "institute")
   private List< EmployeeInstitute > employeeInstitutes;

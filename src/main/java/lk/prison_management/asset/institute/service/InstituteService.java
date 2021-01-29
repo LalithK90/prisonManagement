@@ -1,5 +1,6 @@
 package lk.prison_management.asset.institute.service;
 
+import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.institute.dao.InstituteDao;
 import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -26,11 +27,16 @@ public class InstituteService implements AbstractService<Institute, Integer> {
     }
 
     public Institute persist(Institute institute) {
+if(institute.getId()==null){
+    institute.setLiveOrDead(LiveOrDead.ACTIVE);
+}
         return instituteDao.save(institute);
     }
 
     public boolean delete(Integer id) {
-        instituteDao.deleteById(id);
+      Institute institute = instituteDao.getOne(id);
+      institute.setLiveOrDead(LiveOrDead.STOP);
+      instituteDao.save(institute);
         return true;
     }
 
