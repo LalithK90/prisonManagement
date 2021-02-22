@@ -32,93 +32,93 @@ import java.util.List;
 @JsonFilter( "Employee" )
 public class Employee extends AuditEntity {
 
-  @Column( unique = true )
-  private String code;
+    @Column( unique = true )
+    private String code;
 
-  @Column( unique = true )
-  private String wopNumber;
+    @Column( unique = true )
+    private String wopNumber;
 
-  private String birthCertificateNumber;
+    private String birthCertificateNumber;
 
-  private String birthPlace;
+    private String birthPlace;
 
-  @Size( min = 5, message = "Your name cannot be accepted" )
-  private String name;
+    @Size( min = 5, message = "Your name cannot be accepted" )
+    private String name;
 
-  @Size( min = 5, message = "At least 5 characters should be included calling name" )
-  private String callingName;
+    @Size( min = 5, message = "At least 5 characters should be included calling name" )
+    private String callingName;
 
-  @Size( max = 12, min = 10, message = "NIC number is contained numbers between 9 and X/V or 12 " )
-  @Column( unique = true )
-  private String nic;
+    @Size( max = 12, min = 10, message = "NIC number is contained numbers between 9 and X/V or 12 " )
+    @Column( unique = true )
+    private String nic;
 
-  @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
-  private String mobileOne;
+    @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
+    private String mobileOne;
 
-  @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
-  private String mobileTwo;
+    @Size( max = 10, message = "Mobile number length should be contained 10 and 9" )
+    private String mobileTwo;
 
-  @Size( max = 10, message = "Phone number length should be contained 10 and 9" )
-  private String land;
+    @Size( max = 10, message = "Phone number length should be contained 10 and 9" )
+    private String land;
 
-  @Column( unique = true )
-  private String email;
+    @Column( unique = true )
+    private String email;
 
-  @Column( unique = true )
-  private String officeEmail;
+    @Column( unique = true )
+    private String officeEmail;
 
-  @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
-  private String address;
+    @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
+    private String address;
 
-  @Enumerated( EnumType.STRING )
-  private Title title;
+    @Enumerated( EnumType.STRING )
+    private Title title;
 
-  @Enumerated( EnumType.STRING )
-  private Gender gender;
+    @Enumerated( EnumType.STRING )
+    private Gender gender;
 
-  @Enumerated( EnumType.STRING )
-  private Designation designation;
+    @Enumerated( EnumType.STRING )
+    private Designation designation;
 
-  @Enumerated( EnumType.STRING )
-  private CivilStatus civilStatus;
+    @Enumerated( EnumType.STRING )
+    private CivilStatus civilStatus;
 
-  @Enumerated( EnumType.STRING )
-  private EmployeeStatus employeeStatus;
+    @Enumerated( EnumType.STRING )
+    private EmployeeStatus employeeStatus;
 
-  @Enumerated( EnumType.STRING )
-  private BloodGroup bloodGroup;
+    @Enumerated( EnumType.STRING )
+    private BloodGroup bloodGroup;
 
-  @Enumerated( EnumType.STRING )
-  private LiveOrDead liveOrDead;
+    @Enumerated( EnumType.STRING )
+    private LiveOrDead liveOrDead;
 
-  @DateTimeFormat( pattern = "yyyy-MM-dd" )
-  private LocalDate dateOfBirth;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private LocalDate dateOfBirth;
 
-  @DateTimeFormat( pattern = "yyyy-MM-dd" )
-  private LocalDate dateOfAssignment;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private LocalDate dateOfAssignment;
 
-  @OneToMany( mappedBy = "employee" )
-  private List< EmployeeInstitute > employeeInstitutes;
+    @OneToMany( mappedBy = "employee" )
+    private List< EmployeeInstitute > employeeInstitutes;
 
-  @OneToMany( mappedBy = "employee" )
-  private List< EmployeeLeave > employeeLeaves;
+    @OneToMany( mappedBy = "employee" )
+    private List< EmployeeLeave > employeeLeaves;
 
-  @OneToMany( mappedBy = "employee" )
-  private List< Qualification > qualifications;
+    @OneToMany( mappedBy = "employee" )
+    private List< Qualification > qualifications;
 
-  @OneToMany( mappedBy = "employee" )
-  private List< Commendation > commendations;
+    @OneToMany( mappedBy = "employee" )
+    private List< Commendation > commendations;
 
-  @OneToMany( mappedBy = "employee" )
-  private List< Censure > censures;
+    @OneToMany( mappedBy = "employee" )
+    private List< Censure > censures;
 
-  @OneToMany( mappedBy = "employee" )
-  private List< PerformanceEvaluation > performanceEvaluations;
+    @OneToMany( mappedBy = "employee" )
+    private List< PerformanceEvaluation > performanceEvaluations;
 
-  @Transient
-  private MultipartFile file;
+    @Transient
+    private MultipartFile file;
 
-  @Transient
-  private FileInfo fileInfo;
+    @Transient
+    private FileInfo fileInfo;
 
 }
