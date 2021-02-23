@@ -33,7 +33,7 @@
   </div >
 </div >
 <!--Form Content-->
-<div class="container-fluid bg-info " >
+
   <div id="accordianId" role="tablist" aria-multiselectable="true" >
     <div class="card" >
       <div class="card-header" role="tab" id="section1HeaderId" >
@@ -53,14 +53,16 @@
   </div >
 
   <div class="col-sm-12 flex-column " >
+    <div id="form">
     <form class="form-horizontal" data-th-action="${addStatus==true?'/commendation/save':'/commendation/update'}"
           data-th-object="${commendation}"
           method="POST" enctype="multipart/form-data" >
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
-      <div class="row" >
-        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+
           <!--Id-->
+
+
           <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text" />
           <!--Main Commendation -->
           <!--        <div class="form-row text-right">
@@ -78,6 +80,7 @@
                       </div>
                   </div>-->
           <!--Name-->
+
           <div class="form-row text-right" >
             <div class="col-md-4" >
               <label class="control-label" data-th-for="${'description'}" >Description :</label >
@@ -146,11 +149,12 @@
                   id="error" ></li >
             </ul >
           </div >
-        </div >
-      </div >
+
+
     </form >
   </div >
 </div >
+</div>
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
