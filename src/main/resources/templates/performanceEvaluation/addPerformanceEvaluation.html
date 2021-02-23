@@ -2,7 +2,7 @@
 <html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >addOffence</title >
+  <title >Department Of Prisons </title >
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -17,6 +17,7 @@
       </a >
     </div >
     <!--Form Name-->
+    <div class="row text-left" >
     <div class="col" >
       <h2 class="text-center" >
         <strong >
@@ -56,6 +57,7 @@
           data-th-object="${performanceEvaluation}" method="POST" >
       <div class="row" >
         <!--First part-->
+        <div id="form">
         <div class="container-fluid" >
           <!--Id-->
           <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text" />
@@ -865,5 +867,6 @@
     }
 
 </script >
+</div>
 </body >
 </html >
