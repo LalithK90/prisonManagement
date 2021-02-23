@@ -32,6 +32,7 @@
     </div >
   </div >
 </div >
+<div class="container-fluid " >
 <div class="container-fluid formBorder text-center" >
   <div class="col" >
     <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}" >
@@ -78,6 +79,11 @@
       </table >
     </div >
   </div >
+
+</div>
+
+
+
   <div class="row" data-th-if="${ #lists.isEmpty(employees)}" >
     <div class="col-sm-12" >
       <div class="alert alert-warning alert-dismissible fade show" role="alert" >

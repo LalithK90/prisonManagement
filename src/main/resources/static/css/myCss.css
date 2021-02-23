@@ -13,10 +13,10 @@
 #form{
 
     width: 1080px;
-    height: 920px;
+    height: auto;
     margin-left:155px;
     position: relative;
-    background-color: rgba(19, 18, 18, 0.97);
+    background-color: rgba(94,48,49, 0.82);
     text-align: center;
     padding:30px;
     -webkit-border-radius:70px 70px 70px 70px;
@@ -140,7 +140,6 @@ img {
 /*Nav bar - start*/
 .dropdown-toggle {
     font-size: 18px;
-
 
 }
 

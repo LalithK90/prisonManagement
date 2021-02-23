@@ -10,7 +10,7 @@ body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	font-weight: 300;
-    color: #17a2b8;
+    color: rgb(239, 240, 241);
 	overflow-x: hidden;
     min-height: 100vh;
     height: 100%;
@@ -33,7 +33,7 @@ a:focus {
 	outline: none;
 }
 
-a {	color: #FFF;  }
+a {	color: #bf4343;  }
 
 a:hover { color: #FF0; }
 
@@ -46,8 +46,8 @@ p {
 
 p:last-child { margin-bottom: 0; }
 
-.tm-bg-transparent-black {
-    background-color: rgba(122,53,16,0.52);!important;
+.tm-bg {
+    background-color: rgba(121,80,70,0.97);!important;
     padding: 30px;
 }
 
@@ -216,7 +216,7 @@ p:last-child { margin-bottom: 0; }
 .tm-section {
     max-width: 100%;
     width: auto;
-    background: transparent; 
+    background: rgba(52,5,5,0.97);
     margin-bottom:200px;   
 }
 .tm-section span img{

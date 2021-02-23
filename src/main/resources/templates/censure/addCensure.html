@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Thymeleaf Springboot </title >
@@ -57,6 +57,7 @@
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
+    <div id="form">
       <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
         <div class="col-md-4" >
           <label class="control-label" for="id" >ID :</label >
@@ -186,6 +187,7 @@
     </form >
   </div >
 </div >
+</div>
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
