@@ -268,7 +268,7 @@ address { font-size: 1rem; }
 
 .form-control:focus {
     background: transparent;
-    color: white;
+    /*color: white;*/
     border-color: #33ccff;
     box-shadow: none;
 }
