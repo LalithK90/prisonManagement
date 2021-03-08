@@ -1,94 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head data-th-replace="~{fragments/header :: headerFragment}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
+
+    <!--style sheet ekak link karanne mehemai-->
+    <link rel="stylesheet" data-th-href="@{/css/style.css}">
 </head>
-<!--<body id="loginBack">
-<div class="col full-height " id="loginPage">
-    <div class="col-8 col-sm-4 form-box bg-transparent ui-widget-content" id="draggable">
-        <form data-th-action="${'/login'}" method="post">
-            <br/>
-            <fieldset>
-                &lt;!&ndash;   <legend class="text-lg-center bg-white"><h3><strong> Excise Department - Sri Lanka</strong></h3>
-                   </legend>&ndash;&gt;
-                <div class="form-label-group">
-                    <input type="text" id="username" th:name="${'username'}" class="form-control" placeholder="username"
-                           required>
-                    <label for="username">Username</label>
-                </div>
-                <div class="form-label-group">
-                    <input type="password" id="inputPassword" th:name="${'password'}" class="form-control"
-                           placeholder="password"
-                           required>
-                    <label for="inputPassword">Password</label>
-                </div>
-                <div class="form-group text-right">
-                    <button class="btn btn-primary " type="submit">LOGIN</button>
-                </div>
-            </fieldset>
-            <div class="container-fluid " data-th-if="${param.error}">
-                <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
-            </div>
-&lt;!&ndash;            <div class="container-fluid ">&ndash;&gt;
-&lt;!&ndash;                <p id="errorMessage" data-th-text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>&ndash;&gt;
-&lt;!&ndash;            </div>&ndash;&gt;
-        </form>
-    </div>
-</div>
-&lt;!&ndash;footer include&ndash;&gt;
- <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
-&lt;!&ndash;script include&ndash;&gt;
-<div data-th-replace="~{fragments/script :: scriptFragment}"></div>-->
-
-
 <body>
-<img class="wave" src="../img/loginbck.jpg">
-<div class="container">
-    <div class="img">
 
+<div class="form-area">
+    <form th:action="${'/login'}" method="post">
+    <div class="img-area">
+        <img src="../img/avatar.png" alt="">
     </div>
-    <div class="login-content">
-        <form data-th-action="${'/login'}" method="post">
-            <div class="img-area">
-                <img id="logo" th:src="@{/img/avatar.png}"></div><br><br><br><br>
 
-            <h3 class="title">Department of Prison</h3>
-            <h4 class="title">Rehabilitation Officer Administration</h4><br>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="div">
-                    <h5>Username</h5>
-                    <input type="text" th:name="${'username'}" class="input">
-                </div>
-            </div>
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <h5>Password</h5>
-                    <input type="password"  th:name="${'password'}" class="input">
-                </div>
-            </div>
-            <a href="#">Forgot Password?</a>
-            <input type="submit" class="btn" value="Login">
+    <br/>
+    <br/>
+    <br/>
 
-            <div class="container-fluid " data-th-if="${param.error}">
+    <h2>Department of Prison</h2>
+    <h3>Rehabilitation Officer Administration</h3>
+
+    <p> User Name :</p>
+    <input type="text" name="username" id="username" th:name="${'username'}" placeholder="Enter User Name" required>
+
+    <p>Password :</p>
+    <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required>
+
+    <div style="margin-top:10px">
+        <button id="btnLogin" class="col-md-12 btn btn-primary"><i class= "fa fa-key" style="margin-right: 10px;font-size: 18px"></i>Login</button>
+    </div>
+
+    <div>
+        <a href="#" class="for-pass">Forgot Password ?</a>
+    </div>
+
+<div class="container-fluid " th:if="${param.error}">
                 <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
             </div>
             <div class="container-fluid ">
-                <p id="errorMessage" data-th-text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
+                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
             </div>
         </form>
-    </div>
 </div>
+
 <!--footer include-->
- <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
+<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
 <!--script include-->
-<div data-th-replace="~{fragments/script :: scriptFragment}"></div>
+<script th:replace="~{fragments/script :: scriptFragment}"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
 

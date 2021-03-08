@@ -33,7 +33,9 @@
     </div>
 </div>
 <!--Form Content-->
-<div class="container-fluid bg-info ">
+
+
+<div id="form">
     <div class="col-sm-12 flex-column ">
         <form class="form-horizontal" data-th-action="${addStatus==true?'/institute/save':'/institute/update'}" data-th-object="${institute}"
               enctype="multipart/form-data"               method="POST">
@@ -109,19 +111,17 @@
                         </div>
                     </div>
                 </div>
+
                 <!--Button-->
-                <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-arrow-circle-left" style="font-size: 20px"></i>&nbsp;&nbsp;Back
-                    </button>
-                    <button class="btn btn-success ml-5" tabindex="21" type="submit">
-                        <i class="fa fa-save " style="font-size: 20px"></i>&nbsp;&nbsp;<span data-th-text="${addStatus==true?'Save': 'Update'}"
-                                                                                             id="submit"></span>
-                    </button>
-                    <button class="btn btn-warning ml-5" tabindex="21" type="reset">
-                        <i class="far fa-times-circle" style="font-size: 20px"></i>&nbsp;&nbsp;Cancel
-                    </button>
-                </div>
+                <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+                    <button class="btn btn-success" type="submit" tabindex="21" >
+                        <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                            data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+                    </button >
+                    <button class="btn btn-danger" type="reset" >
+                        <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+                    </button >
+                </div >
                 <!--Error-->
                 <div class="form-row">
                     <label data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '"
@@ -132,6 +132,7 @@
                     </ul>
                 </div>
             </div>
+
         </form>
     </div>
 </div>

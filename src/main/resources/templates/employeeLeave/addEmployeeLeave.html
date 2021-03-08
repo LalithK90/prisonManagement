@@ -2,7 +2,7 @@
 <html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >Thymeleaf Springboot </title >
+  <title >Department Of Prisons </title >
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -50,6 +50,8 @@
       </div >
     </div >
   </div >
+
+
   <div class="col-sm-12 flex-column " >
     <form data-th-action="${addStatus==true?'/employeeLeave/save' :'/employeeLeave/update'}" method="post"
           data-th-object="${employeeLeave}"
@@ -58,6 +60,7 @@
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
+      <div id="form">
       <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
         <div class="col-md-4" >
           <label class="control-label" for="id" >ID :</label >
@@ -185,6 +188,7 @@
           <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
         </ul >
       </div >
+      </div>
     </form >
 
   </div >

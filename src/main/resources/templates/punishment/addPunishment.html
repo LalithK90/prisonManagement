@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>addPunishment</title>
@@ -33,7 +33,8 @@
     </div>
 </div>
 <!--Form Content-->
-<div class="container-fluid bg-info ">
+<div id="form">
+
     <div class="col-sm-12 flex-column ">
         <form class="form-horizontal" data-th-action="${addStatus==true?'/punishment/save':'/punishment/update'}"
               data-th-object="${punishment}"
@@ -93,8 +94,10 @@
                     </div>
                 </div>
             </div>
+
         </form>
     </div>
+
 </div>
 <!--footer include-->
  <div data-th-replace="~{fragments/footer :: footerFragment}"></div>

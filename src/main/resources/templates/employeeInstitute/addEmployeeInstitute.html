@@ -2,7 +2,7 @@
 <html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >Thymeleaf Springboot </title >
+  <title >Department Of Prisons </title >
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -58,6 +58,7 @@
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
+      <div id="form">
       <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
         <div class="col-md-4" >
           <label class="control-label" for="id" >ID :</label >
@@ -156,21 +157,23 @@
       </div >
       <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
         <!--Button-->
-        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-          <button class="btn btn-success" type="submit" tabindex="21" >
-            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
-                data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
-          </button >
-          <button class="btn btn-danger" type="reset" >
-            <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
-          </button >
+        <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+            <button class="btn btn-success" type="submit" tabindex="21" >
+              <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                    data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+            </button >
+            <button class="btn btn-danger" type="reset" >
+              <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+            </button >
+          </div >
         </div >
-      </div >
-      <div class="form-row" >
-        <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
-        <ul >
-          <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
-        </ul >
+        <div class="form-row" >
+          <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
+          <ul >
+            <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+          </ul >
+        </div >
       </div >
     </form >
 
