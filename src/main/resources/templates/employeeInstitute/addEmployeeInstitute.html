@@ -4,7 +4,7 @@
   <meta charset="UTF-8" >
   <title >Department Of Prisons </title >
 </head >
-<body >
+ <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <div class="container " >
@@ -126,38 +126,37 @@
           </select >
         </div >
       </div >
-      <!--remarks-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="remarks" >Remarks :</label >
-        </div >
-        <div class="col-md-8" >
-          <input id="remarks" data-th-field="*{remarks}" class="form-control" tabindex="4"
-                 type="text" required />
-          <span id="codeE" data-th-errors="*{remarks}"
-                data-th-if="${#fields.hasErrors('name')}" class="error" >Error Employee code
+        <!--Remarks-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="name" >Remark :</label >
+          </div >
+          <div class="col-md-8" >
+            <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
+            <span id="codeE" data-th-errors="*{remarks}"
+                  data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--Sinhala modal button and modal tamil button-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <!--Sinhala modal button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-          </button >
+        <!--Sinhala modal button and modal tamil button-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <!--Sinhala modal button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+            </button >
 
+          </div >
+          <div class="col-md-4" >
+            <!-- modal tamil button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+            </button >
+          </div >
         </div >
-        <div class="col-md-4" >
-          <!-- modal tamil button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-          </button >
-        </div >
-      </div >
-      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-        <!--Button-->
+
         <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+          <!--Button-->
           <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
             <button class="btn btn-success" type="submit" tabindex="21" >
               <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
@@ -175,7 +174,8 @@
           </ul >
         </div >
       </div >
-    </form >
+
+    </form>
 
   </div >
 
