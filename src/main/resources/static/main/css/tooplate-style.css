@@ -1,16 +1,13 @@
 /* 	
 
-Template 2102 Constructive
-
-http://www.tooplate.com/view/2102-constructive
-
+main window eke form eke css properties
 */
 
 body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	font-size: 18px;
-	font-weight: 300;
-    color: white;
+	font-weight: 500;
+    color: #000000;
 	overflow-x: hidden;
     min-height: 100vh;
     height: 100%;
