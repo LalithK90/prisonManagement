@@ -33,7 +33,7 @@ public class EmployeeLeaveController {
 
   @GetMapping
   public String findAll(Model model) {
-    model.addAttribute("qualifications", employeeLeaveService.findAll());
+    model.addAttribute("employeeLeaves", employeeLeaveService.findAll());
     return "employeeLeave/employeeLeave";
   }
 
