@@ -261,7 +261,7 @@ address { font-size: 1rem; }
     color: #000000;
     font-weight: 400;
     border-radius: 0;
-    padding: 15px;
+    padding: 3px;
 }
 
 .form-control:focus {
