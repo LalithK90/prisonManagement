@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 // spring transactional annotation need to tell spring to this method work through the project
@@ -29,7 +30,7 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
 
     @Cacheable
     public List< Employee > findAll() {
-        return employeeDao.findAll();
+        return employeeDao.findAll().stream().filter(x->x.getLiveOrDead().equals(LiveOrDead.ACTIVE)).collect(Collectors.toList());
     }
 
     @Cacheable
@@ -52,12 +53,7 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
         employeeDao.save(employee);
         return false;
     }
-   /* @CacheEvict( allEntries = true )
-    public boolean delete(Integer id) {
-        employeeDao.deleteById(id);
-        return false;
-    }
-*/
+
     @Cacheable
     public List< Employee > search(Employee employee) {
         ExampleMatcher matcher = ExampleMatcher
