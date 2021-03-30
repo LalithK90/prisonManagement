@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PrisonType {
+    HQ("Head Quaters"),
     CP("Closed Prisons"),
     RP("Remand Prisons"),
     WC("Work Camps"),
