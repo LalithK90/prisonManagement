@@ -2,7 +2,7 @@
 <html lang="en"  >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >Thymeleaf Springboot </title >
+  <title >Department Of Prisons  </title >
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -131,6 +131,24 @@
                             </span >
         </div >
       </div >
+        <!--Sinhala modal button and modal tamil button-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <!--Sinhala modal button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+            </button >
+
+          </div >
+          <div class="col-md-4" >
+            <!-- modal tamil button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+            </button >
+          </div >
+        </div >
+
+        <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
       <!--Button-->
       <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
         <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
@@ -148,6 +166,7 @@
           <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
         </ul >
       </div >
+      </div>
       </div>
     </form >
 

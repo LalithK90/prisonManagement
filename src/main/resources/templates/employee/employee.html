@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >Thymeleaf Springboot </title >
+  <title >Department of Prison </title >
 </head >
 <body>
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -66,7 +66,7 @@
           <th data-th-text="${employee.designation.designation}" ></th >
           <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
           <th >
-            <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >&nbsp;View</a >
+            <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >View</a >
             <a id="employeeEdit" data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Edit</a >
             <a id="employeeRemove" data-th-href="${'/employee/remove/' + employee.id}"

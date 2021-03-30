@@ -1,16 +1,14 @@
 /* 	
 
-Template 2102 Constructive
-
-http://www.tooplate.com/view/2102-constructive
+Forms wala css thiyena thana
 
 */
 
 body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	font-size: 18px;
-	font-weight: 300;
-    color: rgb(239, 240, 241);
+	font-weight: 500;
+    color: rgb(0, 0, 0);
 	overflow-x: hidden;
     min-height: 100vh;
     height: 100%;
@@ -259,16 +257,16 @@ position: relative;
 address { font-size: 1rem; }
 .form-control { 
     background: transparent;
-    border-color: white;
-    color: white;
-    font-weight: 300;
+    border-color: #000000;
+    color: #000000;
+    font-weight: 400;
     border-radius: 0;
-    padding: 15px;
+    padding: 3px;
 }
 
 .form-control:focus {
     background: transparent;
-    color: white;
+    /*color: white;*/
     border-color: #33ccff;
     box-shadow: none;
 }
