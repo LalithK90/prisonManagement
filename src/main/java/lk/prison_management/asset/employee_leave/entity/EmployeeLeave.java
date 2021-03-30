@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,14 +22,16 @@ import java.time.LocalDateTime;
 public class EmployeeLeave extends AuditEntity {
 
   @Column( nullable = false )
+  @DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
   private LocalDateTime startAt;
 
   @Column( nullable = false )
-  private LocalDateTime  endAt;
+  @DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
+  private LocalDateTime endAt;
 
   private String dayCount, hourCount, remarks;
 
-  @Enumerated( EnumType.STRING)
+  @Enumerated( EnumType.STRING )
   private LeaveType leaveType;
 
   @ManyToOne
