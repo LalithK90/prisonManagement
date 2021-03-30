@@ -2,6 +2,7 @@ package lk.prison_management.asset.commendation.service;
 
 import lk.prison_management.asset.commendation.dao.CommendationDao;
 import lk.prison_management.asset.commendation.entity.Commendation;
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -46,4 +47,9 @@ public class CommendationService implements AbstractService< Commendation, Integ
   public Commendation lastCommendation() {
   return commendationDao.findFirstByOrderByIdDesc();
     }
+
+  public List< Commendation> findByEmployee(Employee employee) {
+  return commendationDao.findByEmployee(employee);}
+
+
 }

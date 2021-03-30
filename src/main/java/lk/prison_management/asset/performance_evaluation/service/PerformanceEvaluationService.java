@@ -1,5 +1,6 @@
 package lk.prison_management.asset.performance_evaluation.service;
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.performance_evaluation.dao.PerformanceEvaluationDao;
 import lk.prison_management.asset.performance_evaluation.entity.PerformanceEvaluation;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -42,4 +43,8 @@ public class PerformanceEvaluationService implements AbstractService< Performanc
         Example< PerformanceEvaluation > instituteExample = Example.of(performanceEvaluation, matcher);
         return performanceEvaluationDao.findAll(instituteExample);
     }
+
+  public List< PerformanceEvaluation> findByEmployee(Employee employee) {
+        return performanceEvaluationDao.findByEmployee(employee);
+  }
 }

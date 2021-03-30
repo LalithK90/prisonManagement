@@ -1,5 +1,6 @@
 package lk.prison_management.asset.employee_institute.service;
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee_institute.dao.EmployeeInstituteDao;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -42,4 +43,9 @@ public class EmployeeInstituteService implements AbstractService< EmployeeInstit
     Example< EmployeeInstitute > employeeInstituteExample = Example.of(employeeInstitute, matcher);
     return employeeInstituteDao.findAll(employeeInstituteExample);
   }
+
+  public List< EmployeeInstitute> findByEmployee(Employee employee) {
+    return employeeInstituteDao.findByEmployee(employee);
+  }
+
 }

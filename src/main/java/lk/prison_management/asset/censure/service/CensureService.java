@@ -2,6 +2,7 @@ package lk.prison_management.asset.censure.service;
 
 import lk.prison_management.asset.censure.dao.CensureDao;
 import lk.prison_management.asset.censure.entitiy.Censure;
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -42,4 +43,8 @@ public class CensureService implements AbstractService< Censure, Integer> {
         Example< Censure > instituteExample = Example.of(censure, matcher);
         return censureDao.findAll(instituteExample);
     }
+
+  public List< Censure> findByEmployee(Employee employee) {
+        return censureDao.findByEmployee(employee);
+  }
 }

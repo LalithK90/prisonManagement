@@ -1,6 +1,7 @@
 package lk.prison_management.asset.employee_leave.service;
 
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee_leave.dao.EmployeeLeaveDao;
 import lk.prison_management.asset.employee_leave.entity.EmployeeLeave;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -42,5 +43,9 @@ public class EmployeeLeaveService implements AbstractService< EmployeeLeave, Int
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
         Example<EmployeeLeave> employeeLeaveExample = Example.of(employeeLeave, matcher);
         return employeeLeaveDao.findAll(employeeLeaveExample);
+    }
+
+  public List< EmployeeLeave> findByEmployee(Employee employee) {
+  return employeeLeaveDao.findByEmployee(employee);
     }
 }
