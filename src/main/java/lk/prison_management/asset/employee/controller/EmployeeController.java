@@ -126,6 +126,13 @@ public class EmployeeController {
   @PostMapping( value = {"/save", "/update"} )
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
+    Employee employeeDb = employeeService.findByWopNumber(employee.getWopNumber());
+    if ( employeeDb != null ){
+      ObjectError error = new ObjectError("employee",
+                                          "There is employee on same wop number . <br> System message -->" );
+      result.addError(error);
+    }
+
     if ( result.hasErrors() ) {
       model.addAttribute("addStatus", true);
       model.addAttribute("employee", employee);

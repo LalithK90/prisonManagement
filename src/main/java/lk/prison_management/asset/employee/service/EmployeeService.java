@@ -81,4 +81,8 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
     public Employee findByNic(String nic) {
         return employeeDao.findByNic(nic);
     }
+
+  public Employee findByWopNumber(String wopNumber) {
+  return employeeDao.findByWopNumber(wopNumber);
+    }
 }
