@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Department Of Prisons </title >
@@ -57,145 +57,149 @@
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
-    <div id="form">
-      <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="id" >ID :</label >
+      <div id="form" >
+        <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="id" >ID :</label >
+          </div >
+          <div class="col-md-8" >
+            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+          </div >
         </div >
-        <div class="col-md-8" >
-          <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+        <!--refNumber-->
+        <div id="" data-th-if="${addStatus==false}" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="abc" >Ref Number :</label >
+          </div >
+          <div class="col-md-8" >
+            <input id="abc" data-th-field="*{refNumber}" class="form-control" type="text" readonly />
+          </div >
         </div >
-      </div >
-      <!--refNumber-->
-      <div id="" data-th-if="${addStatus==false}" class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="abc" >Ref Number :</label >
+        <!--Offence -->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="offence" >Offence :</label >
+          </div >
+          <div class="col-md-8" >
+            <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
+                    required >
+              <option value="" >Please select</option >
+              <option data-th-each="offence : ${offences}"
+                      data-th-text="${offence.name}"
+                      data-th-value="${offence.id}" ></option >
+            </select >
+          </div >
         </div >
-        <div class="col-md-8" >
-          <input id="abc" data-th-field="*{refNumber}" class="form-control" type="text" readonly />
+        <!--Punishment -->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="punishment" >Punishment :</label >
+          </div >
+          <div class="col-md-8" >
+            <select id="punishment" data-th-field="*{punishment}" class="form-control" tabindex="19"
+                    required >
+              <option value="" >Please select</option >
+              <option data-th-each="punishment : ${punishments}"
+                      data-th-text="${punishment.name}"
+                      data-th-value="${punishment.id}" ></option >
+            </select >
+          </div >
         </div >
-      </div >
-      <!--Offence -->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="offence" >Offence :</label >
-        </div >
-        <div class="col-md-8" >
-          <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
-                  required >
-            <option value="" >Please select</option >
-            <option data-th-each="offence : ${offences}"
-                    data-th-text="${offence.name}"
-                    data-th-value="${offence.id}" ></option >
-          </select >
-        </div >
-      </div >
-      <!--Punishment -->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="punishment" >Punishment :</label >
-        </div >
-        <div class="col-md-8" >
-          <select id="punishment" data-th-field="*{punishment}" class="form-control" tabindex="19"
-                  required >
-            <option value="" >Please select</option >
-            <option data-th-each="punishment : ${punishments}"
-                    data-th-text="${punishment.name}"
-                    data-th-value="${punishment.id}" ></option >
-          </select >
-        </div >
-      </div >
-      <!--Incident Date-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="incidentDate" >Incident Date :</label >
-        </div >
-        <div class="col-md-8" >
-          <input type="date" class="form-control "
-                 data-th-field="*{incidentDate}" id="incidentDate" required >
+        <!--Incident Date-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="incidentDate" >Incident Date :</label >
+          </div >
+          <div class="col-md-8" >
+            <input type="date" class="form-control "
+                   data-th-field="*{incidentDate}" id="incidentDate" required >
 
-          <span data-th-errors="*{incidentDate}"
-                data-th-if="${#fields.hasErrors('incidentDate')}" class="error" >Error Employee code
+            <span data-th-errors="*{incidentDate}"
+                  data-th-if="${#fields.hasErrors('incidentDate')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--description-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="description" >Description :</label >
-        </div >
-        <div class="col-md-8" >
-          <textarea id="description" data-th-field="*{description}" class="form-control" row="4" required ></textarea >
-          <span id="codeE" data-th-errors="*{description}"
-                data-th-if="${#fields.hasErrors('description')}" class="error" >Error Employee code
+        <!--description-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="description" >Description :</label >
+          </div >
+          <div class="col-md-8" >
+            <textarea id="description" data-th-field="*{description}" class="form-control" row="4"
+                      required ></textarea >
+            <span id="codeE" data-th-errors="*{description}"
+                  data-th-if="${#fields.hasErrors('description')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--Sinhala modal button and modal tamil button-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <!--Sinhala modal button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+        <!--Sinhala modal button and modal tamil button-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <!--Sinhala modal button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
                   class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-          </button >
+            </button >
 
-        </div >
-        <div class="col-md-4" >
-          <!-- modal tamil button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+          </div >
+          <div class="col-md-4" >
+            <!-- modal tamil button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
                   class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-          </button >
+            </button >
+          </div >
         </div >
-      </div >
 
-      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-      <!--Image-->
-      <div class="form-row text-right" >
-        <div class="form-row " >
-          <div class="col-md-3 mr-5" >
-            <label class="control-label" >Image</label >
-            <input type="file" name="file" id="imgUpload"
-                   accept="image/png, image/jpeg" />
+        <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+          <!--Image-->
+          <div class="form-row text-right" >
+            <div class="form-row " >
+              <div class="col-md-3 mr-5" >
+                <label class="control-label" >Image</label >
+                <input type="file" name="file" id="imgUpload"
+                       accept="image/png, image/jpeg" />
+              </div >
+              <div class="col-md-3" ></div >
+              <div class="col-md-3 ml-5" >
+                <!--photo details-->
+                <img class="img-fluid ml-5" data-th-if="${addStatus==false && file!=null}" data-th-src="${file.url}"
+                     id="image" alt=""
+                     style="height: 100px; width: 100%;" >
+                <img class="img-fluid ml-5" data-th-if="${addStatus==true}" src="" id="image" alt=""
+                     style="height: 100px; width: 100%" >
+              </div >
+            </div >
           </div >
-          <div class="col-md-3" ></div >
-          <div class="col-md-3 ml-5" >
-            <!--photo details-->
-            <img class="img-fluid ml-5" data-th-if="${addStatus==false && file!=null}" data-th-src="${file.url}"
-                 id="image" alt=""
-                 style="height: 100px; width: 100%;" >
-            <img class="img-fluid ml-5" data-th-if="${addStatus==true}" src="" id="image" alt=""
-                 style="height: 100px; width: 100%" >
+          <!--Button-->
+          <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+            <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+              <button class="btn btn-success" type="submit" tabindex="21" >
+                <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                    data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+              </button >
+              <button class="btn btn-danger" type="reset" >
+                <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+              </button >
+            </div >
+          </div >
+          <div class="form-row" >
+            <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
+            <ul >
+              <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+            </ul >
           </div >
         </div >
       </div >
-      <!--Button-->
-      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-          <button class="btn btn-success" type="submit" tabindex="21" >
-            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
-                data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
-          </button >
-          <button class="btn btn-danger" type="reset" >
-            <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
-          </button >
-        </div >
-      </div >
-      <div class="form-row" >
-        <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
-        <ul >
-          <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
-        </ul >
-      </div >
-    </div >
-    </div>
     </form >
 
+  </div >
 </div >
-</div>
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 <script >
     $(document).ready(function () {
         imageSrcAttributeCheck();
@@ -228,7 +232,5 @@
         }
     }
 </script >
-<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
-<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 </body >
 </html >

@@ -13,4 +13,5 @@ public interface EmployeeDao extends JpaRepository< Employee, Integer> {
 
     Employee findByNic(String nic);
 
+  Employee findByWopNumber(String wopNumber);
 }

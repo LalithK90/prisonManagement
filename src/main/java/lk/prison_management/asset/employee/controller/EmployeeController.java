@@ -1,6 +1,8 @@
 package lk.prison_management.asset.employee.controller;
 
 
+import lk.prison_management.asset.censure.service.CensureService;
+import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.common_asset.model.enums.*;
 import lk.prison_management.asset.common_asset.service.CommonService;
 import lk.prison_management.asset.employee.entity.Employee;
@@ -9,6 +11,10 @@ import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.employee.service.EmployeeService;
+import lk.prison_management.asset.employee_institute.service.EmployeeInstituteService;
+import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
+import lk.prison_management.asset.performance_evaluation.service.PerformanceEvaluationService;
+import lk.prison_management.asset.qualification.service.QualificationService;
 import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.asset.user.service.UserService;
 import lk.prison_management.util.service.DateTimeAgeService;
@@ -37,19 +43,30 @@ public class EmployeeController {
   private final DateTimeAgeService dateTimeAgeService;
   private final CommonService commonService;
   private final UserService userService;
-
+  private final EmployeeInstituteService employeeInstituteService;
+  private final EmployeeLeaveService employeeLeaveService;
+  private final QualificationService qualificationService;
+  private final CommendationService commendationService;
+  private final CensureService censureService;
+  private final PerformanceEvaluationService performanceEvaluationService;
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
   @Autowired
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
                             DateTimeAgeService dateTimeAgeService,
                             CommonService commonService, UserService userService,
-                            MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
+                            EmployeeInstituteService employeeInstituteService, EmployeeLeaveService employeeLeaveService, QualificationService qualificationService, CommendationService commendationService, CensureService censureService, PerformanceEvaluationService performanceEvaluationService, MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.dateTimeAgeService = dateTimeAgeService;
     this.commonService = commonService;
     this.userService = userService;
+    this.employeeInstituteService = employeeInstituteService;
+    this.employeeLeaveService = employeeLeaveService;
+    this.qualificationService = qualificationService;
+    this.commendationService = commendationService;
+    this.censureService = censureService;
+    this.performanceEvaluationService = performanceEvaluationService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
 //----> Employee details management - start <----//
@@ -106,6 +123,13 @@ public class EmployeeController {
   @GetMapping( value = "/edit/{id}" )
   public String editEmployeeForm(@PathVariable( "id" ) Integer id, Model model) {
     Employee employee = employeeService.findById(id);
+    employee.setPerformanceEvaluations(performanceEvaluationService.findByEmployee(employee));
+    employee.setCensures(censureService.findByEmployee(employee));
+    employee.setCommendations(commendationService.findByEmployee(employee));
+    employee.setQualifications(qualificationService.findByEmployee(employee));
+    employee.setEmployeeLeaves(employeeLeaveService.findByEmployee(employee));
+    employee.setEmployeeInstitutes(employeeInstituteService.findByEmployee(employee));
+
     model.addAttribute("employee", employee);
     model.addAttribute("addStatus", false);
     model.addAttribute("contendHeader", "Employee Edit Details");
@@ -126,6 +150,13 @@ public class EmployeeController {
   @PostMapping( value = {"/save", "/update"} )
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
+    Employee employeeDb = employeeService.findByWopNumber(employee.getWopNumber());
+    if ( employeeDb != null ) {
+      ObjectError error = new ObjectError("employee",
+                                          "There is employee on same wop number . <br> System message -->");
+      result.addError(error);
+    }
+
     if ( result.hasErrors() ) {
       model.addAttribute("addStatus", true);
       model.addAttribute("employee", employee);

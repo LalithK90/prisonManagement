@@ -631,3 +631,14 @@ $(".reveal").on('click', function () {
         $pwd.attr('type', 'password');
     }
 });
+
+function confirmDelete(obj) {
+    swal("Are you sure to delete this?", {
+        dangerMode: true,
+        buttons: true,
+    }).then((x) => {
+        if (x) {
+            self.location = location.protocol + "//" + location.host + obj.getAttribute('id');
+        }
+    });
+}

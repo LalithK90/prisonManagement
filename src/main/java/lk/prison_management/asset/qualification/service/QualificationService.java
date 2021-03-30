@@ -1,6 +1,7 @@
 package lk.prison_management.asset.qualification.service;
 
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.qualification.dao.QualificationDao;
 import lk.prison_management.asset.qualification.entity.Qualification;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -64,8 +65,10 @@ public class QualificationService implements AbstractService< Qualification, Int
         return qualificationDao.equals(qualification);
     }
 
+  public List< Qualification> findByEmployee(Employee employee) {
+        return qualificationDao.findByEmployee(employee);
+  }
 
-/*    public List<Qualification> findByProvince(Province province) {
-        return qualificationDao.findByProvince(province);
-    }*/
+
+
 }
