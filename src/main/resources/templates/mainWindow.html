@@ -2,421 +2,421 @@
 <html xmlns:height="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml"
       xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Department of Prison</title>
+  <title>Department of Prison</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" data-th-href="@{/main/css/fontawesome-all.min.css}">
-    <link rel="stylesheet" data-th-href="@{/main/css/bootstrap.min.css}">
-    <link rel="stylesheet" data-th-href="@{/main/css/tooplate-style.css}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+  <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" data-th-href="@{/main/css/fontawesome-all.min.css}">
+  <link rel="stylesheet" data-th-href="@{/main/css/bootstrap.min.css}">
+  <link rel="stylesheet" data-th-href="@{/main/css/tooplate-style.css}">
 
-    <script>
-        var renderPage = true;
+  <script>
+      var renderPage = true;
 
-        if (navigator.userAgent.indexOf('MSIE') !== -1
-            || navigator.appVersion.indexOf('Trident/') > 0) {
-            /* Microsoft Internet Explorer detected in. */
-            alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
-            renderPage = false;
-        }
-    </script>
+      if (navigator.userAgent.indexOf('MSIE') !== -1
+          || navigator.appVersion.indexOf('Trident/') > 0) {
+          /* Microsoft Internet Explorer detected in. */
+          alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+          renderPage = false;
+      }
+  </script>
 </head>
 
 <body>
 <div class="main-section">
-    <!-- Loader -->
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
+  <!-- Loader -->
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
 
-    <!-- Page Content -->
-    <div class="container-fluid tm-main">
-        <div class="row tm-main-row">
+  <!-- Page Content -->
+  <div class="container-fluid tm-main">
+    <div class="row tm-main-row">
 
-            <!-- Sidebar -->
-            <div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar">
+      <!-- Sidebar -->
+      <div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar">
 
-                <button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
+        <button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
 
-                <div class="inner">
-                    <nav id="tmMainNav" class="tm-main-nav">
-                        <ul>
-                            <li>
-                                <a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-1">
-                                    <i class="fas fa-home tm-nav-fa-icon"></i>
-                                    <span>The prison</span>
-                                </a>
-                            </li>
-                            <!--<li>
-                                <a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-2" data-page-type="carousel">
-                                    <i class="fas fa-map tm-nav-fa-icon"></i>
-                                    <span>Employee Management </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-3">
-                                    <i class="fas fa-users tm-nav-fa-icon"></i>
-                                    <span>Discipline  Management</span>
-                                </a>
-                            </li>
+        <div class="inner">
+          <nav id="tmMainNav" class="tm-main-nav">
+            <ul>
+              <li>
+                <a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img="mainwinbg.png"
+                   data-page="#tm-section-1">
+                  <i class="fas fa-home tm-nav-fa-icon"></i>
+                  <span>The prison</span>
+                </a>
+              </li>
+              <!--<li>
+                  <a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="mainwinbg.png"
+                     data-page="#tm-section-2" data-page-type="carousel">
+                      <i class="fas fa-map tm-nav-fa-icon"></i>
+                      <span>Employee Management </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
+                     data-page="#tm-section-3">
+                      <i class="fas fa-users tm-nav-fa-icon"></i>
+                      <span>Discipline  Management</span>
+                  </a>
+              </li>
 
-                            <li>
-                                <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-4">
-                                    <i class="fas fa-users tm-nav-fa-icon"></i>
-                                    <span>Leave Management</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-5">
-                                    <i class="fas fa-users tm-nav-fa-icon"></i>
-                                    <span>Qualification Management</span>
-                                </a>
-                            </li>
+              <li>
+                  <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
+                     data-page="#tm-section-4">
+                      <i class="fas fa-users tm-nav-fa-icon"></i>
+                      <span>Leave Management</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
+                     data-page="#tm-section-5">
+                      <i class="fas fa-users tm-nav-fa-icon"></i>
+                      <span>Qualification Management</span>
+                  </a>
+              </li>
 
-                            <li>
-                                <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-6">
-                                    <i class="fas fa-users tm-nav-fa-icon"></i>
-                                    <span>Performance Review </span>
-                                </a>
-                            </li>
+              <li>
+                  <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
+                     data-page="#tm-section-6">
+                      <i class="fas fa-users tm-nav-fa-icon"></i>
+                      <span>Performance Review </span>
+                  </a>
+              </li>
 -->
-                            <li>
-                                <a href="#contact" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-8">
-                                    <i class="fas fa-comments tm-nav-fa-icon"></i>
-                                    <span>Institute Management</span>
-                                </a>
-                            </li>
+              <li>
+                <a href="#contact" class="scrolly" data-bg-img="mainwinbg.png"
+                   data-page="#tm-section-8">
+                  <i class="fas fa-comments tm-nav-fa-icon"></i>
+                  <span>Institute Management</span>
+                </a>
+              </li>
 
-                            <li>
-                                <a href="#contact" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-3">
-                                    <i class="fas fa-comments tm-nav-fa-icon"></i>
-                                    <span>Decipline Management</span>
-                                </a>
-                            </li>
+              <li>
+                <a href="#contact" class="scrolly" data-bg-img="mainwinbg.png"
+                   data-page="#tm-section-3">
+                  <i class="fas fa-comments tm-nav-fa-icon"></i>
+                  <span>Decipline Management</span>
+                </a>
+              </li>
 
-                            <li>
-                                <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
-                                   data-page="#tm-section-7">
-                                    <i class="fas fa-users tm-nav-fa-icon"></i>
-                                    <span>Analytics and Reporting</span>
-                                </a>
-                            </li>
+              <li>
+                <a href="#company" class="scrolly" data-bg-img="mainwinbg.png"
+                   data-page="#tm-section-7">
+                  <i class="fas fa-users tm-nav-fa-icon"></i>
+                  <span>Analytics and Reporting</span>
+                </a>
+              </li>
 
-                        </ul>
-                    </nav>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!--page content starts-->
+
+      <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
+
+        <!-- The prisons-->
+
+        <section id="tm-section-1" class="tm-section" style="margin-bottom:0px;margin-left:80px">
+          <div class="ml-auto">
+            <header class="mb-4"><h1 class="tm-text-shadow">Department of Prison </h1></header>
+            <h2>Our Vision</h2>
+            <p class="mb-5 tm-font-big">“Social reintegration of inmates as good citizens through
+                                        rehabilitation”
+
+            </p>
+
+            <h2>Our Mission</h2>
+            <p class="mb-5 tm-font-big">“Rehabilitation of Prisoners ensuring their custody and care
+                                        by building a proper relationship between the prisoners and the officials so that
+                                        the officials gain the job satisfaction while the labour productivity of the prisoners
+                                        to enable the department be self-dependent and utilizing it to augment the development
+                                        drive of the country and ultimately socializing the prisoners as creative and virtuous
+                                        skillful citizens.”
+
+            </p>
+            <a href="#" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2"> Continue...s</a>
+            <!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
+          </div>
+        </section>
+        <!--
+                        <!-- Employee Management -->
+
+
+        <section id="tm-section-2" class="tm-section">
+          <div class="row mb-4">
+            <header class="col-xl-12"><h2 class="tm-text-shadow">Employee Management</h2></header>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/useradd.png"></span>
+                <div class="media-body">
+                  <h3>Add Employee</h3>
+                  <a href="employee/add" class="btn btn-primary">Add Employee</a>
                 </div>
+              </div>
             </div>
 
-            <!--page content starts-->
-
-            <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
-
-                <!-- The prisons-->
-
-                <section id="tm-section-1" class="tm-section" style="margin-bottom:0px;margin-left:80px">
-                    <div class="ml-auto">
-                        <header class="mb-4"><h1 class="tm-text-shadow">Department of Prison </h1></header>
-                        <h2>Our Vision</h2>
-                        <p class="mb-5 tm-font-big">“Social reintegration of inmates as good citizens through
-                            rehabilitation”
-
-                        </p>
-
-                        <h2>Our Mission</h2>
-                        <p class="mb-5 tm-font-big">“Rehabilitation of Prisoners ensuring their custody and care
-                            by building a proper relationship between the prisoners and the officials so that
-                            the officials gain the job satisfaction while the labour productivity of the prisoners
-                            to enable the department be self-dependent and utilizing it to augment the development
-                            drive of the country and ultimately socializing the prisoners as creative and virtuous
-                            skillful citizens.”
-
-                        </p>
-                        <a href="#" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2"> Continue...s</a>
-                        <!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
-                    </div>
-                </section>
-<!--
-                <!-- Employee Management -->
-
-
-                <section id="tm-section-2" class="tm-section">
-                    <div class="row mb-4">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Employee Management</h2></header>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/useradd.png"></span>
-                                <div class="media-body">
-                                    <h3>Add Employee</h3>
-                                    <a href="employee/add" class="btn btn-primary">Add Employee</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/userview.png"></span>
-                                <div class="media-body">
-                                    <h3>Employee View</h3>
-                                    <a href="/findEmployee" class="btn btn-primary"> View Employee</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-
-
-                </section>
-
-                <!-- section 3  Discipline  Management -->
-
-
-                <section id="tm-section-3" class="tm-section">
-                    <div class="row mb-4">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Offence Management</h2></header>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/censures.png"></span>
-                                <div class="media-body">
-                                    <h3>Offence</h3>
-                                    <a href="/censure/add" class="btn btn-primary">Add Offence</a>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/censures.png"></span>
-                                <div class="media-body">
-                                    <h3>Offence</h3>
-                                    <a href="/censure/add/{id}" class="btn btn-primary"> View Offence</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    <div class="row mb-4">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Punishment  Management </h2></header>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/censures.png"></span>
-                                <div class="media-body">
-                                    <h3>Punishment </h3>
-                                    <a href="#" class="btn btn-primary">Add Punishment </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/censures.png"></span>
-                                <div class="media-body">
-                                    <h3>Punishment</h3>
-                                    <a href="#" class="btn btn-primary"> View Punishment </a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    </div>
-                </section>
-
-
-                <!-- Leave Management-->
-
-
-                <section id="tm-section-4" class="tm-section tm-section-carousel">
-
-                    <div class="row mb-4">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Leave Management</h2></header>
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/leave.png" style="width:200px;height:200px"></span>
-                                <div class="media-body">
-                                    <h3>Leave</h3>
-                                    <a href="#" class="btn btn-primary"> Add Leave </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/leave.png" style="width:200px;height:200px"></span>
-                                <div class="media-body">
-                                    <h3>Leave</h3>
-                                    <a href="#" class="btn btn-primary"> View Leave </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
-
-                <!-- Qualification Management-->
-
-
-                <section id="tm-section-5" class="tm-section tm-section-carousel">
-
-                    <div class="row">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow"> Qualification Management</h2></header>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/skilldev.png"></span>
-                                <div class="media-body">
-                                    <h3>Qualification</h3>
-                                  <a href="#" class="btn btn-primary"> Add Qualification </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/skilldev.png"></span>
-                                <div class="media-body">
-                                    <h3>Qualification</h3>
-                                  <a href="#" class="btn btn-primary"> View Qualification </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
-                <!-- Performance Review-->
-
-
-                <section id="tm-section-6" class="tm-section tm-section-carousel">
-
-                    <div class="row">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Performance Review</h2></header>
-
-                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                        <div class="media tm-bg-transparent-black tm-border-white">
-                            <span><img src="img/apprecial.png"></span>
-                            <div class="media-body">
-                                <h3>Add Performance Review</h3>
-                                <a href="#" class="btn btn-primary"> Add Performance Review </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                        <div class="media tm-bg-transparent-black tm-border-white">
-                            <span><img src="img/apprecial.png"></span>
-                            <div class="media-body">
-                                <h3>View Performance Review</h3>
-                                <a href="#" class="btn btn-primary"> View Performance Review </a>
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/userview.png"></span>
+                <div class="media-body">
+                  <h3>Employee View</h3>
+                  <a href="/findEmployee" class="btn btn-primary"> View Employee</a>
                 </div>
-
-                </section>
-
--->
-                <!-- Analytics and Reporting -->
+              </div>
+            </div>
 
 
-                <section id="tm-section-7" class="tm-section tm-section-carousel">
-
-                    <div class="row">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Analtics and Reporting</h2></header>
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/reports.png"></span>
-                                <div class="media-body">
-                                    <h3>Add Analtics and Reporting</h3>
-                                    <a href="#" class="btn btn-primary"> Add Analtics and Reporting </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                            <div class="media tm-bg-transparent-black tm-border-white">
-                                <span><img src="img/reports.png"></span>
-                                <div class="media-body">
-                                    <h3>View Analtics and Reporting</h3>
-                                    <a href="#" class="btn btn-primary"> View Analtics and Reporting </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </section>
+          </div>
 
 
-                <!-- section 8 Transfer Management -->
 
-                <section id="tm-section-8" class="tm-section tm-section-carousel">
 
-                    <div class="row">
-                        <header class="col-xl-12"><h2 class="tm-text-shadow">Institute Management</h2></header>
-
-                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                    <div class="media tm-bg-transparent-black tm-border-white">
-                        <span><img src="img/transfer.png"></span>
-                        <div class="media-body">
-                            <h3>Institute Management</h3>
-                            <a href="#" class="btn btn-primary"> Add Institute  </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-                    <div class="media tm-bg-transparent-black tm-border-white">
-                        <span><img src="img/transfer.png"></span>
-                        <div class="media-body">
-                            <h3>Institute  Management</h3>
-                            <a href="#" class="btn btn-primary"> View Institute  </a>
-                        </div>
-                    </div>
-                </div>
-                    </div>
         </section>
-                <!-- .tm-content -->
-            <footer class="footer-link">
-                <p class="tm-copyright-text">Copyright &copy; Department of Prisons.
 
-                </p>
+        <!-- section 3  Discipline  Management -->
 
-            </footer>
-        </div>    <!-- row -->
+
+        <section id="tm-section-3" class="tm-section">
+          <div class="row mb-4">
+            <header class="col-xl-12"><h2 class="tm-text-shadow">Offence Management</h2></header>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/censures.png"></span>
+                <div class="media-body">
+                  <h3>Offence</h3>
+                  <a href="/censure/add" class="btn btn-primary">Add Offence</a>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/censures.png"></span>
+                <div class="media-body">
+                  <h3>Offence</h3>
+                  <a href="/censure/add/{id}" class="btn btn-primary"> View Offence</a>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mb-4">
+              <header class="col-xl-12"><h2 class="tm-text-shadow">Punishment  Management </h2></header>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <span><img src="img/censures.png"></span>
+                  <div class="media-body">
+                    <h3>Punishment </h3>
+                    <a href="#" class="btn btn-primary">Add Punishment </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+                <div class="media tm-bg-transparent-black tm-border-white">
+                  <span><img src="img/censures.png"></span>
+                  <div class="media-body">
+                    <h3>Punishment</h3>
+                    <a href="#" class="btn btn-primary"> View Punishment </a>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- Leave Management-->
+
+
+        <section id="tm-section-4" class="tm-section tm-section-carousel">
+
+          <div class="row mb-4">
+            <header class="col-xl-12"><h2 class="tm-text-shadow">Leave Management</h2></header>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/leave.png" style="width:200px;height:200px"></span>
+                <div class="media-body">
+                  <h3>Leave</h3>
+                  <a href="#" class="btn btn-primary"> Add Leave </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/leave.png" style="width:200px;height:200px"></span>
+                <div class="media-body">
+                  <h3>Leave</h3>
+                  <a href="#" class="btn btn-primary"> View Leave </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- Qualification Management-->
+
+
+        <section id="tm-section-5" class="tm-section tm-section-carousel">
+
+          <div class="row">
+            <header class="col-xl-12"><h2 class="tm-text-shadow"> Qualification Management</h2></header>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/skilldev.png"></span>
+                <div class="media-body">
+                  <h3>Qualification</h3>
+                  <a href="#" class="btn btn-primary"> Add Qualification </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/skilldev.png"></span>
+                <div class="media-body">
+                  <h3>Qualification</h3>
+                  <a href="#" class="btn btn-primary"> View Qualification </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Performance Review-->
+
+
+        <section id="tm-section-6" class="tm-section tm-section-carousel">
+
+          <div class="row">
+            <header class="col-xl-12"><h2 class="tm-text-shadow">Performance Review</h2></header>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/apprecial.png"></span>
+                <div class="media-body">
+                  <h3>Add Performance Review</h3>
+                  <a href="#" class="btn btn-primary"> Add Performance Review </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/apprecial.png"></span>
+                <div class="media-body">
+                  <h3>View Performance Review</h3>
+                  <a href="#" class="btn btn-primary"> View Performance Review </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        -->
+        <!-- Analytics and Reporting -->
+
+
+        <section id="tm-section-7" class="tm-section tm-section-carousel">
+
+          <div class="row">
+            <header class="col-xl-12"><h2 class="tm-text-shadow">Analtics and Reporting</h2></header>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/reports.png"></span>
+                <div class="media-body">
+                  <h3>Add Analtics and Reporting</h3>
+                  <a href="#" class="btn btn-primary"> Add Analtics and Reporting </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/reports.png"></span>
+                <div class="media-body">
+                  <h3>View Analtics and Reporting</h3>
+                  <a href="#" class="btn btn-primary"> View Analtics and Reporting </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- section 8 Transfer Management -->
+
+        <section id="tm-section-8" class="tm-section tm-section-carousel">
+
+          <div class="row">
+            <header class="col-xl-12"><h2 class="tm-text-shadow">Institute Management</h2></header>
+
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/transfer.png"></span>
+                <div class="media-body">
+                  <h3>Institute Management</h3>
+                  <a href="#" class="btn btn-primary"> Add Institute  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
+              <div class="media tm-bg-transparent-black tm-border-white">
+                <span><img src="img/transfer.png"></span>
+                <div class="media-body">
+                  <h3>Institute  Management</h3>
+                  <a href="#" class="btn btn-primary"> View Institute  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- .tm-content -->
+        <footer class="footer-link">
+          <p class="tm-copyright-text">Copyright &copy; Department of Prisons.
+
+          </p>
+
+        </footer>
+      </div>    <!-- row -->
     </div>
     <div id="preload-01"></div>
     <div id="preload-02"></div>
@@ -593,7 +593,7 @@
         });
 
     </script>
-</div>
+  </div>
 </div>
 </body>
 </html>

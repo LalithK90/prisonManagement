@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--Page header -->
-<div class="container-fluid bg-secondary form-Border" >
+<div class="container-fluid   " >
   <div class="row text-center " >
     <div class="col" >
       <a class="btn btn-primary" href="/home" >
@@ -30,10 +30,9 @@
   </div >
 </div >
 <!--Employee find-->
-<div class="container-fluid bg-dark " id="employeeFindForm" data-th-if="${employeeDetailShow==false}" >
+<div class="    container-fluid " id="employeeFindForm" data-th-if="${employeeDetailShow==false}" >
   <div class="col-sm-12 flex-column " >
-    <form id="form" method="POST" data-th-action="${'/user/workingPlace'}" data-th-object="${employee}"
-          enctype="multipart/form-data" >
+    <form id="form" method="POST" data-th-action="${'/user/workingPlace'}" data-th-object="${employee}">
       <div class="form-row" >
         <div class="col-5 flex-column" >
           <div class="form-group" >
@@ -92,7 +91,7 @@
 </div >
 
 <!--User add from-->
-<div class="container-fluid bg-dark " data-th-if="${employeeDetailShow==true}" id="userFormShow" >
+<div class="    container-fluid " data-th-if="${employeeDetailShow==true}" id="userFormShow" >
   <form id="formUser" data-th-action="${addStatus==true?'/user/add':'/user/update'}" data-th-object="${user}"
         class="form-horizontal" method="POST" autocomplete="false" >
     <div class="row" >
@@ -134,7 +133,7 @@
           <label class="control-label col-md-4" for="username" >User Name :</label >
           <div class="col-md-8" >
             <input class="form-control" data-th-field="*{username}" id="username"
-                   placeholder="Enter User Name Here" required type="text" />
+                   placeholder="Enter User Name Here" required type="text" data-th-readonly="${addStatus==false}" />
           </div >
         </div >
         <!--Password-->

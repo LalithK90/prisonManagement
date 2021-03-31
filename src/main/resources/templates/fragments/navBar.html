@@ -21,19 +21,17 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false"> <i class="fa fa-user"></i> General</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
-               <a data-th-href="@{'/employee'}" class="nav-link text-dark"> Employee Managment </a>
-               <a data-th-href="@{'/user'}" class="nav-link text-dark"> User Management </a>
-               <a data-th-href="@{'/role'}" class="nav-link text-dark"> Role Management </a>
-               <!--<a data-th-href="@{'/category'}" class="nav-link text-dark"> Category Management </a>-->
-               <!--<a data-th-href="@{'/item'}" class="nav-link text-dark"> Item Management </a>-->
-               <!--<a data-th-href="@{'/supplier'}" class="nav-link text-dark"> Supplier Management </a>-->
-               <!--<a data-th-href="@{'/purchaseOrder'}" class="nav-link text-dark"> Purchase Order Management </a>-->
-               <!--<a data-th-href="@{'/goodReceivedNote'}" class="nav-link text-dark"> GRN Management </a>-->
-               <!--<a data-th-href="@{'/payment'}" class="nav-link text-dark"> Payment Management </a>-->
-               <!--<a data-th-href="@{'/invoice'}" class="nav-link text-dark"> Invoice Management </a>-->
-               <!--<a data-th-href="@{'/discout'}" class="nav-link text-dark"> Discount Management </a>-->
-               <!--<a data-th-href="@{'/customer'}" class="nav-link text-dark"> Customer Management </a>-->
-
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER','ROLE_CHIEF_CLERK','CLERK')" data-th-href="@{'/employee'}" class="nav-link text-dark"> Employee Management </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/user'}" class="nav-link text-dark"> User Management </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/role'}" class="nav-link text-dark"> Role Management </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/censure'}" class="nav-link text-dark"> Censure Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/commendation'}" class="nav-link text-dark"> Commendation Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/employeeInstitute'}" class="nav-link text-dark"> Employee Institute Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/employeeLeave'}" class="nav-link text-dark"> Employee Leave Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/qualification'}" class="nav-link text-dark"> Qualification Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute'}" class="nav-link text-dark"> Institute Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/offence'}" class="nav-link text-dark"> Offence Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/punishment'}" class="nav-link text-dark"> Punishment Management</a>
             </div>
          </li>
 
@@ -41,16 +39,13 @@
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false"> <i class="fa fa-bell"></i> Transaction</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
-               <a data-th-href="@{'/employee/add'}" class="nav-link text-dark"> New Employee </a>
-               <a data-th-href="@{'/user/add'}" class="nav-link text-dark"> New User </a>
-               <a data-th-href="@{'/role/add'}" class="nav-link text-dark"> New Role </a>
-               <!--<a data-th-href="@{'/category/add'}" class="nav-link text-dark"> New Category </a>-->
-               <!--<a data-th-href="@{'/item/add'}" class="nav-link text-dark"> New Item </a>-->
-               <!--<a data-th-href="@{'/supplier/add'}" class="nav-link text-dark"> New Supplier </a>-->
-               <!--<a data-th-href="@{'/invoice/add'}" class="nav-link text-dark"> New Invoice </a>-->
-               <!--<a data-th-href="@{'/discout/add'}" class="nav-link text-dark"> New Discount </a>-->
-               <!--<a data-th-href="@{'/customer/add'}" class="nav-link text-dark"> New Customer </a>-->
-
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER','ROLE_CHIEF_CLERK','CLERK')" data-th-href="@{'/employee/add'}" class="nav-link text-dark"> New Employee </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/user/add'}" class="nav-link text-dark"> New User </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/role/add'}" class="nav-link text-dark"> New Role </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/employee/findAll'}" class="nav-link text-dark"> Employee Administration </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute/add'}" class="nav-link text-dark"> New Institute </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/offence/add'}" class="nav-link text-dark"> New Offence </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/punishment/add'}" class="nav-link text-dark"> New Punishment </a>
 
             </div>
          </li>

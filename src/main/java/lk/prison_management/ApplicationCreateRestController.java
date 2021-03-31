@@ -1,5 +1,6 @@
 package lk.prison_management;
 
+import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.common_asset.model.enums.BloodGroup;
 import lk.prison_management.asset.common_asset.model.enums.CivilStatus;
 import lk.prison_management.asset.common_asset.model.enums.Gender;
@@ -16,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.PrivateKey;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,7 +40,7 @@ public class ApplicationCreateRestController {
     @GetMapping( "/select/user" )
     public String saveUser() {
         //roles list start
-        String[] roles = {"ADMIN"};
+        String[] roles = {"ADMIN","CLERK","CHIEF_CLERK","USER","COMMISSIONER"};
         for ( String s : roles ) {
             Role role = new Role();
             role.setRoleName(s);
