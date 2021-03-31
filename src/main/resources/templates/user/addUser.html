@@ -136,6 +136,24 @@
                    placeholder="Enter User Name Here" required type="text" data-th-readonly="${addStatus==false}" />
           </div >
         </div >
+        <!--Active inactive-->
+        <div class="form-row" data-th-if="${addStatus==false}">
+          <label class="control-label col-md-4" for="username" >Active :</label >
+          <div class="col-md-8" >
+            <div class="form-check" >
+              <label class="form-check-label" >
+                <input type="radio" class="form-check-input" data-th-name="${'enabled'}" value="ture"  data-th-value="${enabled}">
+                Active
+              </label >
+            </div >
+            <div class="form-check" >
+              <label class="form-check-label" >
+                <input type="radio" class="form-check-input" data-th-name="${'enabled'}" value="false"  data-th-value="${enabled}">
+                Inactive
+              </label >
+            </div >
+          </div >
+        </div >
         <!--Password-->
         <div class="form-row" >
           <label class="control-label col-md-4" for="password" >Password :</label >
