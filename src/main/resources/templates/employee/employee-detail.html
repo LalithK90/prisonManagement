@@ -32,203 +32,224 @@
 </div >
 <!--details-->
 <div class="container-fluid " data-th-fragment="totalEmployeeDetailsFragment" >
-  <div class="col-sm-12 flex-column text-dark" data-th-fragment="employeeDetailsFragment" >
-    <div class="row" >
-      <!--Left Side-->
-      <div class="form-group col-md-6 col-sm-6 flex-column" >
-        <div class="form-row text-right " >
-          <div class="col-md-4" >
-            <label class="control-label" for="id" >ID :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="id" data-th-text="${employeeDetail.id}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="employeeCode" >Employee Id :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="employeeCode" data-th-text="${employeeDetail.code}" class="display_detail" ></p >
-          </div >
-        </div >
+  <div id="accordianId6" role="tablist" aria-multiselectable="true" >
+    <div class="card" >
+      <div class="card-header" role="tab" id="section1HeaderId6" >
+        <h5 class="mb-0" >
+          <a data-toggle="collapse" data-parent="#accordianId6" href="#section1ContentId6" aria-expanded="true"
+             aria-controls="section1ContentId6" >
+            Employee Details
+          </a >
+        </h5 >
+      </div >
+      <div id="section1ContentId6" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId6" >
+        <div class="card-body" >
 
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="name" >Name :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="name" data-th-text="${employeeDetail.title.title} +${' '} +${employeeDetail.name}"
-               class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="callingName" >Calling Name :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="callingName" data-th-text="${employeeDetail.callingName}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="nic" >NIC No :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="nic" data-th-text="${employeeDetail.nic}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="gender" >Gender :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="gender" data-th-text="${employeeDetail.gender.gender}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="dateOfBirth" >Birth date :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="dateOfBirth" data-th-text="${employeeDetail.dateOfBirth}" class="display_detail" >Error Birthday</p >
-          </div >
-        </div >
-
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="designation" >Designation :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="designation" data-th-text="${employeeDetail.designation.designation}" class="display_detail" >
-            </p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="civilStatus" >Civil State :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="civilStatus" data-th-text="${employeeDetail.civilStatus.civilStatus}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="employeeStatus" >Employee Status :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="employeeStatus" data-th-text="${employeeDetail.employeeStatus.employeeStatus}"
-               class="display_detail" ></p >
-          </div >
-        </div >
-      </div >
-      <!--Right Side-->
-      <div class="form-group col-md-6 col-sm-6 text-right flex-column" >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="address" >Address :</label >
-          </div >
-          <div class="col-md-8 text-right" >
-            <p id="address" class="display_detail " data-th-utext="${employeeDetail.address}" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="mobileOne" >Mobile One No :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="mobileOne" data-th-text="${employeeDetail.mobileOne}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="mobileTwo" >Mobile Two No :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="mobileTwo" data-th-text="${employeeDetail.mobileTwo}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="land" >Land No :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="land" data-th-text="${employeeDetail.land}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="officeEmail" >Office Email :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="officeEmail" data-th-text="${employeeDetail.officeEmail}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="dateOfAssignment" >Date Of Assignment :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="dateOfAssignment" data-th-text="${{employeeDetail.dateOfAssignment}}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="createdBy" >Created By :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="createdBy" data-th-text="${employeeDetail.createdBy}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="createdAt" >Created At :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="createdAt" data-th-text="${#temporals.format(employeeDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
-               class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="updatedBy" >Updated By :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="updatedBy" data-th-text="${employeeDetail.updatedBy}" class="display_detail" ></p >
-          </div >
-        </div >
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="updatedAt" >Updated At :</label >
-          </div >
-          <div class="col-md-8" >
-            <p id="updatedAt" data-th-text="${{employeeDetail.updatedAt}}" class="display_detail" ></p >
-          </div >
-        </div >
-      </div >
-    </div >
-  </div >
-  <!--images-->
-  <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-    <div class="col" id="photoDetails" >
-      <div >
-        <label class="control-label " >Photo Details : </label >
-      </div >
-      <div class="row" >
-        <div class="col" id="filesList" data-th-each="file, rowStat: ${files}" >
-          <div class="col" >
-            <div class="alert alert-warning alert-dismissible fade show" role="alert" >
-              <div class="card text-center" >
-                <div class="card-body" >
-                  <img id="img" class="rounded"
-                       style="height: 150px; width:150px; border-radius: 10px"
-                       alt="Employee images" data-th-src="${file.url}" />
+          <div class="col-sm-12 flex-clumn text-dark" data-th-fragment="employeeDetailsFragment" >
+            <div class="row" >
+              <!--Left Side-->
+              <div class="form-group col-md-6 col-sm-6 flex-column" >
+                <div class="form-row text-right " >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="id" >ID :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="id" data-th-text="${employeeDetail.id}" class="display_detail" ></p >
+                  </div >
                 </div >
-                <div class="card-footer bg-secondary text-light text-center" >
-                  <p id="imgName" data-th-text="${file.filename}" ></p >
-                  <span > Uploaded Date :
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="employeeCode" >Employee Id :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="employeeCode" data-th-text="${employeeDetail.code}" class="display_detail" ></p >
+                  </div >
+                </div >
+
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="name" >Name :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="name" data-th-text="${employeeDetail.title.title} +${' '} +${employeeDetail.name}"
+                       class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="callingName" >Calling Name :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="callingName" data-th-text="${employeeDetail.callingName}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="nic" >NIC No :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="nic" data-th-text="${employeeDetail.nic}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="gender" >Gender :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="gender" data-th-text="${employeeDetail.gender.gender}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="dateOfBirth" >Birth date :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="dateOfBirth" data-th-text="${employeeDetail.dateOfBirth}" class="display_detail" >Error
+                                                                                                             Birthday</p >
+                  </div >
+                </div >
+
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="designation" >Designation :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="designation" data-th-text="${employeeDetail.designation.designation}"
+                       class="display_detail" >
+                    </p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="civilStatus" >Civil State :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="civilStatus" data-th-text="${employeeDetail.civilStatus.civilStatus}"
+                       class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="employeeStatus" >Employee Status :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="employeeStatus" data-th-text="${employeeDetail.employeeStatus.employeeStatus}"
+                       class="display_detail" ></p >
+                  </div >
+                </div >
+              </div >
+              <!--Right Side-->
+              <div class="form-group col-md-6 col-sm-6 text-right flex-column" >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="address" >Address :</label >
+                  </div >
+                  <div class="col-md-8 text-right" >
+                    <p id="address" class="display_detail " data-th-utext="${employeeDetail.address}" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="mobileOne" >Mobile One No :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="mobileOne" data-th-text="${employeeDetail.mobileOne}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="mobileTwo" >Mobile Two No :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="mobileTwo" data-th-text="${employeeDetail.mobileTwo}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="land" >Land No :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="land" data-th-text="${employeeDetail.land}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="officeEmail" >Office Email :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="officeEmail" data-th-text="${employeeDetail.officeEmail}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="dateOfAssignment" >Date Of Assignment :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="dateOfAssignment" data-th-text="${{employeeDetail.dateOfAssignment}}"
+                       class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="createdBy" >Created By :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="createdBy" data-th-text="${employeeDetail.createdBy}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="createdAt" >Created At :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="createdAt" data-th-text="${#temporals.format(employeeDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
+                       class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="updatedBy" >Updated By :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="updatedBy" data-th-text="${employeeDetail.updatedBy}" class="display_detail" ></p >
+                  </div >
+                </div >
+                <div class="form-row text-right" >
+                  <div class="col-md-4" >
+                    <label class="control-label" for="updatedAt" >Updated At :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p id="updatedAt" data-th-text="${{employeeDetail.updatedAt}}" class="display_detail" ></p >
+                  </div >
+                </div >
+              </div >
+            </div >
+          </div >
+          <!--images-->
+          <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+            <div class="col" id="photoDetails" >
+              <div >
+                <label class="control-label " >Photo Details : </label >
+              </div >
+              <div class="row" >
+                <div class="col" id="filesList" data-th-each="file, rowStat: ${files}" >
+                  <div class="col" >
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+                      <div class="card text-center" >
+                        <div class="card-body" >
+                          <img id="img" class="rounded"
+                               style="height: 150px; width:150px; border-radius: 10px"
+                               alt="Employee images" data-th-src="${file.url}" />
+                        </div >
+                        <div class="card-footer bg-secondary text-light text-center" >
+                          <p id="imgName" data-th-text="${file.filename}" ></p >
+                          <span > Uploaded Date :
                                             <p id="imgCreateAt" data-th-text="${{file.createAt}}" ></p >
                                             </span >
+                        </div >
+                      </div >
+                    </div >
+                  </div >
                 </div >
               </div >
             </div >
@@ -252,7 +273,7 @@
       <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
         <div class="card-body" >
           <!--Employee Institute Details-->
-          <table class="table table-striped table-inverse table-responsive" >
+          <table class="table table-striped table-inverse" >
             <thead class="thead-inverse" >
             <tr >
               <th >Index</th >
@@ -272,7 +293,6 @@
             </tr >
             </tbody >
           </table >
-
         </div >
       </div >
     </div >
@@ -289,10 +309,30 @@
       <div id="section2ContentId" class="collapse in" role="tabpanel" aria-labelledby="section2HeaderId" >
         <div class="card-body" >
           <!--Employee Leave-->
-          <div class="container-fluid"
-               data-th-each="employeeLeaveDetail : ${employeeDetail.employeeLeaves}" >
-            <div data-th-replace="~{employeeLeave/employeeLeave-detail :: employeeLeaveDetailsFragment}" ></div >
-          </div >
+          <table class="table table-hover table-striped"
+                 data-th-if="${not #lists.isEmpty(employeeDetail.employeeLeaves)}" >
+            <thead class="thead-inverse" >
+            <tr >
+              <th >Index</th >
+              <th >Employee Name</th >
+              <th >Employee Leave Start At</th >
+              <th >Employee Leave End At</th >
+              <th > Leave Duration</th >
+            </tr >
+            </thead >
+            <tbody >
+            <tr data-th-each="employeeLeave, rowCount : ${employeeDetail.employeeLeaves}" >
+              <th data-th-text="${rowCount.count}" ></th >
+              <th data-th-text="${employeeLeave.employee.name}" ></th >
+              <th data-th-text="${{employeeLeave.startAt}}" ></th >
+              <th data-th-text="${{employeeLeave.endAt}}" ></th >
+              <th ><span data-th-text="${employeeLeave.dayCount +' Day '+ employeeLeave.hourCount+' Hour'}" ></span >
+              </th >
+            </tr >
+            </tbody >
+          </table >
+
+
         </div >
       </div >
     </div >
@@ -309,10 +349,24 @@
       <div id="section3ContentId" class="collapse in" role="tabpanel" aria-labelledby="section3HeaderId" >
         <div class="card-body" >
           <!--Qualification-->
-          <div class="container-fluid"
-               data-th-each="qualificationDetail : ${employeeDetail.qualifications}" >
-            <div data-th-replace="~{qualification/qualification-detail :: qualificationDetailsFragment}" ></div >
-          </div >
+          <table class="table table-hover table-striped"
+                 data-th-if="${not #lists.isEmpty(employeeDetail.qualifications)}" >
+            <thead class="thead-inverse" >
+            <tr >
+              <th >Index</th >
+              <th >Employee Name</th >
+              <th >Qualification/Course</th >
+            </tr >
+            </thead >
+            <tbody >
+            <tr data-th-each="qualification, rowCount : ${employeeDetail.qualifications}" >
+              <th data-th-text="${rowCount.count}" ></th >
+              <th data-th-text="${qualification.employee.name}" ></th >
+              <th data-th-text="${qualification.name}" ></th >
+            </tr >
+            </tbody >
+          </table >
+
         </div >
       </div >
     </div >
@@ -329,10 +383,24 @@
       <div id="section4ContentId" class="collapse in" role="tabpanel" aria-labelledby="section4HeaderId" >
         <div class="card-body" >
           <!--Commendations-->
-          <div class="container-fluid"
-               data-th-each="commendationDetail : ${employeeDetail.commendations}" >
-            <div data-th-replace="~{commendation/commendation-detail :: commendationDetailsFragment}" ></div >
-          </div >
+          <table class="table table-hover table-striped" >
+            <thead >
+            <tr >
+              <th > Index</th >
+              <th > Employee Name</th >
+              <th > Ref Number</th >
+              <th > Description</th >
+            </tr >
+            </thead >
+            <tbody >
+            <tr data-th-each="commendation, rowCount : ${employeeDetail.commendations}" >
+              <th data-th-text="${rowCount.count}" ></th >
+              <th data-th-text="${commendation.employee.name}" ></th >
+              <th data-th-text="${commendation.refNumber}" ></th >
+              <th data-th-utext="${commendation.description}" ></th >
+            </tr >
+            </tbody >
+          </table >
         </div >
       </div >
     </div >
@@ -349,10 +417,27 @@
       <div id="section5ContentId" class="collapse in" role="tabpanel" aria-labelledby="section5HeaderId" >
         <div class="card-body" >
           <!--Censure-->
-          <div class="container-fluid"
-               data-th-each="censureDetail : ${employeeDetail.censures}" >
-            <div data-th-replace="~{censure/censure-detail :: censureDetailsFragment}" ></div >
-          </div >
+          <table class="table table-hover table-striped" data-th-if="${not #lists.isEmpty(employeeDetail.censures)}" >
+            <thead class="thead-inverse" >
+            <tr >
+              <th >Index</th >
+              <th >Ref Number</th >
+              <th >Employee Name</th >
+              <th >Incident Date</th >
+              <th >Offence</th >
+            </tr >
+            </thead >
+            <tbody >
+            <tr data-th-each="censure, rowCount : ${employeeDetail.censures}" >
+              <th data-th-text="${rowCount.count}" ></th >
+              <th data-th-text="${censure.refNumber}" ></th >
+              <th data-th-text="${censure.employee.name}" ></th >
+              <th data-th-text="${{censure.incidentDate}}" ></th >
+              <th data-th-text="${censure.offence.name}" ></th >
+            </tr >
+            </tbody >
+          </table >
+
         </div >
       </div >
     </div >
