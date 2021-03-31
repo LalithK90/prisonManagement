@@ -49,14 +49,6 @@ public class UserController {
         model.addAttribute("employeeDetailShow", true);
         model.addAttribute("employeeNotFoundShow", false);
         model.addAttribute("roleList", roleService.findAll());
-        /*model.addAttribute("districtUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getDistrict", "")
-                .build()
-                .toString());
-        model.addAttribute("stationUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getStation", "")
-                .build()
-                .toString());*/
         return "user/addUser";
     }
 
@@ -128,14 +120,10 @@ public class UserController {
         }
         //user is super senior office need to provide all working palace to check
         Employee employee = employeeService.findById(user.getEmployee().getId());
-        Designation designation = (Designation) employee.getDesignation();
 
         // userService.persist(user);
-        if ( employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {
-            user.setEnabled(true);
-        } else {
-            user.setEnabled(false);
-        }
+        user.setEnabled(employee.getEmployeeStatus().equals(EmployeeStatus.WORKING));
+
         user.setRoles(user.getRoles());
         user.setEnabled(true);
         userService.persist(user);
