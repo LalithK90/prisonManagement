@@ -294,11 +294,11 @@ $("#invoiceNumber").bind("keyup", function () {
 
 //colour change function --start
 let backgroundColourChangeGood = function (id) {
-    $(id).css('background-color', '#00FFFF');
+    $(id).css('background-color', '#e9fcf5');
 };
 
 let backgroundColourChangeBad = function (id) {
-    $(id).css('background-color', '#FF00AA');
+    $(id).css('background-color', '#fceae8');
 };
 
 let backgroundColourChangeNothingToChange = function (id) {
@@ -642,3 +642,4 @@ function confirmDelete(obj) {
         }
     });
 }
+
