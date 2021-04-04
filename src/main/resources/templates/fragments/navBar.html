@@ -3,14 +3,11 @@
 <head>
    <title></title>
 </head>
-
 <body>
 
+<nav class="navbar navbar-expand-sm navbar-dark " style="background-color:rgba(55,5,5,0.91);" data-th-fragment="navBarFragment">
 
-<nav class="navbar navbar-expand-sm navbar-dark " style="background-color:rgba(55,5,5,0.91);"
-     data-th-fragment="navBarFragment">
    <a class="navbar-brand" href="#"><i class="fa fa-home" style="font-size: 18px"></i></a>
-
 
    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
            aria-controls="collapsibleNavId"
@@ -46,7 +43,6 @@
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute/add'}" class="nav-link text-dark"> New Institute </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/offence/add'}" class="nav-link text-dark"> New Offence </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/punishment/add'}" class="nav-link text-dark"> New Punishment </a>
-
             </div>
          </li>
 
@@ -60,6 +56,7 @@
          </li>
       </ul>
    </div>
+
    <!--login /logout /profile /password-change link according to sec confi-->
    <div>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-end">
@@ -80,7 +77,7 @@
             </div>
          </li>
          <li class="nav-item dropdown " data-sec-authorize="isAuthenticated()">
-            <a href="/logout" class="nav-link"> <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Log
+            <a href="/logout" class="nav-link"> <i class="fas fa-sign-out-alt"></i>&nbsp;Log
                                                                                    out</a>
          </li>
          <li class="nav-item dropdown " data-sec-authorize="!isAuthenticated()">
@@ -90,8 +87,6 @@
    </div>
 
 </nav>
-
-
 </body>
 </html>
 
