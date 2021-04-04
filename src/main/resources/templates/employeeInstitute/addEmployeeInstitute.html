@@ -4,7 +4,8 @@
   <meta charset="UTF-8" >
   <title >Department Of Prisons </title >
 </head >
- <body >
+<body >
+<link data-th-href="@{/css/combo-box-search.css}" media="all" rel="stylesheet" type="text/css" />
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <div class="container " >
@@ -58,74 +59,85 @@
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
-      <div id="form">
-      <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="id" >ID :</label >
+      <div id="form" >
+        <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="id" >ID :</label >
+          </div >
+          <div class="col-md-8" >
+            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+          </div >
         </div >
-        <div class="col-md-8" >
-          <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+        <!--Institute -->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="institute" >Institute :</label >
+          </div >
+          <div class="col-md-8" >
+            <select id="institute" data-th-field="*{institute}" class="form-control" tabindex="19"
+                    required >
+              <option value="" >Please select</option >
+              <option data-th-each="institute : ${institutes}"
+                      data-th-text="${institute.name}"
+                      data-th-value="${institute.id}" ></option >
+            </select >
+          </div >
         </div >
-      </div >
-      <!--Institute -->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="institute" >Institute :</label >
+        <!--supervisor-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="supervisor" >Employee Supervisor :</label >
+          </div >
+          <div class="col-md-8" >
+            <select id="supervisor" data-th-field="*{supervisor}" class="form-control" tabindex="19"
+                    required >
+              <option value="" >Please select</option >
+            </select >
+          </div >
         </div >
-        <div class="col-md-8" >
-          <select id="institute" data-th-field="*{institute}" class="form-control" tabindex="19"
-                  required >
-            <option value="" >Please select</option >
-            <option data-th-each="institute : ${institutes}"
-                    data-th-text="${institute.name}"
-                    data-th-value="${institute.id}" ></option >
-          </select >
-        </div >
-      </div >
+        <!--start At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="startAt" >Start At :</label >
+          </div >
+          <div class="col-md-8" >
+            <input type="date" class="form-control " onchange="dateMatch()"
+                   data-th-field="*{startAt}" id="startAt" required >
 
-      <!--start At-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="startAt" >Start At :</label >
-        </div >
-        <div class="col-md-8" >
-          <input type="date" class="form-control " onchange="dateMatch()"
-                 data-th-field="*{startAt}" id="startAt" required >
-
-          <span data-th-errors="*{startAt}"
-                data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
+            <span data-th-errors="*{startAt}"
+                  data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--end At-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="endAt" >End At :</label >
-        </div >
-        <div class="col-md-8" >
-          <input type="date" class="form-control " onchange="dateMatch()"
-                 data-th-field="*{endAt}" id="endAt" required >
+        <!--end At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="endAt" >End At :</label >
+          </div >
+          <div class="col-md-8" >
+            <input type="date" class="form-control " onchange="dateMatch()"
+                   data-th-field="*{endAt}" id="endAt" required >
 
-          <span data-th-errors="*{endAt}"
-                data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
+            <span data-th-errors="*{endAt}"
+                  data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--Change reason-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="employeeStatus" >Change Reason :</label >
+        <!--Change reason-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="employeeStatus" >Change Reason :</label >
+          </div >
+          <div class="col-md-8" >
+            <select id="employeeStatus" data-th-field="*{instituteChangeReason}" class="form-control" tabindex="19"
+                    required >
+              <option value="" >Please select</option >
+              <option data-th-each="instituteChangeReason : ${instituteChangeReasons}"
+                      data-th-text="${instituteChangeReason.instituteChangeReason}"
+                      data-th-value="${instituteChangeReason}" ></option >
+            </select >
+          </div >
         </div >
-        <div class="col-md-8" >
-          <select id="employeeStatus" data-th-field="*{instituteChangeReason}" class="form-control" tabindex="19"
-                  required >
-            <option value="" >Please select</option >
-            <option data-th-each="instituteChangeReason : ${instituteChangeReasons}"
-                    data-th-text="${instituteChangeReason.instituteChangeReason}"
-                    data-th-value="${instituteChangeReason}" ></option >
-          </select >
-        </div >
-      </div >
         <!--Remarks-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
@@ -143,14 +155,14 @@
           <div class="col-md-4" >
             <!--Sinhala modal button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+                  class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
             </button >
 
           </div >
           <div class="col-md-4" >
             <!-- modal tamil button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+                  class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
             </button >
           </div >
         </div >
@@ -160,7 +172,7 @@
           <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
             <button class="btn btn-success" type="submit" tabindex="21" >
               <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
-                    data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+                  data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
             </button >
             <button class="btn btn-danger" type="reset" >
               <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
@@ -175,7 +187,7 @@
         </div >
       </div >
 
-    </form>
+    </form >
 
   </div >
 
@@ -186,6 +198,8 @@
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+<script data-th-src="@{/js/combo-box-search.js}" ></script >
+<input type="hidden" id="supervisorFindUrl" data-th-value="${supervisorFindUrl}" >
 <script >
     function dateMatch() {
         let startDateTime = $(`#startAt`).val();
@@ -201,6 +215,25 @@
             }
         }
     }
+    $("#institute").change(function () {
+        $("#supervisor").find('option').remove();
+        $.ajax({
+            type: 'GET',
+            url: $("#supervisorFindUrl").val() + $(this).val(),
+            success: function (resp) {
+                $.each(resp, function () {
+                    $("#supervisor").append(`<option value="${this.id}">${this.name}</option>`);
+                });
+                $("#supervisor").select2({
+                    data: $(this).val()
+                }).addClass('form-control');
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
 </script >
 </body >
 </html >

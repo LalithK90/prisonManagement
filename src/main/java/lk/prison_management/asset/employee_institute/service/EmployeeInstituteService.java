@@ -1,6 +1,7 @@
 package lk.prison_management.asset.employee_institute.service;
 
 import lk.prison_management.asset.employee.entity.Employee;
+import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_institute.dao.EmployeeInstituteDao;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -13,9 +14,11 @@ import java.util.List;
 @Service
 public class EmployeeInstituteService implements AbstractService< EmployeeInstitute, Integer > {
   private final EmployeeInstituteDao employeeInstituteDao;
+  private final EmployeeService employeeService;
 
-  public EmployeeInstituteService(EmployeeInstituteDao employeeInstituteDao) {
+  public EmployeeInstituteService(EmployeeInstituteDao employeeInstituteDao, EmployeeService employeeService) {
     this.employeeInstituteDao = employeeInstituteDao;
+    this.employeeService = employeeService;
   }
 
   public List< EmployeeInstitute > findAll() {
@@ -44,7 +47,7 @@ public class EmployeeInstituteService implements AbstractService< EmployeeInstit
     return employeeInstituteDao.findAll(employeeInstituteExample);
   }
 
-  public List< EmployeeInstitute> findByEmployee(Employee employee) {
+  public List< EmployeeInstitute > findByEmployee(Employee employee) {
     return employeeInstituteDao.findByEmployee(employee);
   }
 
