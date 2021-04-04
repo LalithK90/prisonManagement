@@ -14,9 +14,11 @@ import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.employee.service.EmployeeService;
+import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.employee_institute.service.EmployeeInstituteService;
 import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
 import lk.prison_management.asset.institute.entity.Institute;
+import lk.prison_management.asset.institute.entity.enums.InstituteChangeReason;
 import lk.prison_management.asset.institute.service.InstituteService;
 import lk.prison_management.asset.performance_evaluation.service.PerformanceEvaluationService;
 import lk.prison_management.asset.qualification.service.QualificationService;
@@ -83,9 +85,7 @@ public class EmployeeController {
     this.instituteService = instituteService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
-//----> Employee details management - start <----//
 
-  // Common things for an employee add and update
   private String commonThings(Model model) {
     model.addAttribute("title", Title.values());
     model.addAttribute("gender", Gender.values());
@@ -206,6 +206,15 @@ public class EmployeeController {
         userService.persist(user);
       }
     }
+// save employee institute
+    if ( employee.getId() == null ) {
+      EmployeeInstitute employeeInstitute = new EmployeeInstitute();
+      employeeInstitute.setEmployee(employeeSaved);
+      employeeInstitute.setInstitute(employee.getInstitute());
+      employeeInstitute.setStartAt(employee.getDateOfAssignment());
+      employeeInstitute.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
+      employeeInstituteService.persist(employeeInstitute);
+    }
 
     try {
       //save employee images file
@@ -241,6 +250,7 @@ public class EmployeeController {
       model.addAttribute("employee", employee);
       return commonThings(model);
     }
+
   }
 
   @GetMapping( value = "/remove/{id}" )
