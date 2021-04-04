@@ -47,7 +47,7 @@ let mobileRegex = /^([0][7][0|1|2|4|5|6|7|8][\d]{7}$)|^([7][0|1|2|4|5|6|7|8][\d]
 let landRegex = /^0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
 let nameRegex = /^[a-zA-Z .-]{3}[ a-zA-Z.-]+$/;
 let numberRegex = /^([eE][hH][sS][\d]+)$/;
-let invoiceNumberRegex = /^[0-9]{10}$/;
+
 
 
 //Nic - data of birth - start
@@ -287,15 +287,7 @@ $("#callingName").bind("keyup", function () {
         backgroundColourChangeBad($(this));
     }
 });
-//invoiceNumber validation
-$("#invoiceNumber").bind("keyup", function () {
-    let invoiceNumber = $(this).val();
-    if (invoiceNumberRegex.test(invoiceNumber)) {
-        backgroundColourChangeGood($(this));
-    } else {
-        backgroundColourChangeBad($(this));
-    }
-});
+
 
 //colour change function --start
 let backgroundColourChangeGood = function (id) {
