@@ -9,6 +9,7 @@ import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.employee_leave.entity.EmployeeLeave;
+import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.asset.performance_evaluation.entity.PerformanceEvaluation;
 import lk.prison_management.asset.qualification.entity.Qualification;
 import lk.prison_management.util.audit.AuditEntity;
@@ -96,6 +97,12 @@ public class Employee extends AuditEntity {
 
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfAssignment;
+
+    @ManyToOne
+    private Employee supervisor;
+
+    @ManyToOne
+    private Institute institute;
 
     @OneToMany( mappedBy = "employee" )
     private List< EmployeeInstitute > employeeInstitutes;

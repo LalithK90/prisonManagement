@@ -1,56 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-    <meta charset="UTF-8">
-    <title>Department of Prison </title>
+<head >
+  <meta charset="UTF-8" >
+  <title >Department of Prison </title >
 
-    <!--style sheet ekak link karanne mehemai-->
-    <link rel="stylesheet" data-th-href="@{/css/style.css}">
-</head>
-<body>
+  <!--style sheet ekak link karanne mehemai-->
+  <link rel="stylesheet" data-th-href="@{/css/style.css}" >
+</head >
+<body >
 
-<div class="form-area">
-    <form th:action="${'/login'}" method="post">
-    <div class="img-area">
-        <img src="../img/avatar.png" alt="">
-    </div>
+<div class="form-area" >
+  <form th:action="${'/login'}" method="post" >
+    <div class="img-area" >
+      <img src="../img/avatar.png" alt="" >
+    </div >
 
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
 
-    <h2>Department of Prison</h2>
-    <h3>Rehabilitation Officer Administration</h3>
+    <h2 >Department of Prison</h2 >
+    <h3 >Rehabilitation Officer Administration</h3 >
 
-    <p> User Name :</p>
-    <input type="text" name="username" id="username" th:name="${'username'}" placeholder="Enter User Name" required>
+    <p > User Name :</p >
+    <input type="text" name="username" id="username" th:name="${'username'}" placeholder="Enter User Name" required >
 
-    <p>Password :</p>
-    <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required>
+    <p >Password :</p >
+    <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required >
 
-    <div style="margin-top:10px">
-        <button id="btnLogin" class="col-md-12 btn btn-primary"><i class= "fa fa-key" style="margin-right: 10px;font-size: 18px"></i>Login</button>
-    </div>
+    <div style="margin-top:10px" >
+      <button id="btnLogin" class="col-md-12 btn btn-primary" ><i class="fa fa-key"
+                                                                  style="margin-right: 10px;font-size: 18px" ></i >Login
+      </button >
+    </div >
 
-    <div>
-        <a href="#" class="for-pass">Forgot Password ?</a>
-    </div>
-
-<div class="container-fluid " th:if="${param.error}">
-                <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
-            </div>
-            <div class="container-fluid ">
-                <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
-            </div>
-        </form>
-</div>
+    <div class="container-fluid " th:if="${param.error}" >
+      <p class="bg-white text-capitalize text-danger text-lg-center" >Invalid username or password. </p >
+    </div >
+    <div class="container-fluid " >
+      <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center" ></p >
+    </div >
+  </form >
+</div >
 
 <!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<footer th:replace="~{fragments/footer :: footerFragment}" ></footer >
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script th:replace="~{fragments/script :: scriptFragment}" ></script >
+<script type="text/javascript" src="js/main.js" ></script >
 
 
-</body>
-</html>
+</body >
+</html >

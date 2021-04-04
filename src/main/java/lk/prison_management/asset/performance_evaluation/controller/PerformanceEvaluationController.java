@@ -12,10 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping( "/performanceEvaluation" )
@@ -41,12 +38,12 @@ public class PerformanceEvaluationController {
   //Send on employee details
   @GetMapping( "/add" )
   public String employeeView(Model model) {
-    return commonThing(model, new PerformanceEvaluation());
-  }
-
-  private String commonThing(Model model, PerformanceEvaluation performanceEvaluation) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
+    return commonThing(model, new PerformanceEvaluation(), employee);
+  }
+
+  private String commonThing(Model model, PerformanceEvaluation performanceEvaluation, Employee employee) {
     model.addAttribute("employeeDetail", employee);
     model.addAttribute("addStatus", true);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
@@ -55,11 +52,22 @@ public class PerformanceEvaluationController {
     return "performanceEvaluation/addPerformanceEvaluation";
   }
 
+  @GetMapping( "/confirm/{id}" )
+  public String employeeConfirm(@PathVariable( "id" ) Integer id, Model model) {
+    model.addAttribute("confirm", true);
+    PerformanceEvaluation performanceEvaluation = performanceEvaluationService.findById(id);
+    Employee employee = employeeService.findById(performanceEvaluation.getEmployee().getId());
+
+    return commonThing(model, performanceEvaluation, employee);
+  }
+
   @PostMapping( "/save" )
   public String save(@ModelAttribute PerformanceEvaluation performanceEvaluationResult,
                      BindingResult bindingResult, Model model) {
     if ( bindingResult.hasErrors() ) {
-      commonThing(model, performanceEvaluationResult);
+
+      Employee employee = employeeService.findById(performanceEvaluationResult.getEmployee().getId());
+      commonThing(model, performanceEvaluationResult, employee);
     }
     performanceEvaluationService.persist(performanceEvaluationResult);
     return "redirect:/employee";

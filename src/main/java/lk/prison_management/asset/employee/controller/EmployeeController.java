@@ -1,6 +1,9 @@
 package lk.prison_management.asset.employee.controller;
 
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import lk.prison_management.asset.censure.service.CensureService;
 import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.common_asset.model.enums.*;
@@ -13,6 +16,8 @@ import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_institute.service.EmployeeInstituteService;
 import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
+import lk.prison_management.asset.institute.entity.Institute;
+import lk.prison_management.asset.institute.service.InstituteService;
 import lk.prison_management.asset.performance_evaluation.service.PerformanceEvaluationService;
 import lk.prison_management.asset.qualification.service.QualificationService;
 import lk.prison_management.asset.user.entity.User;
@@ -22,11 +27,13 @@ import lk.prison_management.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
@@ -49,13 +56,19 @@ public class EmployeeController {
   private final CommendationService commendationService;
   private final CensureService censureService;
   private final PerformanceEvaluationService performanceEvaluationService;
+  private final InstituteService instituteService;
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
   @Autowired
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
                             DateTimeAgeService dateTimeAgeService,
                             CommonService commonService, UserService userService,
-                            EmployeeInstituteService employeeInstituteService, EmployeeLeaveService employeeLeaveService, QualificationService qualificationService, CommendationService commendationService, CensureService censureService, PerformanceEvaluationService performanceEvaluationService, MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
+                            EmployeeInstituteService employeeInstituteService,
+                            EmployeeLeaveService employeeLeaveService, QualificationService qualificationService,
+                            CommendationService commendationService, CensureService censureService,
+                            PerformanceEvaluationService performanceEvaluationService,
+                            InstituteService instituteService,
+                            MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.dateTimeAgeService = dateTimeAgeService;
@@ -67,6 +80,7 @@ public class EmployeeController {
     this.commendationService = commendationService;
     this.censureService = censureService;
     this.performanceEvaluationService = performanceEvaluationService;
+    this.instituteService = instituteService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
 //----> Employee details management - start <----//
@@ -79,6 +93,10 @@ public class EmployeeController {
     model.addAttribute("employeeStatus", EmployeeStatus.values());
     model.addAttribute("designation", Designation.values());
     model.addAttribute("bloodGroup", BloodGroup.values());
+    model.addAttribute("supervisorFindUrl", MvcUriComponentsBuilder
+        .fromMethodName(EmployeeController.class, "findSupervisor", "")
+        .toUriString());
+    model.addAttribute("institutes", instituteService.findAll());
     return "employee/addEmployee";
   }
 
@@ -225,7 +243,6 @@ public class EmployeeController {
     }
   }
 
-
   @GetMapping( value = "/remove/{id}" )
   public String removeEmployee(@PathVariable Integer id) {
     employeeService.delete(id);
@@ -260,6 +277,32 @@ public class EmployeeController {
 
     model.addAttribute("employee", new Employee());
     return "employee/findEmployee";
+  }
+
+  @GetMapping( value = "/supervisor/{id}" )
+  @ResponseBody
+  public MappingJacksonValue findSupervisor(@PathVariable Integer id) {
+    Institute institute = instituteService.findById(id);
+
+    MappingJacksonValue mappingJacksonValue;
+    if ( institute != null ) {
+      List< Employee > employees = employeeService.findByInstitute(institute);
+      if ( employees.isEmpty() ) {
+        mappingJacksonValue = new MappingJacksonValue(employeeService.findAll());
+      } else {
+        mappingJacksonValue = new MappingJacksonValue(employees);
+      }
+    } else {
+      mappingJacksonValue = new MappingJacksonValue(employeeService.findAll());
+    }
+
+    SimpleBeanPropertyFilter simpleBeanPropertyFilterOne = SimpleBeanPropertyFilter
+        .filterOutAllExcept("id", "name");
+
+    FilterProvider filters = new SimpleFilterProvider()
+        .addFilter("Employee", simpleBeanPropertyFilterOne);
+    mappingJacksonValue.setFilters(filters);
+    return mappingJacksonValue;
   }
 
 }
