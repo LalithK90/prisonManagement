@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--heading Area-->
-<div class="container-fluid  form-Border" >
+<div class="container-fluid " >
   <div class="row text-center " >
     <div class="col" >
       <a class="btn btn-outline-info" href="/home" >&nbsp; Back To Home
@@ -30,8 +30,10 @@
     </div >
   </div >
 </div >
+
 <!--details-->
 <div class="container-fluid " data-th-fragment="totalEmployeeDetailsFragment" >
+
   <div id="accordianId6" role="tablist" aria-multiselectable="true" >
     <div class="card" >
       <div class="card-header" role="tab" id="section1HeaderId6" >
@@ -44,8 +46,7 @@
       </div >
       <div id="section1ContentId6" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId6" >
         <div class="card-body" >
-
-          <div class="col-sm-12 flex-clumn text-dark" data-th-fragment="employeeDetailsFragment" >
+          <div class="col-sm-12 flex-column text-dark" data-th-fragment="employeeDetailsFragment" >
             <div class="row" >
               <!--Left Side-->
               <div class="form-group col-md-6 col-sm-6 flex-column" >
@@ -65,7 +66,6 @@
                     <p id="employeeCode" data-th-text="${employeeDetail.code}" class="display_detail" ></p >
                   </div >
                 </div >
-
                 <div class="form-row text-right" >
                   <div class="col-md-4" >
                     <label class="control-label" for="name" >Name :</label >
@@ -108,7 +108,6 @@
                                                                                                              Birthday</p >
                   </div >
                 </div >
-
                 <div class="form-row text-right" >
                   <div class="col-md-4" >
                     <label class="control-label" for="designation" >Designation :</label >
@@ -324,8 +323,8 @@
             <tr data-th-each="employeeLeave, rowCount : ${employeeDetail.employeeLeaves}" >
               <th data-th-text="${rowCount.count}" ></th >
               <th data-th-text="${employeeLeave.employee.name}" ></th >
-              <th data-th-text="${{employeeLeave.startAt}}" ></th >
-              <th data-th-text="${{employeeLeave.endAt}}" ></th >
+              <th data-th-text="${#temporals.format(employeeLeave.startAt, 'dd-MMM-yyyy HH:mm')}" ></th >
+              <th data-th-text="${#temporals.format(employeeLeave.endAt, 'dd-MMM-yyyy HH:mm')}" ></th >
               <th ><span data-th-text="${employeeLeave.dayCount +' Day '+ employeeLeave.hourCount+' Hour'}" ></span >
               </th >
             </tr >
@@ -455,14 +454,13 @@
         <div class="card-body" >
           <!--performance evaluations-->
           <div class="container-fluid"
-               data-th-each="censureDetail : ${employeeDetail.censures}" >
-            <div data-th-replace="~{performanceEvaluations/performanceEvaluations-detail :: performanceEvaluationsFragment}" ></div >
+               data-th-each="performanceEvaluations : ${employeeDetail.performanceEvaluations}" >
+          <!--todo performanceEvaluations-->
           </div >
         </div >
       </div >
     </div >
   </div >
-
 
 </div >
 
@@ -474,6 +472,8 @@
     </button >
   </a >
 </div >
+
+<!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >

@@ -20,7 +20,7 @@ import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
 import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.asset.institute.entity.enums.InstituteChangeReason;
 import lk.prison_management.asset.institute.service.InstituteService;
-import lk.prison_management.asset.performance_evaluation.service.PerformanceEvaluationService;
+import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
 import lk.prison_management.asset.qualification.service.QualificationService;
 import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.asset.user.service.UserService;
@@ -57,7 +57,7 @@ public class EmployeeController {
   private final QualificationService qualificationService;
   private final CommendationService commendationService;
   private final CensureService censureService;
-  private final PerformanceEvaluationService performanceEvaluationService;
+  private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
   private final InstituteService instituteService;
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
@@ -68,7 +68,7 @@ public class EmployeeController {
                             EmployeeInstituteService employeeInstituteService,
                             EmployeeLeaveService employeeLeaveService, QualificationService qualificationService,
                             CommendationService commendationService, CensureService censureService,
-                            PerformanceEvaluationService performanceEvaluationService,
+                            PerformanceEvaluationRequestService performanceEvaluationRequestService,
                             InstituteService instituteService,
                             MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
@@ -81,7 +81,7 @@ public class EmployeeController {
     this.qualificationService = qualificationService;
     this.commendationService = commendationService;
     this.censureService = censureService;
-    this.performanceEvaluationService = performanceEvaluationService;
+    this.performanceEvaluationRequestService = performanceEvaluationRequestService;
     this.instituteService = instituteService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
@@ -141,7 +141,7 @@ public class EmployeeController {
   @GetMapping( value = "/edit/{id}" )
   public String editEmployeeForm(@PathVariable( "id" ) Integer id, Model model) {
     Employee employee = employeeService.findById(id);
-    employee.setPerformanceEvaluations(performanceEvaluationService.findByEmployee(employee));
+    employee.setPerformanceEvaluationRequests(performanceEvaluationRequestService.findByEmployee(employee));
     employee.setCensures(censureService.findByEmployee(employee));
     employee.setCommendations(commendationService.findByEmployee(employee));
     employee.setQualifications(qualificationService.findByEmployee(employee));
