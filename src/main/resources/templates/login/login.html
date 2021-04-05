@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:background-image="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Department of Prison </title>
@@ -7,11 +7,17 @@
 
     <!--style sheet ekak link karanne mehemai-->
     <link rel="stylesheet" data-th-href="@{/css/style.css}">
+    <style>
+        body {background-image: url(../img/login3.jpg);}
+
+    </style>
 
 </head>
-<body>
+<body >
+
 
 <div class="form-area">
+
     <form th:action="${'/login'}" method="post">
     <div class="img-area">
         <img src="../img/avatar.png" alt="">
@@ -45,7 +51,10 @@
                 <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
             </div>
         </form>
+    </div>
 </div>
+
+
 
 <!--footer include-->
 <footer th:replace="~{fragments/footer :: footerFragment}"></footer>

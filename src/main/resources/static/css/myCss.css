@@ -10,12 +10,31 @@
 /*login page start*/
 
 body{
-
+/*
     background-image: url(../img/login.jpg);!important;
     -webkit-background-size:cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    background-image: url(../img/formbg.png) ;*/
+
+
+
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    overflow-x: hidden;
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+    background-image: url(../img/formbg.png) ;!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.login-bg{
+    background-image: url(../img/login3.jpg) ;!important;
 }
 
 .form-area{
@@ -29,14 +48,14 @@ body{
     text-align: center;
     padding:10px;
     margin-left:490px;
-    background-image: url(../img/login.jpg);
+
 
 }
 
 .form-area{
 
     margin-bottom: 1px;
-    color: white;
+    color: #a01a1a;
 
 }
 input{
@@ -95,7 +114,7 @@ input{
 
 /*MainWindow Style - Start*/
 .mainbody{
-    background-image: url(../img/backmain2.jpg);
+    background-image: url(../img/formbg.png);
     -webkit-background-size:cover;
     background-size: cover;
     background-position:center center;
@@ -157,6 +176,7 @@ input{
 	-webkit-border-radius:70px 70px 70px 70px;
 	-moz-border-radius:70px 70px 70px 70px;
 	border-radius:70px 70px 70px 70px ;
+
 }
 
 .form-area{
