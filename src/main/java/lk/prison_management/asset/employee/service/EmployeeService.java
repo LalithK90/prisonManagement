@@ -86,4 +86,8 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
   public List< Employee > findByInstitute(Institute institute) {
     return employeeDao.findByInstitute(institute);
   }
+
+  public List< Employee > findBySupervisor(Employee employee) {
+    return employeeDao.findBySupervisor(employee);
+  }
 }

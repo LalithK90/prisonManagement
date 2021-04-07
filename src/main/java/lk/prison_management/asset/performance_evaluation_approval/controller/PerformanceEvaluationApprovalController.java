@@ -1,5 +1,6 @@
 package lk.prison_management.asset.performance_evaluation_approval.controller;
 
+import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
@@ -14,6 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping( "/performanceEvaluationApproval" )
 public class PerformanceEvaluationApprovalController {
@@ -21,6 +26,7 @@ public class PerformanceEvaluationApprovalController {
   private final EmployeeFilesService employeeFilesService;
   private final UserService userService;
   private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
+
   public PerformanceEvaluationApprovalController(EmployeeService employeeService,
                                                  EmployeeFilesService employeeFilesService,
                                                  UserService userService,
@@ -31,6 +37,20 @@ public class PerformanceEvaluationApprovalController {
     this.performanceEvaluationRequestService = performanceEvaluationRequestService;
   }
 
+  @RequestMapping
+  public String employeePage(Model model) {
+    Employee employeeUser =
+        userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).getEmployee();
+    List< Employee > employees = new ArrayList<>();
+
+    for ( Employee employee : performanceEvaluationRequestService.findBySupervisor(employeeUser) ) {
+      employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
+      employees.add(employee);
+    }
+    model.addAttribute("employees", employees);
+    return "performanceEvaluation/performanceEvaluation";
+  }
+
   //Send on employee details
   @GetMapping( "/add" )
   public String employeeView(Model model) {
@@ -39,13 +59,14 @@ public class PerformanceEvaluationApprovalController {
     return commonThing(model, new PerformanceEvaluationRequest(), employee);
   }
 
-  private String commonThing(Model model, PerformanceEvaluationRequest performanceEvaluationRequest, Employee employee) {
+  private String commonThing(Model model, PerformanceEvaluationRequest performanceEvaluationRequest,
+                             Employee employee) {
     model.addAttribute("employeeDetail", employee);
     model.addAttribute("addStatus", true);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
     model.addAttribute("performanceEvaluation", performanceEvaluationRequest);
     model.addAttribute("apprecials", Apprecial.values());
-    return "performanceEvaluation/addPerformanceEvaluation";
+    return "performanceEvaluation/addPerformanceEvaluationApproval";
   }
 
   @GetMapping( "/confirm/{id}" )

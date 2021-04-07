@@ -18,4 +18,6 @@ public interface EmployeeDao extends JpaRepository< Employee, Integer > {
   Employee findByWopNumber(String wopNumber);
 
   List< Employee > findByInstitute(Institute institute);
+
+List<Employee> findBySupervisor(Employee employee);
 }

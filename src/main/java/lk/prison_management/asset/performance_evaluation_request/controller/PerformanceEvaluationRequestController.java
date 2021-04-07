@@ -45,7 +45,7 @@ public class PerformanceEvaluationRequestController {
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
     model.addAttribute("performanceEvaluation", performanceEvaluationRequest);
     model.addAttribute("apprecials", Apprecial.values());
-    return "performanceEvaluation/addPerformanceEvaluation";
+    return "performanceEvaluation/addPerformanceEvaluationRequest";
   }
 
   @GetMapping( "/confirm/{id}" )
@@ -64,9 +64,6 @@ public class PerformanceEvaluationRequestController {
       Employee employee = employeeService.findById(performanceEvaluationRequest.getEmployee().getId());
       commonThing(model, performanceEvaluationRequest, employee);
     }
-
-//todo employee performance evaluation as need to add
-
     performanceEvaluationRequestService.persist(performanceEvaluationRequest);
 
     return "redirect:/employee";
