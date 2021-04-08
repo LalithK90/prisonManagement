@@ -7,6 +7,7 @@ import lk.prison_management.asset.performance_evaluation_request.entity.Performa
 import lk.prison_management.asset.performance_evaluation_request.entity.enums.Apprecial;
 import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
 import lk.prison_management.asset.user.service.UserService;
+import lk.prison_management.util.service.EmailService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,15 +22,17 @@ public class PerformanceEvaluationRequestController {
   private final EmployeeFilesService employeeFilesService;
   private final UserService userService;
   private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
+  private final EmailService emailService;
 
   public PerformanceEvaluationRequestController(EmployeeService employeeService,
                                                 EmployeeFilesService employeeFilesService,
                                                 UserService userService,
-                                                PerformanceEvaluationRequestService performanceEvaluationRequestService) {
+                                                PerformanceEvaluationRequestService performanceEvaluationRequestService, EmailService emailService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.userService = userService;
     this.performanceEvaluationRequestService = performanceEvaluationRequestService;
+    this.emailService = emailService;
   }
 
   //Send on employee details
@@ -65,7 +68,17 @@ public class PerformanceEvaluationRequestController {
       Employee employee = employeeService.findById(performanceEvaluationRequest.getEmployee().getId());
       commonThing(model, performanceEvaluationRequest, employee);
     }
-    performanceEvaluationRequestService.persist(performanceEvaluationRequest);
+    PerformanceEvaluationRequest performanceEvaluationRequestDb =
+        performanceEvaluationRequestService.persist(performanceEvaluationRequest);
+
+    Employee employee = employeeService.findById(performanceEvaluationRequestDb.getEmployee().getId());
+
+    if ( employee.getSupervisor().getEmail() != null ) {
+      String message = employee.getTitle().getTitle() + " " + employee.getName() + " has requested his performance " +
+          "evaluation";
+      emailService.sendEmail(employee.getSupervisor().getEmail(), "Inform About Performance Evaluation Request",
+                             message);
+    }
 
     return "redirect:/home";
   }

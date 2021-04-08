@@ -11,7 +11,7 @@
 <div class="container-fluid " >
   <div class="row text-center " >
     <div class="col" >
-      <a class="btn btn-outline-info" href="/home" >&nbsp; Back To Home
+      <a data-th-if="${!#authorization.expression('hasRole(''ROLE_USER'')')}" class="btn btn-outline-info" href="/home" >&nbsp; Back To Home
       </a >
     </div >
 
@@ -860,7 +860,7 @@
 
 <!--Button-->
 <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-  <a href="/employee" >
+  <a data-th-if="${!#authorization.expression('hasRole(''ROLE_USER'')')}" href="/employee" >
     <button class="btn btn-outline-secondary" type="button" tabindex="10" >
       <i class="fa fa-arrow-circle-left " style="font-size: 20px" ></i >&nbsp; &nbsp;Back
     </button >

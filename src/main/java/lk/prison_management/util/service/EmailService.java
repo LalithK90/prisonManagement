@@ -21,13 +21,10 @@ import java.util.Properties;
 @Service
 public class EmailService {
     private final JavaMailSender javaMailSender;
-    // to access application properties entered details
-    private final Environment environment;
 
     @Autowired
-    public EmailService(JavaMailSender javaMailSender, Environment environment) {
+    public EmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
-        this.environment = environment;
     }
 
 
@@ -38,7 +35,7 @@ public class EmailService {
 
         try {
             mailMessage.setTo(receiverEmail);
-            mailMessage.setFrom("-(Excise Department - Sri Lanka - (not reply))");
+            mailMessage.setFrom("-(Prison Department - Sri Lanka - (not reply))");
             mailMessage.setSubject(subject);
             mailMessage.setText(message);
 
