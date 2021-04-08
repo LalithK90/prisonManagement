@@ -338,6 +338,10 @@
               <select id="supervisor" data-th-field="*{supervisor}" class="form-control" tabindex="19"
                       required >
                 <option value="" >Please select</option >
+                <option data-th-each="employee : ${employees}"
+                        data-th-text="${employee.name + ' - '+ employee.designation.designation}"
+                        data-th-value="${employee.id}" >Please select
+                </option >
               </select >
             </div >
           </div >
@@ -454,24 +458,24 @@
         }
     }
 
-    $("#institute").change(function () {
-        $("#supervisor").find('option').remove();
-        $.ajax({
-            type: 'GET',
-            url: $("#supervisorFindUrl").val() + $(this).val(),
-            success: function (resp) {
-                $.each(resp, function () {
-                    $("#supervisor").append(`<option value="${this.id}">${this.name}</option>`);
-                });
-                $("#supervisor").select2({
-                    data: $(this).val()
-                }).addClass('form-control');
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    });
+    /*    $("#institute").change(function () {
+            $("#supervisor").find('option').remove();
+            $.ajax({
+                type: 'GET',
+                url: $("#supervisorFindUrl").val() + $(this).val(),
+                success: function (resp) {
+                    $.each(resp, function () {
+                        $("#supervisor").append(`<option value="${this.id}">${this.name}</option>`);
+                    });
+                    $("#supervisor").select2({
+                        data: $(this).val()
+                    }).addClass('form-control');
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        });*/
 </script >
 </body >
 </html >
