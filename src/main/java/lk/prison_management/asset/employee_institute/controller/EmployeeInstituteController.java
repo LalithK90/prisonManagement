@@ -52,7 +52,14 @@ public class EmployeeInstituteController {
   public String form(@PathVariable Integer id, Model model) {
     Employee employee = employeeService.findById(id);
     List< EmployeeInstitute > employeeInstituteList = employeeInstituteService.findByEmployee(employee);
-    EmployeeInstitute employeeInstitute = employeeInstituteList.get(employeeInstituteList.size() - 1);
+
+    EmployeeInstitute employeeInstitute;
+    if ( employeeInstituteList.size() > 1 ) {
+      employeeInstitute = employeeInstituteList.get(employeeInstituteList.size() - 1);
+    } else {
+      employeeInstitute = employeeInstituteList.get(0);
+    }
+
     return commonThing(model, employee, employeeInstitute, true);
   }
 

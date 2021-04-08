@@ -26,7 +26,7 @@
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/employeeInstitute'}" class="nav-link text-dark"> Employee Institute Management</a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/employeeLeave'}" class="nav-link text-dark"> Employee Leave Management</a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/qualification'}" class="nav-link text-dark"> Qualification Management</a>
-               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute'}" class="nav-link text-dark"> Institute Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute'}" class="nav-link text-dark"> Institute Management</a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/offence'}" class="nav-link text-dark"> Offence Management</a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/punishment'}" class="nav-link text-dark"> Punishment Management</a>
             </div>
@@ -40,7 +40,7 @@
                <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/user/add'}" class="nav-link text-dark"> New User </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/role/add'}" class="nav-link text-dark"> New Role </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/employee/findAll'}" class="nav-link text-dark"> Employee Administration </a>
-               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute/add'}" class="nav-link text-dark"> New Institute </a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER','ROLE_ADMIN')" data-th-href="@{'/institute/add'}" class="nav-link text-dark"> New Institute </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/offence/add'}" class="nav-link text-dark"> New Offence </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/punishment/add'}" class="nav-link text-dark"> New Punishment </a>
             </div>

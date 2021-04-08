@@ -94,6 +94,7 @@ public class EmployeeController {
     model.addAttribute("employeeStatus", EmployeeStatus.values());
     model.addAttribute("designation", Designation.values());
     model.addAttribute("bloodGroup", BloodGroup.values());
+    model.addAttribute("employees", employeeService.findAll());
     model.addAttribute("supervisorFindUrl", MvcUriComponentsBuilder
         .fromMethodName(EmployeeController.class, "findSupervisor", "")
         .toUriString());
@@ -202,28 +203,32 @@ public class EmployeeController {
         employee.setCode("SLPE" + makeAutoGenerateNumberService.numberAutoGen(lastEmployee.getCode().substring(4)).toString());
       }
     }
-
-
-    //after save employee files and save employee
-    Employee employeeSaved = employeeService.persist(employee);
-    //if employee state is not working he or she cannot access to the system
-    if ( !employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {
-      User user = userService.findUserByEmployee(employeeService.findByNic(employee.getNic()));
-      //if employee not a user
-      if ( user != null ) {
-        user.setEnabled(false);
-        userService.persist(user);
-      }
-    }
+    Employee employeeSaved;
 // save employee institute
     if ( employee.getId() == null ) {
+      employeeSaved = employeeService.persist(employee);
       EmployeeInstitute employeeInstitute = new EmployeeInstitute();
       employeeInstitute.setEmployee(employeeSaved);
       employeeInstitute.setInstitute(employee.getInstitute());
       employeeInstitute.setStartAt(employee.getDateOfAssignment());
       employeeInstitute.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
       employeeInstituteService.persist(employeeInstitute);
+    }else {
+      //if employee state is not working he or she cannot access to the system
+      if ( !employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {
+        User user = userService.findUserByEmployee(employeeService.findByNic(employee.getNic()));
+        //if employee not a user
+        if ( user != null ) {
+          user.setEnabled(false);
+          userService.persist(user);
+        }
+      }
+
+      employeeSaved = employeeService.persist(employee);
     }
+
+    //after save employee files and save employee
+
 
     try {
       //save employee images file
