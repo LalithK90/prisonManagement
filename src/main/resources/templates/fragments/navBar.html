@@ -29,10 +29,12 @@
                <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/institute'}" class="nav-link text-dark"> Institute Management</a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/offence'}" class="nav-link text-dark"> Offence Management</a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" data-th-href="@{'/punishment'}" class="nav-link text-dark"> Punishment Management</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER','ROLE_USER')" data-th-href="@{'/performanceEvaluationRequest/add'}" class="nav-link text-dark"> Performance Evaluation Request</a>
+               <a data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER','ROLE_USER')" data-th-href="@{'/performanceEvaluationApproval'}" class="nav-link text-dark"> Performance Evaluation Approve</a>
             </div>
          </li>
 
-         <li class="nav-itemBatch dropdown active">
+         <li class="nav-itemBatch dropdown active" data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER','ROLE_ADMIN')">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false"> <i class="fa fa-bell"></i> Transaction</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -46,7 +48,7 @@
             </div>
          </li>
 
-         <li class="nav-itemBatch dropdown active">
+         <li class="nav-itemBatch dropdown active" data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER','ROLE_ADMIN')">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false"> <i class="fa fa-book-open"></i> Report</a>
             <div class="dropdown-menu text-dark" aria-labelledby="dropdownId">
