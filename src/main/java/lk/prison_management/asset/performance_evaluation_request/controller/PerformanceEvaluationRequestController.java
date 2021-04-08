@@ -67,6 +67,6 @@ public class PerformanceEvaluationRequestController {
     }
     performanceEvaluationRequestService.persist(performanceEvaluationRequest);
 
-    return "redirect:/employee";
+    return "redirect:/home";
   }
 }

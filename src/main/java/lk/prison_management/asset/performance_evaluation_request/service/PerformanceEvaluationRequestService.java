@@ -33,7 +33,7 @@ public class PerformanceEvaluationRequestService implements AbstractService< Per
   }
 
   public PerformanceEvaluationRequest persist(PerformanceEvaluationRequest performanceEvaluationRequest) {
-    if ( performanceEvaluationRequest.getId() ==null ){
+    if ( performanceEvaluationRequest.getId() == null ) {
       performanceEvaluationRequest.setPerformanceEvaluationStatus(PerformanceEvaluationStatus.APRS);
     }
     return performanceEvaluationRequestDao.save(performanceEvaluationRequest);
@@ -62,11 +62,16 @@ public class PerformanceEvaluationRequestService implements AbstractService< Per
 
     List< Employee > supervisedEmployee = employeeService.findBySupervisor(employeeUser);
 
-    supervisedEmployee.forEach(x -> {
-      performanceEvalReE.add(
-          performanceEvaluationRequestDao.findByEmployeeAndPerformanceEvaluationStatus(x,
-                                                                                       PerformanceEvaluationStatus.APRS).getEmployee());
-    });
+    if ( !supervisedEmployee.isEmpty() ) {
+      supervisedEmployee.forEach(x -> {
+        PerformanceEvaluationRequest performanceEvaluationRequest = performanceEvaluationRequestDao.
+            findByEmployeeAndPerformanceEvaluationStatus(x,
+                                                         PerformanceEvaluationStatus.APRS);
+        if ( performanceEvaluationRequest != null ) {
+          performanceEvalReE.add(performanceEvaluationRequest.getEmployee());
+        }
+      });
+    }
 
     return performanceEvalReE;
   }
