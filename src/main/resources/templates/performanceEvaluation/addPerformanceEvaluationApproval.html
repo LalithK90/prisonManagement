@@ -58,10 +58,9 @@
     <form class="form-horizontal"
           data-th-action="${addStatus==true?'/performanceEvaluationApproval/save':'/performanceEvaluationApproval/update'}"
           data-th-object="${performanceEvaluationApproval}" method="POST" >
+      <input data-th-field="*{performanceEvaluationRequest}"  hidden type="text" />
       <div class="row" >
-        <!--First part-->
-        <div id="form" >
-          <div class="container" data-th-if="${confirm}" ><!--second part-->
+        <!--second part-->
             <div class="container-fluid" >
               <div class="container-fluid" >
                 <p class="text-center h3" >II.Part filled Appraiser y</p >
@@ -580,7 +579,6 @@
                 </div >
               </div >
             </div >
-          </div >
 
           <!--Button-->
           <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
@@ -606,7 +604,6 @@
             </ul >
           </div >
         </div >
-      </div >
     </form >
   </div >
 
@@ -617,26 +614,6 @@
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 
-<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
-<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
-
-<script >
-    function dateMatch() {
-        let startDateTime = $(`#startAt`).val();
-        let endDateTime = $(`#endAt`).val();
-        if (startDateTime !== "" && endDateTime !== "") {
-            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
-                swal({
-                    title: "Could you accept those days.. !",
-                    icon: "warning",
-                    text: "Please check your date time \n End Date Time can not be less than Start Date Time",
-                })
-                $(`#endAt`).val(startDateTime);
-            }
-        }
-    }
-
-</script >
 
 </body >
 </html >

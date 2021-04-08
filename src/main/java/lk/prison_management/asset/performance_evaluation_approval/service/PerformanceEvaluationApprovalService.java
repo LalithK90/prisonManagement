@@ -1,8 +1,8 @@
 package lk.prison_management.asset.performance_evaluation_approval.service;
 
 import lk.prison_management.asset.employee.entity.Employee;
-import lk.prison_management.asset.performance_evaluation_request.dao.PerformanceEvaluationRequestDao;
-import lk.prison_management.asset.performance_evaluation_request.entity.PerformanceEvaluationRequest;
+import lk.prison_management.asset.performance_evaluation_approval.dao.PerformanceEvaluationApprovalDao;
+import lk.prison_management.asset.performance_evaluation_approval.entity.PerformanceEvaluationApproval;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -11,40 +11,37 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PerformanceEvaluationApprovalService implements AbstractService< PerformanceEvaluationRequest, Integer> {
-    private final PerformanceEvaluationRequestDao performanceEvaluationRequestDao;
+public class PerformanceEvaluationApprovalService implements AbstractService< PerformanceEvaluationApproval, Integer> {
+    private final PerformanceEvaluationApprovalDao performanceEvaluationApprovalDao;
 
-    public PerformanceEvaluationApprovalService(PerformanceEvaluationRequestDao performanceEvaluationRequestDao) {
-        this.performanceEvaluationRequestDao = performanceEvaluationRequestDao;
+    public PerformanceEvaluationApprovalService(PerformanceEvaluationApprovalDao performanceEvaluationApprovalDao) {
+        this.performanceEvaluationApprovalDao = performanceEvaluationApprovalDao;
     }
 
-    public List< PerformanceEvaluationRequest > findAll() {
-        return performanceEvaluationRequestDao.findAll();
+    public List< PerformanceEvaluationApproval > findAll() {
+        return performanceEvaluationApprovalDao.findAll();
     }
 
-    public PerformanceEvaluationRequest findById(Integer id) {
-        return performanceEvaluationRequestDao.getOne(id);
+    public PerformanceEvaluationApproval findById(Integer id) {
+        return performanceEvaluationApprovalDao.getOne(id);
     }
 
-    public PerformanceEvaluationRequest persist(PerformanceEvaluationRequest performanceEvaluationRequest) {
-        return performanceEvaluationRequestDao.save(performanceEvaluationRequest);
+    public PerformanceEvaluationApproval persist(PerformanceEvaluationApproval performanceEvaluationApproval) {
+        return performanceEvaluationApprovalDao.save(performanceEvaluationApproval);
     }
 
     public boolean delete(Integer id) {
-        performanceEvaluationRequestDao.deleteById(id);
+        performanceEvaluationApprovalDao.deleteById(id);
         return true;
     }
 
-    public List< PerformanceEvaluationRequest > search(PerformanceEvaluationRequest performanceEvaluationRequest) {
+    public List< PerformanceEvaluationApproval > search(PerformanceEvaluationApproval performanceEvaluationApproval) {
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example< PerformanceEvaluationRequest > instituteExample = Example.of(performanceEvaluationRequest, matcher);
-        return performanceEvaluationRequestDao.findAll(instituteExample);
+        Example< PerformanceEvaluationApproval > instituteExample = Example.of(performanceEvaluationApproval, matcher);
+        return performanceEvaluationApprovalDao.findAll(instituteExample);
     }
 
-  public List< PerformanceEvaluationRequest > findByEmployee(Employee employee) {
-        return performanceEvaluationRequestDao.findByEmployee(employee);
-  }
 }

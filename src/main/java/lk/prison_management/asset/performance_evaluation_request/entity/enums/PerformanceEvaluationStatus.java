@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PerformanceEvaluationStatus {
   APRS("Requested"),
-  Approved(" Approved");
+  APPROVED(" Approved");
   private final String performanceEvaluationStatus;
 
 }

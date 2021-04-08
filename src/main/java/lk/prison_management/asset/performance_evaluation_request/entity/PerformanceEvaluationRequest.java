@@ -76,7 +76,7 @@ public class PerformanceEvaluationRequest extends AuditEntity {
   @ManyToOne
   private Employee employee;
 
-  @OneToOne(mappedBy = "performanceEvaluationRequest", cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "performanceEvaluationRequest")
   @PrimaryKeyJoinColumn
   private PerformanceEvaluationApproval performanceEvaluationApproval;
 
