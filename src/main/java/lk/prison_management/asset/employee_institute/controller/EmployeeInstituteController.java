@@ -36,7 +36,7 @@ public class EmployeeInstituteController {
     model.addAttribute("addStatus", addStatus);
     model.addAttribute("institutes", instituteService.findAll());
     model.addAttribute("instituteChangeReasons", InstituteChangeReason.values());
-    model.addAttribute("employess", employeeService.findAll());
+    model.addAttribute("employees", employeeService.findAll());
     model.addAttribute("supervisorFindUrl", MvcUriComponentsBuilder
         .fromMethodName(EmployeeController.class, "findSupervisor", "")
         .toUriString());
