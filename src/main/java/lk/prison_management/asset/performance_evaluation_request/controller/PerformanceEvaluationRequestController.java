@@ -15,12 +15,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping( "/performanceEvaluation" )
+@RequestMapping( "/performanceEvaluationRequest" )
 public class PerformanceEvaluationRequestController {
   private final EmployeeService employeeService;
   private final EmployeeFilesService employeeFilesService;
   private final UserService userService;
   private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
+
   public PerformanceEvaluationRequestController(EmployeeService employeeService,
                                                 EmployeeFilesService employeeFilesService,
                                                 UserService userService,
@@ -34,23 +35,24 @@ public class PerformanceEvaluationRequestController {
   //Send on employee details
   @GetMapping( "/add" )
   public String employeeView(Model model) {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
+//    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//    Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
+    Employee employee = employeeService        .findById(1);
     return commonThing(model, new PerformanceEvaluationRequest(), employee);
   }
 
-  private String commonThing(Model model, PerformanceEvaluationRequest performanceEvaluationRequest, Employee employee) {
+  private String commonThing(Model model, PerformanceEvaluationRequest performanceEvaluationRequest,
+                             Employee employee) {
     model.addAttribute("employeeDetail", employee);
     model.addAttribute("addStatus", true);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
-    model.addAttribute("performanceEvaluation", performanceEvaluationRequest);
+    model.addAttribute("performanceEvaluationRequest", performanceEvaluationRequest);
     model.addAttribute("apprecials", Apprecial.values());
     return "performanceEvaluation/addPerformanceEvaluationRequest";
   }
 
   @GetMapping( "/confirm/{id}" )
   public String employeeConfirm(@PathVariable( "id" ) Integer id, Model model) {
-    model.addAttribute("confirm", true);
     PerformanceEvaluationRequest performanceEvaluationRequest = performanceEvaluationRequestService.findById(id);
     Employee employee = employeeService.findById(performanceEvaluationRequest.getEmployee().getId());
 

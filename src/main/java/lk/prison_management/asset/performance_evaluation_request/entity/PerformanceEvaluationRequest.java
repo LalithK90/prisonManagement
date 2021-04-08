@@ -2,6 +2,7 @@ package lk.prison_management.asset.performance_evaluation_request.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.employee.entity.Employee;
+import lk.prison_management.asset.performance_evaluation_approval.entity.PerformanceEvaluationApproval;
 import lk.prison_management.asset.performance_evaluation_request.entity.enums.PerformanceEvaluationStatus;
 import lk.prison_management.asset.performance_evaluation_request.entity.enums.Apprecial;
 import lk.prison_management.asset.performance_evaluation_request.entity.enums.YesNo;
@@ -74,5 +75,9 @@ public class PerformanceEvaluationRequest extends AuditEntity {
 
   @ManyToOne
   private Employee employee;
+
+  @OneToOne(mappedBy = "performanceEvaluationRequest", cascade = CascadeType.ALL)
+  @PrimaryKeyJoinColumn
+  private PerformanceEvaluationApproval performanceEvaluationApproval;
 
 }

@@ -110,8 +110,9 @@ public class PerformanceEvaluationApproval extends AuditEntity {
   @Enumerated( EnumType.STRING )
   private Apprecial overallApprecial;
 
-
-  @ManyToOne
+  @OneToOne
+  @MapsId
+  @JoinColumn(name = "performanceEvaluationRequest_id")
   private PerformanceEvaluationRequest performanceEvaluationRequest;
 
 }

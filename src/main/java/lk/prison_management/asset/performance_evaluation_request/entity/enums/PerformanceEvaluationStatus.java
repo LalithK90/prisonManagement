@@ -6,8 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PerformanceEvaluationStatus {
-  APRS("Appraiser   Signature"),
-  APES("Appraisee   Signature"),
+  APRS("Requested"),
   Approved(" Approved");
   private final String performanceEvaluationStatus;
 
