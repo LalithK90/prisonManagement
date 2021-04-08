@@ -1,6 +1,6 @@
 body{
 
-	background-image: url(../img/login3.jpg);
+	/*background-image: url(../img/login3.jpg);*/
 	-webkit-background-size:cover;
 	background-size: cover;
 	background-position:center center;
@@ -8,7 +8,10 @@ body{
 
 }
 
+.login-bg{
+	background-image: url(../img/login3.jpg);
 
+}
 .form-area{
 
 	float: left;
@@ -24,12 +27,14 @@ body{
 	-webkit-border-radius:70px 70px 70px 70px;
 	-moz-border-radius:70px 70px 70px 70px;
 	border-radius:70px 70px 70px 70px ;
+
 }
 
 .form-area{
 
 	margin-bottom: 1px;
 	color: white;
+
 }
 
 .img-area{
