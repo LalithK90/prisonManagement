@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid" >
+  <div class="row text-center " >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Offence and It's Employees
+        </strong >
+      </h4 >
+    </div >
+
+    <div class="col" >
+    </div >
+  </div >
+</div >
+<div class="container-fluid" >
+  <div data-th-replace="~{offence/offence-detail :: offenceDetailsFragment}" ></div >
+</div >
+
+<div class="container-fluid" >
+  <!-- employee list -->
+  <div class="row" >
+    <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}" >
+      <table class="table table-hover table-striped" id="myTable" >
+        <thead >
+        <tr >
+          <th > Index</th >
+          <th > Employee Code</th >
+          <th > Calling Name</th >
+          <th > Mobile</th >
+          <th > Designation</th >
+          <th > Status</th >
+        </tr >
+        </thead >
+        <tbody >
+        <tr data-th-each="employee, rowCount : ${employees}" >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th data-th-text="${employee.code}" ></th >
+          <th data-th-text="${employee.callingName}" ></th >
+          <th data-th-text="${employee.mobileOne}" ></th >
+          <th data-th-text="${employee.designation.designation}" ></th >
+          <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
+        </tr >
+        </tbody >
+      </table >
+    </div >
+  </div >
+</div >
+
+
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+</body >
+</html >
