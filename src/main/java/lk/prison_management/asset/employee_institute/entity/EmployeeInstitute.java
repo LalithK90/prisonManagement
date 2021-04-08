@@ -30,7 +30,6 @@ public class EmployeeInstitute extends AuditEntity {
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate startAt;
 
-  @Column( nullable = false )
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate endAt;
 
