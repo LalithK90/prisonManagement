@@ -6,6 +6,7 @@ import lk.prison_management.asset.institute.entity.Institute;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -19,5 +20,6 @@ public interface EmployeeDao extends JpaRepository< Employee, Integer > {
 
   List< Employee > findByInstitute(Institute institute);
 
-List<Employee> findBySupervisor(Employee employee);
+  List< Employee > findBySupervisor(Employee employee);
+  List< Employee > findByCreatedAtBetween(LocalDateTime form, LocalDateTime to);
 }

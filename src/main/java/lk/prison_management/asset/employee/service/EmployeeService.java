@@ -13,6 +13,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -90,4 +91,9 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
   public List< Employee > findBySupervisor(Employee employee) {
     return employeeDao.findBySupervisor(employee);
   }
+
+  public List< Employee > findByCreatedAtBetween(LocalDateTime form, LocalDateTime to) {
+    return employeeDao.findByCreatedAtBetween(form, to);
+  }
+
 }

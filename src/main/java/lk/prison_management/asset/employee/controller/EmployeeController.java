@@ -30,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -113,11 +114,19 @@ public class EmployeeController {
   @RequestMapping
   public String employeePage(Model model) {
     List< Employee > employees = new ArrayList<>();
-    for ( Employee employee : employeeService.findAll()
-        .stream()
+
+    List< Employee > employeesDb;
+    Employee employeeUser =
+        userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).getEmployee();
+    if ( !employeeUser.getDesignation().equals(Designation.CR) ) {
+      employeesDb = employeeService.findByInstitute(employeeUser.getInstitute());
+    } else {
+      employeesDb = employeeService.findAll();
+    }
+
+    for ( Employee employee : employeesDb.stream()
         .filter(x -> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
-        .collect(Collectors.toList())
-    ) {
+        .collect(Collectors.toList()) ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
       employees.add(employee);
     }

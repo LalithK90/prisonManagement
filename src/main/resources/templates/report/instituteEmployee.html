@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid" >
+  <div class="row text-center " >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          All Institute Employee
+        </strong >
+      </h4 >
+    </div >
+
+    <div class="col" >
+    </div >
+  </div >
+</div >
+
+<div class="container-fluid" >
+
+  <div class="container-fluid" data-th-each="instituteEmployee, index : ${instituteEmployees}" >
+    <div class="container" >
+      <a class="btn btn-primary col-12" data-toggle="collapse" data-th-href="${'#collapseExample'+index.index}" role="button"
+         aria-expanded="false" data-th-attr="aria-controls=${'collapseExample'+index.index}" >
+
+        Institute Name : <span
+            data-th-text="${instituteEmployee.institute.name}" ></span > &nbsp; &nbsp; Employee Count : <span
+            data-th-text="${#lists.size(instituteEmployee.employees)}" ></span >
+      </a >
+    </div >
+    <div class="collapse" data-th-id="${'collapseExample'+index.index}" >
+      <div class="card card-body" >
+        <!-- institute details -->
+        <div class="container-fluid" >
+          <div class="row" >
+            <div class="col-md-6" >
+              <!--Prison Type-->
+              <div class="form-row" >
+                <div class="col-md-4" >
+                  <label class="control-label" for="prisonType" >Prison Type :</label >
+                </div >
+                <div class="col-md-8" >
+                  <p id="prisonType" data-th-text="${instituteEmployee.institute.prisonType.prisonType}"
+                     class="display_detail" ></p >
+                </div >
+              </div >
+              <!--Name-->
+              <div class="form-row " >
+                <div class="col-md-4" >
+                  <label class="control-label" >Name :</label >
+                </div >
+                <div class="col-md-8" >
+                  <p data-th-text="${instituteEmployee.institute.name}"
+                     class="display_detail" ></p >
+                </div >
+              </div >
+            </div >
+            <div class="col-md-6" >
+              <!--Land-->
+              <div class="form-row " >
+                <div class="col-md-4" >
+                  <label class="control-label" >Land :</label >
+                </div >
+                <div class="col-md-8" >
+                  <p data-th-text="${instituteEmployee.institute.land}"
+                     class="display_detail" ></p >
+                </div >
+              </div >
+              <!--Email-->
+              <div class="form-row" >
+                <div class="col-md-4" >
+                  <label class="control-label" >Email :</label >
+                </div >
+                <div class="col-md-8" >
+                  <p data-th-text="${instituteEmployee.institute.email}"
+                     class="display_detail" ></p >
+                </div >
+              </div >
+            </div >
+          </div >
+        </div >
+        <!-- employee list -->
+        <div class="row" >
+          <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(instituteEmployee.employees)}" >
+            <table class="table table-hover table-striped" id="myTable" >
+              <thead >
+              <tr >
+                <th > Index</th >
+                <th > Image</th >
+                <th > Employee Code</th >
+                <th > Calling Name</th >
+                <th > Mobile</th >
+                <th > Designation</th >
+                <th > Status</th >
+              </tr >
+              </thead >
+              <tbody >
+              <tr data-th-each="employee, rowCount : ${instituteEmployee.employees}" >
+                <th data-th-text="${rowCount.count}" ></th >
+                <th >
+                  <div class="image" data-th-if="${employee.fileInfo !=null}" >
+                    <img id="img" class="rounded"
+                         style="height:50px; width:50px;border-radius: 1px"
+                         alt="Employee images"
+                         data-th-src="${employee.fileInfo.url}" />
+                  </div >
+                </th >
+                <th data-th-text="${employee.code}" ></th >
+                <th data-th-text="${employee.callingName}" ></th >
+                <th data-th-text="${employee.mobileOne}" ></th >
+                <th data-th-text="${employee.designation.designation}" ></th >
+                <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
+              </tr >
+              </tbody >
+            </table >
+          </div >
+        </div >
+      </div >
+    </div >
+  </div >
+</div >
+
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+</body >
+</html >
