@@ -87,6 +87,6 @@ public class PerformanceEvaluationApprovalController {
 
     performanceEvaluationApprovalService.persist(performanceEvaluationApproval);
 
-    return "redirect:/employee";
+    return "redirect:/home";
   }
 }
