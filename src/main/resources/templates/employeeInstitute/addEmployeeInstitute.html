@@ -92,6 +92,11 @@
             <select id="supervisor" data-th-field="*{supervisor}" class="form-control" tabindex="19"
                     required >
               <option value="" >Please select</option >
+              <option data-th-each="employee : ${employees}"
+                      data-th-value="${employee.id}"
+                      data-th-text="${employee.name + ' - '+ employee.designation.designation}"
+              >Please select
+              </option >
             </select >
           </div >
         </div >
@@ -102,7 +107,7 @@
           </div >
           <div class="col-md-8" >
             <input type="date" class="form-control " onchange="dateMatch()"
-                   data-th-field="*{startAt}" id="startAt" required >
+                   data-th-field="*{startAt}" id="startAt" required readonly >
 
             <span data-th-errors="*{startAt}"
                   data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
@@ -215,7 +220,8 @@
             }
         }
     }
-    $("#institute").change(function () {
+
+    /*$("#institute").change(function () {
         $("#supervisor").find('option').remove();
         $.ajax({
             type: 'GET',
@@ -232,7 +238,7 @@
                 console.log(err);
             }
         });
-    });
+    });*/
 
 </script >
 </body >
