@@ -55,19 +55,11 @@
     <form data-th-action="${addStatus==true?'/employeeInstitute/save' :'/employeeInstitute/update'}" method="post"
           data-th-object="${employeeInstitute}"
           class="mt-3" >
-
+<!--employee Id-->
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
-      <div id="form" >
-        <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="id" >ID :</label >
-          </div >
-          <div class="col-md-8" >
-            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
-          </div >
-        </div >
+            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly hidden/>
         <!--Institute -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
