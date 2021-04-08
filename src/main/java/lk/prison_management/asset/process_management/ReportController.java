@@ -87,6 +87,7 @@ public class ReportController {
   }
 
   private String commonEmployeeAllCount(Model model, List< Employee > employeesRequest) {
+    model.addAttribute("twoDate", new TwoDate());
     List< Employee > employees = new ArrayList<>();
     for ( Employee employee : employeesRequest
         .stream()

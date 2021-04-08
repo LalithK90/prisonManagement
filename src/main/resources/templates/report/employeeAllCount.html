@@ -30,79 +30,80 @@
 
 <div class="container-fluid" >
   <form action="/report/employeeAllCount" method="post" data-th-object="${twoDate}" >
+   <div class="form-row">
     <!--start At-->
-    <div class="col text-right" >
+    <div class="col-4 text-right" >
       <div class="col-md-4" >
-        <label class="control-label" for="startAt" >Start At :</label >
+        <label class="control-label" for="startDate" >Start At :</label >
       </div >
       <div class="col-md-8" >
         <input type="date" class="form-control " onchange="dateMatch()"
-               data-th-field="*{startAt}" id="startAt" required >
+               data-th-field="*{startDate}" id="startDate" required >
       </div >
     </div >
     <!--end At-->
-    <div class="col text-right" >
+    <div class="col-4 text-right" >
       <div class="col-md-4" >
-        <label class="control-label" for="endAt" >End At :</label >
+        <label class="control-label" for="endDate" >End At :</label >
       </div >
       <div class="col-md-8" >
         <input type="date" class="form-control " onchange="dateMatch()"
-               data-th-field="*{endAt}" id="endAt" required >
+               data-th-field="*{endDate}" id="endDate" required >
       </div >
     </div >
-    <div class="col" >
-      <button type="submit" class="btn btn-sm btn-success" ></button >
+    <div class="col-4" >
+      <div class="col-md-4" >
+        <label class="control-label" for="startDate" ></label >
+      </div >
+      <div class="col-md-8" >
+      <button type="submit" class="btn btn-sm btn-success" >Search</button >
+        </div>
     </div >
+    </div>
   </form >
 </div >
 
 <div class="container-fluid" data-th-if="${not #lists.isEmpty(employees)}" >
-      <table class="table table-hover table-striped" id="myTable" >
-        <thead >
-        <tr >
-          <th > Index</th >
-          <th > Image</th >
-          <th > Employee Code</th >
-          <th > Calling Name</th >
-          <th > Mobile</th >
-          <th > Designation</th >
-            <th>Transfer R. C.</th>
- <th>Leave R. C.</th>
-  <th>Qualification R. C.</th>
-   <th>Commendation R. C.</th>
-    <th>Censure R. C.</th>
-     <th>Performance evaluations R. C.</th>
-          <th > View</th >
-        </tr >
-        </thead >
-        <tbody >
-        <tr data-th-each="employee, rowCount : ${employees}" >
-          <th data-th-text="${rowCount.count}" ></th >
-          <th >
-            <div class="image" data-th-if="${employee.fileInfo !=null}" >
-              <img id="img" class="rounded"
-                   style="height:50px; width:50px;border-radius: 1px"
-                   alt="Employee images"
-                   data-th-src="${employee.fileInfo.url}" />
-            </div >
-          </th >
-          <th data-th-text="${employee.code}" ></th >
-          <th data-th-text="${employee.callingName}" ></th >
-          <th data-th-text="${employee.mobileOne}" ></th >
-          <th data-th-text="${employee.designation.designation}" ></th >
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          <th >
-            <a data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >View</a >
-                     </th >
-        </tr >
-        </tbody >
-      </table >
-</div>
+  <table class="table table-hover table-striped" id="myTable" >
+    <thead >
+    <tr >
+      <th > Index</th >
+      <th > Image</th >
+      <th > Calling Name</th >
+      <th > Designation</th >
+      <th >Transfer R. C.</th >
+      <th >Leave R. C.</th >
+      <th >Qualification R. C.</th >
+      <th >Commendation R. C.</th >
+      <th >Censure R. C.</th >
+      <th >Performance evaluations R. C.</th >
+      <th > View</th >
+    </tr >
+    </thead >
+    <tbody >
+    <tr data-th-each="employee, rowCount : ${employees}" >
+      <th data-th-text="${rowCount.count}" ></th >
+      <th >
+        <div class="image" data-th-if="${employee.fileInfo !=null}" >
+          <img id="img" class="rounded"
+               style="height:50px; width:50px;border-radius: 1px"
+               alt="Employee images"
+               data-th-src="${employee.fileInfo.url}" />
+        </div >
+      </th >
+      <th data-th-text="${employee.callingName}" ></th >
+      <th data-th-text="${employee.designation.designation}" ></th >
+      <th data-th-text="${#lists.size(employee.employeeInstitutes)}"></th >
+      <th data-th-text="${#lists.size(employee.employeeLeaves)}"></th >
+      <th data-th-text="${#lists.size(employee.qualifications)}"></th >
+      <th data-th-text="${#lists.size(employee.commendations)}"></th >
+      <th data-th-text="${#lists.size(employee.censures)}"></th >
+      <th data-th-text="${#lists.size(employee.performanceEvaluationRequests)}"></th >
+      <th><a data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >View</a ></th>
+    </tr >
+    </tbody >
+  </table >
+</div >
 
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
@@ -110,8 +111,8 @@
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 <script >
     function dateMatch() {
-        let startDateTime = $(`#startAt`).val();
-        let endDateTime = $(`#endAt`).val();
+        let startDateTime = $(`#startDate`).val();
+        let endDateTime = $(`#endDate`).val();
         if (startDateTime !== "" && endDateTime !== "") {
             if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
                 swal({
@@ -119,14 +120,10 @@
                     icon: "warning",
                     text: "Please check your date time \n End Date Time can not be less than Start Date Time",
                 })
-                $(`#endAt`).val(startDateTime);
+                $(`#endDate`).val(startDateTime);
             }
         }
     }
-
-    /*active boostrap alert - start*/
-    $(".alert").alert();
-    /*active boostrap alert - end*/
 </script >
 </body >
 </html >
