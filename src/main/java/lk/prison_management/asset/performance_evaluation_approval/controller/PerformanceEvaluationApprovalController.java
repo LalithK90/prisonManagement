@@ -1,6 +1,6 @@
 package lk.prison_management.asset.performance_evaluation_approval.controller;
 
-import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
+
 import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping( "/performanceEvaluationApproval" )

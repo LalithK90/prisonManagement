@@ -36,8 +36,8 @@ public class ReportController {
     this.censureService = censureService;
   }
 
-  @GetMapping
+  @GetMapping("/instituteEmployee")
   public String allInOneReport(Model model) {
-    return "report/allInOne";
+    return "report/instituteEmployee";
   }
 }
