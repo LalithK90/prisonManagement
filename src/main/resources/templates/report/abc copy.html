@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid" >
+  <div class="row text-center " >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          All Institute Employee
+        </strong >
+      </h4 >
+    </div >
+
+    <div class="col" >
+    </div >
+  </div >
+</div >
+
+<div class="container-fluid" >
+  <form action="/report/allInOne" method="post" data-th-object="${twoDate}" >
+    <!--start At-->
+    <div class="col text-right" >
+      <div class="col-md-4" >
+        <label class="control-label" for="startAt" >Start At :</label >
+      </div >
+      <div class="col-md-8" >
+        <input type="date" class="form-control " onchange="dateMatch()"
+               data-th-field="*{startAt}" id="startAt" required >
+      </div >
+    </div >
+    <!--end At-->
+    <div class="col text-right" >
+      <div class="col-md-4" >
+        <label class="control-label" for="endAt" >End At :</label >
+      </div >
+      <div class="col-md-8" >
+        <input type="date" class="form-control " onchange="dateMatch()"
+               data-th-field="*{endAt}" id="endAt" required >
+      </div >
+    </div >
+    <div class="col" >
+      <button type="submit" class="btn btn-sm btn-success" ></button >
+    </div >
+  </form >
+</div >
+
+<div class="container-fluid">
+<!--  todo -->
+</div>
+
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+    function dateMatch() {
+        let startDateTime = $(`#startAt`).val();
+        let endDateTime = $(`#endAt`).val();
+        if (startDateTime !== "" && endDateTime !== "") {
+            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
+                swal({
+                    title: "Could you accept those days.. !",
+                    icon: "warning",
+                    text: "Please check your date time \n End Date Time can not be less than Start Date Time",
+                })
+                $(`#endAt`).val(startDateTime);
+            }
+        }
+    }
+
+    /*active boostrap alert - start*/
+    $(".alert").alert();
+    /*active boostrap alert - end*/
+</script >
+</body >
+</html >

@@ -1,4 +1,4 @@
-package lk.prison_management.asset.performance_evaluation.entity.enums;
+package lk.prison_management.asset.performance_evaluation_request.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

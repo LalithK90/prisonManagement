@@ -8,11 +8,11 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--Heading Area-->
-<div class="container-fluid  " >
+<div class="container-fluid " >
   <div class="row text-center " >
     <!--View list Button-->
     <div class="col" >
-      <a class="btn btn-primary" href="/performanceEvaluationRequest" >
+      <a class="btn btn-primary" href="/performanceEvaluationApproval" >
         <i class="fa fa-list" style="font-size: 20px" ></i >&nbsp;&nbsp;View List
       </a >
     </div >
@@ -21,7 +21,7 @@
       <div class="col" >
         <h2 class="text-center" >
           <strong >
-            Performance Evaluation Details
+            <span data-th-text="${addStatus==true?'Add New Performance Evaluation Request':'Performance Evaluation Result Verification'}" ></span >
           </strong >
         </h2 >
       </div >
@@ -33,283 +33,34 @@
       </div >
     </div >
   </div >
-  <!--Form Content-->
-  <div class="container-fluid " >
-    <div id="accordianId" role="tablist" aria-multiselectable="true" >
-      <div class="card" >
-        <div class="card-header text-center" role="tab" id="section1HeaderId" >
-          <a data-toggle="collapse" class="container-fluid  h4" data-parent="#accordianId" href="#section1ContentId"
-             aria-expanded="true"
-             aria-controls="section1ContentId" >
-            Employee Details
-          </a >
-        </div >
-        <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
-          <div class="card-body" >
-            <div data-th-replace="~{employee/employee-detail :: totalEmployeeDetailsFragment}" ></div >
-          </div >
+</div >
+
+<!--Form Content-->
+<div class="container-fluid " >
+  <div id="accordianId" role="tablist" aria-multiselectable="true" >
+    <div class="card" >
+      <div class="card-header text-center" role="tab" id="section1HeaderId" >
+        <a data-toggle="collapse" class="container-fluid  h4" data-parent="#accordianId" href="#section1ContentId"
+           aria-expanded="true"
+           aria-controls="section1ContentId" >
+          Employee Details
+        </a >
+      </div >
+      <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId" >
+        <div class="card-body" >
+          <div data-th-replace="~{employee/employee-detail :: totalEmployeeDetailsFragment}" ></div >
         </div >
       </div >
     </div >
-    <div class="col-sm-12 flex-column " >
+  </div >
+
+  <div class="col-sm-12 flex-column " >
+    <form class="form-horizontal"
+          data-th-action="${addStatus==true?'/performanceEvaluationApproval/save':'/performanceEvaluationApproval/update'}"
+          data-th-object="${performanceEvaluationApproval}" method="POST" >
+      <input data-th-field="*{performanceEvaluationRequest}"  hidden type="text" />
       <div class="row" >
-        <!--First part-->
-        <div id="form" >
-          <div class="container-fluid" >
-            <div class="form-row text-right" >
-              Agreed period of Appraisal (one calendar year) : From : <input id="startAt" type="date"
-                                                                             class="form-control col-2"
-                                                                             data-th-field="*{formDate}"
-                                                                             onchange="dateMatch()" > to : <input
-                  onchange="dateMatch()" class="form-control col-2"
-                  id="endAt" type="date" data-th-field="*{toDate}" >
-            </div >
-            <!--Areas of Responsibility start-->
-            <div class="container-fluid" >
-              <p class="text-center h3" >Areas of Responsibility</p >
-            </div >
-            <!--task list -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list : yes
-                                                                           /No
-                                                                           :</label >
-              </div >
-              <div class="col-md-4 text-center" >
-                <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="Y" >
-                    Yes
-                  </label >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="N" >
-                    No
-                  </label >
-                </div >
-                <span class="error"
-                      data-th-errors="*{taskLists}"
-                      data-th-if="${#fields.hasErrors('taskLists')}" >Error Name</span >
-              </div >
-            </div >
-            <!--responsibilities -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Main Areas of Responsibility and Tasks
-                                                                           :</label >
-              </div >
-              <div class="col-md-8" >
-                <div class="form-row text-center" >
-                  <label class="control-label" >
-                    Responsibility
-                    <textarea class="form-control" data-th-field="*{responsibility}" ></textarea >
-                    <!--Sinhala modal button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target=".bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-                    </button >
-                    <span class="error"
-                          data-th-errors="*{responsibility}"
-                          data-th-if="${#fields.hasErrors('responsibility')}" >Error Name</span >
-                  </label >
-                  <label class="control-label" >
-                    Tasks
-                    <textarea class="form-control" data-th-field="*{tasks}" ></textarea ><!-- modal tamil button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-                    </button >
-                  </label >
-                  <span class="error"
-                        data-th-errors="*{tasks}"
-                        data-th-if="${#fields.hasErrors('tasks')}" >Error Name</span >
-                </div >
-              </div >
-            </div >
-            <!--Areas of Responsibility end-->
-
-            <!--Mid Term Appraisal start-->
-            <div class="container-fluid" >
-              <p class="text-center h3" >Mid Term Appraisal</p >
-            </div >
-            <!--satisfied -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance
-                                                                           :yes
-                                                                           /no</label >
-              </div >
-              <div class="col-md-4 text-center" >
-                <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="Y" >
-                    Yes
-                  </label >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="N" >
-                    No
-                  </label >
-                </div >
-                <span class="error"
-                      data-th-errors="*{taskLists}"
-                      data-th-if="${#fields.hasErrors('satisfied')}" >Error Name</span >
-              </div >
-            </div >
-            <!--responsibilities -->
-            <div class="form-row text-right" >
-              <div class="col-md-8" >
-                <div class="form-row text-center" >
-                  <label class="control-label" >
-                    Any difficulties faced:
-                    <textarea class="form-control" data-th-field="*{difficulties}" ></textarea >
-                    <!--Sinhala modal button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target=".bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-                    </button >
-                    <span class="error"
-                          data-th-errors="*{difficulties}"
-                          data-th-if="${#fields.hasErrors('difficulties')}" >Error Name</span >
-                  </label >
-                  <label class="control-label" >
-                    Strategies for improvement (if Appraisee is lagging behind):
-                    <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
-                    <!-- modal tamil button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-                    </button >
-                  </label >
-                  <span class="error"
-                        data-th-errors="*{improvement}"
-                        data-th-if="${#fields.hasErrors('improvement')}" >Error Name</span >
-                </div >
-              </div >
-            </div >
-            <!--Mid Term Appraisal end-->
-
-
-            <!--Public Relations start-->
-            <div class="container-fluid" >
-              <p class="text-center h3" >Public Relations</p >
-            </div >
-            <!--task list -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Whether your directly work with general
-                                                                           public
-                                                                           or other institutes or officers of other
-                                                                           sections </label >
-              </div >
-              <div class="col-md-4 text-center" >
-                <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{publicInstitutesOfficers}" value="Y"
-                           required >
-                    Yes
-                  </label >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{publicInstitutesOfficers}" value="N"
-                           required >
-                    No
-                  </label >
-                </div >
-                <span class="error"
-                      data-th-errors="*{publicInstitutesOfficers}"
-                      data-th-if="${#fields.hasErrors('publicInstitutesOfficers')}" >Error Name</span >
-              </div >
-            </div >
-            <!--satisfiedGeneralPublic -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'satisfiedGeneralPublic'}" >Are you satisfied about your
-                                                                                        work
-                                                                                        with the general public?
-                                                                                        :</label >
-              </div >
-              <div class="col-md-8 text-center" >
-                <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{satisfiedGeneralPublic}" value="Y"
-                           required >
-                    Yes
-                  </label >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{satisfiedGeneralPublic}" value="N"
-                           required >
-                    No
-                  </label >
-                </div >
-                <span class="error"
-                      data-th-errors="*{publicInstitutesOfficers}"
-                      data-th-if="${#fields.hasErrors('publicInstitutesOfficers')}" >Error Name</span >
-              </div >
-            </div >
-            <!--unhappy -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'unhappy'}" >Are there any general public or
-                                                                         other officers were unhappy
-                                                                         ?:</label >
-              </div >
-              <div class="col-md-4 text-center" >
-                <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{unhappy}" value="Y" >
-                    Yes
-                  </label >
-                  <label class="form-check-label col-md-2" >
-                    <input type="radio" class="form-check-input" data-th-field="*{unhappy}" value="N" >
-                    No
-                  </label >
-                </div >
-                <span class="error"
-                      data-th-errors="*{publicInstitutesOfficers}"
-                      data-th-if="${#fields.hasErrors('publicInstitutesOfficers')}" >Error Name</span >
-              </div >
-
-            </div >
-            <!--reasons -->
-            <div class="form-row text-right" >
-              <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'reasons'}" >if the answer for 4.3 is yes what are the
-                                                                         reasons
-                                                                         for it?</label >
-              </div >
-              <div class="col-md-4 text-center" >
-                <textarea data-th-field="*{reasons}" class="form-control" ></textarea >
-                <span class="error"
-                      data-th-errors="*{reasons}"
-                      data-th-if="${#fields.hasErrors('reasons')}" >Error Name</span >
-                <!--Sinhala and Tamil language translation -->
-                <div class="form-row text-right" >
-                  <div class="col-md-4" >
-                    <!--Sinhala modal button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target=".bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-                    </button >
-
-                  </div >
-                  <div class="col-md-4" >
-                    <!-- modal tamil button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-                    </button >
-                  </div >
-                </div >
-              </div >
-            </div >
-            <!--Public Relations end-->
-          </div >
-          <div class="container" >
-            <!--second part-->
+        <!--second part-->
             <div class="container-fluid" >
               <div class="container-fluid" >
                 <p class="text-center h3" >II.Part filled Appraiser y</p >
@@ -805,7 +556,7 @@
                 </div >
               </div >
             </div >
-            <!--overallApprecial-->
+                                                          <!--overallApprecial-->
             <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
               <!--delegating-->
               <div class="form-row " >
@@ -828,8 +579,7 @@
                 </div >
               </div >
             </div >
-          </div >
-          <!--todo need to manage details-->
+
           <!--Button-->
           <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
             <button class="btn btn-primary" type="button" >
@@ -854,13 +604,16 @@
             </ul >
           </div >
         </div >
-      </div >
-    </div >
+    </form >
   </div >
-  <!--footer include-->
-  <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
-  <!--script include-->
-  <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
 </div >
+
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+
 </body >
 </html >

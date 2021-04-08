@@ -26,7 +26,6 @@ public class EmployeeInstitute extends AuditEntity {
 
   private String remarks;
 
-
   @Column( nullable = false )
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate startAt;
@@ -35,7 +34,7 @@ public class EmployeeInstitute extends AuditEntity {
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate endAt;
 
-  @Enumerated(EnumType.STRING)
+  @Enumerated( EnumType.STRING )
   private InstituteChangeReason instituteChangeReason;
 
   @ManyToOne
@@ -44,5 +43,7 @@ public class EmployeeInstitute extends AuditEntity {
   @ManyToOne
   private Institute institute;
 
+  @Transient
+  private Employee supervisor;
 
 }

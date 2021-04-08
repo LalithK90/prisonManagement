@@ -1,4 +1,4 @@
-package lk.prison_management.asset.performance_evaluation.entity.enums;
+package lk.prison_management.asset.performance_evaluation_request.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,9 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PerformanceEvaluationStatus {
-  APRS("Appraiser   Signature"),
-  APES("Appraisee   Signature"),
-  Approved(" Approved");
+  APRS("Requested"),
+  APPROVED(" Approved");
   private final String performanceEvaluationStatus;
 
 }

@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--heading Area-->
-<div class="container-fluid  form-Border" >
+<div class="container-fluid " >
   <div class="row text-center " >
     <div class="col" >
       <a class="btn btn-outline-info" href="/home" >&nbsp; Back To Home
@@ -30,12 +30,14 @@
     </div >
   </div >
 </div >
+
 <!--details-->
 <div class="container-fluid " data-th-fragment="totalEmployeeDetailsFragment" >
+
   <div id="accordianId6" role="tablist" aria-multiselectable="true" >
     <div class="card" >
       <div class="card-header" role="tab" id="section1HeaderId6" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId6" href="#section1ContentId6" aria-expanded="true"
              aria-controls="section1ContentId6" >
             Employee Details
@@ -44,8 +46,7 @@
       </div >
       <div id="section1ContentId6" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId6" >
         <div class="card-body" >
-
-          <div class="col-sm-12 flex-clumn text-dark" data-th-fragment="employeeDetailsFragment" >
+          <div class="col-sm-12 flex-column text-dark" data-th-fragment="employeeDetailsFragment" >
             <div class="row" >
               <!--Left Side-->
               <div class="form-group col-md-6 col-sm-6 flex-column" >
@@ -54,7 +55,7 @@
                     <label class="control-label" for="id" >ID :</label >
                   </div >
                   <div class="col-md-8" >
-                    <p id="id" data-th-text="${employeeDetail.id}" class="display_detail" ></p >
+                    <p class="display_detail" data-th-text="${employeeDetail.id}" ></p >
                   </div >
                 </div >
                 <div class="form-row text-right" >
@@ -65,7 +66,6 @@
                     <p id="employeeCode" data-th-text="${employeeDetail.code}" class="display_detail" ></p >
                   </div >
                 </div >
-
                 <div class="form-row text-right" >
                   <div class="col-md-4" >
                     <label class="control-label" for="name" >Name :</label >
@@ -108,7 +108,6 @@
                                                                                                              Birthday</p >
                   </div >
                 </div >
-
                 <div class="form-row text-right" >
                   <div class="col-md-4" >
                     <label class="control-label" for="designation" >Designation :</label >
@@ -263,7 +262,7 @@
     <!--Employee Institute Details-->
     <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.employeeInstitutes)}" >
       <div class="card-header" role="tab" id="section1HeaderId" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true"
              aria-controls="section1ContentId" >
             Employee Institute Details
@@ -300,7 +299,7 @@
     <!--Employee Leave-->
     <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.employeeLeaves)}" >
       <div class="card-header" role="tab" id="section2HeaderId" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId" href="#section2ContentId" aria-expanded="true"
              aria-controls="section2ContentId" >
             Employee Leave
@@ -325,8 +324,8 @@
             <tr data-th-each="employeeLeave, rowCount : ${employeeDetail.employeeLeaves}" >
               <th data-th-text="${rowCount.count}" ></th >
               <th data-th-text="${employeeLeave.employee.name}" ></th >
-              <th data-th-text="${{employeeLeave.startAt}}" ></th >
-              <th data-th-text="${{employeeLeave.endAt}}" ></th >
+              <th data-th-text="${#temporals.format(employeeLeave.startAt, 'dd-MMM-yyyy HH:mm')}" ></th >
+              <th data-th-text="${#temporals.format(employeeLeave.endAt, 'dd-MMM-yyyy HH:mm')}" ></th >
               <th ><span data-th-text="${employeeLeave.dayCount +' Day '+ employeeLeave.hourCount+' Hour'}" ></span >
               </th >
             </tr >
@@ -340,7 +339,7 @@
     <!--Qualification-->
     <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.qualifications)}" >
       <div class="card-header" role="tab" id="section3HeaderId" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId" href="#section3ContentId" aria-expanded="true"
              aria-controls="section3ContentId" >
             Qualification
@@ -374,7 +373,7 @@
     <!--Commendations-->
     <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.commendations)}" >
       <div class="card-header" role="tab" id="section4HeaderId" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId" href="#section4ContentId" aria-expanded="true"
              aria-controls="section4ContentId" >
             Commendations
@@ -394,7 +393,7 @@
     <!-- Censure-->
     <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.censures)}" >
       <div class="card-header" role="tab" id="section5HeaderId" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId" href="#section5ContentId" aria-expanded="true"
              aria-controls="section5ContentId" >
             Censure
@@ -429,9 +428,9 @@
       </div >
     </div >
     <!--performanceEvaluations-->
-    <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.performanceEvaluations)}" >
+    <div class="card" data-th-if="${not #lists.isEmpty(employeeDetail.performanceEvaluationRequests)}" >
       <div class="card-header" role="tab" id="section6HeaderId" >
-        <h5 class="mb-0" >
+        <h5 class="mb-0 col-12 text-center" >
           <a data-toggle="collapse" data-parent="#accordianId" href="#section6ContentId" aria-expanded="true"
              aria-controls="section6ContentId" >
             Performance evaluations
@@ -442,15 +441,421 @@
         <div class="card-body" >
           <!--performance evaluations-->
           <div class="container-fluid"
-               data-th-each="censureDetail : ${employeeDetail.censures}" >
-            <div data-th-replace="~{performanceEvaluations/performanceEvaluations-detail :: performanceEvaluationsFragment}" ></div >
+               data-th-each="performanceEvaluationRequest : ${employeeDetail.performanceEvaluationRequests}" >
+            <div class="container-fluid" >
+              <div class="form-row " >
+                <p class="display_detail text-center" > Agreed period of Appraisal (one calendar year) : From : <span
+                      data-th-text="${performanceEvaluationRequest.formDate}" ></span >
+                                                        to : <span
+                        data-th-text="${performanceEvaluationRequest.toDate}" ></span >
+                </p >
+              </div >
+              <!--Areas of Responsibility start-->
+              <div class="container-fluid" >
+                <p class="text-center h3" >Areas of Responsibility</p >
+              </div >
+              <!--task list -->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list
+                                                                             :</label >
+                </div >
+                <div class="col-md-6 text-center" >
+                  <p class="display_detail"
+                     data-th-text="${#strings.equals(performanceEvaluationRequest.taskLists, 'Y')?'Yes':'No'}" ></p >
+                </div >
+              </div >
+              <!--responsibilities -->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" data-th-for="${'taskLists'}" >Main Areas of Responsibility and Tasks
+                                                                             :</label >
+                </div >
+                <div class="col-md-8" >
+                  <div class="form-row " >
+                    <div class="col-6" >
+                      <label class="control-label" >
+                        Responsibility</label >
+                      <p class="display_detail" data-th-utext="${performanceEvaluationRequest.responsibility}" ></p >
+                    </div >
+                    <div class="col-6" >
+                      <label class="control-label" >
+                        Tasks</label >
+                      <p class="display_detail" data-th-utext="${performanceEvaluationRequest.tasks}" ></p >
+                    </div >
+                  </div >
+                </div >
+              </div >
+              <!--Areas of Responsibility end-->
+
+              <!--Mid Term Appraisal start-->
+              <div class="container-fluid" >
+                <p class="text-center h3" >Mid Term Appraisal</p >
+              </div >
+              <!--satisfied -->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your
+                                                                             performance
+                                                                             :</label >
+                </div >
+                <div class="col-md-4 " >
+                  <p class="display_detail"
+                     data-th-text="${#strings.equals(performanceEvaluationRequest.satisfied, 'Y')?'Yes':'No'}" ></p >
+                </div >
+              </div >
+              <!--responsibilities -->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" > Any difficulties faced:</label >
+                </div >
+                <div class="col-md-4 " >
+                  <p class="display_detail"
+                     data-th-utext="${performanceEvaluationRequest.difficulties}" ></p >
+                </div >
+                <div class="form-row " >
+                  <label class="control-label" >
+                    Strategies for improvement (if Appraisee is lagging behind):</label >
+                </div >
+                <div class="col-md-4 " >
+                  <p class="display_detail"
+                     data-th-utext="${performanceEvaluationRequest.improvement}" ></p >
+                </div >
+              </div >
+            </div >
+            <!--Public Relations start-->
+            <div class="container-fluid" >
+              <p class="text-center h3" >Public Relations</p >
+            </div >
+            <!--task list -->
+            <div class="form-row " >
+              <div class="col-md-6" >
+                <label class="control-label" data-th-for="${'taskLists'}" >Whether your directly work with general
+                                                                           public
+                                                                           or other institutes or officers of
+                                                                           other
+                                                                           sections </label >
+              </div >
+              <div class="col-md-6 text-center" >
+                <p class="display_detail"
+                   data-th-text="${#strings.equals(performanceEvaluationRequest.publicInstitutesOfficers, 'Y')?'Yes':'No'}" ></p >
+              </div >
+            </div >
+            <!--satisfiedGeneralPublic -->
+            <div class="form-row " >
+              <div class="col-md-6" >
+                <label class="control-label" data-th-for="${'satisfiedGeneralPublic'}" >Are you satisfied about
+                                                                                        your
+                                                                                        work
+                                                                                        with the general public?
+                                                                                        :</label >
+              </div >
+              <div class="col-md-6 text-center" >
+                <p class="display_detail"
+                   data-th-text="${#strings.equals(performanceEvaluationRequest.satisfiedGeneralPublic, 'Y')?'Yes':'No'}" ></p >
+              </div >
+            </div >
+            <!--unhappy -->
+            <div class="form-row" >
+              <div class="col-md-6" >
+                <label class="control-label" data-th-for="${'unhappy'}" >Are there any general public or
+                                                                         other officers were unhappy
+                                                                         ?:</label >
+              </div >
+              <div class="col-md-6 text-center" >
+                <p class="display_detail"
+                   data-th-text="${#strings.equals(performanceEvaluationRequest.unhappy, 'Y')?'Yes':'No'}" ></p >
+              </div >
+
+            </div >
+            <!--reasons -->
+            <div class="form-row " >
+              <div class="col-md-6" >
+                <label class="control-label" data-th-for="${'reasons'}" >if the answer for 4.3 is yes what are the
+                                                                         reasons
+                                                                         for it?</label >
+              </div >
+              <div class="col-md-6 text-center" >
+                <p class="display_detail"
+                   data-th-utext="${performanceEvaluationRequest.reasons}" ></p >
+              </div >
+            </div >
+            <div class="container-fluid"
+                 data-th-if="${#strings.equals(performanceEvaluationRequest.performanceEvaluationStatus, 'APPROVED')}" >
+
+              <div class="container-fluid" >
+                <p class="text-center h3" >II.Part filled Appraiser </p >
+                <p class="text-center h5" >Comment by appraiser on the Appraisee performance:</p >
+              </div >
+              <!--attitude-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Attitude :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.attitude.apprecial}" ></p >
+                </div >
+              </div >
+              <!--knowledge-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Knowledge :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.knowledge.apprecial}" ></p >
+                </div >
+              </div >
+              <!--ability-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Ability :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.ability.apprecial}" ></p >
+                </div >
+              </div >
+              <!--adaptabilityFlexibility-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Adaptability Flexibility :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.adaptabilityFlexibility.apprecial}" ></p >
+                </div >
+              </div >
+              <!--innovation-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Innovation :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.innovation.apprecial}" ></p >
+                </div >
+              </div >
+              <!--creativity-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Creativity :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.creativity.apprecial}" ></p >
+                </div >
+              </div >
+              <!--skills-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Skills :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.skills.apprecial}" ></p >
+                </div >
+              </div >
+              <!--subordinates-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Subordinates :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.subordinates.apprecial}" ></p >
+                </div >
+              </div >
+              <!--subordinates-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Superiors :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.superiors.apprecial}" ></p >
+                </div >
+              </div >
+              <!--subordinates-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Colleagues :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.colleagues.apprecial}" ></p >
+                </div >
+              </div >
+              <!--subordinates-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Public Beneficiaries
+                                                Customers
+                                                Suppliers :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.publicBeneficiariesCustomersSuppliers.apprecial}" ></p >
+                </div >
+              </div >
+              <!--negotiationPersuasionSkills-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Negotiation Persuasion Skills
+                                                :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.negotiationPersuasionSkills.apprecial}" ></p >
+                </div >
+              </div >
+              <!--projectPlanningImplementationAndControl-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Project Planning
+                                                Implementation And
+                                                Control :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.projectPlanningImplementationAndControl.apprecial}" ></p >
+                </div >
+              </div >
+              <!--decisionMakingProblemSolving-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Decision Making Problem Solving
+                                                :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.decisionMakingProblemSolving.apprecial}" ></p >
+                </div >
+              </div >
+              <!--creatingMaintainingStandards-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Creating Maintaining Standards
+                                                :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.creatingMaintainingStandards.apprecial}" ></p >
+                </div >
+              </div >
+              <!--timeManagement-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Time Management :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.timeManagement.apprecial}" ></p >
+                </div >
+              </div >
+              <!--listening-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Listening :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.listening.apprecial}" ></p >
+                </div >
+              </div >
+              <!--writtenCommunication-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Written Communication :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.writtenCommunication.apprecial}" ></p >
+                </div >
+              </div >
+              <!--verbalCommunication-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Verbal Communication :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.verbalCommunication.apprecial}" ></p >
+                </div >
+              </div >
+              <!--presentation-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Presentation :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.presentation.apprecial}" ></p >
+                </div >
+              </div >
+              <!--powerAndManagingGrievances-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Handling of Power and Managing
+                                                Grievances
+                                                :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.powerAndManagingGrievances.apprecial}" ></p >
+                </div >
+              </div >
+              <!--riskTaking-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Risk Taking</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.riskTaking.apprecial}" ></p >
+                </div >
+              </div >
+              <!--strategicPlanning-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Strategic Planning</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.strategicPlanning.apprecial}" ></p >
+                </div >
+              </div >
+              <!--delegating-->
+              <div class="form-row " >
+                <div class="col-md-6" >
+                  <label class="control-label" >Delegating :</label >
+                </div >
+                <div class="col-md-6" >
+                  <p class="display_detail"
+                     data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.delegating.apprecial}" ></p >
+                </div >
+              </div >
+              <!--overallApprecial-->
+              <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+                <!--delegating-->
+                <div class="form-row " >
+                  <div class="col-md-4" >
+                    <label class="control-label" >Overall Apprecial :</label >
+                  </div >
+                  <div class="col-md-8" >
+                    <p class="display_detail"
+                       data-th-text="${performanceEvaluationRequest.performanceEvaluationApproval.overallApprecial.apprecial}" ></p >
+                  </div >
+                </div >
+              </div >
+            </div >
+
           </div >
         </div >
       </div >
     </div >
   </div >
-
-
 </div >
 
 <!--Button-->
@@ -461,6 +866,8 @@
     </button >
   </a >
 </div >
+
+<!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >

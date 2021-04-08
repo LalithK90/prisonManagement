@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid" >
+  <div class="row text-center " >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Offence and Record Count
+        </strong >
+      </h4 >
+    </div >
+
+    <div class="col" >
+    </div >
+  </div >
+</div >
+
+<div class="container-fluid" data-th-if="${not #lists.isEmpty(offences)}" >
+  <table class="table table-hover table-striped" id="myTable" >
+    <thead >
+    <tr >
+      <th > Index</th >
+      <th > Offence Name</th >
+        <th>Offence Type</th>
+      <th > Record Count</th >
+      <th > View</th >
+    </tr >
+    </thead >
+    <tbody >
+    <tr data-th-each="offence, rowCount : ${offences}" >
+      <th data-th-text="${rowCount.count}" ></th >      
+      <th data-th-text="${offence.name}" ></th >
+        <th data-th-text="${offence.offenceType.offenceType}"></th>
+      <th data-th-text="${#lists.size(offence.censures)}"></th >
+      <th><a data-th-href="${'/report/offenceCount/' + offence.id}" class="btn btn-outline-secondary btn-sm" >View</a ></th>
+    </tr >
+    </tbody >
+  </table >
+</div >
+
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+</body >
+</html >

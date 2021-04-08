@@ -1,6 +1,9 @@
 package lk.prison_management.asset.employee.controller;
 
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import lk.prison_management.asset.censure.service.CensureService;
 import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.common_asset.model.enums.*;
@@ -11,9 +14,13 @@ import lk.prison_management.asset.employee.entity.enums.Designation;
 import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.employee.service.EmployeeService;
+import lk.prison_management.asset.employee_institute.entity.EmployeeInstitute;
 import lk.prison_management.asset.employee_institute.service.EmployeeInstituteService;
 import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
-import lk.prison_management.asset.performance_evaluation.service.PerformanceEvaluationService;
+import lk.prison_management.asset.institute.entity.Institute;
+import lk.prison_management.asset.institute.entity.enums.InstituteChangeReason;
+import lk.prison_management.asset.institute.service.InstituteService;
+import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
 import lk.prison_management.asset.qualification.service.QualificationService;
 import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.asset.user.service.UserService;
@@ -22,11 +29,14 @@ import lk.prison_management.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
@@ -48,14 +58,20 @@ public class EmployeeController {
   private final QualificationService qualificationService;
   private final CommendationService commendationService;
   private final CensureService censureService;
-  private final PerformanceEvaluationService performanceEvaluationService;
+  private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
+  private final InstituteService instituteService;
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
   @Autowired
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
                             DateTimeAgeService dateTimeAgeService,
                             CommonService commonService, UserService userService,
-                            EmployeeInstituteService employeeInstituteService, EmployeeLeaveService employeeLeaveService, QualificationService qualificationService, CommendationService commendationService, CensureService censureService, PerformanceEvaluationService performanceEvaluationService, MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
+                            EmployeeInstituteService employeeInstituteService,
+                            EmployeeLeaveService employeeLeaveService, QualificationService qualificationService,
+                            CommendationService commendationService, CensureService censureService,
+                            PerformanceEvaluationRequestService performanceEvaluationRequestService,
+                            InstituteService instituteService,
+                            MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.dateTimeAgeService = dateTimeAgeService;
@@ -66,12 +82,11 @@ public class EmployeeController {
     this.qualificationService = qualificationService;
     this.commendationService = commendationService;
     this.censureService = censureService;
-    this.performanceEvaluationService = performanceEvaluationService;
+    this.performanceEvaluationRequestService = performanceEvaluationRequestService;
+    this.instituteService = instituteService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
-//----> Employee details management - start <----//
 
-  // Common things for an employee add and update
   private String commonThings(Model model) {
     model.addAttribute("title", Title.values());
     model.addAttribute("gender", Gender.values());
@@ -79,6 +94,10 @@ public class EmployeeController {
     model.addAttribute("employeeStatus", EmployeeStatus.values());
     model.addAttribute("designation", Designation.values());
     model.addAttribute("bloodGroup", BloodGroup.values());
+    model.addAttribute("supervisorFindUrl", MvcUriComponentsBuilder
+        .fromMethodName(EmployeeController.class, "findSupervisor", "")
+        .toUriString());
+    model.addAttribute("institutes", instituteService.findAll());
     return "employee/addEmployee";
   }
 
@@ -95,11 +114,19 @@ public class EmployeeController {
   @RequestMapping
   public String employeePage(Model model) {
     List< Employee > employees = new ArrayList<>();
-    for ( Employee employee : employeeService.findAll()
-        .stream()
+
+    List< Employee > employeesDb;
+    Employee employeeUser =
+        userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).getEmployee();
+    if ( !employeeUser.getDesignation().equals(Designation.CR) ) {
+      employeesDb = employeeService.findByInstitute(employeeUser.getInstitute());
+    } else {
+      employeesDb = employeeService.findAll();
+    }
+
+    for ( Employee employee : employeesDb.stream()
         .filter(x -> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
-        .collect(Collectors.toList())
-    ) {
+        .collect(Collectors.toList()) ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
       employees.add(employee);
     }
@@ -123,7 +150,7 @@ public class EmployeeController {
   @GetMapping( value = "/edit/{id}" )
   public String editEmployeeForm(@PathVariable( "id" ) Integer id, Model model) {
     Employee employee = employeeService.findById(id);
-    employee.setPerformanceEvaluations(performanceEvaluationService.findByEmployee(employee));
+    employee.setPerformanceEvaluationRequests(performanceEvaluationRequestService.findByEmployee(employee));
     employee.setCensures(censureService.findByEmployee(employee));
     employee.setCommendations(commendationService.findByEmployee(employee));
     employee.setQualifications(qualificationService.findByEmployee(employee));
@@ -188,6 +215,15 @@ public class EmployeeController {
         userService.persist(user);
       }
     }
+// save employee institute
+    if ( employee.getId() == null ) {
+      EmployeeInstitute employeeInstitute = new EmployeeInstitute();
+      employeeInstitute.setEmployee(employeeSaved);
+      employeeInstitute.setInstitute(employee.getInstitute());
+      employeeInstitute.setStartAt(employee.getDateOfAssignment());
+      employeeInstitute.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
+      employeeInstituteService.persist(employeeInstitute);
+    }
 
     try {
       //save employee images file
@@ -223,8 +259,8 @@ public class EmployeeController {
       model.addAttribute("employee", employee);
       return commonThings(model);
     }
-  }
 
+  }
 
   @GetMapping( value = "/remove/{id}" )
   public String removeEmployee(@PathVariable Integer id) {
@@ -260,6 +296,32 @@ public class EmployeeController {
 
     model.addAttribute("employee", new Employee());
     return "employee/findEmployee";
+  }
+
+  @GetMapping( value = "/supervisor/{id}" )
+  @ResponseBody
+  public MappingJacksonValue findSupervisor(@PathVariable Integer id) {
+    Institute institute = instituteService.findById(id);
+
+    MappingJacksonValue mappingJacksonValue;
+    if ( institute != null ) {
+      List< Employee > employees = employeeService.findByInstitute(institute);
+      if ( employees.isEmpty() ) {
+        mappingJacksonValue = new MappingJacksonValue(employeeService.findAll());
+      } else {
+        mappingJacksonValue = new MappingJacksonValue(employees);
+      }
+    } else {
+      mappingJacksonValue = new MappingJacksonValue(employeeService.findAll());
+    }
+
+    SimpleBeanPropertyFilter simpleBeanPropertyFilterOne = SimpleBeanPropertyFilter
+        .filterOutAllExcept("id", "name");
+
+    FilterProvider filters = new SimpleFilterProvider()
+        .addFilter("Employee", simpleBeanPropertyFilterOne);
+    mappingJacksonValue.setFilters(filters);
+    return mappingJacksonValue;
   }
 
 }
