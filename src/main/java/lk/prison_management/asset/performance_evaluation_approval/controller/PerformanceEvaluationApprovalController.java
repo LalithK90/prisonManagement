@@ -43,7 +43,7 @@ public class PerformanceEvaluationApprovalController {
 
   @RequestMapping
   public String employeePage(Model model) {
-/*    Employee employeeUser =
+    Employee employeeUser =
         userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).getEmployee();
     List< Employee > employees = new ArrayList<>();
 
@@ -51,8 +51,7 @@ public class PerformanceEvaluationApprovalController {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
       employees.add(employee);
     }
-    model.addAttribute("employees", employees);*/
-    model.addAttribute("employees", employeeService.findAll());
+    model.addAttribute("employees", employees);
     return "performanceEvaluation/performanceEvaluation";
   }
 

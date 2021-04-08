@@ -35,9 +35,8 @@ public class PerformanceEvaluationRequestController {
   //Send on employee details
   @GetMapping( "/add" )
   public String employeeView(Model model) {
-//    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//    Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
-    Employee employee = employeeService        .findById(1);
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
     return commonThing(model, new PerformanceEvaluationRequest(), employee);
   }
 
