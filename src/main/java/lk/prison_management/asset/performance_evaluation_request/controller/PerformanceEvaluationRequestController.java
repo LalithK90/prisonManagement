@@ -23,20 +23,20 @@ import java.time.YearMonth;
 @RequestMapping( "/performanceEvaluationRequest" )
 public class PerformanceEvaluationRequestController {
   private final EmployeeService employeeService;
+  private final EmailService emailService;
   private final EmployeeFilesService employeeFilesService;
   private final UserService userService;
   private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
-  private final EmailService emailService;
 
   public PerformanceEvaluationRequestController(EmployeeService employeeService,
-                                                EmployeeFilesService employeeFilesService,
+                                                EmailService emailService, EmployeeFilesService employeeFilesService,
                                                 UserService userService,
-                                                PerformanceEvaluationRequestService performanceEvaluationRequestService, EmailService emailService) {
+                                                PerformanceEvaluationRequestService performanceEvaluationRequestService) {
     this.employeeService = employeeService;
+    this.emailService = emailService;
     this.employeeFilesService = employeeFilesService;
     this.userService = userService;
     this.performanceEvaluationRequestService = performanceEvaluationRequestService;
-    this.emailService = emailService;
   }
 
   //Send on employee details
@@ -80,6 +80,19 @@ public class PerformanceEvaluationRequestController {
     return commonThing(model, performanceEvaluationRequest, employee);
   }
 
+ /* @PostMapping( "/save" )
+  public String save(@ModelAttribute PerformanceEvaluationRequest performanceEvaluationRequest,
+                     BindingResult bindingResult, Model model) {
+    if ( bindingResult.hasErrors() ) {
+      Employee employee = employeeService.findById(performanceEvaluationRequest.getEmployee().getId());
+      commonThing(model, performanceEvaluationRequest, employee);
+    }
+    performanceEvaluationRequestService.persist(performanceEvaluationRequest);
+
+
+    return "redirect:/home";
+  }*/
+
   @PostMapping( "/save" )
   public String save(@ModelAttribute PerformanceEvaluationRequest performanceEvaluationRequest,
                      BindingResult bindingResult, Model model) {
@@ -87,18 +100,29 @@ public class PerformanceEvaluationRequestController {
       Employee employee = employeeService.findById(performanceEvaluationRequest.getEmployee().getId());
       commonThing(model, performanceEvaluationRequest, employee);
     }
-    PerformanceEvaluationRequest performanceEvaluationRequestDb =
-        performanceEvaluationRequestService.persist(performanceEvaluationRequest);
+    PerformanceEvaluationRequest  performanceEvaluationRequestSaved  = performanceEvaluationRequestService.persist(performanceEvaluationRequest);
+//email service starts
+    if (performanceEvaluationRequestSaved.getEmployee().getEmail() != null) {
+      StringBuilder message = new StringBuilder("Performance Apprecial");
 
-    Employee employee = employeeService.findById(performanceEvaluationRequestDb.getEmployee().getId());
+      emailService.sendEmail(performanceEvaluationRequestSaved.getEmployee().getEmail(),
+              "New Performance Apprecial to be evaluated " , message.toString());
 
-    if ( employee.getSupervisor().getEmail() != null ) {
-      String message = employee.getTitle().getTitle() + " " + employee.getName() + " has requested his performance " +
-          "evaluation";
-      emailService.sendEmail(employee.getSupervisor().getEmail(), "Inform About Performance Evaluation Request",
-                             message);
+    /*  if (performanceEvaluationRequestSaved.getEmployee().getContactOne() != null) {
+        try {
+          String mobileNumber = purchaseOrderSaved.getSupplier().getContactOne().substring(1, 10);
+          twilioMessageService.sendSMS("+94" + mobileNumber, "There is immediate PO from " +
+                  "Samarasingher Super \nPlease Check Your Email Form Further Details");
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }*/
     }
+
 
     return "redirect:/home";
   }
+
+
+
 }

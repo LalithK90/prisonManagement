@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head data-th-replace="~{fragments/header :: headerFragment}">
 </head>
 
 <body class="mainbody" >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
-</div >
-<div class="container-fluid ">
-  <div class="row cardrow">
-    <div class="col-4">
-      <div class="card">
-        <div class="card-header">Customer</div>
-        <div class="card-body">
-          <img src="../img/customer.png" style="width:200px; ">
-        </div>
-      </div>
+
+<!--page content starts-->
+
+<div class="col-6">
+  <div class="card">
+    <div class="card-header">Department of Prisons</div>
+
+  <!-- The prisons-->
+
+  <section id="tm-section-1" class="tm-section" style="margin-bottom:0px;margin-left:80px">
+    <div class="ml-auto">
+      <header class="mb-4"><h1 class="tm-text-shadow">Department of Prison </h1></header>
+      <h2>Our Vision</h2>
+      <p class="mb-5 tm-font-big">“Social reintegration of inmates as good citizens through
+        rehabilitation”
+
+      </p>
+
+      <h2>Our Mission</h2>
+      <p class="mb-5 tm-font-big">“Rehabilitation of Prisoners ensuring their custody and care
+        by building a proper relationship between the prisoners and the officials so that
+        the officials gain the job satisfaction while the labour productivity of the prisoners
+        to enable the department be self-dependent and utilizing it to augment the development
+        drive of the country and ultimately socializing the prisoners as creative and virtuous
+        skillful citizens.”
+
+      </p>
+
 
     </div>
+  </div>
+</div>
+  </section>
+<!--
 
     <div class="col-4">
       <div class="card">
@@ -68,6 +90,7 @@
 
   </div>
 </div>
+-->
 
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}"></div>
