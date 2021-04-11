@@ -179,7 +179,7 @@ public class EmployeeController {
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
     Employee employeeDb = employeeService.findByWopNumber(employee.getWopNumber());
-    if ( employeeDb != null ) {
+    if ( employeeDb != null && employee.getId() == null) {
       ObjectError error = new ObjectError("employee",
                                           "There is employee on same wop number . <br> System message -->");
       result.addError(error);

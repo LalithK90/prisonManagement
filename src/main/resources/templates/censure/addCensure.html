@@ -5,6 +5,7 @@
   <title >Department Of Prisons </title >
 </head >
 <body >
+<link data-th-href="@{/css/combo-box-search.css}" media="all" rel="stylesheet" type="text/css" />
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <div class="container " >
@@ -200,6 +201,8 @@
 
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+
+<script data-th-src="@{/js/combo-box-search.js}" ></script >
 <script >
     $(document).ready(function () {
         imageSrcAttributeCheck();
@@ -231,6 +234,17 @@
             $("#image").toggle('hide');
         }
     }
+
+
+    $("#offence").change(function (){
+        /*todo*/
+    });
+
+
+    $("#punishment, #offence").select2({
+        data: $(this).val()
+    }).addClass('form-control');
+
 </script >
 </body >
 </html >

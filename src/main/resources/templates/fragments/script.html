@@ -1,74 +1,26 @@
 <!doctype html>
 <html lang="en" >
-<body>
-<div data-th-fragment="scriptFragment">
+<body >
+<div data-th-fragment="scriptFragment" >
 
-    <!-- jQuery library -->
-    <script  data-th-src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
-    <!-- jQuery ui -->
-    <script  data-th-src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
-    <!-- Latest compiled JavaScript for bootstrap-->
-    <script  data-th-src="@{/webjars/popper.js/1.15.0/popper.min.js}"></script>
-    <script  data-th-src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
-    <!-- fontawesome js -->
-    <script  data-th-src="@{/webjars/font-awesome/5.11.2/js/all.min.js}"></script>
-    <!-- pdf js -->
-    <script  data-th-src="@{/webjars/pdf-js/2.3.200/build/pdf.js}"></script>
-    <script  data-th-src="@{/webjars/pdf-js/2.3.200/build/pdf.worker.js}"></script>
-    <script  data-th-src="@{/webjars/pdf-js/2.3.200/web/viewer.js}"></script>
-    <script  data-th-src="@{/webjars/pdf-js/2.3.200/web/debugger.js}"></script>
-    <!-- Chart js-->
-    <script  data-th-src="@{/webjars/chart.js/2.9.3/dist/Chart.min.js}"></script>
-    <script  data-th-src="@{/webjars/chart.js/2.9.3/dist/Chart.bundle.min.js}"></script>
+  <!-- jQuery library -->
+  <script src="/webjars/jquery/3.4.1/jquery.js" ></script >
 
-    <!--To modify the alert-->
-    <script  data-th-src="@{/js/sweetalert.js}"></script>
-    <!-- data table -->
-    <script  data-th-src="@{/js/pagination.js}"></script>
-    <!--custom javascript-->
-    <script  data-th-src="@{/js/myJs.js}"></script>
+  <script src="/webjars/popper.js/1.15.0/popper.min.js" ></script >
+  <script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js" ></script >
 
-    <!--notification count get url-->
-    <!--  <script>
-          $(document).ready(function () {
-              /*
-              console.log("petition count url "+ petitionCountUrl);
-              console.log("document.URL : "+document.URL);
-              console.log("document.location.href : "+document.location.href);
-              console.log("document.location.origin : "+document.location.origin);
-              console.log("document.location.hostname : "+document.location.hostname);
-              console.log("document.location.host : "+document.location.host);
-              console.log("document.location.pathname : "+document.location.pathname);
-              */
+  <script src="/webjars/font-awesome/5.11.2/js/all.min.js" ></script >
 
-              let petitionCountUrl = document.location.origin + "/petitionCount";
-              if (document.location.pathname !== "/login") {
-                  // to get petition count every five secound
-                  window.setInterval(function () {
-                      $.ajax({
-                          type: "get",
-                          dataType: 'json',
-                          contentType: 'application/json',
-                          url: petitionCountUrl,
-                          success: function (data, textStatus) {
-                              if (textStatus === 'success') {
-                                  /// call your function here
-                                  $("#petitionTodayCount").html(data);
-                              }
-                          },
-                          error: function (xhr, textStatus, errorThrown) {
-                              console.log('request failed   ' + errorThrown);
-                              location.reload();
-                          }
-                      });
+  <!--To modify the alert-->
+  <script src="/js/sweetalert.js" ></script >
+  <!-- data table -->
+  <script src="/js/pagination.js" ></script >
+  <!--custom javascript-->
+  <script src="/js/myJs.js" ></script >
 
-                  }, 5000);
-              }
-          });
-      </script>-->
-</div>
-</body>
-</html>
+</div >
+</body >
+</html >
 
 
 

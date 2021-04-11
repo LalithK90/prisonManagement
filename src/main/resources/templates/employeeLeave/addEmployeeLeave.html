@@ -25,7 +25,7 @@
     <div class="col" >
       <h4 class="text-info text-center" >
         <strong >
-          <h4 data-th-text="${addStatus==true?'New Leave ':'Update Leave'}" ></h4 >
+          <span class="h4" data-th-text="${addStatus==true?'New Leave ':'Update Leave'}" ></span >
         </strong >
       </h4 >
     </div >
@@ -60,139 +60,139 @@
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
-      <div id="form">
-      <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="id" >ID :</label >
+      <div id="form" >
+        <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="id" >ID :</label >
+          </div >
+          <div class="col-md-8" >
+            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+          </div >
         </div >
-        <div class="col-md-8" >
-          <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+        <!--Leave Type -->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="id" >Leave Type :</label >
+          </div >
+          <div class="col-md-4" >
+            <div class="custom-control custom-checkbox custom-control-inline "
+                 data-th-each="leaveType,index : ${leaveTypes}" >
+              <input class="custom-control-input" required
+                     data-th-name="${'leaveType'}"
+                     data-th-value="${leaveType}"
+                     data-th-id="${index.index}+${leaveType}" type="radio"
+                     data-th-checked="${leaveType==leaveTypes}" />
+              <label class="custom-control-label"
+                     data-th-for="${index.index}+${leaveType}"
+                     data-th-text="${leaveType.leaveType}" > radio
+              </label >
+            </div >
+          </div >
         </div >
-      </div >
-      <!--Leave Type -->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="id" >Leave Type :</label >
+
+        <!--start At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="startAt" >Start At :</label >
+          </div >
+          <div class="col-md-8" >
+            <input type="datetime-local" class="form-control " onchange="dateMatch()"
+                   data-th-field="*{startAt}" id="startAt" required >
+
+            <span data-th-errors="*{startAt}"
+                  data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
+                            </span >
+          </div >
         </div >
-        <div class="col-md-4" >
-          <div class="custom-control custom-checkbox custom-control-inline "
-               data-th-each="leaveType,index : ${leaveTypes}" >
-            <input class="custom-control-input" required
-                   data-th-name="${'leaveType'}"
-                   data-th-value="${leaveType}"
-                   data-th-id="${index.index}+${leaveType}" type="radio"
-                   data-th-checked="${leaveType==leaveTypes}" />
-            <label class="custom-control-label"
-                   data-th-for="${index.index}+${leaveType}"
-                   data-th-text="${leaveType.leaveType}" > radio
+        <!--end At-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="endAt" >End At :</label >
+          </div >
+          <div class="col-md-8" >
+            <input type="datetime-local" class="form-control " onchange="dateMatch()"
+                   data-th-field="*{endAt}" id="endAt" required >
+
+            <span data-th-errors="*{endAt}"
+                  data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
+                            </span >
+          </div >
+        </div >
+        <!--Day count and hour count-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" >Day Count :
+              <input type="text" class="form-control " id="dayCount"
+                     data-th-field="*{dayCount}" required readonly >
+
+              <span data-th-errors="*{dayCount}"
+                    data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
+                            </span >
+            </label >
+          </div >
+          <div class="col-md-4" >
+            <label class="control-label" >Hour Count :
+              <input type="text" class="form-control " id="hourCount"
+                     data-th-field="*{hourCount}" required readonly >
+
+              <span data-th-errors="*{hourCount}"
+                    data-th-if="${#fields.hasErrors('hourCount')}" class="error" >Error Employee code
+                            </span >
             </label >
           </div >
         </div >
-      </div >
-
-      <!--start At-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="startAt" >Start At :</label >
-        </div >
-        <div class="col-md-8" >
-          <input type="datetime-local" class="form-control " onchange="dateMatch()"
-                 data-th-field="*{startAt}" id="startAt" required >
-
-          <span data-th-errors="*{startAt}"
-                data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
+        <!--Remarks-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="name" >Remark :</label >
+          </div >
+          <div class="col-md-8" >
+            <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
+            <span id="codeE" data-th-errors="*{remarks}"
+                  data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--end At-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="endAt" >End At :</label >
-        </div >
-        <div class="col-md-8" >
-          <input type="datetime-local" class="form-control " onchange="dateMatch()"
-                 data-th-field="*{endAt}" id="endAt" required >
+        <!--Sinhala modal button and modal tamil button-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <!--Sinhala modal button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                  class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+            </button >
 
-          <span data-th-errors="*{endAt}"
-                data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
-                            </span >
+          </div >
+          <div class="col-md-4" >
+            <!-- modal tamil button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                  class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+            </button >
+          </div >
         </div >
-      </div >
-      <!--Day count and hour count-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" >Day Count :
-            <input type="text" class="form-control " id="dayCount"
-                   data-th-field="*{dayCount}" required readonly >
 
-            <span data-th-errors="*{dayCount}"
-                  data-th-if="${#fields.hasErrors('dayCount')}" class="error" >Error Employee code
-                            </span >
-          </label >
+        <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+          <!--Button-->
+          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+            <button class="btn btn-success" type="submit" tabindex="21" >
+              <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                  data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+            </button >
+            <button class="btn btn-danger" type="reset" >
+              <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+            </button >
+          </div >
         </div >
-        <div class="col-md-4" >
-          <label class="control-label" >Hour Count :
-            <input type="text" class="form-control " id="hourCount"
-                   data-th-field="*{hourCount}" required readonly >
-
-            <span data-th-errors="*{hourCount}"
-                  data-th-if="${#fields.hasErrors('hourCount')}" class="error" >Error Employee code
-                            </span >
-          </label >
-        </div >
-      </div >
-      <!--Remarks-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="name" >Remark :</label >
-        </div >
-        <div class="col-md-8" >
-          <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
-          <span id="codeE" data-th-errors="*{remarks}"
-                data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
-                            </span >
+        <div class="form-row" >
+          <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
+          <ul >
+            <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+          </ul >
         </div >
       </div >
-      <!--Sinhala modal button and modal tamil button-->
-      <div class="form-row text-right" >
-        <div class="col-md-4" >
-          <!--Sinhala modal button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-          </button >
-
-        </div >
-        <div class="col-md-4" >
-          <!-- modal tamil button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-          </button >
-        </div >
-      </div >
-
-      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-        <!--Button-->
-        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-          <button class="btn btn-success" type="submit" tabindex="21" >
-            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
-                data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
-          </button >
-          <button class="btn btn-danger" type="reset" >
-            <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
-          </button >
-        </div >
-      </div >
-      <div class="form-row" >
-        <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
-        <ul >
-          <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
-        </ul >
-      </div >
-      </div>
 
     </form >
-  </div>
   </div >
+</div >
 
 <!--footer include-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
@@ -201,9 +201,45 @@
 
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
-
+<input type="date" hidden id="assignDate" data-th-value="${employeeDetail.dateOfAssignment}" >
 
 <script >
+
+    $(document).ready(function () {
+        $(`#endAt`).attr('min', $("#assignDate").val());
+    });
+
+    $(`#endAt`).change(function () {
+        let currentYear = new Date().getFullYear();
+        let previousYear = currentYear - 1;
+        let dateString = `1/1/${previousYear}`;
+        let previousYearObject = new Date(dateString);
+        let assignDate = new Date($("#assignDate").val());
+
+        let nextYear = currentYear + 1;
+        let nextDateString = `1/1/${previousYear}`;
+        let nextYearObject = new Date(nextDateString);
+
+        if (previousYearObject < assignDate) {
+            $(this).attr('min', previousYearObject);
+        } else {
+            $(`#endAt`).attr('min', assignDate);
+        }
+        $(`#startAt`).attr({
+            'min': $(this).val(),
+            'max': nextYearObject
+        });
+    });
+
+    $(`#startAt`).change(function () {
+        let currentYear = new Date().getFullYear();
+        let previousYear = currentYear + 1;
+        let dateString = `1/1/${previousYear}`;
+        let dateObject = new Date(dateString);
+        $(this).attr('max', dateObject);
+        $(`#endAt`).attr('max', $(this).val());
+    });
+
 
     function dateMatch() {
         let startDateTime = $(`#startAt`).val();
@@ -229,7 +265,7 @@
 
                 let x = msec - (days * 24 * 60 * 60000);
                 $("#dayCount").val(days);
-                $("#hourCount").val((x / (60*60000)));
+                $("#hourCount").val((x / (60 * 60000)));
             }
         }
     }

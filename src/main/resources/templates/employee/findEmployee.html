@@ -138,7 +138,7 @@
 <!--script include-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 
-<script >
+<script data-th-if="${#lists.isEmpty(employees)}">
     $(".alert").alert();
 </script >
 </body >

@@ -63,9 +63,6 @@ public class Employee extends AuditEntity {
     private String land;
 
     @Column( unique = true )
-    private String email;
-
-    @Column( unique = true )
     private String officeEmail;
 
     @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )

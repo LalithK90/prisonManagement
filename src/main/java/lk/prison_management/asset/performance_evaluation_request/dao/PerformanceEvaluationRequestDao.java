@@ -6,6 +6,7 @@ import lk.prison_management.asset.performance_evaluation_request.entity.enums.Pe
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -13,4 +14,6 @@ public interface PerformanceEvaluationRequestDao extends JpaRepository< Performa
   List< PerformanceEvaluationRequest > findByEmployee(Employee employee);
 
   PerformanceEvaluationRequest findByEmployeeAndPerformanceEvaluationStatus(Employee employee, PerformanceEvaluationStatus performanceEvaluationStatus);
+
+  PerformanceEvaluationRequest findByEmployeeAndFormDateAndToDate(Employee employee, LocalDate startDate, LocalDate endDate);
 }

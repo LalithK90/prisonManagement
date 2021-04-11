@@ -10,6 +10,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,5 +75,9 @@ public class PerformanceEvaluationRequestService implements AbstractService< Per
     }
 
     return performanceEvalReE;
+  }
+
+  public PerformanceEvaluationRequest findByEmployeeAndFormDateAndToDate(Employee employee, LocalDate startDate, LocalDate endDate) {
+    return performanceEvaluationRequestDao.findByEmployeeAndFormDateAndToDate(employee,startDate,endDate);
   }
 }

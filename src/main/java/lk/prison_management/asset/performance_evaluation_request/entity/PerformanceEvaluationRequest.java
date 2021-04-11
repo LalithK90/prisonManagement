@@ -60,11 +60,12 @@ public class PerformanceEvaluationRequest extends AuditEntity {
   //      4.4 if the answer for 4.3 is yes what are the reasons for it?
   private String reasons;
 
-  @Column( nullable = false )
+
+  @Column( nullable = false, unique = true )
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate formDate;
 
-  @Column( nullable = false )
+  @Column( nullable = false, unique = true )
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate toDate;
 
