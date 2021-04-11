@@ -206,15 +206,14 @@
 <script >
 
     $(document).ready(function () {
-        let today = new Date();
-        let assignDate = Date.parse($("#assignDate").val());
-        let eDT = Date.parse(endDateTime);
-        if (assignDate > eDT) {
-
-        }
+        $(`#endAt`).attr('min',$("#assignDate").val());
     });
 
     $(`#endAt`).change(function (){
+        let eDT = new Date();
+        if (assignDate > eDT) {
+
+        }
         $(`#startAt`).attr('min',$(this).val());
     });
 
