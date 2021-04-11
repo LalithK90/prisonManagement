@@ -4,9 +4,11 @@ import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.censure.service.CensureService;
 import lk.prison_management.asset.censure_file.entity.CensureFiles;
 import lk.prison_management.asset.censure_file.service.CensureFilesService;
+import lk.prison_management.asset.employee.controller.EmployeeController;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.asset.offence.service.OffenceService;
+import lk.prison_management.asset.punishment.controller.PunishmentController;
 import lk.prison_management.asset.punishment.service.PunishmentService;
 import lk.prison_management.util.interfaces.AbstractController;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -66,8 +69,11 @@ public class CensureController implements AbstractController< Censure, Integer> 
         model.addAttribute("employeeDetail", employeeService.findById(id));
         model.addAttribute("addStatus", true);
         model.addAttribute("offences", offenceService.findAll());
-        model.addAttribute("punishments", punishmentService.findAll());
+      //  model.addAttribute("punishments", punishmentService.findAll());
         model.addAttribute("censure", new Censure());
+        model.addAttribute("punishmentFindUrl", MvcUriComponentsBuilder
+            .fromMethodName(PunishmentController.class, "findByOffence", "")
+            .toUriString());
         return "censure/addCensure";
     }
 
