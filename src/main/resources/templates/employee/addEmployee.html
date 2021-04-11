@@ -415,6 +415,10 @@
 <script data-th-src="@{/js/combo-box-search.js}" ></script >
 <script >
     $(document).ready(function () {
+        $("#supervisor").select2({
+            data: $(this).val(),
+        }).addClass('form-control').addClass('col-8');
+
         imageSrcAttributeCheck();
 
         $('[type="date"]').prop('max', function () {
@@ -422,9 +426,7 @@
         });
     });
 
-    $("#supervisor").select2({
-        data: $(this).val()
-    }).addClass('form-control');;
+
 
     function readURL(input) {
         if (input.files && input.files[0]) {
