@@ -125,12 +125,16 @@ input{
 }
 .card{
 
-    background-color:rgba(4, 83, 54, 0.55);
-    max-width: 18rem;
+    background-color: rgba(142, 57, 36, 0.72);
+    max-width:900px;
+    margin-top: 40px;
     margin-bottom:20px;
-    margin-left:10px;
+    margin-left:200px;
+
     border:1px solid #4f4f4f;
-    border-radius:10%;
+    border-radius: 25px;
+
+
 }
 .cardrow{
     width:950px;
@@ -139,6 +143,8 @@ input{
 .card-header {
     font-family: Tahoma;
     font-weight: bolder;
+    position: center;
+    margin-left: 50px;
 
 }
 
@@ -155,7 +161,7 @@ input{
 
 /* Navbar Style--START*/
 .navbar a{
-    color: white;
+    color: #070707;
 }
 /* Navbar Style--END*/
 
@@ -253,6 +259,12 @@ input{
 	background-color: sienna;
 
 }
+.btnview{
+    background-color: #721c24;
+}
+
+
+
 
 .for-pass{
 
