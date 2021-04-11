@@ -421,7 +421,10 @@
         $('[type="date"]').prop('max', function () {
             return new Date().toJSON().split('T')[0];
         });
+    });
 
+    $("#supervisor").select2({
+        data: $(this).val()
     });
 
     function readURL(input) {

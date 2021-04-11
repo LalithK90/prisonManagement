@@ -37,7 +37,6 @@ $(document).ready(function () {
     });
 
 
-
 });
 
 
@@ -45,9 +44,9 @@ $(document).ready(function () {
 let nicRegex = /^([0-9]{9}[vV|xX])|^([0-9]{12})$/;
 let mobileRegex = /^([0][7][0|1|2|4|5|6|7|8][\d]{7}$)|^([7][0|1|2|4|5|6|7|8][\d]{7})$/;
 let landRegex = /^0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
+let bothLandMobile = /^([0][7][0|1|2|4|5|6|7|8][\d]{7}$)|^([7][0|1|2|4|5|6|7|8][\d]{7})|0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
 let nameRegex = /^[a-zA-Z .-]{3}[ a-zA-Z.-]+$/;
 let numberRegex = /^([eE][hH][sS][\d]+)$/;
-
 
 
 //Nic - data of birth - start
@@ -229,6 +228,21 @@ $(".land").bind("keyup", function () {
 $(".fax").bind("keyup", function () {
     landValidate($(this));
 });
+
+$(".mobileAndLand").bind("keyup", function () {
+    bothLandAndMobile($(this));
+});
+
+let bothLandAndMobile = function (val) {
+    let mobile = $(val).val();
+    if (bothLandMobile.test(mobile)) {
+        backgroundColourChangeGood(val);
+    } else if (mobile.length === 0) {
+        backgroundColourChangeNothingToChange(val);
+    } else {
+        backgroundColourChangeBad(val);
+    }
+};
 
 let mobileValidate = function (val) {
     let mobile = $(val).val();
