@@ -213,6 +213,10 @@
         }
     }
 
+    $("#supervisor").select2({
+        data: $(this).val()
+    }).addClass('form-control');;
+
     /*$("#institute").change(function () {
         $("#supervisor").find('option').remove();
         $.ajax({
