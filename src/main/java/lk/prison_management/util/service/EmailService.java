@@ -21,20 +21,16 @@ import java.util.Properties;
 @Service
 public class EmailService {
     private final JavaMailSender javaMailSender;
-    // to access application properties entered details
-    private final Environment environment;
 
     @Autowired
-    public EmailService(JavaMailSender javaMailSender, Environment environment) {
+    public EmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
-        this.environment = environment;
     }
 
 
     public void sendEmail(String receiverEmail, String subject, String message) throws
             MailException {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-
 
         try {
             mailMessage.setTo(receiverEmail);

@@ -55,14 +55,8 @@ dependencies {
 	compile group: 'org.webjars', name: 'popper.js', version: '1.15.0'
 // https://mvnrepository.com/artifact/org.webjars/jquery
 	compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
-// https://mvnrepository.com/artifact/org.webjars/jquery-ui
-	compile group: 'org.webjars', name: 'jquery-ui', version: '1.12.1'
 // https://mvnrepository.com/artifact/org.webjars/font-awesome
 	compile group: 'org.webjars', name: 'font-awesome', version: '5.11.2'
-// https://mvnrepository.com/artifact/org.webjars/pdf-js
-	compile group: 'org.webjars', name: 'pdf-js', version: '2.3.200'
-// https://mvnrepository.com/artifact/org.webjars.npm/chart.js
-	compile group: 'org.webjars.npm', name: 'chart.js', version: '2.9.3'
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin -- from build jar file
 	compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.2.2.RELEASE', ext: 'pom'
 	//====== use as three jars use to enable eh caches -> // https://mvnrepository.com/artifact/org.ehcache/ehcache

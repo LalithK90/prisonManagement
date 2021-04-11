@@ -47,7 +47,7 @@ public class PerformanceEvaluationRequestController {
 
     int year = LocalDate.now().minusYears(1).getYear();
     LocalDate startDate = LocalDate.of(year, 1, 1);
-    LocalDate endDate = LocalDate.of(year, 12, 1);
+    LocalDate endDate = LocalDate.of(year, 12, 31);
 
     PerformanceEvaluationRequest performanceEvaluationRequestDb =
         performanceEvaluationRequestService.findByEmployeeAndFormDateAndToDate(employee, startDate, endDate);
@@ -80,18 +80,6 @@ public class PerformanceEvaluationRequestController {
     return commonThing(model, performanceEvaluationRequest, employee);
   }
 
- /* @PostMapping( "/save" )
-  public String save(@ModelAttribute PerformanceEvaluationRequest performanceEvaluationRequest,
-                     BindingResult bindingResult, Model model) {
-    if ( bindingResult.hasErrors() ) {
-      Employee employee = employeeService.findById(performanceEvaluationRequest.getEmployee().getId());
-      commonThing(model, performanceEvaluationRequest, employee);
-    }
-    performanceEvaluationRequestService.persist(performanceEvaluationRequest);
-
-
-    return "redirect:/home";
-  }*/
 
   @PostMapping( "/save" )
   public String save(@ModelAttribute PerformanceEvaluationRequest performanceEvaluationRequest,
@@ -102,10 +90,10 @@ public class PerformanceEvaluationRequestController {
     }
     PerformanceEvaluationRequest  performanceEvaluationRequestSaved  = performanceEvaluationRequestService.persist(performanceEvaluationRequest);
 //email service starts
-    if (performanceEvaluationRequestSaved.getEmployee().getEmail() != null) {
+    if (performanceEvaluationRequestSaved.getEmployee().getOfficeEmail() != null) {
       StringBuilder message = new StringBuilder("Performance Apprecial");
 
-      emailService.sendEmail(performanceEvaluationRequestSaved.getEmployee().getEmail(),
+      emailService.sendEmail(performanceEvaluationRequestSaved.getEmployee().getOfficeEmail(),
               "New Performance Apprecial to be evaluated " , message.toString());
 
     /*  if (performanceEvaluationRequestSaved.getEmployee().getContactOne() != null) {
