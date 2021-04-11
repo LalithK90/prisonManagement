@@ -61,11 +61,11 @@ public class PerformanceEvaluationRequest extends AuditEntity {
   private String reasons;
 
 
-  @Column( nullable = false )
+  @Column( nullable = false, unique = true )
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate formDate;
 
-  @Column( nullable = false )
+  @Column( nullable = false, unique = true )
   @DateTimeFormat( pattern = "yyyy-MM-dd" )
   private LocalDate toDate;
 

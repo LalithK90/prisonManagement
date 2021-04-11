@@ -71,8 +71,8 @@
               Agreed period of Appraisal (one calendar year) : From : <input id="startAt" type="date"
                                                                              class="form-control col-2"
                                                                              data-th-field="*{formDate}"
-                                                                             onchange="dateMatch()" > to : <input
-                  onchange="dateMatch()" class="form-control col-2"
+                                                                             readonly> to : <input
+                  readonly class="form-control col-2"
                   id="endAt" type="date" data-th-field="*{toDate}" >
             </div >
             <!--Areas of Responsibility start-->
@@ -356,22 +356,5 @@
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 
-<script >
-    function dateMatch() {
-        let startDateTime = $(`#startAt`).val();
-        let endDateTime = $(`#endAt`).val();
-        if (startDateTime !== "" && endDateTime !== "") {
-            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
-                swal({
-                    title: "Could you accept those days.. !",
-                    icon: "warning",
-                    text: "Please check your date time \n End Date Time can not be less than Start Date Time",
-                })
-                $(`#endAt`).val(startDateTime);
-            }
-        }
-    }
-
-</script >
 </body >
 </html >

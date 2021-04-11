@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Department of Prison </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+
+<!--heading Area-->
+<div class="container-fluid  form-Border" >
+  <div class="row text-center formManagement border-info" >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+
+    </div >
+
+  </div >
+  <div class="row text-center" >
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Performance Evaluation
+        </strong >
+      </h4 >
+    </div >
+  </div >
+</div >
+<div class="container-fluid " >
+  <!--message -->
+  <div class="row" >
+    <h1 data-th-text="${message}" ></h1 >
+  </div >
+  <div class="row" >
+    <i class="bi bi-exclamation-diamond" style="size: 36px" ></i >
+  </div >
+</div >
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+
+
+</body >
+</html >

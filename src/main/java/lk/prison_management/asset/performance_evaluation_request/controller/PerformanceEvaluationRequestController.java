@@ -15,6 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.Year;
+import java.time.YearMonth;
+
 @Controller
 @RequestMapping( "/performanceEvaluationRequest" )
 public class PerformanceEvaluationRequestController {
@@ -40,7 +44,22 @@ public class PerformanceEvaluationRequestController {
   public String employeeView(Model model) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Employee employee = userService.findByUserName(authentication.getName()).getEmployee();
-    return commonThing(model, new PerformanceEvaluationRequest(), employee);
+
+    int year = LocalDate.now().minusYears(1).getYear();
+    LocalDate startDate = LocalDate.of(year, 1, 1);
+    LocalDate endDate = LocalDate.of(year, 12, 1);
+
+    PerformanceEvaluationRequest performanceEvaluationRequestDb =
+        performanceEvaluationRequestService.findByEmployeeAndFormDateAndToDate(employee, startDate, endDate);
+    if ( performanceEvaluationRequestDb != null ) {
+      model.addAttribute("message", "You already have requested from " + startDate + " to " + endDate + ". \n Please " +
+          "try next year ");
+      return "performanceEvaluation/voilateRequest";
+    }
+    PerformanceEvaluationRequest performanceEvaluationRequest = new PerformanceEvaluationRequest();
+    performanceEvaluationRequest.setFormDate(startDate);
+    performanceEvaluationRequest.setToDate(endDate);
+    return commonThing(model, performanceEvaluationRequest, employee);
   }
 
   private String commonThing(Model model, PerformanceEvaluationRequest performanceEvaluationRequest,
