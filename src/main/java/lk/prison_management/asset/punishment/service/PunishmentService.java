@@ -2,6 +2,7 @@ package lk.prison_management.asset.punishment.service;
 
 import lk.prison_management.asset.punishment.dao.PunishmentDao;
 import lk.prison_management.asset.punishment.entity.Punishment;
+import lk.prison_management.asset.punishment.entity.enums.PunishmentType;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -42,4 +43,8 @@ public class PunishmentService implements AbstractService<Punishment, Integer> {
         Example<Punishment> instituteExample = Example.of(punishment, matcher);
         return offenceDao.findAll(instituteExample);
     }
+
+  public List<Punishment> findByPunishmentType(PunishmentType punishmentType) {
+        return offenceDao.findByPunishmentType(punishmentType);
+  }
 }

@@ -55,133 +55,133 @@
     <form data-th-action="${addStatus==true?'/employeeInstitute/save' :'/employeeInstitute/update'}" method="post"
           data-th-object="${employeeInstitute}"
           class="mt-3" >
-<!--employee Id-->
+      <!--employee Id-->
       <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
              readonly />
       <!--Id-->
-            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly hidden/>
-        <!--Institute -->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="institute" >Institute :</label >
-          </div >
-          <div class="col-md-8" >
-            <select id="institute" data-th-field="*{institute}" class="form-control" tabindex="19"
-                    required >
-              <option value="" >Please select</option >
-              <option data-th-each="institute : ${institutes}"
-                      data-th-text="${institute.name}"
-                      data-th-value="${institute.id}" ></option >
-            </select >
-          </div >
+      <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly hidden />
+      <!--Institute -->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="institute" >Institute :</label >
         </div >
-        <!--supervisor-->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="supervisor" >Employee Supervisor :</label >
-          </div >
-          <div class="col-md-8" >
-            <select id="supervisor" data-th-field="*{supervisor}" class="form-control" tabindex="19"
-                    required >
-              <option value="" >Please select</option >
-              <option data-th-each="employee : ${employees}"
-                      data-th-value="${employee.id}"
-                      data-th-text="${employee.name + ' - '+ employee.designation.designation}"
-              >Please select
-              </option >
-            </select >
-          </div >
+        <div class="col-md-8" >
+          <select id="institute" data-th-field="*{institute}" class="form-control" tabindex="19"
+                  required >
+            <option value="" >Please select</option >
+            <option data-th-each="institute : ${institutes}"
+                    data-th-text="${institute.name}"
+                    data-th-value="${institute.id}" ></option >
+          </select >
         </div >
-        <!--start At-->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="startAt" >Previous Institute Start At :</label >
-          </div >
-          <div class="col-md-8" >
-            <input type="date" class="form-control " onchange="dateMatch()"
-                   data-th-field="*{startAt}" id="startAt" required readonly >
+      </div >
+      <!--supervisor-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="supervisor" >Employee Supervisor :</label >
+        </div >
+        <div class="col-md-8" >
+          <select id="supervisor" data-th-field="*{supervisor}" class="form-control" tabindex="19"
+                  required >
+            <option value="" >Please select</option >
+            <option data-th-each="employee : ${employees}"
+                    data-th-value="${employee.id}"
+                    data-th-text="${employee.name + ' - '+ employee.designation.designation}"
+            >Please select
+            </option >
+          </select >
+        </div >
+      </div >
+      <!--start At-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="startAt" >Previous Institute Start At :</label >
+        </div >
+        <div class="col-md-8" >
+          <input type="date" class="form-control " onchange="dateMatch()"
+                 data-th-field="*{startAt}" id="startAt" required readonly >
 
-            <span data-th-errors="*{startAt}"
-                  data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
+          <span data-th-errors="*{startAt}"
+                data-th-if="${#fields.hasErrors('startAt')}" class="error" >Error Employee code
                             </span >
-          </div >
         </div >
-        <!--end At-->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="endAt" >New Institute Start At :</label >
-          </div >
-          <div class="col-md-8" >
-            <input type="date" class="form-control " onchange="dateMatch()"
-                   data-th-field="*{endAt}" id="endAt" required >
+      </div >
+      <!--end At-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="endAt" >New Institute Start At :</label >
+        </div >
+        <div class="col-md-8" >
+          <input type="date" class="form-control " onchange="dateMatch()"
+                 data-th-field="*{endAt}" id="endAt" required >
 
-            <span data-th-errors="*{endAt}"
-                  data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
+          <span data-th-errors="*{endAt}"
+                data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Employee code
                             </span >
-          </div >
         </div >
-        <!--Change reason-->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="employeeStatus" >Change Reason :</label >
-          </div >
-          <div class="col-md-8" >
-            <select id="employeeStatus" data-th-field="*{instituteChangeReason}" class="form-control" tabindex="19"
-                    required >
-              <option value="" >Please select</option >
-              <option data-th-each="instituteChangeReason : ${instituteChangeReasons}"
-                      data-th-text="${instituteChangeReason.instituteChangeReason}"
-                      data-th-value="${instituteChangeReason}" ></option >
-            </select >
-          </div >
+      </div >
+      <!--Change reason-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="employeeStatus" >Change Reason :</label >
         </div >
-        <!--Remarks-->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <label class="control-label" for="name" >Remark :</label >
-          </div >
-          <div class="col-md-8" >
-            <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
-            <span id="codeE" data-th-errors="*{remarks}"
-                  data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
+        <div class="col-md-8" >
+          <select id="employeeStatus" data-th-field="*{instituteChangeReason}" class="form-control" tabindex="19"
+                  required >
+            <option value="" >Please select</option >
+            <option data-th-each="instituteChangeReason : ${instituteChangeReasons}"
+                    data-th-text="${instituteChangeReason.instituteChangeReason}"
+                    data-th-value="${instituteChangeReason}" ></option >
+          </select >
+        </div >
+      </div >
+      <!--Remarks-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="name" >Remark :</label >
+        </div >
+        <div class="col-md-8" >
+          <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
+          <span id="codeE" data-th-errors="*{remarks}"
+                data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
                             </span >
-          </div >
         </div >
-        <!--Sinhala modal button and modal tamil button-->
-        <div class="form-row text-right" >
-          <div class="col-md-4" >
-            <!--Sinhala modal button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                  class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-            </button >
+      </div >
+      <!--Sinhala modal button and modal tamil button-->
+      <div class="form-row text-right" >
+        <div class="col-md-4" >
+          <!--Sinhala modal button -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
+                class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+          </button >
 
-          </div >
-          <div class="col-md-4" >
-            <!-- modal tamil button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                  class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-            </button >
-          </div >
         </div >
+        <div class="col-md-4" >
+          <!-- modal tamil button -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
+                class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+          </button >
+        </div >
+      </div >
 
-        <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-          <!--Button-->
-          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-            <button class="btn btn-success" type="submit" tabindex="21" >
-              <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
-                  data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
-            </button >
-            <button class="btn btn-danger" type="reset" >
-              <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
-            </button >
-          </div >
+      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+        <!--Button-->
+        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+          <button class="btn btn-success" type="submit" tabindex="21" >
+            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+          </button >
+          <button class="btn btn-danger" type="reset" >
+            <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+          </button >
         </div >
-        <div class="form-row" >
-          <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
-          <ul >
-            <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
-          </ul >
-        </div >
+      </div >
+      <div class="form-row" >
+        <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
+        <ul >
+          <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+        </ul >
+      </div >
 
 
     </form >
@@ -213,9 +213,11 @@
         }
     }
 
-    $("#supervisor").select2({
-        data: $(this).val()
-    }).addClass('form-control');;
+    $(document).ready(function () {
+        $("#supervisor").select2({
+            data: $(this).val(),
+        }).addClass('form-control').addClass('col-8');
+    });
 
     /*$("#institute").change(function () {
         $("#supervisor").find('option').remove();

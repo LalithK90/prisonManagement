@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Department Of Prisons </title >
@@ -201,10 +201,14 @@
 
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
-
+<input type="hidden" id="punishmentFindUrl" data-th-value="${punishmentFindUrl}" >
 <script data-th-src="@{/js/combo-box-search.js}" ></script >
 <script >
     $(document).ready(function () {
+        $("#punishment, #offence").select2({
+            data: $(this).val()
+        }).addClass('form-control').addClass("text-left").addClass("text-dark");
+
         imageSrcAttributeCheck();
     });
 
@@ -236,14 +240,26 @@
     }
 
 
-    $("#offence").change(function (){
-        /*todo*/
+    $("#offence").change(function () {
+        $("#punishment").find('option').remove();
+        $.ajax({
+            type: 'GET',
+            url: $("#punishmentFindUrl").val() + $(this).val(),
+            success: function (resp) {
+                $("#punishment").append(`<option value="">Please select</option>`);
+                $.each(resp, function () {
+                    $("#punishment").append(`<option value="${this.id}">${this.name}</option>`);
+                });
+                $("#punishment").select2({
+                    data: $(this).val()
+                }).addClass('form-control');
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     });
 
-
-    $("#punishment, #offence").select2({
-        data: $(this).val()
-    }).addClass('form-control');
 
 </script >
 </body >

@@ -206,38 +206,41 @@
 <script >
 
     $(document).ready(function () {
-        $(`#endAt`).attr('min', $("#assignDate").val());
+        let assignDate = $("#assignDate").val()+`T00:00:00`;
+
+        $(`#startAt`).attr('min',assignDate );
+        console.log("datte  "+ $("#assignDate").val())
     });
 
-    $(`#endAt`).change(function () {
+    $(`#startAt`).change(function () {
         let currentYear = new Date().getFullYear();
         let previousYear = currentYear - 1;
-        let dateString = `1/1/${previousYear}`;
+        let dateString = `${previousYear}-1-1T00:00:00`;
         let previousYearObject = new Date(dateString);
         let assignDate = new Date($("#assignDate").val());
 
         let nextYear = currentYear + 1;
-        let nextDateString = `1/1/${previousYear}`;
+        let nextDateString = `${nextYear}-1-1T00:00:00`;
         let nextYearObject = new Date(nextDateString);
 
         if (previousYearObject < assignDate) {
             $(this).attr('min', previousYearObject);
         } else {
-            $(`#endAt`).attr('min', assignDate);
+            $(`#startAt`).attr('min', assignDate);
         }
-        $(`#startAt`).attr({
+        $(`#endAt`).attr({
             'min': $(this).val(),
             'max': nextYearObject
         });
     });
 
-    $(`#startAt`).change(function () {
+    $(`#endAt`).change(function () {
         let currentYear = new Date().getFullYear();
         let previousYear = currentYear + 1;
-        let dateString = `1/1/${previousYear}`;
+        let dateString = `${previousYear}-1-1T00:00:00`;
         let dateObject = new Date(dateString);
         $(this).attr('max', dateObject);
-        $(`#endAt`).attr('max', $(this).val());
+        $(`#startAt`).attr('max', $(this).val());
     });
 
 
