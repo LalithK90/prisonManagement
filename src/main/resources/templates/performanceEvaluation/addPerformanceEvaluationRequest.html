@@ -65,14 +65,38 @@
             <input data-th-name="${'employee'}" data-th-if="${addStatus==true}"
                    data-th-value="${employeeDetail.id}"
                    hidden type="text" />
+
+
+<!--            Apprecial time frame starts-->
+
             <div class="form-row text-right" >
-              Agreed period of Appraisal (one calendar year) : From : <input id="startAt" type="date"
-                                                                             class="form-control col-3"
-                                                                             data-th-field="*{formDate}"
-                                                                             readonly> to : <input
-                  readonly class="form-control col-3"
-                  id="endAt" type="date" data-th-field="*{toDate}" >
+              <div class="col-md-4" >
+                <label class="control-label" >Agreed period of Appraisal (one calendar year) :
+                  </label >
+              </div >
+
+              <div class="col-md-8" >
+                <div class="form-row text-center" >
+                  <label class="control-label" >
+                    From
+                    <input id="startAt" type="date"
+                           class="form-control col-12"
+                           data-th-field="*{formDate}"
+                           readonly>
+                  </label >
+                  <label class="control-label" >
+                  To
+                    <input
+                            readonly class="form-control col-12"
+                            id="endAt" type="date" data-th-field="*{toDate}" >
+
+                  </label >
+
+                </div >
+              </div >
             </div >
+
+
             <!--Areas of Responsibility start-->
             <div class="container-fluid" >
               <p class="text-center h3" >Areas of Responsibility</p >
@@ -80,17 +104,20 @@
             <!--task list -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list : yes
-                                                                           /No
-                                                                           :</label >
+                <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list :</label >
               </div >
               <div class="col-md-4 text-center" >
                 <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
+                  <label class="form-check-label col-md-6" >
+                    <div class="custom-control custom-radio">
+
                     <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="Y" >
-                    Yes
+                    <label>Yes</label>
+
+                </div>
+                  </br>
                   </label >
-                  <label class="form-check-label col-md-2" >
+                  <label class="form-check-label col-md-6" >
                     <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="N" >
                     No
                   </label >
@@ -100,6 +127,8 @@
                       data-th-if="${#fields.hasErrors('taskLists')}" >Error Name</span >
               </div >
             </div >
+          </br>
+
             <!--responsibilities -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
@@ -145,17 +174,17 @@
             <!--satisfied -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance
-                                                                           :yes
-                                                                           /no</label >
+                <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance:</label >
               </div >
               <div class="col-md-4 text-center" >
                 <div class="form-check" >
-                  <label class="form-check-label col-md-2" >
+                  <label class="form-check-label col-md-6" >
                     <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="Y" >
                     Yes
                   </label >
-                  <label class="form-check-label col-md-2" >
+                </br>
+                </br>
+                  <label class="form-check-label col-md-6" >
                     <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="N" >
                     No
                   </label >
@@ -165,27 +194,54 @@
                       data-th-if="${#fields.hasErrors('satisfied')}" >Error Name</span >
               </div >
             </div >
+          </br>
             <!--responsibilities -->
             <div class="form-row text-right" >
-              <div class="col-md-8" >
-                <div class="form-row text-center" >
+              <div class="col-md-4" >
+
                   <label class="control-label" >
                     Any difficulties faced:
+                  </div>
+
+              <div class="col-md-6" >
+
                     <textarea class="form-control" data-th-field="*{difficulties}" ></textarea >
+
+
                     <!--Sinhala modal button -->
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                             data-target=".bd-example-modal-xl" >
                       <i
                             class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
                     </button >
+
+                <!-- modal tamil button -->
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#bd-example-modal-xl" >
+                  <i
+                          class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+                </button >
                     <span class="error"
                           data-th-errors="*{difficulties}"
                           data-th-if="${#fields.hasErrors('difficulties')}" >Error Name</span >
                   </label >
-                  <label class="control-label" >
-                    Strategies for improvement (if Appraisee is lagging behind):
+              </div>
+
+              <div class="col-md-4" >
+
+                <label class="control-label" >
+                  Strategies for improvement (if Appraisee is lagging behind):
+              </div>
+              <div class="col-md-6" >
                     <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
-                    <!-- modal tamil button -->
+                <!--Sinhala modal button -->
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target=".bd-example-modal-xl" >
+                  <i
+                          class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+                </button >
+
+                <!-- modal tamil button -->
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                             data-target="#bd-example-modal-xl" >
                       <i
@@ -195,6 +251,7 @@
                   <span class="error"
                         data-th-errors="*{improvement}"
                         data-th-if="${#fields.hasErrors('improvement')}" >Error Name</span >
+            </div>
                 </div >
               </div >
             </div >
@@ -225,7 +282,8 @@
             </ul >
           </div >
         </div >
-      </div >
+      </div>
+</div>
     </form >
   </div >
 </div >

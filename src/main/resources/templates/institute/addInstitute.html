@@ -80,11 +80,11 @@
                     <!--Land-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
-                            <label class="control-label" data-th-for="${'name'}">Land :</label>
+                            <label class="control-label"  data-th-for="${'name'}">Land :</label>
                         </div>
                         <div class="col-md-4">
-                            <input class="form-control" data-th-field="*{land}" required tabindex="4" type="text"
-                            maxlength="10"/>
+                            <input class="form-control" data-th-field="*{land}" required tabindex="4" type="number"
+                                     maxlength="10"/>
                             <span class="error"
                                   data-th-errors="*{land}" data-th-if="${#fields.hasErrors('land')}">Error Name</span>
                         </div>
