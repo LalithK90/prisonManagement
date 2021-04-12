@@ -6,6 +6,7 @@ import lk.prison_management.asset.censure_file.entity.CensureFiles;
 import lk.prison_management.asset.censure_file.service.CensureFilesService;
 import lk.prison_management.asset.employee.controller.EmployeeController;
 import lk.prison_management.asset.employee.service.EmployeeService;
+import lk.prison_management.asset.offence.controller.OffenceController;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.asset.offence.service.OffenceService;
 import lk.prison_management.asset.punishment.controller.PunishmentController;
@@ -68,11 +69,18 @@ public class CensureController implements AbstractController< Censure, Integer> 
     public String form(@PathVariable("id")Integer id , Model model) {
         model.addAttribute("employeeDetail", employeeService.findById(id));
         model.addAttribute("addStatus", true);
-        model.addAttribute("offences", offenceService.findAll());
+        model.addAttribute("offenceTypes", OffenceType.values());
+       // model.addAttribute("offences", offenceService.findAll());
       //  model.addAttribute("punishments", punishmentService.findAll());
         model.addAttribute("censure", new Censure());
         model.addAttribute("punishmentFindUrl", MvcUriComponentsBuilder
             .fromMethodName(PunishmentController.class, "findByOffence", "")
+            .toUriString());
+        model.addAttribute("offenceUrl", MvcUriComponentsBuilder
+            .fromMethodName(OffenceController.class, "findByOffenceType", "")
+            .toUriString());
+        model.addAttribute("punishmentUrl", MvcUriComponentsBuilder
+            .fromMethodName(PunishmentController.class, "findByOffenceType", "")
             .toUriString());
         return "censure/addCensure";
     }

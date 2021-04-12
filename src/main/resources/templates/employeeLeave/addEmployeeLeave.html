@@ -236,7 +236,7 @@
 
     $(`#endAt`).change(function () {
         let currentYear = new Date().getFullYear();
-        let previousYear = currentYear + 1;
+        let previousYear = currentYear;
         let dateString = `${previousYear}-1-1T00:00:00`;
         let dateObject = new Date(dateString);
         $(this).attr('max', dateObject);

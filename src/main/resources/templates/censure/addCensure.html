@@ -76,6 +76,26 @@
             <input id="abc" data-th-field="*{refNumber}" class="form-control" type="text" readonly />
           </div >
         </div >
+        <!--offence type-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="offence" >Offence Type :</label >
+          </div >
+          <div class="col-md-8" >
+            <div class="custom-control custom-checkbox custom-control-inline "
+                 data-th-each="offenceType,index : ${offenceTypes}" >
+              <input class="custom-control-input offenceType" required
+                     data-th-name="${'offenceType'}"
+                     data-th-value="${offenceType}"
+                     data-th-id="${index.index}+${offenceType}" type="radio"
+                     data-th-checked="${offenceType==offenceType}" />
+              <label class="custom-control-label"
+                     data-th-for="${index.index}+${offenceType}"
+                     data-th-text="${offenceType.offenceType}" > radio
+              </label >
+            </div >
+          </div >
+        </div >
         <!--Offence -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
@@ -85,9 +105,6 @@
             <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
                     required >
               <option value="" >Please select</option >
-              <option data-th-each="offence : ${offences}"
-                      data-th-text="${offence.name}"
-                      data-th-value="${offence.id}" ></option >
             </select >
           </div >
         </div >
@@ -100,9 +117,6 @@
             <select id="punishment" data-th-field="*{punishment}" class="form-control" tabindex="19"
                     required >
               <option value="" >Please select</option >
-              <option data-th-each="punishment : ${punishments}"
-                      data-th-text="${punishment.name}"
-                      data-th-value="${punishment.id}" ></option >
             </select >
           </div >
         </div >
@@ -202,6 +216,7 @@
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 <input type="hidden" id="punishmentFindUrl" data-th-value="${punishmentFindUrl}" >
+<input type="hidden" id="offenceUrl" data-th-value="${offenceUrl}" >
 <script data-th-src="@{/js/combo-box-search.js}" ></script >
 <script >
     $(document).ready(function () {
@@ -210,6 +225,8 @@
         }).addClass('form-control').addClass("text-left").addClass("text-dark");
 
         imageSrcAttributeCheck();
+
+        $("input[name='offenceType']").prop("checked", false);
     });
 
     function readURL(input) {
@@ -239,6 +256,25 @@
         }
     }
 
+    $(".offenceType").change(function () {
+        $("#offence").find('option').remove();
+        $.ajax({
+            type: 'GET',
+            url: $("#offenceUrl").val() + $(this).val(),
+            success: function (resp) {
+                $("#offence").append(`<option value="">Please select</option>`);
+                $.each(resp, function () {
+                    $("#offence").append(`<option value="${this.id}">${this.name}</option>`);
+                });
+                $("#offence").select2({
+                    data: $(this).val()
+                }).addClass('form-control');
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
 
     $("#offence").change(function () {
         $("#punishment").find('option').remove();
@@ -259,7 +295,6 @@
             }
         });
     });
-
 
 </script >
 </body >

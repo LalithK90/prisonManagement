@@ -57,7 +57,7 @@
             </div >
             <div class="col-md-8" >
               <input id="code" data-th-field="*{code}" class="form-control" tabindex="4"
-                     type="text" required readonly/>
+                     type="text" required readonly />
               <span id="codeE" data-th-errors="*{code}"
                     data-th-if="${#fields.hasErrors('code')}" class="error" >Error Employee code
                             </span >
@@ -371,7 +371,7 @@
                 <label class="control-label" for="createdBy" >Created By :</label >
               </div >
               <div class="col-md-8" >
-                <p id="createdBy" data-th-field="*{createdBy}" class="form-control" ></p>
+                <p id="createdBy" data-th-field="*{createdBy}" class="form-control" ></p >
               </div >
             </div >
             <div class="form-row text-right" >
@@ -380,7 +380,7 @@
               </div >
               <div class="col-md-8" >
                 <p id="createdAt" data-th-text="${{employee.createdAt}}" class="form-control"
-                ></p>
+                ></p >
               </div >
             </div >
           </div >
@@ -425,7 +425,6 @@
             return new Date().toJSON().split('T')[0];
         });
     });
-
 
 
     function readURL(input) {

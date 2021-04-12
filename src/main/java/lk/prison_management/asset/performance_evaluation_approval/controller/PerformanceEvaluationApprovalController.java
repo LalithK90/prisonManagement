@@ -11,6 +11,7 @@ import lk.prison_management.asset.performance_evaluation_request.entity.enums.Ap
 import lk.prison_management.asset.performance_evaluation_request.entity.enums.PerformanceEvaluationStatus;
 import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
 import lk.prison_management.asset.user.service.UserService;
+import lk.prison_management.util.service.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,16 +29,18 @@ public class PerformanceEvaluationApprovalController {
   private final UserService userService;
   private final PerformanceEvaluationRequestService performanceEvaluationRequestService;
   private final PerformanceEvaluationApprovalService performanceEvaluationApprovalService;
+  private final EmailService emailService;
 
   public PerformanceEvaluationApprovalController(EmployeeService employeeService,
                                                  EmployeeFilesService employeeFilesService,
                                                  UserService userService,
-                                                 PerformanceEvaluationRequestService performanceEvaluationRequestService, PerformanceEvaluationApprovalService performanceEvaluationApprovalService) {
+                                                 PerformanceEvaluationRequestService performanceEvaluationRequestService, PerformanceEvaluationApprovalService performanceEvaluationApprovalService, EmailService emailService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.userService = userService;
     this.performanceEvaluationRequestService = performanceEvaluationRequestService;
     this.performanceEvaluationApprovalService = performanceEvaluationApprovalService;
+    this.emailService = emailService;
   }
 
   @RequestMapping
@@ -85,7 +88,27 @@ public class PerformanceEvaluationApprovalController {
     performanceEvaluationRequest.setPerformanceEvaluationStatus(PerformanceEvaluationStatus.APPROVED);
     performanceEvaluationApproval.setPerformanceEvaluationRequest(performanceEvaluationRequest);
 
-    performanceEvaluationApprovalService.persist(performanceEvaluationApproval);
+    PerformanceEvaluationApproval performanceEvaluationApprovalDb = performanceEvaluationApprovalService.persist(performanceEvaluationApproval);
+
+   Employee employee =  performanceEvaluationApprovalDb.getPerformanceEvaluationRequest().getEmployee();
+    if (employeeService.findById(employee.getId()).getOfficeEmail() != null) {
+      StringBuilder message = new StringBuilder("Performance Apprecial was evaluated \n Thanks \n\n"+ performanceEvaluationApprovalDb.getCreatedBy());
+
+      emailService.sendEmail(employeeService.findById(employee.getId()).getOfficeEmail(),
+                             "Performance Apprecial was evaluated." , message.toString());
+
+    /*  if (performanceEvaluationRequestSaved.getEmployee().getContactOne() != null) {
+        try {
+          String mobileNumber = purchaseOrderSaved.getSupplier().getContactOne().substring(1, 10);
+          twilioMessageService.sendSMS("+94" + mobileNumber, "There is immediate PO from " +
+                  "Samarasingher Super \nPlease Check Your Email Form Further Details");
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }*/
+    }
+
+
 
     return "redirect:/home";
   }

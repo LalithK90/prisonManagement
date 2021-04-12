@@ -1,9 +1,14 @@
 package lk.prison_management.asset.offence.controller;
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.asset.offence.entity.Offence;
 import lk.prison_management.asset.offence.service.OffenceService;
+import lk.prison_management.asset.punishment.entity.enums.PunishmentType;
 import lk.prison_management.util.interfaces.AbstractController;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -66,5 +71,21 @@ public class OffenceController implements AbstractController<Offence, Integer> {
     public String delete(@PathVariable Integer id, Model model) {
         offenceService.delete(id);
         return "redirect:/offence";
+    }
+
+    @GetMapping( "/offence/{offenceType}" )
+    @ResponseBody
+    public MappingJacksonValue findByOffenceType(@PathVariable( "offenceType" ) String offenceType) {
+
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(offenceService.findByOffenceType(OffenceType.valueOf(offenceType)));
+
+        SimpleBeanPropertyFilter simpleBeanPropertyFilterOne = SimpleBeanPropertyFilter
+            .filterOutAllExcept("id", "name");
+
+        FilterProvider filters = new SimpleFilterProvider()
+            .addFilter("Offence", simpleBeanPropertyFilterOne);
+
+        mappingJacksonValue.setFilters(filters);
+        return mappingJacksonValue;
     }
 }
