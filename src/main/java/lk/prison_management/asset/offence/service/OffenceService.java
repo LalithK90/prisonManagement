@@ -2,6 +2,7 @@ package lk.prison_management.asset.offence.service;
 
 import lk.prison_management.asset.offence.dao.OffenceDao;
 import lk.prison_management.asset.offence.entity.Offence;
+import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -42,4 +43,8 @@ public class OffenceService implements AbstractService<Offence, Integer> {
         Example<Offence> instituteExample = Example.of(offence, matcher);
         return offenceDao.findAll(instituteExample);
     }
+
+  public List<Offence> findByOffenceType(OffenceType offenceType) {
+        return offenceDao.findByOffenceType(offenceType);
+  }
 }

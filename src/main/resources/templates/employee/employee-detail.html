@@ -523,11 +523,11 @@
                 </div >
               </div >
             </div >
-            <!--Public Relations start-->
+<!--            &lt;!&ndash;Public Relations start&ndash;&gt;
             <div class="container-fluid" >
               <p class="text-center h3" >Public Relations</p >
             </div >
-            <!--task list -->
+            &lt;!&ndash;task list &ndash;&gt;
             <div class="form-row " >
               <div class="col-md-6" >
                 <label class="control-label" data-th-for="${'taskLists'}" >Whether your directly work with general
@@ -541,7 +541,7 @@
                    data-th-text="${#strings.equals(performanceEvaluationRequest.publicInstitutesOfficers, 'Y')?'Yes':'No'}" ></p >
               </div >
             </div >
-            <!--satisfiedGeneralPublic -->
+            &lt;!&ndash;satisfiedGeneralPublic &ndash;&gt;
             <div class="form-row " >
               <div class="col-md-6" >
                 <label class="control-label" data-th-for="${'satisfiedGeneralPublic'}" >Are you satisfied about
@@ -555,7 +555,7 @@
                    data-th-text="${#strings.equals(performanceEvaluationRequest.satisfiedGeneralPublic, 'Y')?'Yes':'No'}" ></p >
               </div >
             </div >
-            <!--unhappy -->
+            &lt;!&ndash;unhappy &ndash;&gt;
             <div class="form-row" >
               <div class="col-md-6" >
                 <label class="control-label" data-th-for="${'unhappy'}" >Are there any general public or
@@ -568,7 +568,7 @@
               </div >
 
             </div >
-            <!--reasons -->
+            &lt;!&ndash;reasons &ndash;&gt;
             <div class="form-row " >
               <div class="col-md-6" >
                 <label class="control-label" data-th-for="${'reasons'}" >if the answer for 4.3 is yes what are the
@@ -579,7 +579,8 @@
                 <p class="display_detail"
                    data-th-utext="${performanceEvaluationRequest.reasons}" ></p >
               </div >
-            </div >
+            </div >-->
+
             <div class="container-fluid"
                  data-th-if="${#strings.equals(performanceEvaluationRequest.performanceEvaluationStatus, 'APPROVED')}" >
 
