@@ -10,10 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -24,6 +21,7 @@ import java.util.List;
 @JsonFilter("Offence")
 public class Offence extends AuditEntity {
 
+    @Column(length = 800)
     private String name;
 
     @Enumerated(EnumType.STRING)

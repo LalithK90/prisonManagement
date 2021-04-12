@@ -178,10 +178,19 @@ public class EmployeeController {
   @PostMapping( value = {"/save", "/update"} )
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
-    Employee employeeDb = employeeService.findByWopNumber(employee.getWopNumber());
-    if ( employeeDb != null && employee.getId() == null) {
+    Employee byWopNumber = employeeService.findByWopNumber(employee.getWopNumber());
+    if ( byWopNumber != null && employee.getId() == null ) {
       ObjectError error = new ObjectError("employee",
                                           "There is employee on same wop number . <br> System message -->");
+      result.addError(error);
+    }
+    Employee employeeNic = null;
+    if ( employee.getNic() != null && employee.getId() == null ) {
+      employeeNic = employeeService.findByNic(employee.getNic());
+    }
+    if ( employeeNic != null ) {
+      ObjectError error = new ObjectError("employee",
+                                          "There is employee on same nic number . <br> System message -->");
       result.addError(error);
     }
 
@@ -213,7 +222,7 @@ public class EmployeeController {
       employeeInstitute.setStartAt(employee.getDateOfAssignment());
       employeeInstitute.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
       employeeInstituteService.persist(employeeInstitute);
-    }else {
+    } else {
       //if employee state is not working he or she cannot access to the system
       if ( !employee.getEmployeeStatus().equals(EmployeeStatus.WORKING) ) {
         User user = userService.findUserByEmployee(employeeService.findByNic(employee.getNic()));
