@@ -110,4 +110,35 @@ public class PunishmentController implements AbstractController< Punishment, Int
     mappingJacksonValue.setFilters(filters);
     return mappingJacksonValue;
   }
+
+  @GetMapping( "/offence/{offenceType}" )
+  @ResponseBody
+  public MappingJacksonValue findByOffenceType(@PathVariable( "offenceType" ) String offenceTypeF) {
+    OffenceType offenceType = OffenceType.valueOf(offenceTypeF);
+
+    MappingJacksonValue mappingJacksonValue;
+    if ( offenceType.equals(OffenceType.FSO) ) {
+      //first punishment
+      mappingJacksonValue =
+          new MappingJacksonValue(punishmentService.findByPunishmentType(PunishmentType.MAP));
+    } else if ( offenceType.equals(OffenceType.SSO) ) {
+      //second punishment
+      mappingJacksonValue =
+          new MappingJacksonValue(punishmentService.findByPunishmentType(PunishmentType.MIP));
+    } else if ( offenceType.equals(OffenceType.SD) ) {
+      //third punishment
+      mappingJacksonValue =
+          new MappingJacksonValue(punishmentService.findByPunishmentType(PunishmentType.SDP));
+    } else {
+      mappingJacksonValue = new MappingJacksonValue(punishmentService.findAll());
+    }
+    SimpleBeanPropertyFilter simpleBeanPropertyFilterOne = SimpleBeanPropertyFilter
+        .filterOutAllExcept("id", "name");
+
+    FilterProvider filters = new SimpleFilterProvider()
+        .addFilter("Punishment", simpleBeanPropertyFilterOne);
+
+    mappingJacksonValue.setFilters(filters);
+    return mappingJacksonValue;
+  }
 }
