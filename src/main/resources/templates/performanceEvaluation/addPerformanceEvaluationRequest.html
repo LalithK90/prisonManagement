@@ -17,11 +17,13 @@
     <!--Form Name-->
     <div class="row text-left" >
       <div class="col" >
-        <h2 class="text-center" >
+        <h2 class="text-md-center" >
           <strong >
             <span data-th-text="${addStatus==true?'Add New Performance Evaluation Request':'Performance Evaluation Result Verification'}" ></span >
           </strong >
         </h2 >
+
+
       </div >
       <!--Home Button-->
       <div class="col" >
@@ -198,9 +200,9 @@
             <!--responsibilities -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
-
-                  <label class="control-label" >
-                    Any difficulties faced:
+                <label class="control-label" >
+                  Any difficulties faced:
+                </label>
                   </div>
 
               <div class="col-md-6" >
@@ -231,6 +233,7 @@
 
                 <label class="control-label" >
                   Strategies for improvement (if Appraisee is lagging behind):
+                </label>
               </div>
               <div class="col-md-6" >
                     <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
@@ -282,10 +285,9 @@
             </ul >
           </div >
         </div >
-      </div>
-</div>
-    </form >
-  </div >
+    </form>
+
+
 </div >
 
 <!--footer include-->
@@ -295,6 +297,6 @@
 
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
-
+</div>
 </body >
 </html >
