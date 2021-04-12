@@ -111,7 +111,7 @@ public class PunishmentController implements AbstractController< Punishment, Int
     return mappingJacksonValue;
   }
 
-  @GetMapping( "/offence/{offenceType}" )
+  @GetMapping( "/offenceType/{offenceType}" )
   @ResponseBody
   public MappingJacksonValue findByOffenceType(@PathVariable( "offenceType" ) String offenceTypeF) {
     OffenceType offenceType = OffenceType.valueOf(offenceTypeF);
