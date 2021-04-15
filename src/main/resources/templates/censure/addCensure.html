@@ -127,7 +127,7 @@
           </div >
           <div class="col-md-8" >
             <input type="date" class="form-control "
-                   data-th-field="*{incidentDate}" id="incidentDate" required >
+                   data-th-field="*{incidentDate}" id="incidentDate"  onchange="dateMatch()" required >
 
             <span data-th-errors="*{incidentDate}"
                   data-th-if="${#fields.hasErrors('incidentDate')}" class="error" >Error Employee code
@@ -296,6 +296,30 @@
         });
     });
 
+    /*<!--Date validation-->
+
+    $(document).ready(function () {
+      let assignDate = $("#assignDate").val() + `T00:00:00`;
+      let currentYear = new Date().getFullYear();
+      $(`#incidentDate`).attr('min', assignDate).attr('max', `${currentYear}-12-31T00:00:00`);
+
+    });
+
+    $(`#incidentDate`).change(function () {
+      let currentYear = new Date().getFullYear();
+      let dateString = `${currentYear}-1-1T00:00:00`;
+      let previousYearObject = new Date(dateString);
+      let assignDate = new Date($("#assignDate").val());
+
+
+      let nextDateString = `${currentYear}-12-31T00:00:00`;
+
+      if (previousYearObject < assignDate) {
+        $(this).attr('min', dateString);
+      } else {
+        $(`#incidentDate`).attr('min', nextDateString);
+      }
+    });*/
 </script >
 </body >
 </html >

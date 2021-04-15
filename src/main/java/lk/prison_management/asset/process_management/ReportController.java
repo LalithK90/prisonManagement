@@ -102,6 +102,7 @@ public class ReportController {
     return "report/employeeAllCount";
   }
 
+
 //  offence and employee count
 
   @GetMapping( "/offenceCount" )

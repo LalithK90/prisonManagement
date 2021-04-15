@@ -108,7 +108,7 @@
             </div >
             <div class="col-md-8" >
               <input id="wopNumber" data-th-field="*{wopNumber}" class="form-control" tabindex="5"
-                     type="text" minlength="5" required />
+                     type="text" minlength="5" maxlength="10" required />
               <span class="error" data-th-errors="*{wopNumber}"
                     data-th-if="${#fields.hasErrors('wopNumber')}" >Error Calling Name</span >
             </div >
