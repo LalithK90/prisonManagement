@@ -206,41 +206,39 @@
 <script >
 
     $(document).ready(function () {
-        let assignDate = $("#assignDate").val()+`T00:00:00`;
-
-        $(`#startAt`).attr('min',assignDate );
-        console.log("datte  "+ $("#assignDate").val())
+        let assignDate = $("#assignDate").val() + `T00:00:00`;
+        let currentYear = new Date().getFullYear();
+        $(`#startAt`).attr('min', assignDate).attr('max', `${currentYear}-12-31T00:00:00`);
+        $(`#endAt`).attr('max', `${currentYear}-12-31T00:00:00`).attr('min', `${currentYear}-1-1T00:00:00`);
     });
 
     $(`#startAt`).change(function () {
         let currentYear = new Date().getFullYear();
-        let previousYear = currentYear - 1;
-        let dateString = `${previousYear}-1-1T00:00:00`;
+        let dateString = `${currentYear}-1-1T00:00:00`;
         let previousYearObject = new Date(dateString);
         let assignDate = new Date($("#assignDate").val());
 
-        let nextYear = currentYear + 1;
-        let nextDateString = `${nextYear}-1-1T00:00:00`;
-        let nextYearObject = new Date(nextDateString);
+
+        let nextDateString = `${currentYear}-12-31T00:00:00`;
 
         if (previousYearObject < assignDate) {
-            $(this).attr('min', previousYearObject);
+            $(this).attr('min', dateString);
         } else {
-            $(`#startAt`).attr('min', assignDate);
+            $(`#startAt`).attr('min', nextDateString);
         }
         $(`#endAt`).attr({
             'min': $(this).val(),
-            'max': nextYearObject
+            'max': nextDateString
         });
     });
 
     $(`#endAt`).change(function () {
-        let currentYear = new Date().getFullYear();
-        let previousYear = currentYear;
-        let dateString = `${previousYear}-1-1T00:00:00`;
-        let dateObject = new Date(dateString);
-        $(this).attr('max', dateObject);
-        $(`#startAt`).attr('max', $(this).val());
+        if ($("#startAt").val()) {
+            swal({
+                title: "Please Select Start Date.. !",
+                icon: "warning",
+            })
+        }
     });
 
 
