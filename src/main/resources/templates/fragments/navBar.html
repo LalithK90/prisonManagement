@@ -17,6 +17,9 @@
          <li class="nav-itemBatch dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false"> <i class="fa fa-user"></i> General</a>
+
+<!--             here the nav bar authorization for each role to the relevant modification-->
+
             <div class="dropdown-menu" aria-labelledby="dropdownId">
                <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER','ROLE_CHIEF_CLERK','CLERK')" data-th-href="@{'/employee'}" class="nav-link text-dark"> Employee Management </a>
                <a data-sec-authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_COMMISSIONER')" data-th-href="@{'/user'}" class="nav-link text-dark"> User Management </a>
@@ -48,7 +51,7 @@
             </div>
          </li>
 
-         <li class="nav-itemBatch dropdown active" data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER','ROLE_ADMIN')">
+         <li class="nav-itemBatch dropdown active" data-sec-authorize="hasAnyAuthority('ROLE_COMMISSIONER')">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false"> <i class="fa fa-book-open"></i> Report</a>
             <div class="dropdown-menu text-dark" aria-labelledby="dropdownId">
