@@ -9,6 +9,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class InstituteService implements AbstractService<Institute, Integer> {
@@ -19,7 +20,8 @@ public class InstituteService implements AbstractService<Institute, Integer> {
     }
 
     public List<Institute> findAll() {
-        return instituteDao.findAll();
+        //.stream thamai delete wena eka nathi wela penne institute eke.
+        return instituteDao.findAll() .stream().filter(x->x.getLiveOrDead().equals(LiveOrDead.ACTIVE)).collect(Collectors.toList());
     }
 
     public Institute findById(Integer id) {
