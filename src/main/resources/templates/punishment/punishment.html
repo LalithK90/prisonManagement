@@ -52,8 +52,8 @@
                         <th data-th-text="${punishment.name}"></th>
                         <th>
                             <a  data-th-href="${'/punishment/edit/' + punishment.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
-                            <a  data-th-href="${'/punishment/remove/' + punishment.id}" class="btn btn-danger btn-sm">
-                             <!-- data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"--> <i class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
+                            <a  data-th-href="${'/punishment/delete/' + punishment.id}"  data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK','ROLE_COMMISSIONER')" class="btn btn-danger btn-sm">
+                           <i class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
                         </th>
                     </tr>
                 </tbody>

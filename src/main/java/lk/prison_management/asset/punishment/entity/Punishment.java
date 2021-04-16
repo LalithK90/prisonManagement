@@ -31,6 +31,6 @@ public class Punishment extends AuditEntity {
     private List< Censure > censures;
 
 
-    @Enumerated( EnumType.STRING )
-    private LiveOrDead liveOrDead;
+//    @Enumerated( EnumType.STRING )
+//    private LiveOrDead liveOrDead;
 }

@@ -42,7 +42,8 @@
             <div class="row">
                 <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
                     <!--Id-->
-                    <input data-th-field="*{id}" data-th-if="${addStatus==false}" hidden type="text"/>
+                    <label class="control-label" data-th-for="${id}">ID :</label>
+                    <input data-th-field="*{id}" data-th-if="${addStatus==false}"  readonly type="text"/>
                     <!--Main Punishment -->
                     <div class="form-row text-right">
                         <div class="col-md-4">
