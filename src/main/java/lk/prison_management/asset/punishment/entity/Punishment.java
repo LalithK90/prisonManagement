@@ -3,6 +3,7 @@ package lk.prison_management.asset.punishment.entity;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.commendation.entity.Commendation;
+import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.punishment.entity.enums.PunishmentType;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -28,4 +29,8 @@ public class Punishment extends AuditEntity {
 
     @OneToMany(mappedBy = "punishment")
     private List< Censure > censures;
+
+
+    @Enumerated( EnumType.STRING )
+    private LiveOrDead liveOrDead;
 }

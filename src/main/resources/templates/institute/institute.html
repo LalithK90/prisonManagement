@@ -59,8 +59,8 @@
                         <th>
                             <a id="instituteView" data-th-href="${'/institute/' + institute.id}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
                           <a id="instituteEdit" data-th-href="${'/institute/edit/' + institute.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
-<!--                            <a data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" data-th-href="${'/institute/delete/' + institute.id}" class="btn btn-danger btn-sm">-->
-                            <a id="instituteDelete" data-th-href="${'/institute/delete/' + institute.id}" class="btn btn-danger btn-sm"><i class="fa fa-trash" data-sec-authorize="hasAnyAuthority('ROLE_CLERK','ROLE_CHIEF_CLERK')"></i>&nbsp;Delete</a>
+
+                            <a id="instituteDelete" data-th-href="${'/institute/delete/' + institute.id}" class="btn btn-danger btn-sm" data-sec-authorize="hasAnyAuthority('ROLE_COMMISSIONER','ROLE_CHIEF_CLERK')"><i class="fa fa-trash" ></i>&nbsp;Delete</a>
                         </th>
                     </tr>
                 </tbody>
