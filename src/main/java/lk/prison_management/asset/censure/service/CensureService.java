@@ -58,4 +58,12 @@ public class CensureService implements AbstractService< Censure, Integer > {
   public List< Censure > findByCreatedAtBetweenAndOffence(LocalDateTime from, LocalDateTime to, Offence offence) {
     return censureDao.findByCreatedAtBetweenAndOffence(from, to, offence);
   }
+
+  public List< Censure> findByCreatedAtIsBetween(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+  return censureDao.findByCreatedAtIsBetween(startDateTime,endDateTime);
+  }
+
+  public Censure lastCensure() {
+   return censureDao.findFirstByOrderByIdDesc();
+  }
 }

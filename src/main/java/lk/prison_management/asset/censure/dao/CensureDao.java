@@ -16,4 +16,8 @@ public interface CensureDao extends JpaRepository< Censure, Integer > {
   List< Censure > findByOffence(Offence offence);
 
   List< Censure > findByCreatedAtBetweenAndOffence(LocalDateTime form, LocalDateTime to, Offence offence);
+
+  List< Censure> findByCreatedAtIsBetween(LocalDateTime startDateTime, LocalDateTime endDateTime);
+
+  Censure findFirstByOrderByIdDesc();
 }
