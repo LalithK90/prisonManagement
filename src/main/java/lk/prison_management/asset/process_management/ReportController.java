@@ -1,5 +1,6 @@
 package lk.prison_management.asset.process_management;
 
+import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.censure.service.CensureService;
 import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.common_asset.model.TwoDate;
@@ -8,17 +9,22 @@ import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
+import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.asset.institute.service.InstituteService;
 import lk.prison_management.asset.offence.entity.Offence;
 import lk.prison_management.asset.offence.service.OffenceService;
 import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
+import lk.prison_management.asset.process_management.mode.InstituteCensure;
 import lk.prison_management.asset.process_management.mode.InstituteEmployee;
 import lk.prison_management.asset.qualification.service.QualificationService;
 import lk.prison_management.util.service.DateTimeAgeService;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -120,6 +126,77 @@ public class ReportController {
     return "report/offenceEmployee";
   }
 
+  @GetMapping( "/instituteCensure" )
+  public String instituteCensure(Model model) {
+    return "report/instituteCensure";
 
+  }
+
+  @PostMapping( "/instituteCensure" )
+  public String instituteCensure(@ModelAttribute TwoDate twoDate, Model model) {
+    List< Institute > institutes = instituteService.findAll();
+
+    LocalDateTime startDateTime = dateTimeAgeService.dateTimeToLocalDateStartInDay(twoDate.getStartDate());
+    LocalDateTime endDateTime = dateTimeAgeService.dateTimeToLocalDateEndInDay(twoDate.getEndDate());
+
+
+    List< Censure > censures = censureService.findByCreatedAtIsBetween(startDateTime, endDateTime);
+    //.stream().filter(x->x.getEmployee().getInstitute().equals(   )).collect(Collectors.toList());
+
+    List< InstituteCensure > instituteCensures = new ArrayList<>();
+
+    institutes.forEach(x -> {
+      long count = 0;
+      for ( Censure censure : censures ) {
+        if ( censure.getEmployee().getInstitute().equals(x) ) {
+          count = count + 1;
+        }
+      }
+      InstituteCensure instituteCensure = new InstituteCensure();
+      instituteCensure.setInstitute(x);
+      instituteCensure.setCensureCount(count);
+      instituteCensures.add(instituteCensure);
+    });
+    String message = "This report is from " + twoDate.getStartDate() + " to " + twoDate.getEndDate();
+    model.addAttribute("message", message);
+    model.addAttribute("instituteCensures", instituteCensures);
+    return "report/instituteCensure";
+
+  }
+  @GetMapping( "/instituteCensureOne" )
+  public String instituteCensureOne(Model model) {
+    model.addAttribute("institutes", instituteService.findAll());
+    return "report/instituteCensureOne";
+
+  }
+
+  @PostMapping( "/instituteCensureOne" )
+  public String instituteCensureOne(@ModelAttribute TwoDate twoDate, Model model) {
+
+    Institute institute = instituteService.findById(twoDate.getId());
+
+    LocalDateTime startDateTime = dateTimeAgeService.dateTimeToLocalDateStartInDay(twoDate.getStartDate());
+    LocalDateTime endDateTime = dateTimeAgeService.dateTimeToLocalDateEndInDay(twoDate.getEndDate());
+
+
+    List< Censure > censures = censureService.findByCreatedAtIsBetween(startDateTime, endDateTime)
+        .stream()
+        .filter(x->x.getEmployee().getInstitute().equals(institute))
+        .collect(Collectors.toList());
+
+
+    String message = "This report is from " + twoDate.getStartDate() + " to " + twoDate.getEndDate();
+
+    InstituteCensure instituteCensure = new InstituteCensure();
+    instituteCensure.setInstitute(institute);
+    instituteCensure.setCensureCount(censures.size());
+
+    model.addAttribute("message", message);
+    model.addAttribute("instituteCensure", instituteCensure);
+
+    model.addAttribute("institutes", instituteService.findAll());
+    return "report/instituteCensureOne";
+
+  }
 
 }

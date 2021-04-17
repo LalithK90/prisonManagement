@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}" >
+  <meta charset="UTF-8" >
+  <title >Thymeleaf Springboot </title >
+</head >
+<body >
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
+<!--heading Area-->
+<div class="container-fluid" >
+  <div class="row text-center " >
+    <div class="col" >
+      <a href="/home" id="btnHome" class="btn btn-outline-info" >
+        &nbsp;Back To Home&nbsp;
+      </a >
+    </div >
+
+    <div class="col" >
+      <h4 class="text-info text-center" >
+        <strong >
+          Institute Censure Count Report
+        </strong >
+      </h4 >
+    </div >
+
+    <div class="col" >
+    </div >
+  </div >
+</div >
+<div class="container-fluid" >
+  <form action="/report/instituteCensure" method="post" >
+    <div class="form-row" >
+      <!--start At-->
+      <div class="col-4 text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="startDate" >Start At :</label >
+        </div >
+        <div class="col-md-8" >
+          <input type="date" class="form-control " onchange="dateMatch()"
+                 data-th-name="${'startDate'}" id="startDate" required >
+        </div >
+      </div >
+      <!--end At-->
+      <div class="col-4 text-right" >
+        <div class="col-md-4" >
+          <label class="control-label" for="endDate" >End At :</label >
+        </div >
+        <div class="col-md-8" >
+          <input type="date" class="form-control " onchange="dateMatch()"
+                 data-th-name="${'endDate'}" id="endDate" required >
+        </div >
+      </div >
+      <div class="col-4" >
+        <div class="col-md-4" >
+          <label class="control-label" for="startDate" ></label >
+        </div >
+        <div class="col-md-8" >
+          <button type="submit" class="btn btn-sm btn-success" >Search</button >
+        </div >
+      </div >
+    </div >
+  </form >
+</div >
+<div class="container-fluid" data-th-if="${not #lists.isEmpty(instituteCensures)}" >
+  <div class="row" >
+    <div class="col text-center" >
+      <span data-th-text="${message}" ></span >
+    </div >
+  </div >
+  <table class="table table-hover table-striped" id="myTable" >
+    <thead >
+    <tr >
+      <th > Index</th >
+      <th > Institute Name</th >
+      <th > Record Count</th >
+    </tr >
+    </thead >
+    <tbody >
+    <tr data-th-each="instituteCensure, rowCount : ${instituteCensures}" >
+      <th data-th-text="${rowCount.count}" ></th >
+      <th data-th-text="${instituteCensure.institute.name}" ></th >
+      <th data-th-text="${instituteCensure.censureCount}" ></th >
+    </tr >
+    </tbody >
+  </table >
+</div >
+
+<!--footer include-->
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<!--script include-->
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+<script >
+    function dateMatch() {
+        let startDateTime = $(`#startDate`).val();
+        let endDateTime = $(`#endDate`).val();
+        if (startDateTime !== "" && endDateTime !== "") {
+            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
+                swal({
+                    title: "Could you accept those days.. !",
+                    icon: "warning",
+                    text: "Please check your date time \n End Date Time can not be less than Start Date Time",
+                })
+                $(`#endDate`).val(startDateTime);
+            }
+        }
+    }
+</script >
+</body >
+</html >

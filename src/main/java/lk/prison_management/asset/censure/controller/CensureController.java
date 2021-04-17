@@ -4,7 +4,6 @@ import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.censure.service.CensureService;
 import lk.prison_management.asset.censure_file.entity.CensureFiles;
 import lk.prison_management.asset.censure_file.service.CensureFilesService;
-import lk.prison_management.asset.employee.controller.EmployeeController;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.offence.controller.OffenceController;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
@@ -12,6 +11,7 @@ import lk.prison_management.asset.offence.service.OffenceService;
 import lk.prison_management.asset.punishment.controller.PunishmentController;
 import lk.prison_management.asset.punishment.service.PunishmentService;
 import lk.prison_management.util.interfaces.AbstractController;
+import lk.prison_management.util.service.MakeAutoGenerateNumberService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,15 +31,18 @@ public class CensureController implements AbstractController< Censure, Integer> 
     private final EmployeeService employeeService;
     private final PunishmentService punishmentService;
     private final OffenceService offenceService;
+    private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
     public CensureController(CensureService censureService,
                              CensureFilesService censureFilesService, EmployeeService employeeService,
-                             PunishmentService punishmentService, OffenceService offenceService) {
+                             PunishmentService punishmentService, OffenceService offenceService,
+                             MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
         this.censureService = censureService;
         this.censureFilesService = censureFilesService;
         this.employeeService = employeeService;
         this.punishmentService = punishmentService;
         this.offenceService = offenceService;
+        this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
     }
 
 
@@ -106,6 +109,16 @@ public class CensureController implements AbstractController< Censure, Integer> 
             model.addAttribute("employeeDetail", employeeService.findById(censure.getEmployee().getId()));
             return "censure/addCensure";
         }
+
+        if ( censure.getId() == null ) {
+            Censure lastCensure = censureService.lastCensure();
+            if ( lastCensure== null ) {
+                censure.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
+            } else {
+                censure.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(lastCensure.getCode().substring(4)).toString());
+            }
+        }
+
         redirectAttributes.addFlashAttribute("commendationDetail", censureService.persist(censure));
         return "redirect:/censure";
     }
