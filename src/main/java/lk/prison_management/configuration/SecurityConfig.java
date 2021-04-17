@@ -96,6 +96,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/punishment/**").hasAnyRole("CLERK", "CHIEF_CLERK", "ADMIN", "COMMISSIONER")
                     .antMatchers("/user/**").hasAnyRole("ADMIN", "COMMISSIONER")
                     .antMatchers("/role/**").hasAnyRole("ADMIN", "COMMISSIONER")
+                        .antMatchers("/report/**").hasAnyRole( "COMMISSIONER")
                     .anyRequest()
                     .authenticated())
         // Login form

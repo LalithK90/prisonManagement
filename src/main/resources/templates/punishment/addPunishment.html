@@ -20,7 +20,7 @@
         <div class="col">
             <h2  class="text-center">
                 <strong>
-                    <span data-th-text="${addStatus==true?'Add New Punishment':'Update Punishment Details'}"></span>
+                    <span data-th-text="${addStatus==true?'Add New Punishment':'Update Punishment Details'}">Add New Punishment</span>
                 </strong>
             </h2>
         </div>
@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="form-group col-md-12 col-sm-12 text-center flex-column ">
                     <!--Id-->
-                    <label class="control-label" data-th-for="${id}">ID :</label>
+                    <label class="control-label" data-th-for="${id}"></label>
                     <input data-th-field="*{id}" data-th-if="${addStatus==false}"  readonly type="text"/>
                     <!--Main Punishment -->
                     <div class="form-row text-right">
@@ -50,6 +50,7 @@
                             <label class="control-label" for="mainPunishment">Punishment Type :</label>
                         </div>
                         <div class="col-md-4">
+
                             <select class="form-control" data-th-field="*{punishmentType}" id="mainPunishment" required
                                     style="font-size: large" tabindex="4">
                                 <option value="">Please select</option>
@@ -57,12 +58,15 @@
                                         data-th-text="${punishmentType.punishmentType}"
                                         data-th-value="${punishmentType}"></option>
                             </select>
+
                         </div>
                     </div>
                     <!--Name-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
-                            <label class="control-label" data-th-for="${'name'}">Name :</label>
+                            <div class="required">
+                            <label class="control-label" data-th-for="${'name'}" >Name :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <input class="form-control" data-th-field="*{name}" required tabindex="4" type="text"/>
@@ -95,7 +99,7 @@
                     </div>
                 </div>
             </div>
-
+            <span class="required_notification">* Denotes Required Field</span>
         </form>
     </div>
 

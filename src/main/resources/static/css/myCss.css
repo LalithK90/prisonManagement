@@ -282,3 +282,8 @@ input{
 input{
     color: black;
 }
+/*required astrik mark eka form wla*/
+.required:after {
+    content:" *";
+    color: red;
+}

@@ -63,8 +63,10 @@
           <th data-th-text="${employee.code}" ></th >
           <th data-th-text="${employee.callingName}" ></th >
           <th data-th-text="${employee.mobileOne}" ></th >
+          <th data-th-text="${employee.nic}" ></th >
           <th data-th-text="${employee.designation.designation}" ></th >
           <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
+
           <th >
             <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >View</a >
             <a id="employeeEdit" data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm" ><i
