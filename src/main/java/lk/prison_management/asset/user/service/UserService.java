@@ -53,7 +53,9 @@ public class UserService implements AbstractService<User, Integer > {
     @CacheEvict( allEntries = true )
     public boolean delete(Integer id) {
         //according to this project can not be deleted user
-        userDao.deleteById(id);
+        User  user = userDao.getOne(id);
+        user.setEnabled(false);
+        userDao.save(user);
         return false;
     }
 
