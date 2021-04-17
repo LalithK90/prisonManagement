@@ -115,7 +115,7 @@ public class CensureController implements AbstractController< Censure, Integer> 
             if ( lastCensure== null ) {
                 censure.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
-                censure.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(lastCensure.getCode().substring(4)).toString());
+                censure.setRefNumber("SLPC" + makeAutoGenerateNumberService.numberAutoGen(lastCensure.getRefNumber().substring(4)).toString());
             }
         }
 
