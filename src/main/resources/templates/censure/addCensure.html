@@ -61,7 +61,7 @@
       <div id="form" >
         <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
           <div class="col-md-4" >
-            <label class="control-label" for="id" >ID :</label >
+            <label class="control-label" for="id" >ID </label >
           </div >
           <div class="col-md-8" >
             <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
@@ -70,7 +70,9 @@
         <!--refNumber-->
         <div id="" data-th-if="${addStatus==false}" class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="abc" >Ref Number :</label >
+          </div>
           </div >
           <div class="col-md-8" >
             <input id="abc" data-th-field="*{refNumber}" class="form-control" type="text" readonly />
@@ -203,7 +205,7 @@
             </ul >
           </div >
         </div >
-      </div >
+
     </form >
 
   </div >
