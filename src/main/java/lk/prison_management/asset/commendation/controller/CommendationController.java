@@ -123,7 +123,7 @@ public class CommendationController implements AbstractController< Commendation,
                 commendationFilesService.persist(commendationFile);
             }
             commendation = commendationSaved;
-            return "redirect:/employee";
+            return "redirect:/commendation";
 
         } catch ( Exception e ) {
             ObjectError error = new ObjectError("commendation",
