@@ -152,6 +152,7 @@ input{
 /*Form START*/
 .form-Border{
     background-color: rgba(25,6,7,0.93);!important;
+    border-width: thin;
 
 
 }

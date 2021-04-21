@@ -96,7 +96,7 @@ public class PerformanceEvaluationRequestController {
       emailService.sendEmail(performanceEvaluationRequestSaved.getEmployee().getOfficeEmail(),
               "New Performance Apprecial to be evaluated " , message.toString());
 
-    /*  if (performanceEvaluationRequestSaved.getEmployee().getContactOne() != null) {
+     /*if (performanceEvaluationRequestSaved.getEmployee().getContactOne() != null) {
         try {
           String mobileNumber = purchaseOrderSaved.getSupplier().getContactOne().substring(1, 10);
           twilioMessageService.sendSMS("+94" + mobileNumber, "There is immediate PO from " +
