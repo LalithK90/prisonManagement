@@ -107,7 +107,9 @@
             <!--task list -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
+                <div class="required">
                 <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list :</label >
+                </div>
               </div >
               <div class="col-md-4 text-center" >
                 <div class="form-check" >
@@ -135,12 +137,14 @@
             <!--responsibilities -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
+                <div class="required">
                 <label class="control-label" data-th-for="${'taskLists'}" >Main Areas of Responsibility and Tasks
-                                                                           :</label >
+                                                                           :</label ></div>
               </div >
               <div class="col-md-8" >
                 <div class="form-row text-center" >
                   <label class="control-label" >
+
                     Responsibility
                     <textarea class="form-control" data-th-field="*{responsibility}" ></textarea >
                     <!--Sinhala modal button -->
@@ -177,7 +181,8 @@
             <!--satisfied -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
-                <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance:</label >
+                <div class="required">
+                <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance:</label ></div>
               </div >
               <div class="col-md-4 text-center" >
                 <div class="form-check" >
@@ -286,6 +291,7 @@
             </ul >
           </div >
         </div >
+      <span class="required_notification">* Denotes Required Field</span>
     </form>
 
 

@@ -74,6 +74,7 @@ public class PunishmentController implements AbstractController< Punishment, Int
     return "redirect:/punishment";
   }
 
+
   @GetMapping( "/delete/{id}" )
   public String delete(@PathVariable Integer id, Model model) {
     punishmentService.delete(id);

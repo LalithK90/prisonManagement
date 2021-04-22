@@ -69,7 +69,9 @@
       <!--Name-->
       <div class="form-row text-right">
         <div class="col-md-4" >
-          <label class="control-label" for="name" >Name :</label >
+          <div class="required">
+          <label class="control-label" for="name" >Name of the qualification :</label >
+          </div>
         </div >
         <div class="col-md-8" >
           <input id="name" data-th-field="*{name}" class="form-control" tabindex="4"
@@ -82,7 +84,9 @@
       <!--certificateNumber-->
       <div class="form-row text-right">
         <div class="col-md-4" >
+          <div class="required">
           <label class="control-label" for="certificateNumber" >Certificate Number :</label >
+          </div>
         </div >
         <div class="col-md-8" >
           <input id="certificateNumber" data-th-field="*{certificateNumber}" class="form-control" tabindex="4"
@@ -95,7 +99,9 @@
       <!--startDate-->
       <div class="form-row text-right">
         <div class="col-md-4" >
+          <div class="required">
           <label class="control-label" for="startDate" >Start Date :</label >
+          </div>
         </div >
         <div class="col-md-8" >
           <input id="startDate" data-th-field="*{startDate}" class="form-control" tabindex="4"
@@ -108,7 +114,9 @@
       <!--endDate-->
       <div class="form-row text-right">
         <div class="col-md-4" >
+          <div class="required">
           <label class="control-label" for="endDate" >End Date :</label >
+          </div>
         </div >
         <div class="col-md-8" >
           <input id="endDate" data-th-field="*{endDate}" class="form-control" tabindex="4"
@@ -169,7 +177,7 @@
       </div>
       </div>
     </form >
-
+    <span class="required_notification">* Denotes Required Field</span>
   </div >
 
 </div >

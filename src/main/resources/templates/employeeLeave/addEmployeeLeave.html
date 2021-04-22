@@ -72,7 +72,9 @@
         <!--Leave Type radio button eka -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="id" >Leave Type :</label >
+            </div>
           </div >
           <div class="col-md-4" >
             <div class="custom-control custom-checkbox custom-control-inline "
@@ -93,7 +95,9 @@
         <!--start At-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="startAt" >Start At :</label >
+            </div>
           </div >
           <div class="col-md-8" >
             <input type="datetime-local" class="form-control " onchange="dateMatch()"
@@ -107,7 +111,9 @@
         <!--end At-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="endAt" >End At :</label >
+            </div>
           </div >
           <div class="col-md-8" >
             <input type="datetime-local" class="form-control " onchange="dateMatch()"
@@ -144,7 +150,9 @@
         <!--Remarks-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="name" >Remark :</label >
+            </div>
           </div >
           <div class="col-md-8" >
             <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
@@ -189,7 +197,7 @@
           </ul >
         </div >
       </div >
-
+      <span class="required_notification">* Denotes Required Field</span>
     </form >
   </div >
 </div >
@@ -211,6 +219,8 @@
         $(`#startAt`).attr('min', assignDate).attr('max', `${currentYear}-12-31T00:00:00`);
         $(`#endAt`).attr('max', `${currentYear}-12-31T00:00:00`).attr('min', `${currentYear}-1-1T00:00:00`);
     });
+
+
 
     $(`#startAt`).change(function () {
         let currentYear = new Date().getFullYear();

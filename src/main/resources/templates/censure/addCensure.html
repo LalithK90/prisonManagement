@@ -81,7 +81,9 @@
         <!--offence type radio button eka-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="offence" >Offence Type :</label >
+            </div>
           </div >
           <div class="col-md-8" >
             <div class="custom-control custom-checkbox custom-control-inline "
@@ -101,7 +103,9 @@
         <!--Offence -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+          <div class="required">
             <label class="control-label" for="offence" >Offence :</label >
+          </div>
           </div >
           <div class="col-md-8" >
             <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
@@ -113,7 +117,10 @@
         <!--Punishment -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="punishment" >Punishment :</label >
+            </div>
+
           </div >
           <div class="col-md-8" >
             <select id="punishment" data-th-field="*{punishment}" class="form-control" tabindex="19"
@@ -125,7 +132,9 @@
         <!--Incident Date-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
+            <div class="required">
             <label class="control-label" for="incidentDate" >Incident Date :</label >
+            </div>
           </div >
           <div class="col-md-8" >
             <input type="date" class="form-control "
@@ -206,6 +215,7 @@
           </div >
         </div >
       </div>
+      <span class="required_notification">* Denotes Required Field</span>
     </form >
 
   </div >

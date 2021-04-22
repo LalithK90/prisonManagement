@@ -105,7 +105,7 @@ public class EmployeeInstituteController {
       employee.setSupervisor(employeeService.findById(employeeInstitute.getSupervisor().getId()));
       employeeService.persist(employee);
     }
-    return "redirect:/employee";
+    return "redirect:/employeeInstitute";
   }
 
   @GetMapping( "/delete/{id}" )
