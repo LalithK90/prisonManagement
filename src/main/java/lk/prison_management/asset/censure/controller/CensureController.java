@@ -82,7 +82,7 @@ public class CensureController implements AbstractController< Censure, Integer >
 
     model.addAttribute("addStatus", addStatus);
     model.addAttribute("offenceTypes", OffenceType.values());
-    model.addAttribute("employeeDetail", censure.getEmployee());
+    model.addAttribute("employeeDetail", employeeService.findById(censure.getEmployee().getId()));
     model.addAttribute("censure", censure);
     model.addAttribute("punishmentFindUrl", MvcUriComponentsBuilder
         .fromMethodName(PunishmentController.class, "findByOffence", "")
@@ -127,7 +127,7 @@ public class CensureController implements AbstractController< Censure, Integer >
     try {
       //save censure images file
       if ( censure.getFile().getOriginalFilename() != null ) {
-        CensureFiles censureFiles = censureFilesService.findByEmployee(censureSaved);
+        CensureFiles censureFiles = censureFilesService.findByCensure(censureSaved);
         if ( censureFiles != null ) {
           // update new contents
           censureFiles.setPic(censure.getFile().getBytes());
@@ -136,7 +136,7 @@ public class CensureController implements AbstractController< Censure, Integer >
           censureFiles = new CensureFiles(censure.getFile().getOriginalFilename(),
                                           censure.getFile().getContentType(),
                                           censure.getFile().getBytes(),
-                                          censure.getEmployee().getNic().concat("-" + LocalDateTime.now()),
+                                          censureSaved.getRefNumber().concat("-" + LocalDateTime.now()),
                                           UUID.randomUUID().toString().concat("censure"));
           censureFiles.setCensure(censure);
         }
@@ -149,9 +149,10 @@ public class CensureController implements AbstractController< Censure, Integer >
       ObjectError error = new ObjectError("censure",
                                           "There is already in the system. <br>System message -->" + e.toString());
       bindingResult.addError(error);
+      System.out.println(e.toString());
       boolean addStatus = censure.getId() != null;
 
-      return commonAddCensure(model, censure, addStatus);
+      return commonAddCensure(model, censureSaved, addStatus);
     }
 
   }

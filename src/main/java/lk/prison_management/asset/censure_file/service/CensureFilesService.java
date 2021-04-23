@@ -64,7 +64,7 @@ public class CensureFilesService {
         return null;
     }
 
-    public CensureFiles findByEmployee(Censure censure) {
+    public CensureFiles findByCensure(Censure censure) {
         return censureFilesDao.findByCensure(censure);
     }
 }
