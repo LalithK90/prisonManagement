@@ -5,10 +5,8 @@ import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.commondation_file.entity.CommendationFiles;
 import lk.prison_management.asset.commondation_file.service.CommendationFilesService;
-import lk.prison_management.asset.commondation_file.entity.CommendationFiles;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
-import lk.prison_management.asset.user.entity.User;
 import lk.prison_management.util.interfaces.AbstractController;
 import lk.prison_management.util.service.MakeAutoGenerateNumberService;
 import org.springframework.http.HttpHeaders;
@@ -44,7 +42,7 @@ public class CommendationController implements AbstractController< Commendation,
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("offences", commendationService.findAll());
+        model.addAttribute("commendations", commendationService.findAll());
         return "commendation/commendation";
     }
 
