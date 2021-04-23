@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--heading Area-->
-<div class="container-fluid form-style" >
+<div class="container-fluid form-Border" >
   <div class="row text-center formManagement border-info" >
     <div class="col" >
       <a href="/home" id="btnHome" class="btn btn-outline-info" >
@@ -36,36 +36,39 @@
 <div class="container-fluid     text-center" >
   <div class="col" >
     <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}" >
-      <table class="table table-hover table-striped" id="myTable" >
-        <thead >
+      <table class="table table-hover table-striped table-inverse" id="myTable" >
+        <thead class="thead-inverse">
         <tr >
           <th > Index</th >
           <th > Image</th >
           <th > Employee Code</th >
           <th > Calling Name</th >
           <th > Mobile</th >
+          <th>NIC</th>
           <th > Designation</th >
           <th > Status</th >
-          <th > Modify</th >
+          <th style="width:20%;"> Modify</th >
         </tr >
         </thead >
         <tbody >
         <tr data-th-each="employee, rowCount : ${employees}" >
-          <th data-th-text="${rowCount.count}" ></th >
-          <th >
+          <td data-th-text="${rowCount.count}" ></td >
+          <td >
             <div class="image" data-th-if="${employee.fileInfo !=null}" >
               <img id="img" class="rounded"
                    style="height:50px; width:50px;border-radius: 1px"
                    alt="Employee images"
                    data-th-src="${employee.fileInfo.url}" />
             </div >
-          </th >
-          <th data-th-text="${employee.code}" ></th >
-          <th data-th-text="${employee.callingName}" ></th >
-          <th data-th-text="${employee.mobileOne}" ></th >
-          <th data-th-text="${employee.designation.designation}" ></th >
-          <th data-th-text="${employee.employeeStatus.employeeStatus}" ></th >
-          <th >
+          </td >
+          <td data-th-text="${employee.code}" ></td >
+          <td data-th-text="${employee.callingName}" ></td >
+          <td data-th-text="${employee.mobileOne}" ></td >
+          <td data-th-text="${employee.nic}" ></td >
+          <td data-th-text="${employee.designation.designation}" ></td >
+          <td data-th-text="${employee.employeeStatus.employeeStatus}" ></td >
+
+          <td >
             <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm" >View</a >
             <a id="employeeEdit" data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm" ><i
                   class="fa fa-edit" ></i >&nbsp;Edit</a >
@@ -73,7 +76,7 @@
                data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-danger btn-sm" ><i
                   class="fa fa-trash" ></i >
               Delete</a >
-          </th >
+          </td >
         </tr >
         </tbody >
       </table >

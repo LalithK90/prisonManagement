@@ -87,7 +87,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/censure/**").hasAnyRole("CLERK", "CHIEF_CLERK", "USER", "COMMISSIONER")
                     .antMatchers("/commendation/**").hasAnyRole("CLERK", "CHIEF_CLERK", "USER", "COMMISSIONER")
                     .antMatchers("/employee/**").hasAnyRole("CLERK", "CHIEF_CLERK", "ADMIN", "USER", "COMMISSIONER")
-                    .antMatchers("/employeeInstitute/**").hasAnyRole("CLERK", "CHIEF_CLERK", "USER", "COMMISSIONER")
                     .antMatchers("/employeeLeave/**").hasAnyRole("CLERK", "CHIEF_CLERK", "USER", "COMMISSIONER")
                     .antMatchers("/performanceEvaluation/**").hasAnyRole("USER", "CHIEF_CLERK", "COMMISSIONER")
                     .antMatchers("/qualification/**").hasAnyRole("CLERK", "CHIEF_CLERK", "USER", "COMMISSIONER")
@@ -96,6 +95,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/punishment/**").hasAnyRole("CLERK", "CHIEF_CLERK", "ADMIN", "COMMISSIONER")
                     .antMatchers("/user/**").hasAnyRole("ADMIN", "COMMISSIONER")
                     .antMatchers("/role/**").hasAnyRole("ADMIN", "COMMISSIONER")
+                        .antMatchers("/report/**").hasAnyRole( "COMMISSIONER")
+
                     .anyRequest()
                     .authenticated())
         // Login form

@@ -8,27 +8,37 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--Heading Area-->
-<div class="container-fluid  ">
-    <div class="row text-center ">
-        <!-- New Institute Button-->
-        <a class="btn btn-info" href="/employee/findAll" ><i class="fa fa-plus" ></i >
-            &nbsp;Add New</a >
+
+<div class="container-fluid form-Border">
+    <div class="row text-center " >
+        <div class="col">
+            <a href="/home" id="btnHome" class="btn btn-outline-info" >
+                &nbsp;Back To Home&nbsp;
+            </a >
+    </div>
+
         <!-- List Name-->
-        <div class="col">
-            <h2  class="text-center">
-                <strong>
-                    Offence Management
-                </strong>
-            </h2>
+        <div class="row text-center">
+            <div class="col">
+                <h4  class="text-info text-center">
+                    <strong>
+                        commendation Management
+                    </strong>
+                </h4>
+            </div>
         </div>
+
+        <div class="col">
+                <!-- New commendation Button-->
+                <a class="btn btn-info" href="/employee/findAll" ><i class="fa fa-plus" ></i >
+                    &nbsp;Add New Commendation</a >
+
+        </div>
+
+
+
         <!-- Home Button-->
-        <div class="col">
-            <a href="/commendation" id="searchShow" class="btn btn-primary">
-            <!--<i class="fa fa-user " style="font-size: 20px"></i>-->
-                <i class="fas fa-home" style="font-size: 20px"></i>&nbsp;&nbsp;Home
-                &nbsp;
-            </a>
-        </div>
+
     </div>
 </div>
 <div class="container-fluid text-center">

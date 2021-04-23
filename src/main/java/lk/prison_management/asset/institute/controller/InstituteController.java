@@ -53,7 +53,7 @@ public class InstituteController implements AbstractController<Institute, Intege
     @PostMapping(value = {"/save", "/update"})
     public String persist(@Valid @ModelAttribute Institute institute, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
-            System.out.println(" sadasd ");
+//            System.out.println(" sadasd ");
             model.addAttribute("addStatus", true);
             model.addAttribute("prisonTypes", PrisonType.values());
             model.addAttribute("institute", institute);

@@ -37,13 +37,17 @@ $(document).ready(function () {
         $("input:radio[name=gender]").filter(`[value=${calculateGender(nic)}]`).prop('checked', true);
 
     });
-
+   /* /!* Patient and employee Nic Validation - end*!/
+    //input type date can not be selected future date
+    $('[type="date"]').prop('max', function () {
+        return new Date().toJSON().split('T')[0];
+    });*/
 
 });
 
 
 // regex
-let nicRegex = /^([0-9]{9}[vV|xX])|^([0-9]{12})$/;
+let nicRegex = /^([0-9]{9}[|X|V]|[0-9]{12})$/;
 let mobileRegex = /^([0][7][0|1|2|4|5|6|7|8][\d]{7}$)|^([7][0|1|2|4|5|6|7|8][\d]{7})$/;
 let landRegex = /^0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
 let bothLandMobile = /^([0][7][0|1|2|4|5|6|7|8][\d]{7}$)|^([7][0|1|2|4|5|6|7|8][\d]{7})|0((11)|(2(1|[3-7]))|(3[1-8])|(4(1|5|7))|(5(1|2|4|5|7))|(6(3|[5-7]))|([8-9]1))([2-4]|5|7|9)[0-9]{6}$/;
@@ -551,3 +555,9 @@ $(".reveal").on('click', function () {
         $pwd.attr('type', 'password');
     }
 });
+$("#myTable").DataTable({
+    "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+    "ordering": false,
+    stateSave: true,
+});
+

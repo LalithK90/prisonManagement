@@ -21,6 +21,7 @@ import java.util.List;
 @JsonFilter( "Institute" )
 public class Institute extends AuditEntity {
 
+
   private String name;
 
   @Column( unique = true )

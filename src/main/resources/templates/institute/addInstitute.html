@@ -44,17 +44,20 @@
                     <!--Id-->
                     <div class="form-row text-right" data-th-if="${addStatus==false}" id="idStatus">
                         <div class="col-md-4">
-                            <label class="control-label" for="id">ID :</label>
+                            <label class="control-label" data-th-for="${id}">ID :</label>
                         </div>
                         <div class="col-md-4">
-                            <input class="form-control" data-th-field="*{id}" id="id" readonly type="text"/>
-                            <input class="form-control" data-th-field="*{liveDead}" readonly type="hidden"/>
+                           <!--liveOrDead eka liveDead thibboth waradi ethakota update wenne nea-->
+                            <input class="form-control" data-th-field="*{id}" readonly />
+                            <input class="form-control" data-th-field="*{liveOrDead}" readonly type="hidden"/>
                         </div>
                     </div>
                     <!--Main Institute -->
                     <div class="form-row text-right">
                         <div class="col-md-4">
+                            <div class="required">
                             <label class="control-label" for="mainInstitute">Prison Type :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <select class="form-control" data-th-field="*{prisonType}" id="mainInstitute" required
@@ -69,7 +72,9 @@
                     <!--Name-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
+                            <div class="required">
                             <label class="control-label" data-th-for="${'name'}">Name :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <input class="form-control" data-th-field="*{name}" required tabindex="4" type="text"/>
@@ -80,11 +85,13 @@
                     <!--Land-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
-                            <label class="control-label" data-th-for="${'name'}">Land :</label>
+                            <div class="required">
+                            <label class="control-label"  data-th-for="${'name'}">Land :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <input class="form-control" data-th-field="*{land}" required tabindex="4" type="text"
-                            maxlength="10"/>
+                            <input class="form-control" data-th-field="*{land}" required tabindex="4" type="tel"
+                                     maxlength="10"/>
                             <span class="error"
                                   data-th-errors="*{land}" data-th-if="${#fields.hasErrors('land')}">Error Name</span>
                         </div>
@@ -103,7 +110,9 @@
                     <!--address-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
+                            <div class="required">
                             <label class="control-label" data-th-for="${'address'}">Address :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <textarea class="form-control" data-th-field="*{address}"></textarea>
@@ -134,7 +143,7 @@
                     </ul>
                 </div>
             </div>
-
+            <span class="required_notification">* Denotes Required Field</span>
         </form>
     </div>
 </div>

@@ -1,10 +1,13 @@
 package lk.prison_management.asset.employee_leave.controller;
 
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_leave.entity.EmployeeLeave;
 import lk.prison_management.asset.employee_leave.entity.enums.LeaveType;
 import lk.prison_management.asset.employee_leave.service.EmployeeLeaveService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,6 +45,8 @@ public class EmployeeLeaveController {
 model.addAttribute("employeeDetail", employeeService.findById(id));
     return commonThing(model, true, new EmployeeLeave());
   }
+
+
 
   @GetMapping( "/{id}" )
   public String findById(@PathVariable Integer id, Model model) {
