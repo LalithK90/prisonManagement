@@ -72,9 +72,9 @@
         <!--Leave Type radio button eka -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="id" >Leave Type :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="id" >Leave Type :</label >
+            </div >
           </div >
           <div class="col-md-4" >
             <div class="custom-control custom-checkbox custom-control-inline "
@@ -95,9 +95,9 @@
         <!--start At-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="startAt" >Start At :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="startAt" >Start At :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <input type="datetime-local" class="form-control " onchange="dateMatch()"
@@ -111,13 +111,13 @@
         <!--end At-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="endAt" >End At :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="endAt" >End At :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <input type="datetime-local" class="form-control " onchange="dateMatch()"
-                   data-th-field="*{endAt}" id="endAt"  >
+                   data-th-field="*{endAt}" id="endAt" >
 
             <span data-th-errors="*{endAt}"
                   data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Date code
@@ -150,9 +150,9 @@
         <!--Remarks-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="name" >Remark :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="name" >Remark :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <textarea id="name" data-th-field="*{remarks}" class="form-control" row="4" required ></textarea >
@@ -197,7 +197,7 @@
           </ul >
         </div >
       </div >
-      <span class="required_notification">* Denotes Required Field</span>
+      <span class="required_notification" >* Denotes Required Field</span >
     </form >
   </div >
 </div >
@@ -213,37 +213,46 @@
 
 <script >
 
-  $(document).ready(function () {
-        let assignDate = $("#assignDate").val() + `T00:00:00`;
-        let currentYear = new Date().getFullYear();
-        $(`#startAt`).attr('min', assignDate).attr('max', `${currentYear}-12-31T00:00:00`);
-        $(`#endAt`).attr('max', `${currentYear}-12-31T00:00:00`).attr('min', `${currentYear}-1-1T00:00:00`);
+    $(document).ready(function () {
+        onloadDateValidate();
     });
 
+    function onloadDateValidate() {
+        let assignDate = $("#assignDate").val();
+        let currentYear = new Date().getFullYear();
 
+        let isLarger = new Date(assignDate) > new Date();
+
+        let minDate = `${currentYear}-01-01T00:00:00`;
+        let maxDate = `${currentYear}-12-31T00:00:00`;
+
+        if (isLarger) {
+            $(`#startAt`)
+                .attr('min', assignDate + 'T00:00:00')
+                .attr('max', maxDate);
+        } else {
+            $(`#startAt`)
+                .attr('min', minDate)
+                .attr('max', maxDate);
+        }
+
+        $(`#endAt`)
+            .attr('min', minDate)
+            .attr('max', maxDate);
+    }
 
     $(`#startAt`).change(function () {
-        let currentYear = new Date().getFullYear();
-        let dateString = `${currentYear}-1-1T00:00:00`;
-        let previousYearObject = new Date(dateString);
-        let assignDate = new Date($("#assignDate").val());
+        minDateVal('startAt')
+
+        $(`#endAt`).attr('min', $(this).val());
 
 
-        let nextDateString = `${currentYear}-12-31T00:00:00`;
-
-        if (previousYearObject < assignDate) {
-            $(this).attr('min', dateString);
-        } else {
-            $(`#startAt`).attr('min', nextDateString);
-        }
-        $(`#endAt`).attr({
-            'min': $(this).val(),
-            'max': nextDateString
-        });
     });
 
     $(`#endAt`).change(function () {
-        if ($("#startAt").val()) {
+        minDateVal('endAt')
+        let date = $("#startAt").val();
+        if (!date) {
             swal({
                 title: "Please Select Start Date.. !",
                 icon: "warning",
@@ -251,6 +260,21 @@
         }
     });
 
+
+    function minDateVal(val) {
+        let dateTimeSelect = $(`#${val}`).val();
+        let minDateTimeValue = $(`#${val}`).attr('min');
+        console.log("min selct " +Date.parse(dateTimeSelect))
+        console.log("min "+ Date.parse(minDateTimeValue))
+        let isLarge = Date.parse(minDateTimeValue) >= Date.parse(dateTimeSelect)
+        console.log("larder "+isLarge);
+        if (isLarge){
+            console.log("here ")
+        }
+
+
+        console.log("date select " + dateTimeSelect + " mindate  " + minDateTimeValue);
+    }
 
     function dateMatch() {
         let startDateTime = $(`#startAt`).val();
@@ -264,7 +288,8 @@
                     icon: "warning",
                     text: "Please check your date time \n End Date Time can not be less than Start Date Time",
                 })
-                $(`#endAt`).val(startDateTime);
+                $(`#endAt`).val(new Date());
+                $(`#startAt`).val(new Date());
                 $("#dayCount").val(0);
                 $("#hourCount").val(0);
             } else {
