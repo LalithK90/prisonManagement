@@ -4,8 +4,7 @@ import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.censure.service.CensureService;
 import lk.prison_management.asset.censure_file.entity.CensureFiles;
 import lk.prison_management.asset.censure_file.service.CensureFilesService;
-import lk.prison_management.asset.censure.service.EmployeeService;
-import lk.prison_management.asset.censure_file.entity.CensureFiles;
+import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.offence.controller.OffenceController;
 import lk.prison_management.asset.offence.entity.enums.OffenceType;
 import lk.prison_management.asset.offence.service.OffenceService;
@@ -75,7 +74,7 @@ public class CensureController implements AbstractController< Censure, Integer >
   @GetMapping( "/add/{id}" )
   public String form(@PathVariable( "id" ) Integer id, Model model) {
     Censure censure = new Censure();
-    censure.setCensure(employeeService.findById(id));
+    censure.setEmployee(employeeService.findById(id));
     return commonAddCensure(model, censure, true);
   }
 
@@ -155,7 +154,6 @@ public class CensureController implements AbstractController< Censure, Integer >
       return commonAddCensure(model, censure, addStatus);
     }
 
-    return "redirect:/censure";
   }
 
   @GetMapping( "/delete/{id}" )
