@@ -7,7 +7,6 @@ import lk.prison_management.asset.censure_file.entity.CensureFiles;
 import lk.prison_management.asset.common_asset.model.FileInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
@@ -51,8 +50,8 @@ public class CensureFilesService {
         return censureFilesDao.findByNewId(filename);
     }
 
-    @Cacheable
-    public FileInfo employeeFileDownloadLinks(Censure censure) {
+
+    public FileInfo censureFileDownloadLinks(Censure censure) {
         CensureFiles censureFiles = censureFilesDao.findByCensure(censure);
         if (censureFiles != null) {
             String filename = censureFiles.getName();
