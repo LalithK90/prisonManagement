@@ -1,5 +1,6 @@
 package lk.prison_management.asset.punishment.service;
 
+import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.punishment.dao.PunishmentDao;
 import lk.prison_management.asset.punishment.entity.Punishment;
 import lk.prison_management.asset.punishment.entity.enums.PunishmentType;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PunishmentService implements AbstractService<Punishment, Integer> {
@@ -31,7 +33,7 @@ public class PunishmentService implements AbstractService<Punishment, Integer> {
     }
 
     public boolean delete(Integer id) {
-        offenceDao.deleteById(id);
+      offenceDao.deleteById(id);
         return true;
     }
 

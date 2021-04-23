@@ -12,7 +12,7 @@
     <div class="row text-center ">
         <!-- New Institute Button-->
         <div class="col">
-            <a class="btn btn-success" href="/institute/add"><i class="fa fa-user-plus" style="font-size: 20px"></i>&nbsp;&nbsp;New</a>&nbsp;
+            <a class="btn btn-success" href="/institute/add"><i class="fa  fa-plus" style="font-size: 20px"></i>&nbsp;&nbsp;Add New Institute </a>&nbsp;
         </div>
         <!-- List Name-->
         <div class="col">
@@ -58,9 +58,9 @@
                         <th data-th-text="${institute.address}"></th>
                         <th>
                             <a id="instituteView" data-th-href="${'/institute/' + institute.id}" class="btn btn-primary btn-sm"><i class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
-                            <a id="instituteEdit" data-th-href="${'/institute/edit/' + institute.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
-                            <a data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" data-th-href="${'/institute/delete/' + institute.id}" class="btn btn-danger btn-sm">
-                           <i class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
+                          <a id="instituteEdit" data-th-href="${'/institute/edit/' + institute.id}" class="btn btn-success btn-sm"><i class="fa fa-edit" style="font-size: 15px"></i>&nbsp;Edit</a>
+
+                            <a id="instituteDelete" data-th-href="${'/institute/delete/' + institute.id}" class="btn btn-danger btn-sm" data-sec-authorize="hasAnyAuthority('ROLE_COMMISSIONER','ROLE_CHIEF_CLERK')"><i class="fa fa-trash" ></i>&nbsp;Delete</a>
                         </th>
                     </tr>
                 </tbody>

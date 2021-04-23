@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Performance Analysis</title>
+</head>
+<body>
+
+
+<div class="col-sm-12 flex-column " >
+    <form id="form" method="POST" data-th-action="${'/employee/findAll'}" data-th-object="${employee}"
+          enctype="multipart/form-data" >
+        <div class="form-row" >
+            <div class="col-5 flex-column" >
+                <div class="form-group" >
+                    <div class="col-4" >
+                        <label class="control-label" for="selectParameter" >Parameter :</label >
+                    </div >
+                    <div class="col-8" >
+                        <select id="selectParameter" class="form-control" tabindex="1" required >
+                            <option value="" >Please select</option >
+                            <option value="name" >Name</option >
+                            <option value="nic" >NIC Number</option >
+                            <option value="departmentIdNumber" >WOP Number</option >
+                        </select >
+                    </div >
+                </div >
+            </div >
+            <div class="col-4 flex-column" >
+                <div class="form-group" >
+                    <div class="col-5" >
+                        <label class="control-label" for="valueEmployee" >Value :</label >
+                    </div >
+                    <div class="col-7" >
+                        <input id="valueEmployee" tabindex="2" class="form-control" type="text" minlength="3"
+                               required
+                               autofocus />
+                    </div >
+                </div >
+            </div >
+            <div class="col-3 flex-column" >
+                <div class="form-group" >
+                    <div class="" >
+                        <div class="col-2" >
+                            <label class="control-label" ></label >
+                        </div >
+                        <div class="col-10 text-left" id="btnSearchEmployee" >
+                            <button class="btn btn-success" tabindex="3" type="submit" >
+                                <i class="fa fa-search " style="font-size: 20px" ></i >&nbsp; &nbsp;Search
+                            </button >
+                        </div >
+                    </div >
+                </div >
+            </div >
+        </div >
+    </div>
+
+
+        
+</body>
+</html>

@@ -4,6 +4,7 @@ package lk.prison_management.asset.employee.service;
 import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
 import lk.prison_management.asset.employee.dao.EmployeeDao;
 import lk.prison_management.asset.employee.entity.Employee;
+import lk.prison_management.asset.employee.entity.enums.EmployeeStatus;
 import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,13 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
 
   @Caching( evict = {@CacheEvict( value = "employee", allEntries = true )},
       put = {@CachePut( value = "employee", key = "#employee.id" )} )
+  // Data save kranwa
   @Transactional
   public Employee persist(Employee employee) {
     if ( employee.getId() == null ) {
       employee.setLiveOrDead(LiveOrDead.ACTIVE);
+      //ethakota aluth ekak nam ea employee ge status eka employee status eka working kiyala hadanawa
+      employee.setEmployeeStatus(EmployeeStatus.WORKING);
     }
     return employeeDao.save(employee);
   }

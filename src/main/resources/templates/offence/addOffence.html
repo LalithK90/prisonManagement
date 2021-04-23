@@ -45,7 +45,9 @@
                     <!--Main Offence -->
                     <div class="form-row text-right">
                         <div class="col-md-4">
+                            <div class="required">
                             <label class="control-label" for="mainOffence">Offence Type :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <select class="form-control" data-th-field="*{offenceType}" id="mainOffence" required
@@ -60,7 +62,9 @@
                     <!--Name-->
                     <div class="form-row text-right">
                         <div class="col-md-4">
+                            <div class="required">
                             <label class="control-label" data-th-for="${'name'}">Name :</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <input class="form-control" data-th-field="*{name}" required tabindex="4" type="text"/>
@@ -93,6 +97,7 @@
                     </div>
                 </div>
             </div>
+            <span class="required_notification">* Denotes Required Field</span>
         </form>
     </div>
 </div>

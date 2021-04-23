@@ -56,7 +56,7 @@ public class DateTimeAgeService {
      * nanoOfSecond - the nano-of-second, value range from 0 to 999,999,999
      */
     public LocalDateTime dateTimeToLocalDateEndInDay(LocalDate localDate) {
-        return localDate.atTime(21, 59, 59, 999999999);
+        return localDate.atTime(23, 59, 59, 999999999);
     }
 
     public int getMonthDifference(LocalDate from, LocalDate to) {
