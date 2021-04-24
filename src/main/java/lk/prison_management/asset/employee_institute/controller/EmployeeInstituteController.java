@@ -87,24 +87,27 @@ public class EmployeeInstituteController {
 
       return commonThing(model, employee, employeeInstitute, true);
     }
-
+//older employees institute was saved and closed
     EmployeeInstitute employeeInstituteDb = employeeInstituteService.findById(employeeInstitute.getId());
     employeeInstituteDb.setEndAt(employeeInstitute.getEndAt());
     employeeInstituteDb.setInstituteChangeReason(employeeInstitute.getInstituteChangeReason());
     employeeInstituteService.persist(employeeInstituteDb);
-
+//new employees institute was added to db
     EmployeeInstitute employeeInstituteNew = new EmployeeInstitute();
     employeeInstituteNew.setEmployee(employeeInstitute.getEmployee());
     employeeInstituteNew.setInstitute(employeeInstitute.getInstitute());
     employeeInstituteNew.setStartAt(employeeInstitute.getEndAt());
     employeeInstituteNew.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
-    employeeInstituteService.persist(employeeInstituteNew);
+    EmployeeInstitute employeeInstituteSaved = employeeInstituteService.persist(employeeInstituteNew);
 
+//set new supervisor and new working place
     if ( employeeInstitute.getSupervisor() != null ) {
-      Employee employee = employeeService.findById(employeeInstitute.getEmployee().getId());
+      Employee employee = employeeService.findById(employeeInstituteSaved.getEmployee().getId());
       employee.setSupervisor(employeeService.findById(employeeInstitute.getSupervisor().getId()));
+      employee.setInstitute(employeeInstitute.getInstitute());
       employeeService.persist(employee);
     }
+
     return "redirect:/employeeInstitute";
   }
 

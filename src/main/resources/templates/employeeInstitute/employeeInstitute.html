@@ -60,7 +60,6 @@
         <a class="btn btn-danger btn-sm" id="qualificationRemove"
            data-th-href="${'/employeeInstitute/remove/' + employeeInstitute.id}"
            data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
-           data-th-click="if(!(confirm('Are you want to delete this civilStatus ?'))) return false"
         ><i
               aria-hidden="true" class="fa fa-trash" ></i >
           Delete</a >
