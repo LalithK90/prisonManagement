@@ -8,7 +8,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 <div class="container-fluid" >
 
-  <div data-th-replace="~{censure/employeeDetail :: employeeDetailsFragment}" ></div >
+  <div data-th-replace="~{employee/employeeDetail :: employeeDetailsFragment}" ></div >
   <div class="row" >
     <div class="col-md-12" >
       <div class="container-fluid" data-th-fragment="censuresDetail" >
@@ -54,7 +54,7 @@
             <label class="control-label" for="incidentDate" >Incident Date :</label >
           </div >
           <div class="col-md-8" >
-            <p data-th-text="${censureDetail.incidentDate}" id="incidentDate" ></p >
+            <p data-th-text="${{censureDetail.incidentDate}}" id="incidentDate" ></p >
           </div >
         </div >
         <!--description-->
