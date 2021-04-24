@@ -311,26 +311,10 @@
     <!--Date validation-->
 
     $(document).ready(function () {
-      let assignDate = $("#assignDate").val() + `T00:00:00`;
+      let assignDate = new Date();
       let currentYear = new Date().getFullYear();
-      $(`#incidentDate`).attr('min', assignDate).attr('max', `${currentYear}-12-31T00:00:00`);
+      $(`#incidentDate`).attr('min', `${currentYear}-01-01`).attr('max', assignDate);
 
-    });
-
-    $(`#incidentDate`).change(function () {
-      let currentYear = new Date().getFullYear();
-      let dateString = `${currentYear}-1-1T00:00:00`;
-      let previousYearObject = new Date(dateString);
-      let assignDate = new Date($("#assignDate").val());
-
-
-      let nextDateString = `${currentYear}-12-31T00:00:00`;
-
-      if (previousYearObject < assignDate) {
-        $(this).attr('min', dateString);
-      } else {
-        $(`#incidentDate`).attr('min', nextDateString);
-      }
     });
 
 

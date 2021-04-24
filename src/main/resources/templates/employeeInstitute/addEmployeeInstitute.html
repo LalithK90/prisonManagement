@@ -206,6 +206,7 @@
 <script data-th-src="@{/js/combo-box-search.js}" ></script >
 <input type="hidden" id="supervisorFindUrl" data-th-value="${supervisorFindUrl}" >
 <script >
+
     function dateMatch() {
         let startDateTime = $(`#startAt`).val();
         let endDateTime = $(`#endAt`).val();
@@ -225,6 +226,8 @@
         $("#supervisor").select2({
             data: $(this).val(),
         }).addClass('form-control').addClass('col-8');
+
+
         let currentYear = new Date().getFullYear();
         $(`#endAt`)
             .prop('max', `${currentYear}-12-31`)
