@@ -98,13 +98,17 @@ public class EmployeeInstituteController {
     employeeInstituteNew.setInstitute(employeeInstitute.getInstitute());
     employeeInstituteNew.setStartAt(employeeInstitute.getEndAt());
     employeeInstituteNew.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
- EmployeeInstitute employeeInstituteSaved =   employeeInstituteService.persist(employeeInstituteNew);
+    EmployeeInstitute employeeInstituteSaved = employeeInstituteService.persist(employeeInstituteNew);
+
+    System.out.println("ed  "+ employeeInstitute.toString());
 
     if ( employeeInstitute.getSupervisor() != null ) {
       Employee employee = employeeService.findById(employeeInstituteSaved.getEmployee().getId());
       employee.setSupervisor(employeeService.findById(employeeInstitute.getSupervisor().getId()));
+      employee.setInstitute(employeeInstitute.getInstitute());
       employeeService.persist(employee);
     }
+
     return "redirect:/employeeInstitute";
   }
 
