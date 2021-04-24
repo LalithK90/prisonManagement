@@ -63,9 +63,9 @@
       <!--Institute -->
       <div class="form-row text-right" >
         <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="institute" >Institute :</label >
-          </div>
+          <div class="required" >
+            <label class="control-label" for="institute" >Institute :</label >
+          </div >
         </div >
         <div class="col-md-8" >
           <select id="institute" data-th-field="*{institute}" class="form-control" tabindex="19"
@@ -80,9 +80,9 @@
       <!--supervisor-->
       <div class="form-row text-right" >
         <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="supervisor" >Employee Supervisor :</label >
-          </div>
+          <div class="required" >
+            <label class="control-label" for="supervisor" >Employee Supervisor :</label >
+          </div >
         </div >
         <div class="col-md-8" >
           <select id="supervisor" data-th-field="*{supervisor}" class="form-control" tabindex="19"
@@ -113,9 +113,9 @@
       <!--end At-->
       <div class="form-row text-right" >
         <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="endAt" >New Institute Start At :</label >
-          </div>
+          <div class="required" >
+            <label class="control-label" for="endAt" >New Institute Start At :</label >
+          </div >
         </div >
         <div class="col-md-8" >
           <input type="date" class="form-control " onchange="dateMatch()"
@@ -129,9 +129,9 @@
       <!--Change reason-->
       <div class="form-row text-right" >
         <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="employeeStatus" >Change Reason :</label >
-          </div>
+          <div class="required" >
+            <label class="control-label" for="employeeStatus" >Change Reason :</label >
+          </div >
         </div >
         <div class="col-md-8" >
           <select id="employeeStatus" data-th-field="*{instituteChangeReason}" class="form-control" tabindex="19"
@@ -210,7 +210,7 @@
         let startDateTime = $(`#startAt`).val();
         let endDateTime = $(`#endAt`).val();
         if (startDateTime !== "" && endDateTime !== "") {
-            if (Date.parse(startDateTime) > Date.parse(endDateTime)) {
+            if (Date.parse(startDateTime) >= Date.parse(endDateTime) ) {
                 swal({
                     title: "Could you accept those days.. !",
                     icon: "warning",
@@ -225,6 +225,10 @@
         $("#supervisor").select2({
             data: $(this).val(),
         }).addClass('form-control').addClass('col-8');
+        let currentYear = new Date().getFullYear();
+        $(`#endAt`)
+            .prop('max', `${currentYear}-12-31`)
+            .prop('min', $("#startDate").val());
     });
 
     /*$("#institute").change(function () {
