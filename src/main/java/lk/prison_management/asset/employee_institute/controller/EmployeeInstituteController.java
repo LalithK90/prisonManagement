@@ -98,10 +98,10 @@ public class EmployeeInstituteController {
     employeeInstituteNew.setInstitute(employeeInstitute.getInstitute());
     employeeInstituteNew.setStartAt(employeeInstitute.getEndAt());
     employeeInstituteNew.setInstituteChangeReason(InstituteChangeReason.IMPORTANCEOFSERVICE);
-    employeeInstituteService.persist(employeeInstituteNew);
+ EmployeeInstitute employeeInstituteSaved =   employeeInstituteService.persist(employeeInstituteNew);
 
     if ( employeeInstitute.getSupervisor() != null ) {
-      Employee employee = employeeService.findById(employeeInstitute.getEmployee().getId());
+      Employee employee = employeeService.findById(employeeInstituteSaved.getEmployee().getId());
       employee.setSupervisor(employeeService.findById(employeeInstitute.getSupervisor().getId()));
       employeeService.persist(employee);
     }
