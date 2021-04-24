@@ -225,6 +225,8 @@
         $("#supervisor").select2({
             data: $(this).val(),
         }).addClass('form-control').addClass('col-8');
+let currentYear= new Date().getFullYear();
+        $(`#endAt`).prop('max', `${currentYear}-12-31`);
     });
 
     /*$("#institute").change(function () {
