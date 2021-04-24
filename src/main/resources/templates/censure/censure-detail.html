@@ -27,7 +27,7 @@
             <label class="control-label" for="abc" >Ref Number :</label >
           </div >
           <div class="col-md-8" >
-            <p id="abc" data-th-text="${refNumber}" ></p >
+            <p id="abc" data-th-text="${censureDetail.refNumber}" ></p >
           </div >
         </div >
         <!--Punishment -->
@@ -36,7 +36,7 @@
             <label class="control-label" for="punishment" >Punishment :</label >
           </div >
           <div class="col-md-8" >
-            <p id="punishment" data-th-text="${punishment.name}" ></p >
+            <p id="punishment" data-th-text="${censureDetail.punishment.name}" ></p >
           </div >
         </div >
         <!--Punishment -->
@@ -45,7 +45,7 @@
             <label class="control-label" for="offence" >Offence :</label >
           </div >
           <div class="col-md-8" >
-            <p id="offence" data-th-text="${offence.name}" ></p >
+            <p id="offence" data-th-text="${censureDetail.offence.name}" ></p >
           </div >
         </div >
         <!--Incident Date-->
@@ -54,7 +54,7 @@
             <label class="control-label" for="incidentDate" >Incident Date :</label >
           </div >
           <div class="col-md-8" >
-            <p data-th-text="${incidentDate}" id="incidentDate" ></p >
+            <p data-th-text="${censureDetail.incidentDate}" id="incidentDate" ></p >
           </div >
         </div >
         <!--description-->
@@ -63,7 +63,7 @@
             <label class="control-label" for="description" >Description :</label >
           </div >
           <div class="col-md-8" >
-            <p id="description" data-th-text="${description}" ></p >
+            <p id="description" data-th-text="${censureDetail.description}" ></p >
           </div >
         </div >
       </div >
