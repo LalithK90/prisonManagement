@@ -188,5 +188,13 @@
 
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+<script >
+  $(document).ready(function () {
+      let today  = new Date()
+     $("#endDate").prop('max', today);
+
+  });
+</script >
+
 </body >
 </html >
