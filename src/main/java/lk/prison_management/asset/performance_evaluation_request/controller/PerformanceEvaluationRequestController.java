@@ -16,8 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.Year;
-import java.time.YearMonth;
 
 @Controller
 @RequestMapping( "/performanceEvaluationRequest" )
@@ -92,8 +90,8 @@ public class PerformanceEvaluationRequestController {
 //email service starts
     if (performanceEvaluationRequestSaved.getEmployee().getOfficeEmail() != null) {
       StringBuilder message = new StringBuilder("Performance Apprecial");
-
-      emailService.sendEmail(performanceEvaluationRequestSaved.getEmployee().getOfficeEmail(),
+Employee supervisor = employeeService.findById(performanceEvaluationRequestSaved.getEmployee().getSupervisor().getId());
+      emailService.sendEmail(supervisor.getOfficeEmail(),
               "New Performance Apprecial to be evaluated " , message.toString());
 
      /*if (performanceEvaluationRequestSaved.getEmployee().getContactOne() != null) {

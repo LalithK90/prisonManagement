@@ -65,9 +65,12 @@ public class CensureController implements AbstractController< Censure, Integer >
   }
 
 
-  @GetMapping( "/{id}" )
+  @GetMapping( "/view/{id}" )
   public String findById(@PathVariable Integer id, Model model) {
-    model.addAttribute("commendationDetail", censureService.findById(id));
+    Censure censure = censureService.findById(id);
+    model.addAttribute("employeeDetail", employeeService.findById(censure.getEmployee().getId()));
+    model.addAttribute("censureDetail", censure);
+    model.addAttribute("file", censureFilesService.censureFileDownloadLinks(censure));
     return "censure/censure-detail";
   }
 
