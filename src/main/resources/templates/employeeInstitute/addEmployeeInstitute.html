@@ -227,11 +227,11 @@
             data: $(this).val(),
         }).addClass('form-control').addClass('col-8');
 
-
         let currentYear = new Date().getFullYear();
+        let minValue = $("#startAt").val();
         $(`#endAt`)
             .prop('max', `${currentYear}-12-31`)
-            .prop('min', $("#startDate").val());
+            .prop('min', minValue);
     });
 
     /*$("#institute").change(function () {

@@ -197,9 +197,6 @@
     $("#startDate").change(function () {
         $("#endDate").prop('min', dateMakeWithoutTime($(this).val()));
     });
-
-
-
     function dateMakeWithoutTime(val) {
         let year = val.getFullYear();
         let month = val.getMonth();
