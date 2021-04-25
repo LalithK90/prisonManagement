@@ -211,7 +211,7 @@
         let startDateTime = $(`#startAt`).val();
         let endDateTime = $(`#endAt`).val();
         if (startDateTime !== "" && endDateTime !== "") {
-            if (Date.parse(startDateTime) >= Date.parse(endDateTime) ) {
+            if (Date.parse(startDateTime) > Date.parse(endDateTime) ) {
                 swal({
                     title: "Could you accept those days.. !",
                     icon: "warning",
