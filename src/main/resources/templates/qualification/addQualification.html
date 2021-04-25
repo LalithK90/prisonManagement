@@ -106,7 +106,7 @@
           </div >
           <div class="col-md-8" >
             <input id="startDate" data-th-field="*{startDate}" class="form-control" tabindex="4"
-                   type="date" />
+                   type="date" required />
             <span data-th-errors="*{startDate}"
                   data-th-if="${#fields.hasErrors('startDate')}" class="error" >Error Employee code
                             </span >
@@ -121,7 +121,7 @@
           </div >
           <div class="col-md-8" >
             <input id="endDate" data-th-field="*{endDate}" class="form-control" tabindex="4"
-                   type="date" />
+                   type="date" required />
             <span data-th-errors="*{endDate}"
                   data-th-if="${#fields.hasErrors('endDate')}" class="error" >Error Employee code
                             </span >
@@ -192,13 +192,31 @@
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 <script >
     $(document).ready(function () {
-        let today = new Date()
-        $("#endDate").prop('max', today);
+        $("#endDate, #startDate").prop('max', dateMakeWithoutTime(new Date()));
     });
     $("#startDate").change(function () {
-        $("#endDate").prop('min', $(this).val());
+        $("#endDate").prop('min', dateMakeWithoutTime($(this).val()));
     });
 
+
+
+    function dateMakeWithoutTime(val) {
+        let year = val.getFullYear();
+        let month = val.getMonth();
+        let date = val.getDate();
+        let today;
+        if (month < 10) {
+            if (date < 10) {
+                today = `${year}-0${month}-0${date}`;
+            } else {
+                today = `${year}-0${month}-${date}`;
+            }
+        } else {
+            today = `${year}-${month}-${date}`;
+        }
+
+        return today;
+    }
 
 </script >
 
