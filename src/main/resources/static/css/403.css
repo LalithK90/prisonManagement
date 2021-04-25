@@ -1,0 +1,290 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Comic Sans", "Courier New",
+    georgia, helvetica, impact, "times new roman", "trebuchet ms", verdana,
+    "Iskoola Pota";
+    --error-color: #fa370d;
+}
+
+/*login page start*/
+
+body{
+/*
+    background-image: url(../img/login.jpg);!important;
+    -webkit-background-size:cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url(../img/formbg.png) ;*/
+
+
+
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    overflow-x: hidden;
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+    background-image: url(../img/formbg.png) ;!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.login-bg{
+    background-image: url(../img/login3.jpg) ;!important;
+}
+
+.form-area{
+
+    float: left;
+    width: 530px;
+    height:345px;
+    margin-top:100px;
+    position: relative;
+    background-color: rgba(39, 109, 93,0.55);
+    text-align: center;
+    padding:10px;
+    margin-left:490px;
+
+
+}
+
+.form-area{
+
+    margin-bottom: 1px;
+    color: #a01a1a;
+
+}
+input{
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    width: 75%;
+    height:35px;
+    margin-bottom: 15px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    padding-left:5px;
+}
+
+.form-area p{
+    text-align: left;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+#btnLogin{
+
+    display: inline-block;
+    height: 40px;
+    width: 300px;
+    padding: 3px;
+    line-height: 40px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgb(9, 138, 86);
+    border-radius: 250px;
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+    text-decoration: none;
+    -webkit-transition:top 0.6s;
+    -moz-transition:top 0.6s;
+    -o-transition:top 0.6s;
+}
+
+
+#btnLogin:hover{
+    background-color: #30d0be;
+
+}
+
+
+/* login page-end */
+
+
+/*MainWindow Style - Start*/
+.mainbody{
+    background-image: url(../img/formbg.png);
+    -webkit-background-size:cover;
+    background-size: cover;
+    background-position:center center;
+    background-repeat: no-repeat;
+
+
+
+}
+.card{
+
+    background-color: rgba(142, 57, 36, 0.72);
+    max-width:900px;
+    margin-top: 40px;
+    margin-bottom:20px;
+    margin-left:200px;
+
+    border:1px solid #4f4f4f;
+    border-radius: 25px;
+
+
+}
+.cardrow{
+    width:950px;
+    padding:20px;
+}
+.card-header {
+    font-family: Tahoma;
+    font-weight: bolder;
+    position: center;
+    margin-left: 50px;
+
+}
+
+/*MainWindow Style - End*/
+/*Form START*/
+.form-Border{
+    background-color: rgba(25,6,7,0.93);!important;
+    border-width: thin;
+
+
+}
+
+/*Form END*/
+
+
+/* Navbar Style--START*/
+.navbar a{
+    color: #070707;
+}
+/* Navbar Style--END*/
+
+/**login start*/
+
+.form-area{
+
+	float: left;
+	width: 400px;
+	height: 470px;
+	margin-top:50px;
+	margin-left:90px;
+	position: relative;
+	background-color: rgba(109, 39, 53, 0.47);
+	text-align: center;
+	padding:30px;
+	margin-left:650px;
+	-webkit-border-radius:70px 70px 70px 70px;
+	-moz-border-radius:70px 70px 70px 70px;
+	border-radius:70px 70px 70px 70px ;
+
+}
+
+.form-area{
+
+	margin-bottom: 1px;
+	color: white;
+}
+
+.img-area{
+
+	width: 190px;
+	height: 190px;
+	border-radius:100%;
+	position: absolute;
+	margin-left: -40px;
+	margin-bottom: 15px;
+	top: -10%;
+	left: 40%;
+}
+
+.img-area img{
+
+	width: 60%;
+	padding: 10px;
+
+}
+
+input{
+
+	border: none;
+	border-bottom: 1px solid white;
+	outline: none;
+	width: 100%;
+	height:35px;
+	margin-bottom: 15px;
+	background-color: transparent;
+	color: #fff;
+	font-size: 16px;
+	padding-left:5px;
+
+}
+
+.form-area p{
+	text-align: left;
+	color: #fff;
+	font-weight: bold;
+}
+
+#btnLogin{
+
+	display: inline-block;
+	height: 40px;
+	width: 300px;
+	padding: 3px;
+	line-height: 40px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	font-size: 16px;
+	background-color: rgba(49, 2, 2, 0.92);
+	border-radius: 250px;
+	color: #fff;
+	margin-top: 20px;
+	cursor: pointer;
+	margin-left: 15px;
+	text-decoration: none;
+	-webkit-transition:top 0.6s;
+	-moz-transition:top 0.6s;
+	-o-transition:top 0.6s;
+}
+
+
+#btnLogin:hover{
+	background-color: sienna;
+
+}
+.btnview{
+    background-color: #721c24;
+}
+
+
+
+
+.for-pass{
+
+	text-decoration: none;
+	display: block;
+	margin-top: 30px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #fff;
+}
+
+
+ /*login end*/
+
+input{
+    color: black;
+}
+/*required astrik mark eka form wla*/
+.required:after {
+    content:" *";
+    color: red;
+}

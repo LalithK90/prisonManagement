@@ -1,5 +1,6 @@
 package lk.prison_management.asset.institute.controller;
 
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.institute.entity.enums.PrisonType;
 import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.asset.institute.service.InstituteService;
@@ -7,6 +8,7 @@ import lk.prison_management.util.interfaces.AbstractController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -52,6 +54,19 @@ public class InstituteController implements AbstractController<Institute, Intege
 
     @PostMapping(value = {"/save", "/update"})
     public String persist(@Valid @ModelAttribute Institute institute, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+
+        Institute instititeName = null;
+        if ( institute.getName() != null && institute.getId() == null ) {
+            instititeName = instituteService.findByName(institute.getName());
+        }
+        if ( instititeName != null ) {
+            ObjectError error = new ObjectError("employee",
+                    "There is employee on same nic number . <br> System message -->");
+            bindingResult.addError(error);
+        }
+
+
+
         if (bindingResult.hasErrors()) {
 //            System.out.println(" sadasd ");
             model.addAttribute("addStatus", true);

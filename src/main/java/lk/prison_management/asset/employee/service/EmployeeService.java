@@ -72,6 +72,7 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
   }
 
 
+ //employee NiC eka thyenawada balanawa
   public Employee findByNic(String nic) {
     return employeeDao.findByNic(nic);
   }
