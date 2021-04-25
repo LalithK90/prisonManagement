@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en"  >
+<html lang="en" >
 <head data-th-replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
-  <title >Department Of Prisons  </title >
+  <title >Department Of Prisons </title >
 </head >
 <body >
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -55,129 +55,131 @@
           data-th-object="${qualification}"
           class="mt-3" >
 
-      <input  data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden" readonly />
+      <input data-th-name="${'employee.id'}" data-th-value="${employeeDetail.id}" class="form-control" type="hidden"
+             readonly />
       <!--Id-->
-      <div id="form">
-      <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
-        <div class="col-md-4" >
-          <label class="control-label" for="id" >ID :</label >
+      <div id="form" >
+        <div id="idStatus" data-th-if="${addStatus==false}" class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="id" >ID :</label >
+          </div >
+          <div class="col-md-8" >
+            <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
+          </div >
         </div >
-        <div class="col-md-8" >
-          <input id="id" data-th-field="*{id}" class="form-control" type="text" readonly />
-        </div >
-      </div >
-      <!--Name-->
-      <div class="form-row text-right">
-        <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="name" >Name of the qualification :</label >
-          </div>
-        </div >
-        <div class="col-md-8" >
-          <input id="name" data-th-field="*{name}" class="form-control" tabindex="4"
-                 type="text" required />
-          <span id="codeE" data-th-errors="*{name}"
-                data-th-if="${#fields.hasErrors('name')}" class="error" >Error Employee code
+        <!--Name-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <div class="required" >
+              <label class="control-label" for="name" >Name of the qualification :</label >
+            </div >
+          </div >
+          <div class="col-md-8" >
+            <input id="name" data-th-field="*{name}" class="form-control" tabindex="4"
+                   type="text" required />
+            <span id="codeE" data-th-errors="*{name}"
+                  data-th-if="${#fields.hasErrors('name')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--certificateNumber-->
-      <div class="form-row text-right">
-        <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="certificateNumber" >Certificate Number :</label >
-          </div>
-        </div >
-        <div class="col-md-8" >
-          <input id="certificateNumber" data-th-field="*{certificateNumber}" class="form-control" tabindex="4"
-                 type="text" />
-          <span data-th-errors="*{certificateNumber}"
-                data-th-if="${#fields.hasErrors('certificateNumber')}" class="error" >Error Employee code
+        <!--certificateNumber-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <div class="required" >
+              <label class="control-label" for="certificateNumber" >Certificate Number :</label >
+            </div >
+          </div >
+          <div class="col-md-8" >
+            <input id="certificateNumber" data-th-field="*{certificateNumber}" class="form-control" tabindex="4"
+                   type="text" />
+            <span data-th-errors="*{certificateNumber}"
+                  data-th-if="${#fields.hasErrors('certificateNumber')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--startDate-->
-      <div class="form-row text-right">
-        <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="startDate" >Start Date :</label >
-          </div>
-        </div >
-        <div class="col-md-8" >
-          <input id="startDate" data-th-field="*{startDate}" class="form-control" tabindex="4"
-                 type="date" />
-          <span data-th-errors="*{startDate}"
-                data-th-if="${#fields.hasErrors('startDate')}" class="error" >Error Employee code
+        <!--startDate-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <div class="required" >
+              <label class="control-label" for="startDate" >Start Date :</label >
+            </div >
+          </div >
+          <div class="col-md-8" >
+            <input id="startDate" data-th-field="*{startDate}" class="form-control" tabindex="4"
+                   type="date" />
+            <span data-th-errors="*{startDate}"
+                  data-th-if="${#fields.hasErrors('startDate')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--endDate-->
-      <div class="form-row text-right">
-        <div class="col-md-4" >
-          <div class="required">
-          <label class="control-label" for="endDate" >End Date :</label >
-          </div>
-        </div >
-        <div class="col-md-8" >
-          <input id="endDate" data-th-field="*{endDate}" class="form-control" tabindex="4"
-                 type="date"  />
-          <span data-th-errors="*{endDate}"
-                data-th-if="${#fields.hasErrors('endDate')}" class="error" >Error Employee code
+        <!--endDate-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <div class="required" >
+              <label class="control-label" for="endDate" >End Date :</label >
+            </div >
+          </div >
+          <div class="col-md-8" >
+            <input id="endDate" data-th-field="*{endDate}" class="form-control" tabindex="4"
+                   type="date" />
+            <span data-th-errors="*{endDate}"
+                  data-th-if="${#fields.hasErrors('endDate')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
-      <!--remarks-->
-      <div class="form-row text-right">
-        <div class="col-md-4" >
-          <label class="control-label" for="remarks" >Remarks :</label >
-        </div >
-        <div class="col-md-8" >
+        <!--remarks-->
+        <div class="form-row text-right" >
+          <div class="col-md-4" >
+            <label class="control-label" for="remarks" >Remarks :</label >
+          </div >
+          <div class="col-md-8" >
           <textarea id="remarks" data-th-field="*{remarks}" class="form-control" tabindex="4"
-                 ></textarea>
-          <span data-th-errors="*{remarks}"
-                data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
+          ></textarea >
+            <span data-th-errors="*{remarks}"
+                  data-th-if="${#fields.hasErrors('remarks')}" class="error" >Error Employee code
                             </span >
+          </div >
         </div >
-      </div >
         <!--Sinhala modal button and modal tamil button-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
             <!--Sinhala modal button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+                  class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
             </button >
 
           </div >
           <div class="col-md-4" >
             <!-- modal tamil button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+                  class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
             </button >
           </div >
         </div >
 
         <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-      <!--Button-->
-      <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
-        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-          <button class="btn btn-success" type="submit" tabindex="21" >
-            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span                                                                                    data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
-          </button >
-          <button class="btn btn-danger" type="reset" >
-            <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
-          </button >
+          <!--Button-->
+          <div class="form-group col-md-12 col-sm-12 text-left flex-column " >
+            <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+              <button class="btn btn-success" type="submit" tabindex="21" >
+                <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span
+                    data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+              </button >
+              <button class="btn btn-danger" type="reset" >
+                <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
+              </button >
+            </div >
+          </div >
+          <div class="form-row" >
+            <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
+            <ul >
+              <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+            </ul >
+          </div >
         </div >
       </div >
-      <div class="form-row" >
-        <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
-        <ul >
-          <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
-        </ul >
-      </div >
-      </div>
-      </div>
     </form >
-    <span class="required_notification">* Denotes Required Field</span>
+    <span class="required_notification" >* Denotes Required Field</span >
   </div >
 
 </div >
@@ -189,11 +191,15 @@
 <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 <script >
-  $(document).ready(function () {
-      let today  = new Date()
-     $("#endDate").prop('max', today);
+    $(document).ready(function () {
+        let today = new Date()
+        $("#endDate").prop('max', today);
+    });
+    $("#startDate").change(function () {
+        $("#endDate").prop('min', $(this).val());
+    });
 
-  });
+
 </script >
 
 </body >
