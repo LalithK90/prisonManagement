@@ -117,7 +117,7 @@
           </div >
           <div class="col-md-8" >
             <input type="datetime-local" class="form-control " onchange="dateMatch()"
-                   data-th-field="*{endAt}" id="endAt" >
+                   data-th-field="*{endAt}" id="endAt" required>
 
             <span data-th-errors="*{endAt}"
                   data-th-if="${#fields.hasErrors('endAt')}" class="error" >Error Date code
@@ -282,11 +282,11 @@
         if (startDateTime !== "" && endDateTime !== "") {
             let sDT = Date.parse(startDateTime);
             let eDT = Date.parse(endDateTime);
-            if (sDT > eDT) {
+            if (sDT > eDT || sDT === eDT) {
                 swal({
                     title: "Could you accept those days.. !",
                     icon: "warning",
-                    text: "Please check your date time \n End Date Time can not be less than Start Date Time",
+                    text: "Please check your date time \n End Date Time can not be less than Start Date Time or Same date",
                 })
                 $(`#endAt`).val(new Date());
                 $(`#startAt`).val(new Date());
