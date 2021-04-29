@@ -8,6 +8,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -50,6 +51,15 @@ public class CommendationService implements AbstractService< Commendation, Integ
 
   public List< Commendation> findByEmployee(Employee employee) {
   return commendationDao.findByEmployee(employee);}
+
+//aluth report ekata
+
+
+
+    public List< Commendation> findByCreatedAtIsBetween(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return commendationDao.findByCreatedAtIsBetween(startDateTime,endDateTime);
+    }
+
 
 
 }

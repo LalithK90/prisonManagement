@@ -68,8 +68,8 @@ public class PerformanceEvaluationRequestController {
     model.addAttribute("addStatus", true);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
     model.addAttribute("performanceEvaluationRequest", performanceEvaluationRequest);
-    model.addAttribute("responsibilities", Responsibility.values());
-    model.addAttribute("tasks", Task.values());
+    /*model.addAttribute("responsibilities", Responsibility.values());
+    model.addAttribute("tasks", Task.values());*/
     model.addAttribute("apprecials", Apprecial.values());
     return "performanceEvaluation/addPerformanceEvaluationRequest";
   }

@@ -17,9 +17,13 @@ public interface EmployeeDao extends JpaRepository< Employee, Integer > {
   Employee findByNic(String nic);
 
   Employee findByWopNumber(String wopNumber);
+  //list eke last in first show for clerk or cc
+  List<Employee> findByInstituteOrderByIdDesc(Institute institute);
 
-  List< Employee > findByInstitute(Institute institute);
 
   List< Employee > findBySupervisor(Employee employee);
   List< Employee > findByCreatedAtBetween(LocalDateTime form, LocalDateTime to);
+
+//list eke last in first show for super user
+  List<Employee> findAllByOrderByIdDesc();
 }

@@ -33,16 +33,19 @@ public class PerformanceEvaluationRequest extends AuditEntity {
   private YesNo taskLists; //(using 'Y' and 'N')
   //2.1Main Areas of Responsibility and Tasks
 
- //private String responsibility;
+  //2.1.1 Responsibility
+  private String responsibility;
+  //2.1.2. Tasks
+  private String tasks;
 
-
+/*//enum valin gennuwama
   //2.1.1 Responsibility
   @Enumerated( EnumType.STRING )
   private Responsibility responsibility;
 
   //2.1.2. Tasks
   @Enumerated( EnumType.STRING )
-  private Task task;
+  private Task task;*/
 
 
   //3. Mid Term Appraisal

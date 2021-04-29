@@ -28,8 +28,10 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
 
 
   public List< Employee > findAll() {
-    return employeeDao.findAll().stream().filter(x -> x.getLiveOrDead().equals(LiveOrDead.ACTIVE)).collect(Collectors.toList());
+      //last in first show-- findAllByOrderByIdDesc
+    return employeeDao.findAllByOrderByIdDesc().stream().filter(x -> x.getLiveOrDead().equals(LiveOrDead.ACTIVE)).collect(Collectors.toList());
   }
+
 
 
   public Employee findById(Integer id) {
@@ -81,8 +83,9 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
     return employeeDao.findByWopNumber(wopNumber);
   }
 
+//methanin thama ara super user ara anith ayata list eka penne --findByInstituteOrderByIdDesc
   public List< Employee > findByInstitute(Institute institute) {
-    return employeeDao.findByInstitute(institute);
+    return employeeDao.findByInstituteOrderByIdDesc(institute);
   }
 
   public List< Employee > findBySupervisor(Employee employee) {
