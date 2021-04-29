@@ -70,12 +70,12 @@
                    hidden type="text" />
 
 
-<!--            Apprecial time frame starts-->
+            <!--            Apprecial time frame starts-->
 
             <div class="form-row text-right" >
               <div class="col-md-4" >
                 <label class="control-label" >Agreed period of Appraisal (one calendar year) :
-                  </label >
+                </label >
               </div >
 
               <div class="col-md-8" >
@@ -88,7 +88,7 @@
                            readonly>
                   </label >
                   <label class="control-label" >
-                  To
+                    To
                     <input
                             readonly class="form-control col-12"
                             id="endAt" type="date" data-th-field="*{toDate}" >
@@ -108,7 +108,7 @@
             <div class="form-row text-right" >
               <div class="col-md-4" >
                 <div class="required">
-                <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list :</label >
+                  <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list :</label >
                 </div>
               </div >
               <div class="col-md-4 text-center" >
@@ -116,11 +116,11 @@
                   <label class="form-check-label col-md-6" >
                     <div class="custom-control custom-radio">
 
-                    <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="Y" >
-                    <label>Yes</label>
+                      <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="Y" >
+                      <label>Yes</label>
 
-                </div>
-                  </br>
+                    </div>
+                    </br>
                   </label >
                   <label class="form-check-label col-md-6" >
                     <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="N" >
@@ -132,43 +132,50 @@
                       data-th-if="${#fields.hasErrors('taskLists')}" >Error Name</span >
               </div >
             </div >
-          </br>
+            </br>
 
             <!--responsibilities -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
                 <div class="required">
-                <label class="control-label" data-th-for="${'taskLists'}" >Main Areas of Responsibility and Tasks
-                                                                           :</label ></div>
+                  <label class="control-label" data-th-for="${'taskLists'}" >Main Areas of Responsibility and Tasks
+                    :</label ></div>
               </div >
               <div class="col-md-8" >
                 <div class="form-row text-center" >
                   <label class="control-label" >
 
                     Responsibility
-                    <textarea class="form-control" data-th-field="*{responsibility}" ></textarea >
-                    <!--Sinhala modal button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target=".bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-                    </button >
+                    <div class="col-md-8" >
+                      <select id="responsibility" data-th-field="*{responsibility}" class="form-control" tabindex="10"
+                              required >
+                        <option value="" >Please select</option >
+                        <option data-th-each="responsibility : ${responsibilities}"
+                                data-th-text="${responsibility.responsibility}"
+                                data-th-value="${responsibility}" ></option >
+                      </select >
+                    </div >
                     <span class="error"
                           data-th-errors="*{responsibility}"
                           data-th-if="${#fields.hasErrors('responsibility')}" >Error Name</span >
                   </label >
                   <label class="control-label" >
                     Tasks
-                    <textarea class="form-control" data-th-field="*{tasks}" ></textarea ><!-- modal tamil button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-                    </button >
+
+                    <div class="col-md-8" >
+                      <select id="task" data-th-field="*{task}" class="form-control" tabindex="10"
+                              required >
+                        <option value="" >Please select</option >
+                        <option data-th-each="task : ${tasks}"
+                                data-th-text="${task.task}"
+                                data-th-value="${task}" ></option >
+                      </select >
+                    </div >
+
                   </label >
                   <span class="error"
-                        data-th-errors="*{tasks}"
-                        data-th-if="${#fields.hasErrors('tasks')}" >Error Name</span >
+                        data-th-errors="*{task}"
+                        data-th-if="${#fields.hasErrors('task')}" >Error Name</span >
                 </div >
               </div >
             </div >
@@ -182,7 +189,7 @@
             <div class="form-row text-right" >
               <div class="col-md-4" >
                 <div class="required">
-                <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance:</label ></div>
+                  <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance:</label ></div>
               </div >
               <div class="col-md-4 text-center" >
                 <div class="form-check" >
@@ -190,8 +197,8 @@
                     <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="Y" >
                     Yes
                   </label >
-                </br>
-                </br>
+                  </br>
+                  </br>
                   <label class="form-check-label col-md-6" >
                     <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="N" >
                     No
@@ -202,26 +209,26 @@
                       data-th-if="${#fields.hasErrors('satisfied')}" >Error Name</span >
               </div >
             </div >
-          </br>
+            </br>
             <!--responsibilities -->
             <div class="form-row text-right" >
               <div class="col-md-4" >
                 <label class="control-label" >
                   Any difficulties faced:
                 </label>
-                  </div>
+              </div>
 
               <div class="col-md-6" >
 
-                    <textarea class="form-control" data-th-field="*{difficulties}" ></textarea >
+                <textarea class="form-control" data-th-field="*{difficulties}" ></textarea >
 
 
-                    <!--Sinhala modal button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target=".bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
-                    </button >
+                <!--Sinhala modal button -->
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target=".bd-example-modal-xl" >
+                  <i
+                          class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+                </button >
 
                 <!-- modal tamil button -->
                 <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -229,10 +236,10 @@
                   <i
                           class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
                 </button >
-                    <span class="error"
-                          data-th-errors="*{difficulties}"
-                          data-th-if="${#fields.hasErrors('difficulties')}" >Error Name</span >
-                  </label >
+                <span class="error"
+                      data-th-errors="*{difficulties}"
+                      data-th-if="${#fields.hasErrors('difficulties')}" >Error Name</span >
+                </label >
               </div>
 
               <div class="col-md-4" >
@@ -242,7 +249,7 @@
                 </label>
               </div>
               <div class="col-md-6" >
-                    <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
+                <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
                 <!--Sinhala modal button -->
                 <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target=".bd-example-modal-xl" >
@@ -251,59 +258,59 @@
                 </button >
 
                 <!-- modal tamil button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#bd-example-modal-xl" >
-                      <i
-                            class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
-                    </button >
-                  </label >
-                  <span class="error"
-                        data-th-errors="*{improvement}"
-                        data-th-if="${#fields.hasErrors('improvement')}" >Error Name</span >
-            </div>
-                </div >
-              </div >
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#bd-example-modal-xl" >
+                  <i
+                          class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+                </button >
+                </label >
+                <span class="error"
+                      data-th-errors="*{improvement}"
+                      data-th-if="${#fields.hasErrors('improvement')}" >Error Name</span >
+              </div>
             </div >
-            <!--Mid Term Appraisal end-->
-
-
-          <!--Button-->
-          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-            <button class="btn btn-primary" type="button" >
-              <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
-            </button >
-            <button class="btn btn-success ml-5" tabindex="21" type="submit" >
-              <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
-                  data-th-text="${addStatus==true?'Save': 'Update'}"
-                  id="submit" ></span >
-            </button >
-            <button class="btn btn-warning ml-5" tabindex="21" type="reset" >
-              <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Cancel
-            </button >
-          </div >
-          <!--Error-->
-          <div class="form-row" >
-            <label data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '"
-                   id="errorLabel" >Errors: </label >
-            <ul >
-              <li class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"
-                  id="error" ></li >
-            </ul >
           </div >
         </div >
+        <!--Mid Term Appraisal end-->
+
+
+        <!--Button-->
+        <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+          <button class="btn btn-primary" type="button" >
+            <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
+          </button >
+          <button class="btn btn-success ml-5" tabindex="21" type="submit" >
+            <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
+                  data-th-text="${addStatus==true?'Save': 'Update'}"
+                  id="submit" ></span >
+          </button >
+          <button class="btn btn-warning ml-5" tabindex="21" type="reset" >
+            <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Cancel
+          </button >
+        </div >
+        <!--Error-->
+        <div class="form-row" >
+          <label data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '"
+                 id="errorLabel" >Errors: </label >
+          <ul >
+            <li class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"
+                id="error" ></li >
+          </ul >
+        </div >
+      </div >
       <span class="required_notification">* Denotes Required Field</span>
     </form>
 
 
-</div >
+  </div >
 
-<!--footer include-->
-<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
-<!--script include-->
-<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
+  <!--footer include-->
+  <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+  <!--script include-->
+  <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 
-<div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
-<div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
+  <div data-th-replace="~{fragments/unicodeSinhala :: unicodeSinhalaFragment}" ></div >
+  <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 </div>
 </body >
 </html >

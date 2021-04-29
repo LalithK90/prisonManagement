@@ -8,17 +8,17 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
 
 <!--heading Area-->
-<div class="container-fluid form-Border" >
-  <div class="row text-center formManagement border-info" >
+<div class="container-fluid" style="margin-top:10px" >
+  <div class="row text-center border-info" >
     <div class="col" >
-      <a href="/home" id="btnHome" class="btn btn-outline-info" >
-        &nbsp;Back To Home&nbsp;
+      <a href="/home" id="btnHome" class="btn btn-info" ><i class="fa fa-home" ></i >
+        &nbsp; Home&nbsp;
       </a >
     </div >
 
     <div class="col" >
-      <a class="btn btn-info" href="/employee/add" ><i class="fa fa-plus" ></i >
-        &nbsp;Add New</a >
+      <a class="btn btn-success" href="/employee/add" ><i class="fa fa-user" ></i >
+        &nbsp;Add New Employee</a >
     </div >
 
   </div >
@@ -32,14 +32,13 @@
     </div >
   </div >
 </div >
-<div class="container-fluid " >
+<div class="container-fluid bg-light tableview" >
 <div class="container-fluid     text-center" >
   <div class="col" >
 
-
     <div class="col" id="employeeListPresent" data-th-if="${not #lists.isEmpty(employees)}" >
-      <table class="table table-hover table-striped table-inverse" id="myTable" >
-        <thead class="thead-inverse">
+      <table class="table table-hover table-striped table-inverse table-danger" id="myTable" >
+        <thead class="thead-dark">
         <tr >
           <th > Index</th >
           <th > Image</th >
