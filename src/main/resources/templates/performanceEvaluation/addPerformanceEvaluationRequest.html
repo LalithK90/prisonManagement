@@ -111,21 +111,16 @@
               <label class="control-label" data-th-for="${'taskLists'}" >Whether you have received a task list :</label >
             </div>
           </div >
-          <div class="col-md-4 text-center" >
+          <div class="col-md-2 " >
             <div class="form-check" >
-              <label class="form-check-label col-md-6" >
-                <div class="custom-control custom-radio">
-
-                  <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="Y" >
+              <div class="custom-control custom-radio">
+                <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="Y" >
                   <label>Yes</label>
-
-                </div>
                 </br>
-              </label >
-              <label class="form-check-label col-md-6" >
+              </br>
                 <input type="radio" class="form-check-input" data-th-field="*{taskLists}" value="N" >
                 No
-              </label >
+            </div>
             </div >
             <span class="error"
                   data-th-errors="*{taskLists}"
@@ -198,20 +193,17 @@
                 <label class="control-label" data-th-for="${'satisfied'}" >Are you satisfied about your performance: :</label >
               </div>
             </div >
-          <div class="col-md-4 text-center" >
+          <div class="col-md-2" >
             <div class="form-check" >
-              <label class="form-check-label col-md-6">
-                <div class="custom-control custom-radio">
 
+                <div class="custom-control custom-radio">
                   <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="Y">
                   <label>Yes</label><br>
                 </label>
-
-              <label class="form-check-label col-md-6" >
+                  </br>
                   <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="N">
                  <label>No</label>
                   <br>
-
               </label>
             </div >
             <span class="error"
@@ -219,7 +211,8 @@
                   data-th-if="${#fields.hasErrors('satisfied')}" >Error Name</span >
           </div >
         </div >
-
+            </br>
+            <br>
 
 
 
@@ -247,7 +240,11 @@
             </div >
           </div >
           </br>-->
+
           <!--responsibilities -->
+            <br>
+            <br>
+            <br>
           <div class="form-row text-right" >
             <div class="col-md-4" >
               <label class="control-label" >
@@ -258,8 +255,6 @@
             <div class="col-md-6" >
 
               <textarea class="form-control" data-th-field="*{difficulties}" ></textarea >
-
-
               <!--Sinhala modal button -->
               <button type="button" class="btn btn-primary" data-toggle="modal"
                       data-target=".bd-example-modal-xl" >
@@ -273,13 +268,58 @@
                 <i
                         class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
               </button >
+              <br>
+              <br>
               <span class="error"
                     data-th-errors="*{difficulties}"
                     data-th-if="${#fields.hasErrors('difficulties')}" >Error Name</span >
               </label >
             </div>
 
-            <div class="col-md-4" >
+
+
+            <!-- Strategies for improvement (if Appraisee is lagging behind):-->
+            <br>
+            <br>
+            <br>
+            <div class="form-row text-right" >
+              <div class="col-md-4" >
+                <label class="control-label" >
+                  Strategies for improvement (if Appraisee is lagging behind):
+                </label>
+              </div>
+
+              <div class="col-md-6" >
+
+                <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
+                <!--Sinhala modal button -->
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target=".bd-example-modal-xl" >
+                  <i
+                          class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+                </button >
+
+                <!-- modal tamil button -->
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#bd-example-modal-xl" >
+                  <i
+                          class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+                </button >
+                <br>
+                <br>
+                <span class="error"
+                      data-th-errors="*{improvement}"
+                      data-th-if="${#fields.hasErrors('improvement')}" >Error Name</span >
+                </label >
+              </div>
+
+
+
+
+
+
+<!--
+              <div class="col-md-4" >
 
               <label class="control-label" >
                 Strategies for improvement (if Appraisee is lagging behind):
@@ -289,14 +329,15 @@
               <label>
                 <textarea class="form-control" data-th-field="*{improvement}" ></textarea >
               </label>
-              <!--Sinhala modal button -->
+              <br>
+              &lt;!&ndash;Sinhala modal button &ndash;&gt;
               <button type="button" class="btn btn-primary" data-toggle="modal"
                       data-target=".bd-example-modal-xl" >
                 <i
                         class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
               </button >
 
-              <!-- modal tamil button -->
+              &lt;!&ndash; modal tamil button &ndash;&gt;
               <button type="button" class="btn btn-primary" data-toggle="modal"
                       data-target="#bd-example-modal-xl" >
                 <i
@@ -309,15 +350,13 @@
             </div>
           </div >
         </div >
-      </div >
+      </div >-->
       <!--Mid Term Appraisal end-->
 
 
       <!--Button-->
       <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-        <button class="btn btn-primary" type="button" >
-          <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
-        </button >
+
         <button class="btn btn-success ml-5" tabindex="21" type="submit" >
           <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
                 data-th-text="${addStatus==true?'Save': 'Update'}"

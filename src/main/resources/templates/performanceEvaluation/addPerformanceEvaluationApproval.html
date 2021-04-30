@@ -556,14 +556,13 @@
                 </div >
               </div >
             </div >
-                                                          <!--overallApprecial-->
-            <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-              <!--delegating-->
-              <div class="form-row " >
-                <div class="col-md-4" >
-                  <label class="control-label" for="overallApprecial" >Descipline :</label >
+        <!--overallApprecial-->
+
+
+                <div class="col-md-12" >
+                  <label class="control-label" for="overallApprecial" >Discipline :</label >
                 </div >
-                <div class="col-md-8" >
+                <div class="col-md-8">
                   <div class="custom-control custom-checkbox custom-control-inline "
                        data-th-each="apprecial: ${apprecials}" >
                     <input class="custom-control-input gender" required
@@ -576,15 +575,14 @@
                            data-th-text="${apprecial.apprecial}" > radio
                     </label >
                   </div >
-                </div >
-              </div >
-            </div >
+                </div>
+
+              <br>
+              <br>
 
           <!--Button-->
-          <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-            <button class="btn btn-primary" type="button" >
-              <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
-            </button >
+          <div class="form-group col-md-12 col-sm-12 text-center flex-column " href="/mainw" >
+
             <button class="btn btn-success ml-5" tabindex="21" type="submit" >
               <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
                   data-th-text="${addStatus==true?'Save': 'Update'}"
