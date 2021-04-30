@@ -195,6 +195,37 @@
           <div class="form-row text-right" >
             <div class="col-md-4" >
               <div class="required">
+                <label class="control-label" data-th-for="${'satisfied'}" >Are you satisfied about your performance: :</label >
+              </div>
+            </div >
+          <div class="col-md-4 text-center" >
+            <div class="form-check" >
+              <label class="form-check-label col-md-6">
+                <div class="custom-control custom-radio">
+
+                  <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="Y">
+                  <label>Yes</label><br>
+                </label>
+
+              <label class="form-check-label col-md-6" >
+                  <input type="radio" class="form-check-input" data-th-field="*{satisfied}" value="N">
+                 <label>No</label>
+                  <br>
+
+              </label>
+            </div >
+            <span class="error"
+                  data-th-errors="*{satisfied}"
+                  data-th-if="${#fields.hasErrors('satisfied')}" >Error Name</span >
+          </div >
+        </div >
+
+
+
+
+        <!--  <div class="form-row text-right" >
+            <div class="col-md-4" >
+              <div class="required">
                 <label class="control-label" data-th-for="${'taskLists'}" >Are you satisfied about your performance:</label ></div>
             </div >
             <div class="col-md-4 text-center" >
@@ -215,7 +246,7 @@
                     data-th-if="${#fields.hasErrors('satisfied')}" >Error Name</span >
             </div >
           </div >
-          </br>
+          </br>-->
           <!--responsibilities -->
           <div class="form-row text-right" >
             <div class="col-md-4" >
