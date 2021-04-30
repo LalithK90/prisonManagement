@@ -36,7 +36,7 @@
 .form-area{
 
     margin-bottom: 1px;
-    color: #a01a1a;
+    color: rgba(160, 26, 26, 0.57);
 
 }
 input{
@@ -103,7 +103,8 @@ input{
 }
 .card{
 
-    background-color: rgba(142, 57, 36, 0.72);
+    background-color: rgba(142, 57, 36, 0.29);
+
     max-width:900px;
     margin-top: 40px;
     margin-bottom:20px;
@@ -120,6 +121,7 @@ input{
 }
 .card-header {
     font-family: Tahoma;
+    color: #1d1e1f;
     font-weight: bolder;
     position: center;
     margin-left: 50px;
@@ -172,6 +174,7 @@ input{
 	position: relative;
 	background-color: rgba(109, 39, 53, 0.47);
 	text-align: center;
+    text-decoration-color: #0b0b0b;!important;
 	padding:30px;
 	margin-left:650px;
 	-webkit-border-radius:70px 70px 70px 70px;
@@ -286,4 +289,7 @@ input{
 .tableview{
     border-radius:25px;
 
+
 }
+
+
