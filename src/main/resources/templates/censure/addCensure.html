@@ -333,23 +333,6 @@
         // $(`#incidentDate`).attr('min', `${currentYear}-01-01`).attr('max', dateMakeWithoutTime(assignDate));
     });
 
-    function dateMakeWithoutTime(val) {
-        let year = val.getFullYear();
-        let month = val.getMonth();
-        let date = val.getDate();
-        let today;
-        if (month < 10) {
-            if (date < 10) {
-                today = `${year}-0${month}-0${date}`;
-            } else {
-                today = `${year}-0${month}-${date}`;
-            }
-        } else {
-            today = `${year}-${month}-${date}`;
-        }
-
-        return today;
-    }
 
 
 </script >
