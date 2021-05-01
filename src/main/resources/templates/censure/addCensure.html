@@ -70,9 +70,9 @@
         <!--refNumber-->
         <div id="" data-th-if="${addStatus==false}" class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="abc" >Ref Number :</label >
-          </div>
+            <div class="required" >
+              <label class="control-label" for="abc" >Ref Number :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <input id="abc" data-th-field="*{refNumber}" class="form-control" type="text" readonly />
@@ -81,9 +81,9 @@
         <!--offence type radio button eka-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="offence" >Offence Type :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="offence" >Offence Type :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <div class="custom-control custom-checkbox custom-control-inline "
@@ -103,9 +103,9 @@
         <!--Offence -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-          <div class="required">
-            <label class="control-label" for="offence" >Offence :</label >
-          </div>
+            <div class="required" >
+              <label class="control-label" for="offence" >Offence :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <select id="offence" data-th-field="*{offence}" class="form-control" tabindex="19"
@@ -117,9 +117,9 @@
         <!--Punishment -->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="punishment" >Punishment :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="punishment" >Punishment :</label >
+            </div >
 
           </div >
           <div class="col-md-8" >
@@ -132,13 +132,13 @@
         <!--Incident Date-->
         <div class="form-row text-right" >
           <div class="col-md-4" >
-            <div class="required">
-            <label class="control-label" for="incidentDate" >Incident Date :</label >
-            </div>
+            <div class="required" >
+              <label class="control-label" for="incidentDate" >Incident Date :</label >
+            </div >
           </div >
           <div class="col-md-8" >
             <input type="date" class="form-control "
-                   data-th-field="*{incidentDate}" id="incidentDate"  onchange="dateMatch()" required >
+                   data-th-field="*{incidentDate}" id="incidentDate" onchange="dateMatch()" required >
 
             <span data-th-errors="*{incidentDate}"
                   data-th-if="${#fields.hasErrors('incidentDate')}" class="error" >Error Employee code
@@ -214,8 +214,8 @@
             </ul >
           </div >
         </div >
-      </div>
-      <span class="required_notification">* Denotes Required Field</span>
+      </div >
+      <span class="required_notification" >* Denotes Required Field</span >
     </form >
 
   </div >
@@ -229,6 +229,7 @@
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 <input type="hidden" id="punishmentFindUrl" data-th-value="${punishmentFindUrl}" >
 <input type="hidden" id="offenceUrl" data-th-value="${offenceUrl}" >
+<input type="hidden" id="dateOfAssignmentDate" data-th-value="${employeeDetail.dateOfAssignment}" >
 <script data-th-src="@{/js/combo-box-search.js}" ></script >
 <script >
     $(document).ready(function () {
@@ -311,11 +312,29 @@
     <!--Date validation-->
 
     $(document).ready(function () {
-      let assignDate = new Date();
-      let currentYear = new Date().getFullYear();
-      $(`#incidentDate`).attr('min', `${currentYear}-01-01`).attr('max', dateMakeWithoutTime(assignDate));
+        // let assignDate = new Date();
+        let currentYear = new Date().getFullYear();
+        let assignDate = $('#dateOfAssignmentDate').val();
 
+        let isLarger = new Date(assignDate) < new Date();
+
+        let minDate = `${currentYear}-01-01`;
+        let maxDate = `${currentYear}-12-31`;
+
+        if (isLarger) {
+            console.log("herer ")
+            $(`#incidentDate`)
+                .attr('min', assignDate)
+                .attr('max', maxDate);
+        } else {
+            console.log("there ")
+            $(`#incidentDate`)
+                .attr('min', minDate)
+                .attr('max', maxDate);
+        }
+        // $(`#incidentDate`).attr('min', `${currentYear}-01-01`).attr('max', dateMakeWithoutTime(assignDate));
     });
+
     function dateMakeWithoutTime(val) {
         let year = val.getFullYear();
         let month = val.getMonth();
@@ -333,7 +352,6 @@
 
         return today;
     }
-
 
 
 </script >
