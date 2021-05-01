@@ -313,10 +313,9 @@
     $(document).ready(function () {
       let assignDate = new Date();
       let currentYear = new Date().getFullYear();
-      $(`#incidentDate`).attr('min', `${currentYear}-01-01`).attr('max', `${currentYear}-12-31`);
+      $(`#incidentDate`).attr('min', `${currentYear}-01-01`).attr('max', assignDate);
 
     });
-
 
 </script >
 </body >
