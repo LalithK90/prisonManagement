@@ -85,7 +85,7 @@
         <div class="form-row text-right" >
           <div class="col-md-4" >
             <div class="required">
-            <label class="control-label" data-th-for="${'description'}" >Description :</label >
+              <label class="control-label" data-th-for="${'description'}" >Description :</label >
             </div>
           </div >
           <div class="col-md-4" >
@@ -98,14 +98,14 @@
           <div class="col-md-4" >
             <!--Sinhala modal button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" ><i
-                  class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
+                    class="fas fa-language" ></i > &nbsp;Singlish to Sinhala
             </button >
 
           </div >
           <div class="col-md-4" >
             <!-- modal tamil button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-xl" ><i
-                  class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
+                    class="fas fa-language" ></i > &nbsp;Tamilish to Tamil
             </button >
           </div >
         </div >
@@ -131,13 +131,11 @@
 
         <!--Button-->
         <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-          <button class="btn btn-primary" type="button" >
-            <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp;&nbsp;Back
-          </button >
+
           <button class="btn btn-success ml-5" tabindex="21" type="submit" >
             <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
-                data-th-text="${addStatus==true?'Save': 'Update'}"
-                id="submit" ></span >
+                  data-th-text="${addStatus==true?'Save': 'Update'}"
+                  id="submit" ></span >
           </button >
           <button class="btn btn-warning ml-5" tabindex="21" type="reset" >
             <i class="far fa-times-circle" style="font-size: 20px" ></i >&nbsp;&nbsp;Cancel
@@ -168,36 +166,36 @@
 <div data-th-replace="~{fragments/unicodeTamil :: unicodeTamilFragment}" ></div >
 
 <script >
-    $(document).ready(function () {
-        imageSrcAttributeCheck();
-    });
+  $(document).ready(function () {
+    imageSrcAttributeCheck();
+  });
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            let reader = new FileReader();
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      let reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#image').attr('src', e.target.result);
-            }
+      reader.onload = function (e) {
+        $('#image').attr('src', e.target.result);
+      }
 
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
-        }
+      reader.readAsDataURL(input.files[0]); // convert to base64 string
     }
+  }
 
-    //display selected image
-    $("#imgUpload").change(function () {
-        $("#image").toggle('show');
-        readURL(this);
+  //display selected image
+  $("#imgUpload").change(function () {
+    $("#image").toggle('show');
+    readURL(this);
 
-    });
+  });
 
-    //image is not -> showing area hide
-    function imageSrcAttributeCheck() {
-        let attribute = $("#image").attr("src");
-        if (attribute === '') {
-            $("#image").toggle('hide');
-        }
+  //image is not -> showing area hide
+  function imageSrcAttributeCheck() {
+    let attribute = $("#image").attr("src");
+    if (attribute === '') {
+      $("#image").toggle('hide');
     }
+  }
 </script >
 </body >
 </html >

@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark " style="background-color:rgba(55,5,5,0.91);" data-th-fragment="navBarFragment">
 
-   <img data-th-src="${'/img/avatar.png'}"alt="Nav bar logo"width="40" height="45">
+   <img data-th-src="${'/img/avatar.png'}"alt="Nav bar logo" style="width:40px;height:50px;margin-right: 10px">
    <a class="navbar-brand" href="/home"><i class="fa fa-home" style="font-size: 18px"></i></a>
 
 
@@ -60,10 +60,11 @@
             <div class="dropdown-menu text-dark" aria-labelledby="dropdownId">
                <a data-th-href="@{'/employee'}" class="nav-link text-dark">Employee Detail Report</a>
                <a data-th-href="@{'/report/instituteEmployee'}" class="nav-link text-dark"> Institute Headcount Report</a>
-               <a data-th-href="@{'/report/employeeAllCount'}" class="nav-link text-dark">Employee And Action </a>
+               <!--<a data-th-href="@{'/report/employeeAllCount'}" class="nav-link text-dark">Employee And Action </a>-->
                <a data-th-href="@{'/report/offenceCount'}" class="nav-link text-dark">Offence And Record Count </a>
                <a data-th-href="@{'/report/instituteCensure'}" class="nav-link text-dark">Institute Vs Censure count</a>
                <a data-th-href="@{'/report/instituteCensureOne'}" class="nav-link text-dark">Institute wise Censure count</a>
+               <a data-th-href="@{'/report/instituteCommendation'}" class="nav-link text-dark">Institute Vs Commendation Count count</a>
 
             </div>
          </li>

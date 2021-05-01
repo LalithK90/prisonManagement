@@ -2,6 +2,7 @@ package lk.prison_management.asset.process_management;
 
 import lk.prison_management.asset.censure.entitiy.Censure;
 import lk.prison_management.asset.censure.service.CensureService;
+import lk.prison_management.asset.commendation.entity.Commendation;
 import lk.prison_management.asset.commendation.service.CommendationService;
 import lk.prison_management.asset.common_asset.model.TwoDate;
 import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
@@ -15,6 +16,7 @@ import lk.prison_management.asset.offence.entity.Offence;
 import lk.prison_management.asset.offence.service.OffenceService;
 import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
 import lk.prison_management.asset.process_management.mode.InstituteCensure;
+import lk.prison_management.asset.process_management.mode.InstituteCommendation;
 import lk.prison_management.asset.process_management.mode.InstituteEmployee;
 import lk.prison_management.asset.qualification.service.QualificationService;
 import lk.prison_management.util.service.DateTimeAgeService;
@@ -199,6 +201,66 @@ public class ReportController {
     return "report/instituteCensureOne";
 
   }
+
+//aluth report ekak institute censure
+
+  @GetMapping( "/instituteCommendation" )
+  public String instituteCommendation(Model model) {
+    model.addAttribute("institutes", instituteService.findAll());
+    return "report/instituteCommendation";
+
+  }
+
+  @PostMapping( "/instituteCommendation" )
+  public String instituteCommendation(@ModelAttribute TwoDate twoDate, Model model) {
+    List< Institute > institutes = instituteService.findAll();
+
+
+    //table eken data enwada balannwa
+    System.out.println(twoDate.getStartDate());
+    System.out.println(twoDate.getEndDate());
+    //institute id eka
+    System.out.println(twoDate.getId());
+
+    LocalDateTime startDateTime = dateTimeAgeService.dateTimeToLocalDateStartInDay(twoDate.getStartDate());
+    LocalDateTime endDateTime = dateTimeAgeService.dateTimeToLocalDateEndInDay(twoDate.getEndDate());
+
+//commendation list eka genna gaththa
+    List<Commendation> commendations = commendationService.findByCreatedAtIsBetween(startDateTime, endDateTime);
+    //.stream().filter(x->x.getEmployee().getInstitute().equals(   )).collect(Collectors.toList());
+    System.out.println(commendations);
+    List<InstituteCommendation> instituteCommendations = new ArrayList<>();
+
+    //eka institute eka bagin filter karnne getId  eken
+    Institute institute=instituteService.findById(twoDate.getId());
+    long count = 0;
+    for ( Commendation commendation : commendations ) {
+      //adala institute eke employee ta thiyena institute id eka deepu institute Id smanda blanawa
+      if (commendation.getEmployee().getInstitute().equals(institute)) {
+        count = count + 1;
+      }
+
+
+    }
+    InstituteCommendation instituteCommendation = new InstituteCommendation();
+    instituteCommendation.setInstitute(institute);
+    instituteCommendation.setCommendationCount(count);
+    instituteCommendations.add(instituteCommendation);
+
+
+
+    model.addAttribute("institutes", instituteService.findAll());
+
+
+    String message = "This report is from " + twoDate.getStartDate() + " to " + twoDate.getEndDate();
+    model.addAttribute("message", message);
+    model.addAttribute("instituteCommendations", instituteCommendations);
+    return "report/instituteCommendation";
+
+  }
+
+
+
 
 
 

@@ -3,9 +3,7 @@ package lk.prison_management.asset.performance_evaluation_request.entity;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.performance_evaluation_approval.entity.PerformanceEvaluationApproval;
-import lk.prison_management.asset.performance_evaluation_request.entity.enums.PerformanceEvaluationStatus;
-import lk.prison_management.asset.performance_evaluation_request.entity.enums.Apprecial;
-import lk.prison_management.asset.performance_evaluation_request.entity.enums.YesNo;
+import lk.prison_management.asset.performance_evaluation_request.entity.enums.*;
 import lk.prison_management.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,10 +32,21 @@ public class PerformanceEvaluationRequest extends AuditEntity {
   @Enumerated( EnumType.STRING )
   private YesNo taskLists; //(using 'Y' and 'N')
   //2.1Main Areas of Responsibility and Tasks
-//2.1.1 Responsibility
+
+  //2.1.1 Responsibility
   private String responsibility;
   //2.1.2. Tasks
   private String tasks;
+
+/*//enum valin gennuwama
+  //2.1.1 Responsibility
+  @Enumerated( EnumType.STRING )
+  private Responsibility responsibility;
+
+  //2.1.2. Tasks
+  @Enumerated( EnumType.STRING )
+  private Task task;*/
+
 
   //3. Mid Term Appraisal
 //3.1 Are you satisfied about your performance :yes /no

@@ -8,31 +8,12 @@
 }
 
 /*login page start*/
-
-body{
-/*
-    background-image: url(../img/login.jpg);!important;
-    -webkit-background-size:cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-image: url(../img/formbg.png) ;*/
+/*body{
+   background-color: rgba(7, 4, 0, 0.96);
 
 
 
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    color: rgb(0, 0, 0);
-    overflow-x: hidden;
-    min-height: 100vh;
-    height: 100%;
-    position: relative;
-    background-image: url(../img/formbg.png) ;!important;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-}
+}*/
 .login-bg{
     background-image: url(../img/login3.jpg) ;!important;
 }
@@ -55,7 +36,7 @@ body{
 .form-area{
 
     margin-bottom: 1px;
-    color: #a01a1a;
+    color: rgba(160, 26, 26, 0.57);
 
 }
 input{
@@ -114,18 +95,16 @@ input{
 
 /*MainWindow Style - Start*/
 .mainbody{
-    background-image: url(../img/formbg.png);
+    background-image: url(../img/backmain2.jpg);
     -webkit-background-size:cover;
     background-size: cover;
     background-position:center center;
     background-repeat: no-repeat;
-
-
-
 }
 .card{
 
-    background-color: rgba(142, 57, 36, 0.72);
+    background-color: rgba(142, 57, 36, 0.29);
+
     max-width:900px;
     margin-top: 40px;
     margin-bottom:20px;
@@ -142,6 +121,7 @@ input{
 }
 .card-header {
     font-family: Tahoma;
+    color: #1d1e1f;
     font-weight: bolder;
     position: center;
     margin-left: 50px;
@@ -161,9 +141,25 @@ input{
 
 
 /* Navbar Style--START*/
+
 .navbar a{
     color: #070707;
 }
+
+
+.navbar{
+    background-color:rgba(9,22,21,0.97);
+
+}
+.dropdown-menu{
+    background-color: rgba(128, 75, 61, 0.72);
+    width: 250px;
+}
+.dropdown-menu a{
+    color:white!important;
+
+}
+
 /* Navbar Style--END*/
 
 /**login start*/
@@ -178,6 +174,7 @@ input{
 	position: relative;
 	background-color: rgba(109, 39, 53, 0.47);
 	text-align: center;
+    text-decoration-color: #0b0b0b;!important;
 	padding:30px;
 	margin-left:650px;
 	-webkit-border-radius:70px 70px 70px 70px;
@@ -288,3 +285,11 @@ input{
     content:" *";
     color: red;
 }
+
+.tableview{
+    border-radius:25px;
+
+
+}
+
+

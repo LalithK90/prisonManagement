@@ -1,6 +1,7 @@
 package lk.prison_management.asset.institute.service;
 
 import lk.prison_management.asset.common_asset.model.enums.LiveOrDead;
+import lk.prison_management.asset.employee.entity.Employee;
 import lk.prison_management.asset.institute.dao.InstituteDao;
 import lk.prison_management.asset.institute.entity.Institute;
 import lk.prison_management.util.interfaces.AbstractService;
@@ -23,6 +24,7 @@ public class InstituteService implements AbstractService<Institute, Integer> {
         //.stream thamai delete wena eka nathi wela penne institute eke.
         return instituteDao.findAll() .stream().filter(x->x.getLiveOrDead().equals(LiveOrDead.ACTIVE)).collect(Collectors.toList());
     }
+
 
     public Institute findById(Integer id) {
         return instituteDao.getOne(id);
@@ -50,4 +52,10 @@ if(institute.getId()==null){
         Example<Institute> instituteExample = Example.of(institute, matcher);
         return instituteDao.findAll(instituteExample);
     }
+
+    public Institute findByName(String name) {
+        return instituteDao.findByName(name);
+    }
+
 }
+

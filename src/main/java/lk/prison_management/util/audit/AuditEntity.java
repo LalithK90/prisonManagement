@@ -13,7 +13,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
+//methanin thama api ara create krapu kena create krapu timeeka balanne
 @Getter
 @Setter
 @ToString //Without this we cannot take any object id related with this audit class

@@ -5,6 +5,8 @@ import lk.prison_management.asset.employee.service.EmployeeService;
 import lk.prison_management.asset.employee_file.service.EmployeeFilesService;
 import lk.prison_management.asset.performance_evaluation_request.entity.PerformanceEvaluationRequest;
 import lk.prison_management.asset.performance_evaluation_request.entity.enums.Apprecial;
+import lk.prison_management.asset.performance_evaluation_request.entity.enums.Responsibility;
+import lk.prison_management.asset.performance_evaluation_request.entity.enums.Task;
 import lk.prison_management.asset.performance_evaluation_request.service.PerformanceEvaluationRequestService;
 import lk.prison_management.asset.user.service.UserService;
 import lk.prison_management.util.service.EmailService;
@@ -66,6 +68,8 @@ public class PerformanceEvaluationRequestController {
     model.addAttribute("addStatus", true);
     model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));
     model.addAttribute("performanceEvaluationRequest", performanceEvaluationRequest);
+    /*model.addAttribute("responsibilities", Responsibility.values());
+    model.addAttribute("tasks", Task.values());*/
     model.addAttribute("apprecials", Apprecial.values());
     return "performanceEvaluation/addPerformanceEvaluationRequest";
   }

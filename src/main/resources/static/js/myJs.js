@@ -555,6 +555,8 @@ $(".reveal").on('click', function () {
         $pwd.attr('type', 'password');
     }
 });
+
+
 $("#myTable").DataTable({
     "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
     "ordering": false,
