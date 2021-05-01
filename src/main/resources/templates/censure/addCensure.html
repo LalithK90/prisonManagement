@@ -322,12 +322,10 @@
         let maxDate = `${currentYear}-12-31`;
 
         if (isLarger) {
-            console.log("herer ")
             $(`#incidentDate`)
                 .attr('min', assignDate)
                 .attr('max', maxDate);
         } else {
-            console.log("there ")
             $(`#incidentDate`)
                 .attr('min', minDate)
                 .attr('max', maxDate);
